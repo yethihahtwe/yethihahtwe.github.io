@@ -1,0 +1,1049 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
+.mac-os-11 { --title-bar-height: 28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857143; overflow-x: hidden; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; tab-size: 4; background-position: inherit; background-repeat: inherit; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; word-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) { 
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+thead, tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right-width: 0px; background-color: inherit; }
+.CodeMirror-linenumber { }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; position: relative !important; background-position: inherit; background-repeat: inherit; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+svg { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; background-position: 0px 0px; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print { 
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; padding-bottom: 0px !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background-color: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) { 
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.reversefootnote { font-family: ui-monospace, sans-serif; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background-color: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; }
+a.md-print-anchor { white-space: pre !important; border: none !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; text-shadow: initial !important; background-position: 0px 0px !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom-width: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background-color: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print { 
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit; background-repeat: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex: 2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) { 
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) { 
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.428571429rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left-width: 28px; border-left-style: solid; border-left-color: transparent; border-right-width: 28px; border-right-style: solid; border-right-color: transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right-width: 8px; border-right-style: solid; border-right-color: transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+.CodeMirror { height: auto; }
+.CodeMirror.cm-s-inner { background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit; background-repeat: inherit; }
+.CodeMirror-scroll { overflow: auto hidden; z-index: 3; }
+.CodeMirror-gutter-filler, .CodeMirror-scrollbar-filler { background-color: rgb(255, 255, 255); }
+.CodeMirror-gutters { border-right-width: 1px; border-right-style: solid; border-right-color: rgb(221, 221, 221); background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; white-space: nowrap; background-position: inherit; background-repeat: inherit; }
+.CodeMirror-linenumber { padding: 0px 3px 0px 5px; text-align: right; color: rgb(153, 153, 153); }
+.cm-s-inner .cm-keyword { color: rgb(119, 0, 136); }
+.cm-s-inner .cm-atom, .cm-s-inner.cm-atom { color: rgb(34, 17, 153); }
+.cm-s-inner .cm-number { color: rgb(17, 102, 68); }
+.cm-s-inner .cm-def { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-variable { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-variable-2 { color: rgb(0, 85, 170); }
+.cm-s-inner .cm-variable-3 { color: rgb(0, 136, 85); }
+.cm-s-inner .cm-string { color: rgb(170, 17, 17); }
+.cm-s-inner .cm-property { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-operator { color: rgb(152, 26, 26); }
+.cm-s-inner .cm-comment, .cm-s-inner.cm-comment { color: rgb(170, 85, 0); }
+.cm-s-inner .cm-string-2 { color: rgb(255, 85, 0); }
+.cm-s-inner .cm-meta { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-qualifier { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-builtin { color: rgb(51, 0, 170); }
+.cm-s-inner .cm-bracket { color: rgb(153, 153, 119); }
+.cm-s-inner .cm-tag { color: rgb(17, 119, 0); }
+.cm-s-inner .cm-attribute { color: rgb(0, 0, 204); }
+.cm-s-inner .cm-header, .cm-s-inner.cm-header { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-quote, .cm-s-inner.cm-quote { color: rgb(0, 153, 0); }
+.cm-s-inner .cm-hr, .cm-s-inner.cm-hr { color: rgb(153, 153, 153); }
+.cm-s-inner .cm-link, .cm-s-inner.cm-link { color: rgb(0, 0, 204); }
+.cm-negative { color: rgb(221, 68, 68); }
+.cm-positive { color: rgb(34, 153, 34); }
+.cm-header, .cm-strong { font-weight: 700; }
+.cm-del { text-decoration: line-through; }
+.cm-em { font-style: italic; }
+.cm-link { text-decoration: underline; }
+.cm-error { color: red; }
+.cm-invalidchar { color: red; }
+.cm-constant { color: rgb(38, 139, 210); }
+.cm-defined { color: rgb(181, 137, 0); }
+div.CodeMirror span.CodeMirror-matchingbracket { color: rgb(0, 255, 0); }
+div.CodeMirror span.CodeMirror-nonmatchingbracket { color: rgb(255, 34, 34); }
+.cm-s-inner .CodeMirror-activeline-background { background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit; background-repeat: inherit; }
+.CodeMirror { position: relative; overflow: hidden; }
+.CodeMirror-scroll { height: 100%; outline: 0px; position: relative; box-sizing: content-box; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit; background-repeat: inherit; }
+.CodeMirror-sizer { position: relative; }
+.CodeMirror-gutter-filler, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-vscrollbar { position: absolute; z-index: 6; display: none; outline: 0px; }
+.CodeMirror-vscrollbar { right: 0px; top: 0px; overflow: hidden; }
+.CodeMirror-hscrollbar { bottom: 0px; left: 0px; overflow: auto hidden; }
+.CodeMirror-scrollbar-filler { right: 0px; bottom: 0px; }
+.CodeMirror-gutter-filler { left: 0px; bottom: 0px; }
+.CodeMirror-gutters { position: absolute; left: 0px; top: 0px; padding-bottom: 10px; z-index: 3; overflow-y: hidden; }
+.CodeMirror-gutter { white-space: normal; height: 100%; box-sizing: content-box; padding-bottom: 30px; margin-bottom: -32px; display: inline-block; }
+.CodeMirror-gutter-wrapper { position: absolute; z-index: 4; border: none !important; background-position: 0px 0px !important; }
+.CodeMirror-gutter-background { position: absolute; top: 0px; bottom: 0px; z-index: 4; }
+.CodeMirror-gutter-elt { position: absolute; cursor: default; z-index: 4; }
+.CodeMirror-lines { cursor: text; }
+.CodeMirror pre { border-top-left-radius: 0px; border-top-right-radius: 0px; border-bottom-right-radius: 0px; border-bottom-left-radius: 0px; border-width: 0px; font-family: inherit; font-size: inherit; margin: 0px; white-space: pre; word-wrap: normal; color: inherit; z-index: 2; position: relative; overflow: visible; background-position: 0px 0px; }
+.CodeMirror-wrap pre { word-wrap: break-word; white-space: pre-wrap; word-break: normal; }
+.CodeMirror-code pre { border-right-width: 30px; border-right-style: solid; border-right-color: transparent; width: fit-content; }
+.CodeMirror-wrap .CodeMirror-code pre { border-right-style: none; width: auto; }
+.CodeMirror-linebackground { position: absolute; inset: 0px; z-index: 0; }
+.CodeMirror-linewidget { position: relative; z-index: 2; overflow: auto; }
+.CodeMirror-wrap .CodeMirror-scroll { overflow-x: hidden; }
+.CodeMirror-measure { position: absolute; width: 100%; height: 0px; overflow: hidden; visibility: hidden; }
+.CodeMirror-measure pre { position: static; }
+.CodeMirror div.CodeMirror-cursor { position: absolute; visibility: hidden; border-right-style: none; width: 0px; }
+.CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+.CodeMirror-focused div.CodeMirror-cursor { visibility: inherit; }
+.cm-searching { background-color: rgba(255, 255, 0, 0.4); }
+span.cm-underlined { text-decoration: underline; }
+span.cm-strikethrough { text-decoration: line-through; }
+.cm-tw-syntaxerror { color: rgb(255, 255, 255); background-color: rgb(153, 0, 0); }
+.cm-tw-deleted { text-decoration: line-through; }
+.cm-tw-header5 { font-weight: 700; }
+.cm-tw-listitem:first-child { padding-left: 10px; }
+.cm-tw-box { border-style: solid; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-color: inherit; border-top-width: 0px !important; }
+.cm-tw-underline { text-decoration: underline; }
+@media print { 
+  .CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+}
+
+
+:root {
+    --primary-color: #37352f;
+    --bg-color: #ffffff;
+    --bg-color-dark: #f7f6f3;
+    --dark-trait: #e9e9e7;
+    --light-trait-100: #ecedec;
+    --light-trait-200: #c70000;
+    --light-trait-300: #37352f;
+    --light-trait-400: #f7f6f3;
+    --text-color: #37352f;
+    --text-color-secondary: #73726e;
+    --text-highlight-color: #fff;
+    --text-highlight-bg: rgba(var(--primary-color-rgb), 0.3);
+    --select-text-bg-color: #c0e5f4;
+	--search-select-text-color:#448361;
+    --search-select-bg-color: #edf3ec;
+    --code-color: #9a6e3a;
+    --border-radius: 4px;
+    --font-size: 16px;
+    --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+    --monospace: 'SF Mono Medium', 'Fira Code', 'Cousine', 'Consolas', monospace;
+    --heading-char-color: var(--light-trait-400);
+    --color-popover-bg-color: var(--text-color);
+    --rawblock-edit-panel-bd: var(--bg-color-dark);
+    --control-text-color: #72706b;
+    --meta-content-color: var(--primary-color);
+    --primary-btn-border-color: var(--primary-color);
+    --side-bar-bg-color: var(--bg-color-dark);
+    --item-hover-bg-color: #e8e7e4;
+    --active-file-bg-color: #e8e7e4;
+    --active-file-border-color: var(--bg-color);
+    --window-border: 1px solid var(--bg-color);
+    --focus-ring-color: transparent;
+}
+
+html {
+    font-size: var(--font-size);
+}
+
+body {
+    font-family: var(--font-family);
+    -webkit-font-smoothing: antialiased;
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+code {
+    color: #ec5757;
+    background-color: #eeedeb;
+    padding: 0 2px 0 2px;
+}
+
+#write {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+    #write {
+        max-width: 1024px;
+    }
+}
+
+@media only screen and (min-width: 1800px) {
+    #write {
+        max-width: 1200px;
+    }
+}
+
+#write>ul:first-child, #write>ol:first-child {
+    margin-top: 30px;
+}
+
+a {
+    color: var(--primary-color);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    position: relative;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    line-height: 1.4;
+    cursor: text;
+}
+
+h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+    text-decoration: none;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+    font-size: inherit;
+}
+
+h1 {
+    padding-bottom: 0.3em;
+    font-size: 2.2em;
+    line-height: 1.3;
+}
+
+h2 {
+    padding-bottom: 0.3em;
+    font-size: 1.75em;
+    line-height: 1.225;
+}
+
+h3 {
+    font-size: 1.4em;
+    line-height: 1.43;
+}
+
+h4 {
+    font-size: 1.2em;
+}
+
+h5 {
+    font-size: 1em;
+}
+
+h6 {
+    font-size: 1em;
+    color: var(--light-trait-300);
+}
+
+p, blockquote, ul, ol, dl, table {
+    margin: 0.8em 0;
+}
+
+li>ol, li>ul {
+    margin: 0 0;
+}
+
+hr {
+    background-color: var(--light-trait-100);
+    height: 1.5px;
+    border: none
+}
+
+a,
+.md-def-url {
+    color: var(--text-color);
+    text-decoration: none;
+    border-bottom:0.05em solid;
+    border-color: #37352f;
+    opacity:0.6;
+    transition: all .1s ease-in; 
+}
+
+a:hover {
+    text-decoration: none;
+    opacity:1;
+}
+
+sup.md-footnote {
+    background-color: var(--light-trait-400);
+    color: #888884;
+}
+
+li p.first {
+    display: inline-block;
+}
+
+ul, ol {
+    padding-left: 30px;
+}
+
+ul:first-child, ol:first-child {
+    margin-top: 0.35%;
+}
+
+ul:last-child, ol:last-child {
+    margin-bottom: 0;
+}
+
+mark, .ty-file-search-match-text, .md-search-hit {
+    background: #fdebec;
+	color: #d44c47;
+}
+
+mark {
+    border-radius: 4px;
+    color: #402c1b;
+    font-weight: inherit;
+    background-color: #fdecc8;
+    padding-left: 4px;
+    padding-right: 4px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+.md-search-hit * {
+    color: var(--search-select-text-color);
+}
+
+/* Search highlight */
+.cm-search-hit.CodeMirror-selectedtext, .md-search-hit.md-search-select, .md-search-select {
+    outline: 0px solid var(--search-select-text-color);
+}
+
+.outline-item.select, .ty-search-item-line.select, .ty-search-item.select {
+    outline-width: 2px;
+}
+
+.outline-item.select {
+    outline-offset: 0px;
+}
+
+blockquote {
+    margin-left: 1.75px;
+    margin-right: 0px;
+    border-left: 4px solid var(--text-color);
+    padding: 10px 14px 7px 22px;
+}
+
+blockquote blockquote {
+    padding-right: 0;
+}
+
+table {
+    padding: 0;
+    word-break: initial;
+}
+
+table tr {
+    border-top: 1px solid var(--dark-trait);
+    margin: 0;
+    padding: 0;
+}
+
+table tr th {
+    font-weight: bold;
+    border: 1px solid var(--dark-trait);
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+
+table tr td {
+    border: 1px solid var(--dark-trait);
+    margin: 0;
+    padding: 6px 13px;
+}
+
+table tr th:first-child, table tr td:first-child {
+    margin-top: 0;
+}
+
+table tr th:last-child, table tr td:last-child {
+    margin-bottom: 0;
+}
+
+
+kbd {
+    font-size: 0.875rem;
+    background: var(--bg-color-dark);
+    border: 1px solid var(--dark-trait);
+    box-shadow: 0 2px 0 var(--dark-trait);
+    color: var(--text-color-secondary);
+}
+
+.md-fences, code, tt {
+    border: none;
+    background-color: #f7f6f3;
+    border-radius: var(--border-radius);
+    padding: 2px 4px 0px 4px;
+    font-size: 0.975em;
+    font-weight: medium;
+    font-family: var(--monospace)
+}
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+#write pre.md-meta-block {
+    padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: var(--bg-color-dark);
+    border: 0;
+    border-radius: var(--border-radius);
+    color: var(--text-color-secondary);
+    margin-top: 0 !important;
+}
+
+#write .mathjax-block .md-rawblock-tooltip {
+    border-top-left-radius: var(--border-radius);
+    border-top-right-radius: var(--border-radius);
+}
+
+#write .mathjax-block .md-math-container {
+    border-top-left-radius: var(--border-radius);
+    border-bottom-right-radius: var(--border-radius);
+    border-bottom-left-radius: var(--border-radius);
+}
+
+#write .md-mathblock-panel .md-rawblock-control:first-of-type {
+    border-top-left-radius: var(--border-radius);
+}
+
+.md-mathjax-midline {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+.md-inline-math script {
+    color: var(--code-color);
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: none;
+    border-radius: var(--border-radius);
+}
+
+#write .code-tooltip {
+    bottom: initial;
+    top: 100%;
+    left: initial;
+    right: -1px;
+    background: var(--bg-color-dark);
+    border: 1px solid var(--dark-trait);
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-top: 0;
+    font-family: var(--monospace);
+}
+
+#write .md-mathblock-panel .code-tooltip {
+    right: 0;
+    border: none;
+}
+
+/* TODO */
+#write .md-task-list-item>input {
+    -webkit-appearance: initial;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    position: absolute;
+    border: 1px solid var(--text-color);
+    /* border-radius: 100%; */
+    margin-left: -1.45rem;
+    height: 0.95rem;
+    width: 0.95rem;
+    transition: all 0.35s;
+}
+
+#write .md-task-list-item>input:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+#write .md-task-list-item>input[checked] {
+    background: #2eaadc;
+    border: 1px solid #2eaadc;
+    text-decoration: line-through;
+}
+
+#write .md-task-list-item>input[checked]::before {
+    display: inline-block;
+    vertical-align: middle;
+    content: '✓';
+    position: absolute;
+    margin-top: 0.05rem;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    text-align: absolute;
+    color: var(--bg-color);
+    font-size: 0.75em;
+    font-weight: 760;
+}
+
+#write .md-task-list-item>input[checked]::after {
+    text-decoration: line-through;
+}
+
+/* TODO */
+.md-image>.md-meta {
+    border-radius: var(--border-radius);
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-toc {
+    margin-top: 20px;
+    padding-bottom: 20px;
+}
+
+/* Source mode */
+.CodeMirror.cm-s-typora-default *, .cm-s-typora-default * {
+    background: inherit;
+    color: var(--text-color);
+    font-family: var(--monospace);
+    font-size: var(--font-size) !important;
+    font-style: normal;
+    font-weight: medium;
+}
+
+.CodeMirror.cm-s-typora-default div.CodeMirror-cursor {
+    border-left: 2px solid var(--text-color);
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+.outline-expander {
+    width: 1.5rem;
+    vertical-align: initial;
+}
+
+.outline-expander:before, .outline-expander:hover:before, .outline-item-open>.outline-item>.outline-expander:before, .outline-item-open>.outline-item>.outline-expander:hover:before {
+    content: "\f125";
+    transition: transform 125ms ease-in-out;
+}
+
+.outline-item-open>.outline-item>.outline-expander:hover:before, .outline-item-open>.outline-item>.outline-expander:before {
+    transform: rotate(90deg);
+}
+
+.outline-label:hover {
+    text-decoration: none;
+}
+
+#toc-dropmenu {
+    background: var(--bg-color-dark);
+}
+
+#toc-dropmenu .outline-title {
+    font-size: 1rem;
+    text-transform: uppercase;
+}
+
+.dropdown-menu .divider {
+    display: none;
+}
+
+.context-menu {
+    border: none!important;
+    backdrop-filter: saturate(180%) blur(20px) brightness(1.1);
+    background-color: var(--bg-color-dark);
+    box-shadow: 0 25.6px 57.6px 0 rgba(0, 0, 0, .22), 0 4.8px 14.4px 0 rgba(0, 0, 0, .18)!important;
+}
+
+.file-node-background {
+    height: 31px;
+}
+
+.file-node-content:hover .file-node-icon, .file-node-content:hover .file-node-open-state {
+    visibility: visible;
+}
+
+.file-node-icon {
+    margin-right: 8px;
+}
+
+.file-library-node:not(.file-node-root):focus>.file-node-content {
+    outline: none;
+}
+
+/* New file animation */
+.blink-area {
+    animation: none;
+}
+
+.file-list-item-summary {
+    font-size: var(--font-size);
+    font-family: var(--font-family);
+}
+
+#md-searchpanel input {
+    border-radius: var(--border-radius);
+    box-shadow: none;
+}
+
+#md-searchpanel input:focus {
+    box-shadow: none;
+    border-color: var(--meta-content-color);
+}
+
+#md-searchpanel .search-type-selection {
+    width: auto;
+}
+
+#md-searchpanel .btn:not(.close-btn):hover {
+    box-shadow: none;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: var(--side-bar-bg-color);
+}
+
+#md-notification .btn {
+    border: 0;
+}
+
+/* CODE HIGHLIGHT */
+pre.CodeMirror-line {
+    color: #999999!important
+}
+
+.cm-variable {
+    color: #37352f!important;
+}
+
+.cm-keyword {
+    color: #0277aa !important
+}
+
+.cm-tag {
+    color: #ff5a5a!important
+}
+
+.cm-variable-3 {
+    color: #48ff00!important;
+}
+
+.cm-bracket, .cm-error {
+    color: #ff5a5a!important
+}
+
+.cm-attribute {
+    color: #0277aa!important;
+}
+
+.cm-def {
+    color: #dc4a68!important;
+}
+
+.cm-comment {
+    color: #708090!important;
+}
+
+.cm-string {
+    color: #669900!important;
+    font-variant-ligatures: common-ligatures!important;
+}
+
+.cm-tag:not() {
+    font-weight: 700;
+}
+
+.cm-operator {
+    color: #9a6e3b!important;
+}
+
+.cm-number {
+    color: #990055!important;
+}
+
+.cm-meta {
+    color: var(--text-color) !important;
+    font-weight: 700!important;
+}
+
+.cm-atom { color: #845dc4; }
+
+.cm-builtin {
+    color: #669900 !important;
+}
+
+.cm-property {
+    color: var(--text-color) !important;
+}
+
+.cm-variable-2 {
+    color: var(--text-color) !important;
+}
+
+.cm-variable-3 {
+    color: #845dc4;
+}
+
+/* CODE HIGHLIGHT */
+.file-tree-node.active>.file-node-background {
+    background-color: var(--active-file-bg-color);
+    border-left: 0px solid #dad9d6!important;
+    border-color: #dad9d6!important;
+    background-color: #e8e7e4!important;
+}
+
+.CodeMirror-gutters {
+    border-right: 1px solid #f1f3f450;
+    background: inherit;
+    white-space: nowrap;
+}
+
+.ty-footer, .sidebar-footer, footer {
+    backdrop-filter: saturate(120%) blur(20px) brightness(0.85);
+    border: none!important;
+    background: none;
+    background-color: #f7f6f3;
+}
+
+.code-tooltip {
+    border-radius: 4px;
+    background-color: #313334;
+    box-shadow: 0 25.6px 57.6px 0 rgba(0, 0, 0, .52), 0 4.8px 14.4px 0 rgba(0, 0, 0, .28)!important;
+}
+
+#sidebar-files-menu {
+    border-radius: 4px;
+    border: none!important;
+    box-shadow: 0 25.6px 57.6px 0 #f7f6f3, 0 4.8px 14.4px 0 rgba(0, 0, 0, .28);
+}
+
+.code-tooltip.md-tooltip-hide.md-hover-tip {
+    box-shadow: 0 25.6px 57.6px 0 rgba(0, 0, 0, .52), 0 4.8px 14.4px 0 rgba(0, 0, 0, .28);
+}
+
+#typora-sidebar {
+    border: none !important;
+}
+
+#footer-word-count-info, #spell-check-panel {
+    border: none!important;
+    backdrop-filter: saturate(120%) blur(20px) brightness(0.85)!important;
+    box-shadow: 0 25.6px 57.6px 0 rgba(0, 0, 0, .32), 0 4.8px 14.4px 0 rgba(0, 0, 0, .28)!important;
+}
+
+/* Windows/Linux unibody mode */
+.megamenu-content,
+.megamenu-opened header {
+    color:  var(--primary-color);
+    background: var(--bg-color-dark);
+}
+
+#recent-file-panel-action-btn {
+    background: inherit;
+    border: 1px var(--light-trait-300) solid;
+}
+
+.megamenu-menu-panel table td:nth-child(1) {
+    color: var(--text-color);
+    background: var(--bg-color-dark);
+}
+
+.megamenu-menu-panel table td:nth-child(2) {
+    color: var(--text-color);
+    background: var(--bg-color-dark);
+}
+
+.megamenu-menu-panel tbody tr:hover td:nth-child(1) {
+    color: var(--text-color);
+    background: var( --active-file-bg-color);
+}
+
+.megamenu-menu-panel tbody tr:hover td:nth-child(2) {
+    color: var(--text-color);
+    background: var( --active-file-bg-color);
+}
+
+.megamenu-menu-panel input[type='text'] {
+    background: inherit;
+    border: 1px var(--control-text-color) solid;
+}
+
+#recent-file-panel-action-btn {
+    background: inherit;
+}
+
+.megamenu-menu, .megamenu-content {
+	background: var(--side-bar-bg-color);
+	color: var(--text-color);
+}
+
+#top-titlebar, #top-titlebar * {
+    background: inherit;
+	color: var(--text-color);
+}
+
+.megamenu-menu-header #megamenu-menu-header-title:before {
+	color:  var(--text-color);
+}
+
+megamenu-back-btn {
+	color: var(--text-color);
+	border-color: var(--text-color);
+}
+
+.megamenu-menu-header #megamenu-menu-header-title,
+.megamenu-menu-header:hover,
+.megamenu-menu-header:focus {
+	color: inherit;
+}
+
+.megamenu-menu-panel table tr:nth-child(2n + 1) {
+    background-color:  var(--side-bar-bg-color);
+}
+
+ @media print { @page {margin: 0 0 0 0;} body.typora-export {padding-left: 0; padding-right: 0;} #write {padding:0;}}
+</style><title>kdhw-pharmacy-database-manual</title>
+</head>
+<body class='typora-export'><div class='typora-export-content'>
+<div id='write'  class=''><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n2"><a class="md-toc-inner" style="" href="#login-ဝင်ခြင်း">Login ဝင်ခြင်း</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n15"><a class="md-toc-inner" style="" href="#table-များ">Table များ</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n46"><a class="md-toc-inner" style="" href="#all-balance-table">All Balance Table</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n48"><a class="md-toc-inner" style="" href="#stock-table">Stock Table</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n50"><a class="md-toc-inner" style="" href="#profile-table">Profile Table</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n52"><a class="md-toc-inner" style="" href="#country-table">Country Table</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n54"><a class="md-toc-inner" style="" href="#adding-country-နိုင်ငံထပ်တိုးခြင်း">Adding Country (နိုင်ငံထပ်တိုးခြင်း)</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n67"><a class="md-toc-inner" style="" href="#editing-country-နိုင်ငံပြင်ဆင်ခြင်း">Editing Country (နိုင်ငံပြင်ဆင်ခြင်း)</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n77"><a class="md-toc-inner" style="" href="#deleting-country-နိုင်ငံအမည်-ဖျက်သိမ်းခြင်း">Deleting Country (နိုင်ငံအမည် ဖျက်သိမ်းခြင်း)</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n85"><a class="md-toc-inner" style="" href="#district-table">District Table</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n87"><a class="md-toc-inner" style="" href="#sorting-အစဉ်လိုက်စီခြင်း-1">Sorting (အစဉ်လိုက်စီခြင်း)</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n88"><a class="md-toc-inner" style="" href="#country-အစဉ်အတိုင်းစီခြင်း"><code>Country</code> အစဉ်အတိုင်းစီခြင်း</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n102"><a class="md-toc-inner" style="" href="#district-name-အစဉ်အတိုင်းစီခြင်း"><code>District Name</code> အစဉ်အတိုင်းစီခြင်း</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n115"><a class="md-toc-inner" style="" href="#adding-district-district-ထပ်တိုးခြင်း">Adding District (District ထပ်တိုးခြင်း)</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n128"><a class="md-toc-inner" style="" href="#editing-district-district-ပြင်ဆင်ခြင်း">Editing District (District ပြင်ဆင်ခြင်း)</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n138"><a class="md-toc-inner" style="" href="#deleting-district-district-အမည်-ဖျက်သိမ်းခြင်း">Deleting District (District အမည် ဖျက်သိမ်းခြင်း)</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n144"><a class="md-toc-inner" style="" href="#township-table">Township Table</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n146"><a class="md-toc-inner" style="" href="#sorting-အစဉ်လိုက်စီခြင်း-2">Sorting (အစဉ်လိုက်စီခြင်း)</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n147"><a class="md-toc-inner" style="" href="#district-အစဉ်အတိုင်းစီခြင်း"><code>District</code> အစဉ်အတိုင်းစီခြင်း</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n160"><a class="md-toc-inner" style="" href="#township-name-အစဉ်အတိုင်းစီခြင်း"><code>Township Name</code> အစဉ်အတိုင်းစီခြင်း</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n173"><a class="md-toc-inner" style="" href="#adding-township-township-ထပ်တိုးခြင်း">Adding Township (Township ထပ်တိုးခြင်း)</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n186"><a class="md-toc-inner" style="" href="#editing-township-township-ပြင်ဆင်ခြင်း">Editing Township (Township ပြင်ဆင်ခြင်း)</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n196"><a class="md-toc-inner" style="" href="#deleting-township-township-အမည်-ဖျက်သိမ်းခြင်း">Deleting Township (Township အမည် ဖျက်သိမ်းခြင်း)</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n202"><a class="md-toc-inner" style="" href="#clinic-warehouse-table">Clinic Warehouse Table</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n204"><a class="md-toc-inner" style="" href="#sorting-အစဉ်လိုက်စီခြင်း-3">Sorting (အစဉ်လိုက်စီခြင်း)</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n205"><a class="md-toc-inner" style="" href="#township-အစဉ်အတိုင်းစီခြင်း"><code>Township</code> အစဉ်အတိုင်းစီခြင်း</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n218"><a class="md-toc-inner" style="" href="#clinicwarehouse-name-အစဉ်အတိုင်းစီခြင်း"><code>Clinic/Warehouse Name</code> အစဉ်အတိုင်းစီခြင်း</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n231"><a class="md-toc-inner" style="" href="#adding-clinicwarehouse-clinicwarehouse-ထပ်တိုးခြင်း">Adding Clinic/Warehouse (Clinic/Warehouse ထပ်တိုးခြင်း)</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n244"><a class="md-toc-inner" style="" href="#editing-clinicwarehouse-clinicwarehouse-ပြင်ဆင်ခြင်း">Editing Clinic/Warehouse (Clinic/Warehouse ပြင်ဆင်ခြင်း)</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n254"><a class="md-toc-inner" style="" href="#deleting-clinicwarehouse-clinicwarehouse-အမည်-ဖျက်သိမ်းခြင်း">Deleting Clinic/Warehouse (Clinic/Warehouse အမည် ဖျက်သိမ်းခြင်း)</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n260"><a class="md-toc-inner" style="" href="#creating-tables-table-များတည်ဆောက်ခြင်း">Creating Tables (Table များတည်ဆောက်ခြင်း)</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n262"><a class="md-toc-inner" style="" href="#warehouse-တစ်ခုအတွက်-balance-table-တည်ဆောက်ခြင်း">Warehouse တစ်ခုအတွက် Balance Table တည်ဆောက်ခြင်း</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n365"><a class="md-toc-inner" style="" href="#warehouse-တစ်ခုအတွက်-stock-table-တည်ဆောက်ခြင်း">Warehouse တစ်ခုအတွက် Stock Table တည်ဆောက်ခြင်း</a></span></p></div><h1 id='login-ဝင်ခြင်း'><span>Login ဝင်ခြင်း</span></h1><ul><li><span>Chrome (သို့) Mozilla Firefox (သို့) Edge Browser ကိုဖွင့်ပါ</span></li><li><a href='https://kdhw-pharmacy.rowy.app/' target='_blank' class='url'>https://kdhw-pharmacy.rowy.app/</a><span> သို့သွားပါ။</span></li><li><span>Continue with Google ကိုနှိပ်ပါ</span></li><li><span>အောက်ပါ Email ၊ Password တို့ဖြင့် Log in ဝင်ပါ</span></li></ul><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 10.5px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Email: kdhwfirebase</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Password: kdhwfirebase12345</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 50px;"></div><div class="CodeMirror-gutters" style="display: none; height: 50px;"></div></div></div></pre><p><img src="https://drive.google.com/uc?export=view&id=1d4yyIQ9aSg3GkD7mjwkV-NFx_MdwtQm5" alt="login" width="300px" /></p><p><img src="https://drive.google.com/uc?export=view&amp;id=1Jr4NIvE-cZ_LLCCnWw0E3V0wfIqq1V3f" alt="google" width="300px"/></p><h1 id='table-များ'><span>Table များ</span></h1><p><span>Table နာမည်တွေနှင့် Table မှာ ဘာတွေပါသလဲဆိုတာ အောက်ပါဇယားမှာဖော်ပြထားပါတယ်။</span></p><figure><table><thead><tr><th><span>အမည်</span></th><th><span>ပါဝင်သည့်အချက်အလက်များ</span></th></tr></thead><tbody><tr><td><span>All Balance</span></td><td><span>ဆေးခန်း/ဆေးစတိုအားလုံးတွင် လက်ရှိဆေးပစ္စည်းအရေအတွက်</span></td></tr><tr><td><span>Stock</span></td><td><span>ဆေးခန်း/ဆေးစတိုတွင် ဆေးပစ္စည်းအဝင်အထွက်မှတ်တမ်း</span></td></tr><tr><td><span>Profile</span></td><td><span>ဆေးခန်း/ဆေးစတိုဆိုင်ရာ အချက်အလက်များ</span></td></tr></tbody></table></figure><figure><table><thead><tr><th><span>အမည်</span></th><th><span>ပါဝင်သည့်အချက်အလက်များ</span></th></tr></thead><tbody><tr><td><span>Country</span></td><td><span>Application မှာပြပေးမယ့်နိုင်ငံစာရင်း</span></td></tr><tr><td><span>District</span></td><td><span>Application မှာပြပေးမယ့်ခရိုင်စာရင်း</span></td></tr><tr><td><span>Township</span></td><td><span>Application မှာပြပေးမယ့်မြို့နယ်စာရင်း</span></td></tr><tr><td><span>Clinic Warehouse</span></td><td><span>Application မှာပြပေးမယ့်ဆေးခန်း/စတိုစာရင်း</span></td></tr></tbody></table></figure><h2 id='all-balance-table'><span>All Balance Table</span></h2><p><span> ဆေးခန်း/ဆေးစတိုအားလုံးတွင် လက်ရှိဆေးပစ္စည်းအရေအတွက် ဖြစ်ပါတယ်။ Register လုပ်ထားတဲ့ Account တွေအားလုံးရဲ့ အချက်အလက်တွေကို ဖော်ပြပေးတာကြောင့် အမှန်တကယ်သုံးနေတဲ့ account တွေအပြင် application ကို စမ်းသုံးထားတဲ့ account တွေရဲ့ data တွေပါ ဝင်နေမှာဖြစ်ပါတယ်။</span>
+<span> </span><code>Uid</code><span> ဆိုတာ Account တစ်ခုချင်းစီရဲ့ User ID နံပါတ်တွေဖြစ်ပါတယ်။ ဒီနံပါတ်တွေနဲ့ စစ်ထုတ်ပြီး သက်ဆိုင်ရာ ဆေးခန်း/ဆေးစတို တစ်ခုချင်းစီအတွက် table တည်ဆောက်ပုံကို နောက်မှာဆက်လက်ဖော်ပြထားပါတယ်။</span></p><h2 id='stock-table'><span>Stock Table</span></h2><p><span> ဆေးခန်း/ဆေးစတို အားလုံးမှာ ဆေးပစ္စည်းအဝင်အထွက်မှတ်တမ်းကို ဖော်ပြပေးပါတယ်။ Register လုပ်ထားတဲ့ Account တွေအားလုံးရဲ့ အချက်အလက်တွေကို ဖော်ပြပေးတာကြောင့် အမှန်တကယ်သုံးနေတဲ့ account တွေအပြင် application ကို စမ်းသုံးထားတဲ့ account တွေရဲ့ data တွေပါ ဝင်နေမှာဖြစ်ပါတယ်။</span>
+<span> </span><code>Uid</code><span> ဆိုတာ Account တစ်ခုချင်းစီရဲ့ User ID နံပါတ်တွေဖြစ်ပါတယ်။ ဒီနံပါတ်တွေနဲ့ စစ်ထုတ်ပြီး သက်ဆိုင်ရာ ဆေးခန်း/ဆေးစတို တစ်ခုချင်းစီအတွက် table တည်ဆောက်ပုံကို နောက်မှာဆက်လက်ဖော်ပြထားပါတယ်။</span></p><h2 id='profile-table'><span>Profile Table</span></h2><p><span> ဆေးခန်း/ဆေးစတိုဆိုင်ရာ အချက်အလက်တွေနှင့် အသုံးပြုသူရဲ့ အချက်အလက်တွေပါဝင်ပါတယ်။ Register လုပ်ထားတဲ့ account တွေအားလုံးရဲ့ အချက်အလက်တွေအကုန်ပါဝင်တာမို့လို့ အမှန်တကယ်သုံးနေတဲ့ account တွေအပြင် စမ်းသုံးထားတဲ့ account တွေလည်း ပါဝင်နေမှာဖြစ်ပါတယ်။</span>
+<span> တစ်ယောက်ချင်းစီအတွက် သီးသန့် </span><code>User ID</code><span>  ကို အသုံးပြုပြီး နောက်ပိုင်းမှာ table တွေ ရွေးခြယ်ဖန်တီးနိုင်မှာဖြစ်ပါတယ်။</span></p><h2 id='country-table'><span>Country Table</span></h2><p><span> Country table မှာ ဆေးခန်း/ဆေးစတိုက ဖြည့်လိုက်တဲ့ data တွေမရှိပါဘူး။ ဒီ table မှာပါတဲ့ နိုင်ငံအမည်တွေဟာ account သစ်တစ်ခု register လုပ်တဲ့အချိန်မှာ ရွေးခြယ်ရမည့် နိုင်ငံစာရင်းဖြစ်ပါတယ်။ ဒီမှာ ပြင်ဆင်ရေးသားလိုက်တဲ့ နိုင်ငံစာရင်းအတိုင်း register လုပ်တဲ့သူက ရွေးခြယ်နိုင်ပါတယ်။</span></p><h3 id='adding-country-နိုင်ငံထပ်တိုးခြင်း'><span>Adding Country (နိုင်ငံထပ်တိုးခြင်း)</span></h3><ul><li><span>Country Table ကိုသွားပါ</span>
+<img src="https://drive.google.com/uc?export=view&id=1bYYj7mlobNksCxuxQ9xsmL4kGVpethdX" width="300px"></li><li><span>Add Row ကိုနှိပ်ပါ</span></li><li><span>အသစ်ပေါ်လာတဲ့ ဇယားကွက်မှာ Double Click နှိပ်ပါ</span></li><li><span>အသစ်ထည့်ချင်တဲ့ နိုင်ငံအမည်ကို ရိုက်ထည့်ပါ</span></li><li><span>ရိုက်ထည့်ပြီးတဲ့အခါ Enter နှိပ်ပါ။</span></li></ul><p><span> </span><img src="https://drive.google.com/uc?export=view&id=1qjor2faun_Sjjl7JFStqud2QkC3wmSFE" width="300px"/></p><h3 id='editing-country-နိုင်ငံပြင်ဆင်ခြင်း'><span>Editing Country (နိုင်ငံပြင်ဆင်ခြင်း)</span></h3><ul><li><span>ပြင်ချင်တဲ့နိုင်ငံကို double click နှိပ်ပါ</span></li><li><span>Select လုပ်ပါ</span></li><li><span>ပြင်ချင်တဲ့နာမည်ကို ရိုက်ထည့်ပါ</span></li><li><span>Enter နှိပ်ပါ။</span>
+<img src="https://drive.google.com/uc?export=view&id=15dBuE_45JjN41kdbs6TT_WhCgKWMUUM6" width="300px"/></li></ul><h3 id='deleting-country-နိုင်ငံအမည်-ဖျက်သိမ်းခြင်း'><span>Deleting Country (နိုင်ငံအမည် ဖျက်သိမ်းခြင်း)</span></h3><ul><li><span>ဖျက်ချင်တဲ့ နိုင်ငံအမည်ဘေးက Delete button ကိုနှိပ်ပါ</span></li><li><span>Delete Row? ပေါ်လာလျှင် Delete ကိုနှိပ်ပါ</span></li></ul><div style="display:inline;">
+<img src="https://drive.google.com/uc?export=view&amp;id=1psW_fYhVIOmbOQFLUTK4eePaBKoJQh8m" width="300px">
+<img src="https://drive.google.com/uc?export=view&amp;id=1nho0x_ujeS2C2EfXNNCaczDbN7JhNc7e" width="300px">
+</div><h2 id='district-table'><span>District Table</span></h2><p><span> District table မှာ ဆေးခန်း/ဆေးစတို data တွေမရှိပါဘူး။ ဒီ table မှာပါတဲ့ district အမည်တွေဟာ account register လုပ်တဲ့အခါ ရွေးထားတဲ့နိုင်ငံရဲ့ သက်ဆိုင်ရာ district တွေကို ဖော်ပြပေးမှာဖြစ်ပါတယ်။ ဒီမှာပြင်ဆင်ရေးသားလိုက်တဲ့ district စာရင်းအတိုင်း register လုပ်တဲ့သူက ရွေးခြယ်နိုင်မှာဖြစ်ပါတယ်။ District table မှာ </span><code>Country</code><span> နှင့် </span><code>District Name</code><span> ဆိုပြီး column နှစ်ခုရှိပါတယ်။ </span><code>Country</code><span> ဟာ မိခင်နိုင်ငံဖြစ်ပြီး </span><code>District Name</code><span> ဟာ သက်ဆိုင်ရာနိုင်ငံရဲ့ district တစ်ခုချင်းစီဖြစ်ပါတယ်။</span></p><h3 id='sorting-အစဉ်လိုက်စီခြင်း-1'><span>Sorting (အစဉ်လိုက်စီခြင်း)</span></h3><h4 id='country-အစဉ်အတိုင်းစီခြင်း'><code>Country</code><span> အစဉ်အတိုင်းစီခြင်း</span></h4><p><span> District table မှာ နိုင်ငံအလိုက် district တွေကို အစဉ်လိုက်ကြည့်လို့ရပါတယ်။</span></p><ul><li><code>Country</code><span> ဘေးက ●●● ကိုနှိပ်ပါ</span></li><li><code>Sort: Ascending</code><span> ကိုနှိပ်ပါ</span></li></ul><div style="display:inline;">
+  <img src="https://drive.google.com/uc?export=view&amp;id=1Wy5HRBko666aCKqYOrlQN_wXmMeGuKAZ" width="300px">
+</div><p><span>နိုင်ငံအမည်အတိုင်း district တွေကို အစဉ်လိုက်ပြပေးနေပါလိမ့်မယ်။ အစဉ်လိုက်စီထားတာကို ပြန်ဖြုတ်ချင်တယ်ဆိုလျှင်တော့</span></p><ul><li><code>Country</code><span> ဘေးက ●●● ကိုနှိပ်ပါ</span></li><li><code>Remove sort: ascending</code><span> ကိုနှိပ်ပါ</span>
+<img src="https://drive.google.com/uc?export=view&id=13nsoQMx9Ma0mnAGRI9So1qFBKVWtkMrT" width="300px"/></li></ul><h4 id='district-name-အစဉ်အတိုင်းစီခြင်း'><code>District Name</code><span> အစဉ်အတိုင်းစီခြင်း</span></h4><p><span>ဒီ database မှာ တစ်ကြိမ်မှာ Column တစ်ခုတည်းကိုပဲ အစဉ်လိုက်စီလို့ရပါတယ်။ </span><code>District Name</code><span> ကို အစဉ်လိုက်စီမယ်ဆိုလျှင် </span><code>Country</code><span> မှာ စီထားတာပျောက်သွားပါလိမ့်မယ်။ အဲဒီလိုပဲ </span><code>Country</code><span> ကိုပြန်စီလိုက်မယ်ဆိုလျှင် </span><code>District Name</code><span> စီထားတာ ပျောက်သွားပါလိမ့်မယ်။ </span><code>Country</code><span> နဲ့ </span><code>District Name</code><span> တစ်ပြိုင်နက် စီမယ်ဆိုလျှင်တော့ CSV Export လုပ်ပြီး Microsoft Excel မှာ စီကြည့်နိုင်ပါတယ်။</span>
+<code>District Name</code><span> အတိုင်း အစဉ်လိုက်စီမယ်ဆိုလျှင်</span></p><ul><li><code>District Name</code><span> ဘေးက ●●● ကိုနှိပ်ပါ</span></li><li><code>Sort: Ascending</code><span> ကိုနှိပ်ပါ။</span>
+<img src="https://drive.google.com/uc?export=view&id=1oFwmU7h-w5IbKX98bH_HOsjCdvz3dnuU" style="zoom: 67%;" /></li></ul><p><span>စီထားတာကိုပြန်ဖြုတ်မယ်ဆိုလျှင်</span></p><ul><li><code>District Name</code><span> ဘေးက ●●● ကိုနှိပ်ပါ</span></li><li><code>Remove Sort: ascending</code><span> ကိုနှိပ်ပါ</span>
+<img src="https://drive.google.com/uc?export=view&id=1Q7pUdeywV3VJR5iL3edsuXWHicdZ4332" style="zoom:67%;" /></li></ul><h3 id='adding-district-district-ထပ်တိုးခြင်း'><span>Adding District (District ထပ်တိုးခြင်း)</span></h3><ul><li><span>Add Row ကိုနှိပ်ပါ။ Row တစ်ခုအသစ်ပေါ်လာပါလိမ့်မယ်။</span></li><li><span>Row အသစ်မှာ </span><code>Country</code><span> နှင့် </span><code>District Name</code><span> ထည့်ရပါမယ်။ အသစ်ထည့်ချင်တဲ့ District ရဲ့ နိုင်ငံကို </span><code>Country</code><span> မှာထည့်ရမှာဖြစ်ပြီး </span><code>District Name</code><span> မှာ ထည့်ချင်တဲ့ District ရဲ့နာမည်ကိုရိုက်ရမှာဖြစ်ပါတယ်။</span></li><li><span>အသစ်ပေါ်လာတဲ့ ဇယားကွက်မှာ Double Click နှိပ်ပါ</span></li><li><span>အသစ်ထည့်ချင်တဲ့ အမည်ကို ရိုက်ထည့်ပါ</span></li><li><span>ရိုက်ထည့်ပြီးတဲ့အခါ Enter နှိပ်ပါ။</span>
+<img src="https://drive.google.com/uc?export=view&id=1sxa-IGMuUBB1jlz3ommJdoleFG6GnNaG" style="zoom:67%;" /></li></ul><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 10.25px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> ဒီနေရာမှာ သတိထားဖို့က Country ထည့်တဲ့အခါ အရင်ထည့်ခဲ့တဲ့ data နဲ့ စာလုံးအကြီးအသေးကအစ တူနေဖို့လိုပါတယ်။ ဥပမာ Thailand ထဲမှာရှိတဲ့ Tak ဆိုတဲ့ District တစ်ခုထပ်တိုးချင်တဲ့အခါ Country မှာ Thailand ၊ District Name မှာ Tak လို့ထည့်ရမှာပါ။ အဲဒီမှာ အရင်ရှိပြီးသားဇယားကွက်တွေမှာ Thailand လို့ထည့်ထားပြီးသားဆိုလျှင် Thailand လို့ပဲရိုက်ထည့်ရမှာဖြစ်ပြီး thailand ၊ ThaiLand စတဲ့ရေးပုံရေးနည်းတွေနှင့် အလုပ်လုပ်မှာမဟုတ်ပါဘူး။</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 125px;"></div><div class="CodeMirror-gutters" style="display: none; height: 125px;"></div></div></div></pre><h3 id='editing-district-district-ပြင်ဆင်ခြင်း'><span>Editing District (District ပြင်ဆင်ခြင်း)</span></h3><ul><li><span>ပြင်ချင်တဲ့ District ကို double click နှိပ်ပါ</span></li><li><span>Select လုပ်ပါ</span></li><li><span>ပြင်ချင်တဲ့နာမည်ကို ရိုက်ထည့်ပါ</span></li><li><span>Enter နှိပ်ပါ။</span>
+<img src="https://drive.google.com/uc?export=view&id=1po2jykA_92Ew1EIh89CZDUUuHzS8ExoQ" style="zoom:67%;" /></li></ul><h3 id='deleting-district-district-အမည်-ဖျက်သိမ်းခြင်း'><span>Deleting District (District အမည် ဖျက်သိမ်းခြင်း)</span></h3><ul><li><span>ဖျက်ချင်တဲ့ District အမည်ဘေးက Delete button ကိုနှိပ်ပါ</span></li><li><span>Delete Row? ပေါ်လာလျှင် Delete ကိုနှိပ်ပါ</span>
+<img src="https://drive.google.com/uc?export=view&id=16HF01585Qw-jShcQVcHvODS5TnkOy0Nu" style="zoom:67%;" /></li></ul><h2 id='township-table'><span>Township Table</span></h2><p><span> Township table မှာ ဆေးခန်း/ဆေးစတို data တွေမရှိပါဘူး။ ဒီ table မှာပါတဲ့ Township အမည်တွေဟာ account register လုပ်တဲ့အခါ ရွေးထားတဲ့ District ရဲ့ သက်ဆိုင်ရာ Township တွေကို ဖော်ပြပေးမှာဖြစ်ပါတယ်။ ဒီမှာပြင်ဆင်ရေးသားလိုက်တဲ့ Township စာရင်းအတိုင်း register လုပ်တဲ့သူက ရွေးခြယ်နိုင်မှာဖြစ်ပါတယ်။ Township table မှာ </span><code>District</code><span> နှင့် </span><code>Township Name</code><span> ဆိုပြီး column နှစ်ခုရှိပါတယ်။ </span><code>District</code><span> ဟာ မိခင် District ဖြစ်ပြီး </span><code>Township Name</code><span> ဟာ သက်ဆိုင်ရာ District ရဲ့ Township တစ်ခုချင်းစီဖြစ်ပါတယ်။</span></p><h3 id='sorting-အစဉ်လိုက်စီခြင်း-2'><span>Sorting (အစဉ်လိုက်စီခြင်း)</span></h3><h4 id='district-အစဉ်အတိုင်းစီခြင်း'><code>District</code><span> အစဉ်အတိုင်းစီခြင်း</span></h4><p><span> Township table မှာ District အလိုက် Township တွေကို အစဉ်လိုက်ကြည့်လို့ရပါတယ်။</span></p><ul><li><code>District</code><span> ဘေးက ●●● ကိုနှိပ်ပါ</span></li><li><code>Sort: Ascending</code><span> ကိုနှိပ်ပါ</span>
+<img src="https://drive.google.com/uc?export=view&id=1Fe4Ts04uKZVjuGbcbqwR-OC5HhyTWuN7" style="zoom:67%;" /></li></ul><p><span> District အမည်အတိုင်း Township တွေကို အစဉ်လိုက်ပြပေးနေပါလိမ့်မယ်။ အစဉ်လိုက်စီထားတာကို ပြန်ဖြုတ်ချင်တယ်ဆိုလျှင်တော့</span></p><ul><li><code>District</code><span> ဘေးက ●●● ကိုနှိပ်ပါ</span></li><li><code>Remove sort: Ascending</code><span> ကိုနှိပ်ပါ</span>
+<img src="https://drive.google.com/uc?export=view&id=1apZxUCcfKC0gYhvlQ9-21OIxrKl_5R9d" style="zoom:67%;" /></li></ul><h4 id='township-name-အစဉ်အတိုင်းစီခြင်း'><code>Township Name</code><span> အစဉ်အတိုင်းစီခြင်း</span></h4><p><span>ဒီ database မှာ တစ်ကြိမ်မှာ Column တစ်ခုတည်းကိုပဲ အစဉ်လိုက်စီလို့ရပါတယ်။ </span><code>Township Name</code><span> ကို အစဉ်လိုက်စီမယ်ဆိုလျှင် </span><code>District</code><span> မှာ စီထားတာပျောက်သွားပါလိမ့်မယ်။ အဲဒီလိုပဲ </span><code>District</code><span> ကိုပြန်စီလိုက်မယ်ဆိုလျှင် </span><code>Township Name</code><span> စီထားတာ ပျောက်သွားပါလိမ့်မယ်။ </span><code>District</code><span> နဲ့ </span><code>Township Name</code><span> တစ်ပြိုင်နက် စီမယ်ဆိုလျှင်တော့ CSV Export လုပ်ပြီး Microsoft Excel မှာ စီကြည့်နိုင်ပါတယ်။</span>
+<code>Township Name</code><span> အတိုင်း အစဉ်လိုက်စီမယ်ဆိုလျှင်</span></p><ul><li><code>Township Name</code><span> ဘေးက ●●● ကိုနှိပ်ပါ</span></li><li><code>Sort: Ascending</code><span> ကိုနှိပ်ပါ။</span>
+<img src="https://drive.google.com/uc?export=view&id=1HL5DEsgxh9AFTLQVVqJnfwtYAEcnjMjH" style="zoom:67%;" /></li></ul><p><span>စီထားတာကိုပြန်ဖြုတ်မယ်ဆိုလျှင်</span></p><ul><li><code>Township Name</code><span> ဘေးက ●●● ကိုနှိပ်ပါ</span></li><li><code>Remove Sort: Ascending</code><span> ကိုနှိပ်ပါ</span>
+<img src="https://drive.google.com/uc?export=view&id=1KTY7K0VYqLR29-GhUdgBkXjzEALcKARY" style="zoom:67%;" /></li></ul><h3 id='adding-township-township-ထပ်တိုးခြင်း'><span>Adding Township (Township ထပ်တိုးခြင်း)</span></h3><ul><li><span>Add Row ကိုနှိပ်ပါ။ Row တစ်ခုအသစ်ပေါ်လာပါလိမ့်မယ်။</span></li><li><span>Row အသစ်မှာ </span><code>District</code><span> နှင့် </span><code>Township Name</code><span> ထည့်ရပါမယ်။ အသစ်ထည့်ချင်တဲ့ Township ရဲ့ District ကို </span><code>District</code><span> မှာထည့်ရမှာဖြစ်ပြီး </span><code>Township Name</code><span> မှာ ထည့်ချင်တဲ့ Township ရဲ့နာမည်ကိုရိုက်ရမှာဖြစ်ပါတယ်။</span></li><li><span>အသစ်ပေါ်လာတဲ့ ဇယားကွက်မှာ Double Click နှိပ်ပါ</span></li><li><span>အသစ်ထည့်ချင်တဲ့ အမည်ကို ရိုက်ထည့်ပါ</span></li><li><span>ရိုက်ထည့်ပြီးတဲ့အခါ Enter နှိပ်ပါ။</span>
+<img src="https://drive.google.com/uc?export=view&id=1WiNBwRu3jYiOehJs59CoYJKp6cHJSvn6" style="zoom:67%;" /></li></ul><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 10.25px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">ဒီနေရာမှာ သတိထားဖို့က District ထည့်တဲ့အခါ အရင်ထည့်ခဲ့တဲ့ data နဲ့ စာလုံးအကြီးအသေးကအစ တူနေဖို့လိုပါတယ်။ ဥပမာ Doo Pla Ya ထဲမှာရှိတဲ့ Kawkareik ဆိုတဲ့ Township တစ်ခုထပ်တိုးချင်တဲ့အခါ District မှာ Doo Pla Ya ၊ Township Name မှာ Kawkareik လို့ထည့်ရမှာပါ။ အဲဒီမှာ အရင်ရှိပြီးသားဇယားကွက်တွေမှာ Doo Pla Ya လို့ထည့်ထားပြီးသားဆိုလျှင် Doo Pla Ya လို့ပဲရိုက်ထည့်ရမှာဖြစ်ပြီး Dooplaya ၊ Doo Playa စတဲ့ရေးပုံရေးနည်းတွေနှင့် အလုပ်လုပ်မှာမဟုတ်ပါဘူး။</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 125px;"></div><div class="CodeMirror-gutters" style="display: none; height: 125px;"></div></div></div></pre><h3 id='editing-township-township-ပြင်ဆင်ခြင်း'><span>Editing Township (Township ပြင်ဆင်ခြင်း)</span></h3><ul><li><span>ပြင်ချင်တဲ့ Township ကို double click နှိပ်ပါ</span></li><li><span>Select လုပ်ပါ</span></li><li><span>ပြင်ချင်တဲ့နာမည်ကို ရိုက်ထည့်ပါ</span></li><li><span>Enter နှိပ်ပါ။</span>
+<img src="https://drive.google.com/uc?export=view&id=1FA8t4B10fk1Hv8989G9_zE8JiYkmJ8rq" style="zoom:67%;" /></li></ul><h3 id='deleting-township-township-အမည်-ဖျက်သိမ်းခြင်း'><span>Deleting Township (Township အမည် ဖျက်သိမ်းခြင်း)</span></h3><ul><li><span>ဖျက်ချင်တဲ့ Township အမည်ဘေးက Delete button ကိုနှိပ်ပါ</span></li><li><span>Delete Row? ပေါ်လာလျှင် Delete ကိုနှိပ်ပါ</span>
+<img src="https://drive.google.com/uc?export=view&id=1VxMKWCyycro931kkYOQFFIVgnyuScO9B" style="zoom:67%;" /></li></ul><h2 id='clinic-warehouse-table'><span>Clinic Warehouse Table</span></h2><p><span> Clinic Warehouse table မှာ ဆေးခန်း/ဆေးစတို data တွေမရှိပါဘူး။ ဒီ table မှာပါတဲ့ Clinic/Warehouse အမည်တွေဟာ account register လုပ်တဲ့အခါ ရွေးထားတဲ့ Township ရဲ့ သက်ဆိုင်ရာ Clinic/Warehouse တွေကို ဖော်ပြပေးမှာဖြစ်ပါတယ်။ ဒီမှာပြင်ဆင်ရေးသားလိုက်တဲ့ Clinic/Warehouse စာရင်းအတိုင်း register လုပ်တဲ့သူက ရွေးခြယ်နိုင်မှာဖြစ်ပါတယ်။ Clinic Warehouse table မှာ </span><code>Township</code><span> နှင့် </span><code>Clinic/Warehouse Name</code><span> ဆိုပြီး column နှစ်ခုရှိပါတယ်။ </span><code>Township</code><span> ဟာ မိခင် Township ဖြစ်ပြီး </span><code>Clinic/Warehouse Name</code><span> ဟာ သက်ဆိုင်ရာ Township ရဲ့ Clinic Warehouse တစ်ခုချင်းစီဖြစ်ပါတယ်။</span></p><h3 id='sorting-အစဉ်လိုက်စီခြင်း-3'><span>Sorting (အစဉ်လိုက်စီခြင်း)</span></h3><h4 id='township-အစဉ်အတိုင်းစီခြင်း'><code>Township</code><span> အစဉ်အတိုင်းစီခြင်း</span></h4><p><span> Clinic Warehouse table မှာ Township အလိုက် Clinic/Warehouse တွေကို အစဉ်လိုက်ကြည့်လို့ရပါတယ်။</span></p><ul><li><code>Township</code><span> ဘေးက ●●● ကိုနှိပ်ပါ</span></li><li><code>Sort: Ascending</code><span> ကိုနှိပ်ပါ</span>
+<img src="https://drive.google.com/uc?export=view&id=1xA4Sa5QhEgpn955ZgJGh4US5DZGQMrgw" style="zoom:67%;" /></li></ul><p><span>Township အမည်အတိုင်း Clinic/Warehouse တွေကို အစဉ်လိုက်ပြပေးနေပါလိမ့်မယ်။ အစဉ်လိုက်စီထားတာကို ပြန်ဖြုတ်ချင်တယ်ဆိုလျှင်တော့</span></p><ul><li><code>Township</code><span> ဘေးက ●●● ကိုနှိပ်ပါ</span></li><li><code>Remove sort: Ascending</code><span> ကိုနှိပ်ပါ</span>
+<img src="https://drive.google.com/uc?export=view&id=1gkE1zHEh4UD4gWJXXYdb81KXmSeQ3p97" style="zoom:67%;" /></li></ul><h4 id='clinicwarehouse-name-အစဉ်အတိုင်းစီခြင်း'><code>Clinic/Warehouse Name</code><span> အစဉ်အတိုင်းစီခြင်း</span></h4><p><span>ဒီ database မှာ တစ်ကြိမ်မှာ Column တစ်ခုတည်းကိုပဲ အစဉ်လိုက်စီလို့ရပါတယ်။ </span><code>Clinic/Warehouse Name</code><span> ကို အစဉ်လိုက်စီမယ်ဆိုလျှင် </span><code>Township</code><span> မှာ စီထားတာပျောက်သွားပါလိမ့်မယ်။ အဲဒီလိုပဲ </span><code>Township</code><span> ကိုပြန်စီလိုက်မယ်ဆိုလျှင် </span><code>Clinic/Warehouse Name</code><span> စီထားတာ ပျောက်သွားပါလိမ့်မယ်။ </span><code>Township</code><span> နဲ့ </span><code>Clinic/Warehouse Name</code><span> တစ်ပြိုင်နက် စီမယ်ဆိုလျှင်တော့ CSV Export လုပ်ပြီး Microsoft Excel မှာ စီကြည့်နိုင်ပါတယ်။</span>
+<code>Clinic/Warehouse Name</code><span> အတိုင်း အစဉ်လိုက်စီမယ်ဆိုလျှင်</span></p><ul><li><code>Clinic/Warehouse Name</code><span> ဘေးက ●●● ကိုနှိပ်ပါ</span></li><li><code>Sort: Ascending</code><span> ကိုနှိပ်ပါ။</span>
+<img src="https://drive.google.com/uc?export=view&id=1kNBqclIt9UCB4K0ybg8pQSNJ_wlJNP4u" style="zoom:67%;" /></li></ul><p><span>စီထားတာကိုပြန်ဖြုတ်မယ်ဆိုလျှင်</span></p><ul><li><code>Clinic/Warehouse Name</code><span> ဘေးက ●●● ကိုနှိပ်ပါ</span></li><li><code>Remove Sort: Ascending</code><span> ကိုနှိပ်ပါ</span>
+<img src="https://drive.google.com/uc?export=view&id=10W-Y7SwgmaTbyDrsK9LMLZB7geWCkjem" style="zoom:67%;" /></li></ul><h3 id='adding-clinicwarehouse-clinicwarehouse-ထပ်တိုးခြင်း'><span>Adding Clinic/Warehouse (Clinic/Warehouse ထပ်တိုးခြင်း)</span></h3><ul><li><span>Add Row ကိုနှိပ်ပါ။ Row တစ်ခုအသစ်ပေါ်လာပါလိမ့်မယ်။</span></li><li><span>Row အသစ်မှာ </span><code>Township</code><span> နှင့် </span><code>Clinic/Warehouse Name</code><span> ထည့်ရပါမယ်။ အသစ်ထည့်ချင်တဲ့ Clinic/Warehouse ရဲ့ Township ကို </span><code>Township</code><span> မှာထည့်ရမှာဖြစ်ပြီး </span><code>Clinic/Warehouse Name</code><span> မှာ ထည့်ချင်တဲ့ Clinic/Warehouse ရဲ့နာမည်ကိုရိုက်ရမှာဖြစ်ပါတယ်။</span></li><li><span>အသစ်ပေါ်လာတဲ့ ဇယားကွက်မှာ Double Click နှိပ်ပါ</span></li><li><span>အသစ်ထည့်ချင်တဲ့ အမည်ကို ရိုက်ထည့်ပါ</span></li><li><span>ရိုက်ထည့်ပြီးတဲ့အခါ Enter နှိပ်ပါ။</span>
+<img src="https://drive.google.com/uc?export=view&id=12dsQzNeuqiDHPtXzE12cQZp8tMoxsmgz" style="zoom:67%;" /></li></ul><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 10.25px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">ဒီနေရာမှာ သတိထားဖို့က Township ထည့်တဲ့အခါ အရင်ထည့်ခဲ့တဲ့ data နဲ့ စာလုံးအကြီးအသေးကအစ တူနေဖို့လိုပါတယ်။ ဥပမာ Bilin ထဲမှာရှိတဲ့ DTT-IDP ဆိုတဲ့ Clinic တစ်ခုထပ်တိုးချင်တဲ့အခါ Township မှာ Bilin ၊ Clinic/Warehouse Name မှာ DTT-IDP လို့ထည့်ရမှာပါ။ အဲဒီမှာ အရင်ရှိပြီးသားဇယားကွက်တွေမှာ Bilin လို့ထည့်ထားပြီးသားဆိုလျှင် Bilin လို့ပဲရိုက်ထည့်ရမှာဖြစ်ပြီး Bi Lin ၊ bilin စတဲ့ရေးပုံရေးနည်းတွေနှင့် အလုပ်လုပ်မှာမဟုတ်ပါဘူး။</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 125px;"></div><div class="CodeMirror-gutters" style="display: none; height: 125px;"></div></div></div></pre><h3 id='editing-clinicwarehouse-clinicwarehouse-ပြင်ဆင်ခြင်း'><span>Editing Clinic/Warehouse (Clinic/Warehouse ပြင်ဆင်ခြင်း)</span></h3><ul><li><span>ပြင်ချင်တဲ့ Clinic/Warehouse ကို double click နှိပ်ပါ</span></li><li><span>Select လုပ်ပါ</span></li><li><span>ပြင်ချင်တဲ့နာမည်ကို ရိုက်ထည့်ပါ</span></li><li><span>Enter နှိပ်ပါ။</span>
+<img src="https://drive.google.com/uc?export=view&id=1w3pguECejiunwz7KpJrkbToRpV3WmJkM" style="zoom:67%;" /></li></ul><h3 id='deleting-clinicwarehouse-clinicwarehouse-အမည်-ဖျက်သိမ်းခြင်း'><span>Deleting Clinic/Warehouse (Clinic/Warehouse အမည် ဖျက်သိမ်းခြင်း)</span></h3><ul><li><span>ဖျက်ချင်တဲ့ Clinic/Warehouse အမည်ဘေးက Delete button ကိုနှိပ်ပါ</span></li><li><span>Delete Row? ပေါ်လာလျှင် Delete ကိုနှိပ်ပါ</span>
+<img src="https://drive.google.com/uc?export=view&id=1Yp07_Am1fnCwkZ-HmoDdydissXSymksh" style="zoom:67%;" /></li></ul><h1 id='creating-tables-table-များတည်ဆောက်ခြင်း'><span>Creating Tables (Table များတည်ဆောက်ခြင်း)</span></h1><p><span>နဂိုရှိပြီးသား Table တွေအပြင် ဆေးခန်း/ဆေးစတို တစ်ခုချင်းစီအတွက် Table ထပ်လုပ်နိုင်ပါတယ်။</span>
+<span>ဥပမာအနေနှင့် Per Kler Warehouse အတွက် Table တစ်ခုလုပ်မယ်ဆိုပါစို့။</span></p><h2 id='warehouse-တစ်ခုအတွက်-balance-table-တည်ဆောက်ခြင်း'><span>Warehouse တစ်ခုအတွက် Balance Table တည်ဆောက်ခြင်း</span></h2><ul><li><p><span>စာမျက်နှာရဲ့ ဘယ်ဘက်အပေါ်ဆုံးအစွန်မှာရှိတဲ့ ≣ ကိုနှိပ်ပါ</span></p></li><li><p><span>Create Table ကိုနှိပ်ပါ</span>
+<img src="https://drive.google.com/uc?export=view&id=1aCj57h-yqx5Io-qWJj19AZtcuR86N27c" style="zoom:67%;" /></p></li><li><p><span>Table Type မှာ Primary Collection ထားပါ။</span></p></li><li><p><span>Collection Dropdown ကိုနှိပ်ပါ၊ Create collection or use custom path ကိုနှိပ်ပါ</span></p></li><li><p><span>Collection name တွင် </span><code>balance</code><span> ဟုရိုက်ထည့်ပါ။ Add ကိုနှိပ်ပါ။</span>
+<img src="https://drive.google.com/uc?export=view&id=1NKvjYdMbSd4xQ0HAADMM18QamCYmFV2Y" style="zoom:67%;" /></p></li><li><p><span>Display ဘေးရှိ ⌄ ကိုနှိပ်ပါ</span></p></li><li><p><span>Table Name တွင် </span><code>Per Kler Balance</code><span> ဟုရိုက်ထည့်ပါ။ ဒီနေရာမှာ တခြားဆေးစတိုတစ်ခု ဥပမာ Mae Sot အတွက်ဆိုလျှင် </span><code>Mae Sot Balance</code><span> ဟုရိုက်ထည့်ရမှာဖြစ်ပါတယ်။</span></p></li><li><p><span>Table ID ထည့်စရာမလိုပါ</span></p></li><li><p><span>Section Dropdown ကိုနှိပ်ပါ။ Add new ကိုနှိပ်ပါ။</span></p></li><li><p><span>New Item မှာ Per Kler ဟုရိုက်ထည့်ပါ။ ပြီးလျှင် Add ကိုနှိပ်ပါ။ အခြားဆေးစတိုအတွက်ဆိုလျှင် သက်ဆိုင်ရာနာမည်ကိုပဲရိုက်ထည့်ရမှာဖြစ်ပါတယ်။</span></p></li><li><p><span>Description မှာ ကြိုက်သလိုရေးနိုင်ပါတယ်။ ဒီဥပမာမှာတော့ </span><code>Per Kler Warehouse လက်ရှိဆေးပစ္စည်း အရေအတွက်ကို ကြည့်ရှုရန်</code><span> လို့ရေးလိုက်ပါမယ်။</span></p></li><li><p><span>ပြီးလျှင် Create ကိုနှိပ်ပါ။</span>
+<img src="https://drive.google.com/uc?export=view&id=1VCfBtiY6P1WZjwMSLEyF12b__3phiPjd" style="zoom:67%;" /></p></li><li><p><span>Import existing data ကိုနှိပ်ပါ။</span></p></li><li><p><span>ဘယ်ဘက်အခြမ်းက စာရင်းမှာ </span></p><ol start='' ><li><code>amount</code></li><li><code>clinic</code></li><li><code>inCharge</code></li><li><code>medicine</code></li><li><code>post</code></li><li><code>type</code></li><li><code>uid</code>
+<span>ကိုအမှန်ခြစ်ပါ</span>
+<img src="https://drive.google.com/uc?export=view&id=14F96nc4bun3F04dHtk31T83W8Y5NJreI" style="zoom:67%;" /></li></ol></li><li><p><span>ညာဘက်အခြမ်းက စာရင်းရဲ့ နာမည်တစ်ခုချင်းစီ ညာဘက်မှာ = ကိုဖိဆွဲပြီး အောက်ပါအတိုင်း အစဉ်လိုက်နေရာချပါ</span></p><ol start='' ><li><code>medicine</code></li><li><code>type</code></li><li><code>amount</code></li><li><code>incharge</code></li><li><code>post</code></li><li><code>clinic</code></li><li><code>uid</code></li></ol></li><li><p><span>Continue နှိပ်ပါ</span></p></li><li><p><span>Continue နောက်တစ်ချက်ထပ်နှိပ်ပါ</span>
+<img src="https://drive.google.com/uc?export=view&id=1zvWAoaO1GgOVd5MWg2Vi_n_1yUP4I5g4" style="zoom:67%;" /></p></li><li><p><span>Medicine Row အတွက် Field Type မှာ Short Text ကိုရွေးပါ</span></p></li><li><p><span>Type အတွက် Field Type မှာ Short Text ကိုရွေးပါ</span></p></li><li><p><span>In Charge အတွက် Field Type မှာ Short Text ကိုရွေးပါ</span></p></li><li><p><span>Amount အတွက် Field Type မှာ Number ကိုရွေးပါ (Number ဖြစ်နေပြီးသားဆိုလျှင် ဘာမှလုပ်စရာမလိုပါ)</span></p></li><li><p><span>Post အတွက် Field Type မှာ Short Text ကိုရွေးပါ</span></p></li><li><p><span>Clinic အတွက် Field Type မှာ Short Text ကိုရွေးပါ</span></p></li><li><p><span>uid အတွက် Field Type မှာ Short Text ကိုရွေးပါ</span>
+<img src="https://drive.google.com/uc?export=view&id=1268sn3uLLdZtXvNiLLBt5yG3JLGooUBC" style="zoom:67%;" /></p></li><li><p><span>ပြီးလျှင် Continue ကိုနှိပ်ပါ</span></p></li><li><p><span>Finish ကိုနှိပ်ပါ</span>
+<img src="https://drive.google.com/uc?export=view&id=1TFdLD5Ps3WegvbAMbn-AeFsh77AIewID" style="zoom:67%;" /></p></li><li><p><span>Table ပေါ်လာလျှင် ဘယ်ဘက်အစွန်က ≣ ကိုနှိပ်ပါ</span></p></li><li><p><span>Home ကိုသွားပါ။ Profile table ကိုဆက်သွားပါ။</span>
+<img src="https://drive.google.com/uc?export=view&id=1yQYgps9yl_76cVNl38PEnveIRhaWYmse" style="zoom:67%;" /></p></li><li><p><span>Clinic/Warehouse Column ထဲက Per Kler ကိုရှာပါ။ Per Kler ကိုတွေ့ပြီဆိုလျှင် သူ့ရဲ့ User ID ကို Double Click နှိပ်ပါ။</span></p></li><li><p><span>Cursor ပေါ်လာပြီဆိုလျှင် နောက်ထပ် Double Click ထပ်နှိပ်ပါ။ Select All ဖြစ်သွားပြီဆိုလျှင် Right Click &gt; Copy ကိုနှိပ်ပါ။</span>
+<img src="https://drive.google.com/uc?export=view&id=1MSYG0vQ3Qy2WPbl56Y5fTmO8VTzh8RZg" style="zoom:67%;" /></p></li><li><p><span>≣ ကိုပြန်နှိပ်ပြီး Home ကိုပြန်သွားပါ။ Per Kler Balance Table ကို ဆက်သွားပါ။</span>
+<img src="https://drive.google.com/uc?export=view&id=1q5CQPq3aPi5nUCcnxxFH2ZBSOPmeonOt" style="zoom:67%;" /></p></li><li><p><span>Filter ကိုနှိပ်ပါ။ Table Filter ကိုဆက်နှိပ်ပါ</span></p></li><li><p><span>Column မှာ Uid ကိုရွေးပါ။ Operator မှာ equals အတိုင်းပဲထားပါ။ Value မှာ Right Click လုပ်ပြီး Paste ကိုနှိပ်ပါ</span></p></li><li><p><span>Apply ကိုနှိပ်ပါ။</span></p></li><li><p><span>ဒါဆိုလျှင် Per Kler ဆေးစတို တစ်ခုတည်းမှာရှိနေတဲ့ ဆေးပစ္စည်းစာရင်းနှင့် ပမာဏကို မြင်ရမှာဖြစ်ပါတယ်။</span>
+<img src="https://drive.google.com/uc?export=view&id=1yoEpWO1L7v0tMub1ENUWtwwozHr8Pr6a" style="zoom:67%;" /></p></li></ul><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 10.25px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Balance Table ဟာ ဆေးပစ္စည်းနှင့် ပမာဏကိုပဲ ကြည့်လို့ရပြီး ဆေးရဲ့ Expiry Date တို့၊ Batch Number တို့ စတဲ့ အသေးစိတ်အချက်အလက်တွေကတော့ Stock Table မှာပဲ ကြည့်လို့ရမှာဖြစ်ပါတယ်။</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 50px;"></div><div class="CodeMirror-gutters" style="display: none; height: 50px;"></div></div></div></pre><h2 id='warehouse-တစ်ခုအတွက်-stock-table-တည်ဆောက်ခြင်း'><span>Warehouse တစ်ခုအတွက် Stock Table တည်ဆောက်ခြင်း</span></h2><p><span>Stock Table တည်ဆောက်ဖို့အတွက် Per Kler Warehouse နဲ့ပဲ နမူနာလုပ်ကြည့်ပါမယ်။</span></p><ul><li><p><span>စာမျက်နှာရဲ့ ဘယ်ဘက်အပေါ်ဆုံးအစွန်မှာရှိတဲ့ ≣ ကိုနှိပ်ပါ</span></p></li><li><p><span>Create Table ကိုနှိပ်ပါ</span>
+<img src="https://drive.google.com/uc?export=view&id=1aCj57h-yqx5Io-qWJj19AZtcuR86N27c" style="zoom:67%;" /></p></li><li><p><span>Table Type မှာ Primary Collection ထားပါ။</span></p></li><li><p><span>Collection Dropdown ကိုနှိပ်ပါ၊ Create collection or use custom path ကိုနှိပ်ပါ</span></p></li><li><p><span>Collection name တွင် </span><code>stock</code><span> ဟုရိုက်ထည့်ပါ။ Add ကိုနှိပ်ပါ။</span>
+<img src="https://drive.google.com/uc?export=view&id=1ymr4MZLxv5BPK4Is-B1EMRgZ_BV_ewZs" style="zoom:67%;" /></p></li><li><p><span>Display ဘေးရှိ ⌄ ကိုနှိပ်ပါ</span></p></li><li><p><span>Table Name တွင် </span><code>Per Kler Stock</code><span> ဟုရိုက်ထည့်ပါ။ ဒီနေရာမှာ တခြားဆေးစတိုတစ်ခု ဥပမာ Mae Sot အတွက်ဆိုလျှင် </span><code>Mae Sot Stock</code><span> ဟုရိုက်ထည့်ရမှာဖြစ်ပါတယ်။</span></p></li><li><p><span>Table ID ထည့်စရာမလိုပါ</span></p></li><li><p><span>Section Dropdown ကိုနှိပ်ပါ။ Add new ကိုနှိပ်ပါ။ Per Kler ရှိပြီးသားဆိုလျှင် Add New နှိပ်စရာမလိုဘဲ ရှိပြီးသား Per Kler ကိုပဲရွေးပါ။</span></p></li><li><p><span>မရှိသေးလျှင် Add New နှိပ်ပြီး New Item မှာ Per Kler ဟုရိုက်ထည့်ပါ။ ပြီးလျှင် Add ကိုနှိပ်ပါ။ အခြားဆေးစတိုအတွက်ဆိုလျှင် သက်ဆိုင်ရာနာမည်ကိုပဲရိုက်ထည့်ရမှာဖြစ်ပါတယ်။</span></p></li><li><p><span>Description မှာ ကြိုက်သလိုရေးနိုင်ပါတယ်။ ဒီဥပမာမှာတော့ </span><code>Per Kler Warehouse ဆေးပစ္စည်းအဝင်အထွက်မှတ်တမ်းကြည့်ရှုရန်</code><span> လို့ရေးလိုက်ပါမယ်။</span></p></li><li><p><span>ပြီးလျှင် Create ကိုနှိပ်ပါ။</span>
+<img src="https://drive.google.com/uc?export=view&id=1BEwLWCLUMt1rhVoEK_DgxhwhI3h99t-3" style="zoom:67%;" /></p></li><li><p><span>Import existing data ကိုနှိပ်ပါ။</span></p></li><li><p><span>ဘယ်ဘက်အခြမ်းက စာရင်းမှာ </span></p><ol start='' ><li><code>amount</code></li><li><code>batchNo</code></li><li><code>clinic</code></li><li><code>date</code></li><li><code>expDate</code></li><li><code>formType</code></li><li><code>from</code></li><li><code>medicine</code></li><li><code>medicineType</code></li><li><code>packageForm</code></li><li><code>remark</code></li><li><code>to</code></li><li><code>uid</code>
+<span>ကိုအမှန်ခြစ်ပါ</span>
+<img src="https://drive.google.com/uc?export=view&id=1w-_aAcKw4lznhZHoveTDy37ZlUv7Ylib" style="zoom:67%;" /></li></ol></li><li><p><span>ညာဘက်အခြမ်းက စာရင်းရဲ့ နာမည်တစ်ခုချင်းစီ ညာဘက်မှာ = ကိုဖိဆွဲပြီး အောက်ပါအတိုင်း အစဉ်လိုက်နေရာချပါ</span></p><ol start='' ><li><code>date</code></li><li><code>formType</code></li><li><code>medicine</code></li><li><code>medicineType</code></li><li><code>packageForm</code></li><li><code>amount</code></li><li><code>batchNo</code></li><li><code>expDate</code></li><li><code>from</code></li><li><code>to</code></li><li><code>remark</code></li><li><code>uid</code></li><li><code>clinic</code></li></ol></li><li><p><span>Continue နှိပ်ပါ</span></p></li><li><p><span>Continue နောက်တစ်ချက်ထပ်နှိပ်ပါ</span></p></li><li><p><span>Date အတွက် Field Type မှာ Date ကိုရွေးပါ</span></p></li><li><p><span>Form Type အတွက် Field Type မှာ Short Text ကိုရွေးပါ</span></p></li><li><p><span>Medidine အတွက် Field Type မှာ Short Text ကိုရွေးပါ</span></p></li><li><p><span>Medicine Type အတွက် Field Type မှာ Short Text ကိုရွေးပါ</span></p></li><li><p><span>Package Form အတွက် Field Type မှာ Short Text ကိုရွေးပါ</span></p></li><li><p><span>Amount အတွက် Field Type မှာ Number ကိုရွေးပါ (Number ဖြစ်နေပြီးသားဆိုလျှင် ဘာမှလုပ်စရာမလိုပါ)</span></p></li><li><p><span>Batch No အတွက် Field Type မှာ Short Text ကိုရွေးပါ</span></p></li><li><p><span>Exp Date အတွက် Field Type မှာ Date ကိုရွေးပါ</span></p></li><li><p><span>From အတွက် Field Type မှာ Short Text ကိုရွေးပါ</span></p></li><li><p><span>To အတွက် Field Type မှာ Short Text ကိုရွေးပါ</span></p></li><li><p><span>Remark အတွက် Field Type မှာ Long Text ကိုရွေးပါ</span></p></li><li><p><span>Uid အတွက် Field Type မှာ Short Text ကိုရွေးပါ</span></p></li><li><p><span>Clinic အတွက် Field Type မှာ Short Text ကိုရွေးပါ</span></p></li><li><p><span>ပြီးလျှင် Continue ကိုနှိပ်ပါ</span></p></li><li><p><span>Finish ကိုနှိပ်ပါ</span>
+<img src="https://drive.google.com/uc?export=view&id=1IIBI4rUuJJ2nKT-rklDOnN7INb8-yiUd" style="zoom:67%;" /></p></li><li><p><span>Table ပေါ်လာလျှင် ဘယ်ဘက်အစွန်က ≣ ကိုနှိပ်ပါ</span></p></li><li><p><span>Home ကိုသွားပါ။ Profile table ကိုဆက်သွားပါ။</span>
+<img src="https://drive.google.com/uc?export=view&id=1yQYgps9yl_76cVNl38PEnveIRhaWYmse" style="zoom:67%;" /></p></li><li><p><span>Clinic/Warehouse Column ထဲက Per Kler ကိုရှာပါ။ Per Kler ကိုတွေ့ပြီဆိုလျှင် သူ့ရဲ့ User ID ကို Double Click နှိပ်ပါ။</span></p></li><li><p><span>Cursor ပေါ်လာပြီဆိုလျှင် နောက်ထပ် Double Click ထပ်နှိပ်ပါ။ Select All ဖြစ်သွားပြီဆိုလျှင် Right Click &gt; Copy ကိုနှိပ်ပါ။</span>
+<img src="https://drive.google.com/uc?export=view&id=1MSYG0vQ3Qy2WPbl56Y5fTmO8VTzh8RZg" style="zoom:67%;" /></p></li><li><p><span>≣ ကိုပြန်နှိပ်ပြီး Home ကိုပြန်သွားပါ။ Per Kler Stock Table ကို ဆက်သွားပါ။</span></p></li><li><p><span>Filter ကိုနှိပ်ပါ။ Table Filter ကိုဆက်နှိပ်ပါ</span></p></li><li><p><span>Column မှာ Uid ကိုရွေးပါ။ Operator မှာ equals အတိုင်းပဲထားပါ။ Value မှာ Right Click လုပ်ပြီး Paste ကိုနှိပ်ပါ</span></p></li><li><p><span>Apply ကိုနှိပ်ပါ။</span></p></li><li><p><span>ဒါဆိုလျှင် Per Kler ဆေးစတို တစ်ခုတည်းမှာရှိနေတဲ့ ဆေးပစ္စည်းအဝင်အထွက်မှတ်တမ်းကို မြင်ရမှာဖြစ်ပါတယ်။</span>
+<img src="https://drive.google.com/uc?export=view&id=1MzRKS25tYDGlLpEaOsul5ovSjpailHHW" style="zoom:67%;" /></p></li></ul><pre class="md-fences md-end-block ty-contain-cm" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 10.25px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Stock Table ဟာ ဆေးပစ္စည််းအဝင်အထွက်မှတ်တမ်းနှင့် Expiry Date ၊ Donor နဲ့ ပေးလိုက်တဲ့ ဆေးခန်းတွေကိုပဲ ကြည့်လို့ရပြီး စတိုထဲမှာလက်ရှိ ရှိနေတဲ့အရေအတွက်ကိုတော့ Balance Table မှာပဲ သွားကြည့်လို့ရမှာဖြစ်ပါတယ်။</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 75px;"></div><div class="CodeMirror-gutters" style="display: none; height: 75px;"></div></div></div></pre></div></div>
+</body>
+</html>
