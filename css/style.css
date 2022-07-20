@@ -79,7 +79,7 @@ body {
 }
 @keyframes slide{
   100%{
-    top:-250px;
+    top:-200px;
   }
 }
 .dynamic-txts{
