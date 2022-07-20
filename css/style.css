@@ -79,19 +79,19 @@ body {
 }
 @keyframes slide{
   100%{
-    top:-200px;
+    top:-170px;
   }
 }
 .dynamic-txts{
   margin-left:-25px;
-  height:50px;
-  ling-height:50px;
-  /*overflow:hidden;*/
+  height:30px;
+  ling-height:30px;
+  overflow:hidden;
 }
 .dynamic-txts li span::after{
   content:"";
   position:absolute;
-  height:110%;
+  height:115%;
   width:100%;
   background:#333634;
   border-left:2px solid #f54571;
