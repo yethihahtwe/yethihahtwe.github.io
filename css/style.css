@@ -86,7 +86,7 @@ body {
   margin-left:-25px;
   height:50px;
   ling-height:50px;
-  overflow:hidden;
+  /*overflow:hidden;*/
 }
 .dynamic-txts li span::after{
   content:"";
