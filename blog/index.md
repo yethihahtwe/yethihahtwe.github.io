@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Happy Jekylling!"
+title: "Thoughts Bin"
 ---
 
 ## You're ready to go!
