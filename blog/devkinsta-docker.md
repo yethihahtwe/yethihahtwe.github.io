@@ -6,6 +6,7 @@ title: "Thoughts Bin"
 
 ---
 # Devkinsta ၊ Docker နှင့် Local PHP installation
+Aug 2, 2022
 
 <img src="images/devkinsta.png" style="zoom:33%;"/>
 
