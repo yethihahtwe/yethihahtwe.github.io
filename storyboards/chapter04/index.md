@@ -1,7 +1,7 @@
 # Chapter04 Storyboard
 ## Injury to internal organs
 |No.|Scene|Description|
-|--|--|--|
+|---|---|---|
 |1.|![](images/chapter04_01.png)|Scene အစကို ယခုကဲ့သို့ anatomical position ဖြင့် ခန္ဓာကိုယ်တစ်ခုကိုပြပါ။ ဤပုံ၏ vector image ကို [Link](https://drive.google.com/file/d/1GxVe-QtiEEXb8_IMJdX-rnI_zk4eejq0/view?usp=sharing) တွင် ရယူနိုင်ပါသည်။|
 |2.|![](images/chapter04_02.png)|ကျည်ဆံ (၃) တောင့် Scene ၏ ဘယ်ဘက်မှ အရှိန်ပြင်းစွာဝင်လာပါမည်။ ကျည်ဆံ၏ vector image ကို [Link](https://drive.google.com/file/d/1fUDx2y9nCazioHlLJK9WxEw_Or0YWzh9/view?usp=sharing) တွင်ရယူနိုင်ပါသည်|
 |3.|![](images/chapter04_03.png)|ကျည်ဆံ (၃) တောင့်သည် ပုံတွင်ပြထားသည့်နေရာများတွင် ခန္ဓာကိုယ်အတွင်းသို့ ဖောက်ဝင်သွားပါမည်။ ဒဏ်ရာ၏ vector image ကို [Link](https://drive.google.com/file/d/1Uq6evpPH0WM96vYJrSrH_VCxP4keVbV4/view?usp=sharing) တွင်ရယူနိုင်ပါသည်|
@@ -11,7 +11,7 @@
 ***
 ## Open Abdominal Injury
 |No.|Scene|Description|
-|--|--|--|
+|---|---|---|
 |1.|![](images/chapter04_01.png)|Scene အစကို ယခုကဲ့သို့ anatomical position ဖြင့် ခန္ဓာကိုယ်တစ်ခုကိုပြပါ။ ဤပုံ၏ vector image ကို [Link](https://drive.google.com/file/d/1GxVe-QtiEEXb8_IMJdX-rnI_zk4eejq0/view?usp=sharing) တွင် ရယူနိုင်ပါသည်။|
 |2.|![](images/chapter04_07.gif)|ကျောက်ခဲတစ်လုံး လွင့်စင်လာပြီး ပုံတွင်ပြထားသည့်အတိုင်း ဝမ်းဗိုက်ကိုလာရောက်ထိမှန်ပါမည်။ ဗိုက်ကိုထိသည်နှင့် ဒဏ်ရာပေါ်လာပြီး ကျောက်ခဲသည် အောက်သို့ပြုတ်ကျသွားပါမည်။ ကျောက်ခဲ၏ vector image ကို [Link](https://drive.google.com/file/d/1ABKxH7CW47CYQhXucEVdMuT0tnGow3uF/view?usp=sharing) တွင်ရယူနိုင်ပါသည်။|
 |3.|![](images/chapter04_08.png)|ဝမ်းဗိုက်ဒဏ်ရာမှ အူများထွက်ကျလာပါမည်။ အူများထွက်ကျလာသည့် animation ကို fade in ဖြင့်လည်းပြုလုပ်နိုင်ပါသည်။ အူများ၏ vector image ကို [Link](https://drive.google.com/file/d/1sS0sNqCwtvgIRW-fbspgg4PFsqUgOIrw/view?usp=sharing) တွင်ရယူနိုင်ပါသည်။|
@@ -30,7 +30,7 @@
 ***
 ## Impaled Object
 |No.|Scene|Description|
-|--|--|--|
+|---|---|---|
 |1.|![](images/chapter04_21.png)|ဝမ်းဗိုက်စိုက်ဝင်ဒဏ်ရာအတွက် ရှုထောင့် (angle of view) ကို မိမိနှစ်သက်သည့်အနေအထားအတိုင်း ရေးဆွဲနိုင်ပါသည်။ ဝမ်းဗိုက်တွင် စိုက်ဝင်နေသည့် ဒဏ်ရာပတ်ဝန်းကျင်တွင် ရေဆွတ်ထားသည့် ပတ်တီးစဖြင့် သန့်ရှင်းပေးပါ။ |
 |2.|![](images/chapter04_22.png)|ဒဏ်ရာပတ်ဝန်းကျင်တွင် ပတ်တီးခေါက်ထူထူများဖြင့် ဝန်းရံပြီးနေရာချပါ။|
 |3.|![](images/chapter04_23.png)|ဒဏ်ရာ၏လေးဘက်လေးတန်တွင် ပတ်တီးခေါက်များနေရာချပေးပါ|
