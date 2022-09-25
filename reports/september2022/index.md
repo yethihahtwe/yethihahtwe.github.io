@@ -112,10 +112,45 @@ The Main Menu is populated with __Submit Interface__ where inventory information
 #### 1.2.2 (a) Query Interface
 
 ##### My Inventory
+> __My Inventory__ page is populated with query information on inventory data of the warehouse linked to the user. The page is displayed in ```Cards``` Layout showing ```Item```, ```Category``` and ```Amount``` which can be filtered with __Search__, __Category__ and __Source__ (Donor). Filtered views for items with a defined __minimal stock amount__ and items closing to a defined __expiry date__ are likely to be created if required.
 
-__My Inventory__ page is populated with query information on inventory data of the warehouse linked to the user. The page is displayed in ```Cards``` Layout showing ```Item```, ```Category``` and ```Amount``` which can be filtered with __Search__, __Category__ and __Source__ (Donor). Filtered views for items with a defined __minimal stock amount__ and items closing to a defined __expiry date__ are likely to be created if required.
+##### __Individual Balance__
+> When a card populated with ```Item```, ```Category``` and ```Amount``` is clicked, the application will redirect the user to the _detail_ page of each ```Item``` where different inventory information on the same ```Item``` with different ```Batch Number```, ```Expiry Date``` and ```Source``` are displayed. The incoming and outgoing stock records will also be displayed in list view.
 
+##### __Child Inventory__
+> This page works the same as __My Inventory__ page but displays the inventory information of child warehouses. The database administrator of the __Inventory Management Application__ will manually define the hierarchy.
 
+##### __All Stock Records__
+> ```Stock In```, ```Stock Out```, ```Expired```, ```Damaged``` information for the current warehouse will be displayed in __All Stock Records__ page sorting with ```Date``` of the record. Like other report pages, the result can be filtered with __Category__, __Search__, and __Source__ (Donor).
+
+##### Requests from Children
+> The page displays information listing __Request Forms__ from child warehouses sorted with __Requested Date__. After clicking individual requests, it will be redirected to a detail page of the __Request Form__ including ```Requested Medicine``` and ```Average Monthly Consumption```.
+
+##### Expiry Alert
+> The __Main Menu__ of the application will show a notification icon and upon clicking, display a modal dialog page listing notifications. The __Expiry Alert Page__ is going to be redirected after clicking the expiry alert notification. The notification date to the impending expiry can be defined manually.
+
+##### Maps of Children
+> For statistical and management infromation, Geolocation of the service is necessary. Security concerns, however, prohibit disclosing the geolocation of the warehouses. The __Map of Children__ page is going to show a map locating warehouses along the border as much information available.
+
+#### 1.2.2 (b) Submit Interface
+
+##### Add Stock Records
+> All types of stock records can be filled in this page. ```Stock In```, ```Stock Out```, ```Expired```, ```Damage``` information can be selected from a Dropdown menu.
+> From __Manage Category__ page, the user can add or remove __Category__ of the item.
+> __Manage Item__ page allows the user to add or remove an __Item__ to or from the list populating the Item Dropdown menu.
+> __Manage Package Form__ lets the user to edit __Package Form__ list where __Package Form__ Dropdown menu loads its data.
+> __Manage Donor__ page is where the user can edit the list of donors.
+> At__Manage Destination__ page, the user can edit the delivery destination of each item.
+
+##### Request Forms
+> Only child warehouses can submit request forms. This information is not only for statistical purposes, the requested data is automatically delivered to the respective parent warehouse.
+
+##### Manage Warehouse Profile
+> Any changes to the data collecting person such as __Name__, __Location__, __Geolocation__ can be edited in this page.
+
+#### 1.2.3 Data Ownership
+__EHSSG__ may have access to the Database during initial set up and technical support period. Once the data collecting persons and database administrators, after proper and thorough training, are able to operate independently, the ownership of the copy of the __Inventory Management Application__ and the __Database__ will be provided to individual organizations.
+The information from the Database can be backed up by downloading, printing and sending to Email.
 
 ## 1.1 Moodle Learning Management System
 
