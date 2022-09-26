@@ -1,0 +1,933 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
+.mac-os-11 { --title-bar-height: 28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857143; overflow-x: hidden; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; tab-size: 4; background-position: inherit; background-repeat: inherit; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; word-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) { 
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+thead, tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right-width: 0px; background-color: inherit; }
+.CodeMirror-linenumber { }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; position: relative !important; background-position: inherit; background-repeat: inherit; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+svg { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; background-position: 0px 0px; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print { 
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; padding-bottom: 0px !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background-color: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) { 
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.reversefootnote { font-family: ui-monospace, sans-serif; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background-color: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; }
+a.md-print-anchor { white-space: pre !important; border: none !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; text-shadow: initial !important; background-position: 0px 0px !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom-width: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background-color: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print { 
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit; background-repeat: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex: 2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) { 
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) { 
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.428571429rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left-width: 28px; border-left-style: solid; border-left-color: transparent; border-right-width: 28px; border-right-style: solid; border-right-color: transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right-width: 8px; border-right-style: solid; border-right-color: transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+:root {
+    --primary-color: #37352f;
+    --bg-color: #ffffff;
+    --bg-color-dark: #f7f6f3;
+    --dark-trait: #e9e9e7;
+    --light-trait-100: #ecedec;
+    --light-trait-200: #c70000;
+    --light-trait-300: #37352f;
+    --light-trait-400: #f7f6f3;
+    --text-color: #37352f;
+    --text-color-secondary: #73726e;
+    --text-highlight-color: #fff;
+    --text-highlight-bg: rgba(var(--primary-color-rgb), 0.3);
+    --select-text-bg-color: #c0e5f4;
+	--search-select-text-color:#448361;
+    --search-select-bg-color: #edf3ec;
+    --code-color: #9a6e3a;
+    --border-radius: 4px;
+    --font-size: 16px;
+    --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+    --monospace: 'SF Mono Medium', 'Fira Code', 'Cousine', 'Consolas', monospace;
+    --heading-char-color: var(--light-trait-400);
+    --color-popover-bg-color: var(--text-color);
+    --rawblock-edit-panel-bd: var(--bg-color-dark);
+    --control-text-color: #72706b;
+    --meta-content-color: var(--primary-color);
+    --primary-btn-border-color: var(--primary-color);
+    --side-bar-bg-color: var(--bg-color-dark);
+    --item-hover-bg-color: #e8e7e4;
+    --active-file-bg-color: #e8e7e4;
+    --active-file-border-color: var(--bg-color);
+    --window-border: 1px solid var(--bg-color);
+    --focus-ring-color: transparent;
+}
+
+html {
+    font-size: var(--font-size);
+}
+
+body {
+    font-family: var(--font-family);
+    -webkit-font-smoothing: antialiased;
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+code {
+    color: #ec5757;
+    background-color: #eeedeb;
+    padding: 0 2px 0 2px;
+}
+
+#write {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+    #write {
+        max-width: 1024px;
+    }
+}
+
+@media only screen and (min-width: 1800px) {
+    #write {
+        max-width: 1200px;
+    }
+}
+
+#write>ul:first-child, #write>ol:first-child {
+    margin-top: 30px;
+}
+
+a {
+    color: var(--primary-color);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    position: relative;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    line-height: 1.4;
+    cursor: text;
+}
+
+h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+    text-decoration: none;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+    font-size: inherit;
+}
+
+h1 {
+    padding-bottom: 0.3em;
+    font-size: 2.2em;
+    line-height: 1.3;
+}
+
+h2 {
+    padding-bottom: 0.3em;
+    font-size: 1.75em;
+    line-height: 1.225;
+}
+
+h3 {
+    font-size: 1.4em;
+    line-height: 1.43;
+}
+
+h4 {
+    font-size: 1.2em;
+}
+
+h5 {
+    font-size: 1em;
+}
+
+h6 {
+    font-size: 1em;
+    color: var(--light-trait-300);
+}
+
+p, blockquote, ul, ol, dl, table {
+    margin: 0.8em 0;
+}
+
+li>ol, li>ul {
+    margin: 0 0;
+}
+
+hr {
+    background-color: var(--light-trait-100);
+    height: 1.5px;
+    border: none
+}
+
+a,
+.md-def-url {
+    color: var(--text-color);
+    text-decoration: none;
+    border-bottom:0.05em solid;
+    border-color: #37352f;
+    opacity:0.6;
+    transition: all .1s ease-in; 
+}
+
+a:hover {
+    text-decoration: none;
+    opacity:1;
+}
+
+sup.md-footnote {
+    background-color: var(--light-trait-400);
+    color: #888884;
+}
+
+li p.first {
+    display: inline-block;
+}
+
+ul, ol {
+    padding-left: 30px;
+}
+
+ul:first-child, ol:first-child {
+    margin-top: 0.35%;
+}
+
+ul:last-child, ol:last-child {
+    margin-bottom: 0;
+}
+
+mark, .ty-file-search-match-text, .md-search-hit {
+    background: #fdebec;
+	color: #d44c47;
+}
+
+mark {
+    border-radius: 4px;
+    color: #402c1b;
+    font-weight: inherit;
+    background-color: #fdecc8;
+    padding-left: 4px;
+    padding-right: 4px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+.md-search-hit * {
+    color: var(--search-select-text-color);
+}
+
+/* Search highlight */
+.cm-search-hit.CodeMirror-selectedtext, .md-search-hit.md-search-select, .md-search-select {
+    outline: 0px solid var(--search-select-text-color);
+}
+
+.outline-item.select, .ty-search-item-line.select, .ty-search-item.select {
+    outline-width: 2px;
+}
+
+.outline-item.select {
+    outline-offset: 0px;
+}
+
+blockquote {
+    margin-left: 1.75px;
+    margin-right: 0px;
+    border-left: 4px solid var(--text-color);
+    padding: 10px 14px 7px 22px;
+}
+
+blockquote blockquote {
+    padding-right: 0;
+}
+
+table {
+    padding: 0;
+    word-break: initial;
+}
+
+table tr {
+    border-top: 1px solid var(--dark-trait);
+    margin: 0;
+    padding: 0;
+}
+
+table tr th {
+    font-weight: bold;
+    border: 1px solid var(--dark-trait);
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+
+table tr td {
+    border: 1px solid var(--dark-trait);
+    margin: 0;
+    padding: 6px 13px;
+}
+
+table tr th:first-child, table tr td:first-child {
+    margin-top: 0;
+}
+
+table tr th:last-child, table tr td:last-child {
+    margin-bottom: 0;
+}
+
+
+kbd {
+    font-size: 0.875rem;
+    background: var(--bg-color-dark);
+    border: 1px solid var(--dark-trait);
+    box-shadow: 0 2px 0 var(--dark-trait);
+    color: var(--text-color-secondary);
+}
+
+.md-fences, code, tt {
+    border: none;
+    background-color: #f7f6f3;
+    border-radius: var(--border-radius);
+    padding: 2px 4px 0px 4px;
+    font-size: 0.975em;
+    font-weight: medium;
+    font-family: var(--monospace)
+}
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+#write pre.md-meta-block {
+    padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: var(--bg-color-dark);
+    border: 0;
+    border-radius: var(--border-radius);
+    color: var(--text-color-secondary);
+    margin-top: 0 !important;
+}
+
+#write .mathjax-block .md-rawblock-tooltip {
+    border-top-left-radius: var(--border-radius);
+    border-top-right-radius: var(--border-radius);
+}
+
+#write .mathjax-block .md-math-container {
+    border-top-left-radius: var(--border-radius);
+    border-bottom-right-radius: var(--border-radius);
+    border-bottom-left-radius: var(--border-radius);
+}
+
+#write .md-mathblock-panel .md-rawblock-control:first-of-type {
+    border-top-left-radius: var(--border-radius);
+}
+
+.md-mathjax-midline {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+.md-inline-math script {
+    color: var(--code-color);
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: none;
+    border-radius: var(--border-radius);
+}
+
+#write .code-tooltip {
+    bottom: initial;
+    top: 100%;
+    left: initial;
+    right: -1px;
+    background: var(--bg-color-dark);
+    border: 1px solid var(--dark-trait);
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-top: 0;
+    font-family: var(--monospace);
+}
+
+#write .md-mathblock-panel .code-tooltip {
+    right: 0;
+    border: none;
+}
+
+/* TODO */
+#write .md-task-list-item>input {
+    -webkit-appearance: initial;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    position: absolute;
+    border: 1px solid var(--text-color);
+    /* border-radius: 100%; */
+    margin-left: -1.45rem;
+    height: 0.95rem;
+    width: 0.95rem;
+    transition: all 0.35s;
+}
+
+#write .md-task-list-item>input:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+#write .md-task-list-item>input[checked] {
+    background: #2eaadc;
+    border: 1px solid #2eaadc;
+    text-decoration: line-through;
+}
+
+#write .md-task-list-item>input[checked]::before {
+    display: inline-block;
+    vertical-align: middle;
+    content: '✓';
+    position: absolute;
+    margin-top: 0.05rem;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    text-align: absolute;
+    color: var(--bg-color);
+    font-size: 0.75em;
+    font-weight: 760;
+}
+
+#write .md-task-list-item>input[checked]::after {
+    text-decoration: line-through;
+}
+
+/* TODO */
+.md-image>.md-meta {
+    border-radius: var(--border-radius);
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-toc {
+    margin-top: 20px;
+    padding-bottom: 20px;
+}
+
+/* Source mode */
+.CodeMirror.cm-s-typora-default *, .cm-s-typora-default * {
+    background: inherit;
+    color: var(--text-color);
+    font-family: var(--monospace);
+    font-size: var(--font-size) !important;
+    font-style: normal;
+    font-weight: medium;
+}
+
+.CodeMirror.cm-s-typora-default div.CodeMirror-cursor {
+    border-left: 2px solid var(--text-color);
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+.outline-expander {
+    width: 1.5rem;
+    vertical-align: initial;
+}
+
+.outline-expander:before, .outline-expander:hover:before, .outline-item-open>.outline-item>.outline-expander:before, .outline-item-open>.outline-item>.outline-expander:hover:before {
+    content: "\f125";
+    transition: transform 125ms ease-in-out;
+}
+
+.outline-item-open>.outline-item>.outline-expander:hover:before, .outline-item-open>.outline-item>.outline-expander:before {
+    transform: rotate(90deg);
+}
+
+.outline-label:hover {
+    text-decoration: none;
+}
+
+#toc-dropmenu {
+    background: var(--bg-color-dark);
+}
+
+#toc-dropmenu .outline-title {
+    font-size: 1rem;
+    text-transform: uppercase;
+}
+
+.dropdown-menu .divider {
+    display: none;
+}
+
+.context-menu {
+    border: none!important;
+    backdrop-filter: saturate(180%) blur(20px) brightness(1.1);
+    background-color: var(--bg-color-dark);
+    box-shadow: 0 25.6px 57.6px 0 rgba(0, 0, 0, .22), 0 4.8px 14.4px 0 rgba(0, 0, 0, .18)!important;
+}
+
+.file-node-background {
+    height: 31px;
+}
+
+.file-node-content:hover .file-node-icon, .file-node-content:hover .file-node-open-state {
+    visibility: visible;
+}
+
+.file-node-icon {
+    margin-right: 8px;
+}
+
+.file-library-node:not(.file-node-root):focus>.file-node-content {
+    outline: none;
+}
+
+/* New file animation */
+.blink-area {
+    animation: none;
+}
+
+.file-list-item-summary {
+    font-size: var(--font-size);
+    font-family: var(--font-family);
+}
+
+#md-searchpanel input {
+    border-radius: var(--border-radius);
+    box-shadow: none;
+}
+
+#md-searchpanel input:focus {
+    box-shadow: none;
+    border-color: var(--meta-content-color);
+}
+
+#md-searchpanel .search-type-selection {
+    width: auto;
+}
+
+#md-searchpanel .btn:not(.close-btn):hover {
+    box-shadow: none;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: var(--side-bar-bg-color);
+}
+
+#md-notification .btn {
+    border: 0;
+}
+
+/* CODE HIGHLIGHT */
+pre.CodeMirror-line {
+    color: #999999!important
+}
+
+.cm-variable {
+    color: #37352f!important;
+}
+
+.cm-keyword {
+    color: #0277aa !important
+}
+
+.cm-tag {
+    color: #ff5a5a!important
+}
+
+.cm-variable-3 {
+    color: #48ff00!important;
+}
+
+.cm-bracket, .cm-error {
+    color: #ff5a5a!important
+}
+
+.cm-attribute {
+    color: #0277aa!important;
+}
+
+.cm-def {
+    color: #dc4a68!important;
+}
+
+.cm-comment {
+    color: #708090!important;
+}
+
+.cm-string {
+    color: #669900!important;
+    font-variant-ligatures: common-ligatures!important;
+}
+
+.cm-tag:not() {
+    font-weight: 700;
+}
+
+.cm-operator {
+    color: #9a6e3b!important;
+}
+
+.cm-number {
+    color: #990055!important;
+}
+
+.cm-meta {
+    color: var(--text-color) !important;
+    font-weight: 700!important;
+}
+
+.cm-atom { color: #845dc4; }
+
+.cm-builtin {
+    color: #669900 !important;
+}
+
+.cm-property {
+    color: var(--text-color) !important;
+}
+
+.cm-variable-2 {
+    color: var(--text-color) !important;
+}
+
+.cm-variable-3 {
+    color: #845dc4;
+}
+
+/* CODE HIGHLIGHT */
+.file-tree-node.active>.file-node-background {
+    background-color: var(--active-file-bg-color);
+    border-left: 0px solid #dad9d6!important;
+    border-color: #dad9d6!important;
+    background-color: #e8e7e4!important;
+}
+
+.CodeMirror-gutters {
+    border-right: 1px solid #f1f3f450;
+    background: inherit;
+    white-space: nowrap;
+}
+
+.ty-footer, .sidebar-footer, footer {
+    backdrop-filter: saturate(120%) blur(20px) brightness(0.85);
+    border: none!important;
+    background: none;
+    background-color: #f7f6f3;
+}
+
+.code-tooltip {
+    border-radius: 4px;
+    background-color: #313334;
+    box-shadow: 0 25.6px 57.6px 0 rgba(0, 0, 0, .52), 0 4.8px 14.4px 0 rgba(0, 0, 0, .28)!important;
+}
+
+#sidebar-files-menu {
+    border-radius: 4px;
+    border: none!important;
+    box-shadow: 0 25.6px 57.6px 0 #f7f6f3, 0 4.8px 14.4px 0 rgba(0, 0, 0, .28);
+}
+
+.code-tooltip.md-tooltip-hide.md-hover-tip {
+    box-shadow: 0 25.6px 57.6px 0 rgba(0, 0, 0, .52), 0 4.8px 14.4px 0 rgba(0, 0, 0, .28);
+}
+
+#typora-sidebar {
+    border: none !important;
+}
+
+#footer-word-count-info, #spell-check-panel {
+    border: none!important;
+    backdrop-filter: saturate(120%) blur(20px) brightness(0.85)!important;
+    box-shadow: 0 25.6px 57.6px 0 rgba(0, 0, 0, .32), 0 4.8px 14.4px 0 rgba(0, 0, 0, .28)!important;
+}
+
+/* Windows/Linux unibody mode */
+.megamenu-content,
+.megamenu-opened header {
+    color:  var(--primary-color);
+    background: var(--bg-color-dark);
+}
+
+#recent-file-panel-action-btn {
+    background: inherit;
+    border: 1px var(--light-trait-300) solid;
+}
+
+.megamenu-menu-panel table td:nth-child(1) {
+    color: var(--text-color);
+    background: var(--bg-color-dark);
+}
+
+.megamenu-menu-panel table td:nth-child(2) {
+    color: var(--text-color);
+    background: var(--bg-color-dark);
+}
+
+.megamenu-menu-panel tbody tr:hover td:nth-child(1) {
+    color: var(--text-color);
+    background: var( --active-file-bg-color);
+}
+
+.megamenu-menu-panel tbody tr:hover td:nth-child(2) {
+    color: var(--text-color);
+    background: var( --active-file-bg-color);
+}
+
+.megamenu-menu-panel input[type='text'] {
+    background: inherit;
+    border: 1px var(--control-text-color) solid;
+}
+
+#recent-file-panel-action-btn {
+    background: inherit;
+}
+
+.megamenu-menu, .megamenu-content {
+	background: var(--side-bar-bg-color);
+	color: var(--text-color);
+}
+
+#top-titlebar, #top-titlebar * {
+    background: inherit;
+	color: var(--text-color);
+}
+
+.megamenu-menu-header #megamenu-menu-header-title:before {
+	color:  var(--text-color);
+}
+
+megamenu-back-btn {
+	color: var(--text-color);
+	border-color: var(--text-color);
+}
+
+.megamenu-menu-header #megamenu-menu-header-title,
+.megamenu-menu-header:hover,
+.megamenu-menu-header:focus {
+	color: inherit;
+}
+
+.megamenu-menu-panel table tr:nth-child(2n + 1) {
+    background-color:  var(--side-bar-bg-color);
+}
+
+ @media print { @page {margin: 0 0 0 0;} body.typora-export {padding-left: 0; padding-right: 0;} #write {padding:0;}}
+</style><title>index</title>
+</head>
+<body class='typora-export'><div class='typora-export-content'>
+<div id='write'  class=''><h1 id='consultancy-report'><span>CONSULTANCY REPORT</span></h1><h1 id='september-31-2022'><span>September 31, 2022.</span></h1><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n1353"><a class="md-toc-inner" style="" href="#consultancy-report">CONSULTANCY REPORT</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n1355"><a class="md-toc-inner" style="" href="#september-31-2022">September 31, 2022.</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n1358"><a class="md-toc-inner" style="" href="#executive-summary">Executive Summary</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n1359"><a class="md-toc-inner" style="" href="#objectives">Objectives</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n1375"><a class="md-toc-inner" style="" href="#outcomes">Outcomes</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n1400"><a class="md-toc-inner" style="" href="#conclusions-and-recommendations">Conclusions and Recommendations</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n1446"><a class="md-toc-inner" style="" href="#consultant-background">Consultant Background</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n1458"><a class="md-toc-inner" style="" href="#abstract">Abstract</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n1459"><a class="md-toc-inner" style="" href="#logistic-management-information-system-lmis">Logistic Management Information System (LMIS)</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n1462"><a class="md-toc-inner" style="" href="#online-classroom">Online Classroom</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n1469"><a class="md-toc-inner" style="" href="#10-introduction">1.0 Introduction</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n1470"><a class="md-toc-inner" style="" href="#11-oracle-application-express-apex">1.1 Oracle Application Express (APEX)</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n1474"><a class="md-toc-inner" style="" href="#12-inventory-management-system-a-prototype-of-lmis">1.2 Inventory Management System: a prototype of LMIS</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n1477"><a class="md-toc-inner" style="" href="#121-application-users">1.2.1 Application Users</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n1480"><a class="md-toc-inner" style="" href="#122-landing-page-and-the-main-menu">1.2.2 Landing Page and the Main Menu</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n1483"><a class="md-toc-inner" style="" href="#122-a-query-interface">1.2.2 (a) Query Interface</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n1484"><a class="md-toc-inner" style="" href="#my-inventory">My Inventory</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n1487"><a class="md-toc-inner" style="" href="#individual-balance"><strong>Individual Balance</strong></a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n1490"><a class="md-toc-inner" style="" href="#child-inventory"><strong>Child Inventory</strong></a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n1493"><a class="md-toc-inner" style="" href="#all-stock-records"><strong>All Stock Records</strong></a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n1496"><a class="md-toc-inner" style="" href="#requests-from-children">Requests from Children</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n1499"><a class="md-toc-inner" style="" href="#expiry-alert">Expiry Alert</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n1502"><a class="md-toc-inner" style="" href="#maps-of-children">Maps of Children</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n1505"><a class="md-toc-inner" style="" href="#122-b-submit-interface">1.2.2 (b) Submit Interface</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n1506"><a class="md-toc-inner" style="" href="#add-stock-records">Add Stock Records</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n1509"><a class="md-toc-inner" style="" href="#request-forms">Request Forms</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n1512"><a class="md-toc-inner" style="" href="#manage-warehouse-profile">Manage Warehouse Profile</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n1515"><a class="md-toc-inner" style="" href="#123-data-ownership">1.2.3 Data Ownership</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n1517"><a class="md-toc-inner" style="" href="#13-moodle-learning-management-system">1.3 Moodle Learning Management System</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n1519"><a class="md-toc-inner" style="" href="#12-instructor-led-vs-self-paced-learning-modalities">1.2 Instructor-Led vs Self-Paced Learning Modalities</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n1547"><a class="md-toc-inner" style="" href="#20-project-approach">2.0 Project Approach</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n1571"><a class="md-toc-inner" style="" href="#30-project-outcomes">3.0 Project Outcomes</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n1597"><a class="md-toc-inner" style="" href="#40-conclusions-and-recommendations">4.0 Conclusions and Recommendations</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n1643"><a class="md-toc-inner" style="" href="#50-glossary">5.0 Glossary</a></span></p></div><hr /><h1 id='executive-summary'><span>Executive Summary</span></h1><h2 id='objectives'><span>Objectives</span></h2><ul><li><span>To continue setting up the online classroom for EHSSG</span></li><li><span>To finish creating </span><code>First Aid Care Training for Conflict Related Injuries</code><span> online course</span></li><li><span>To finish editing training material videos from </span><code>First Aid Care Training for Conflict Related Injuries</code><span> online course</span></li><li><span>To create video animations relating to study materials for </span><code>First Aid Care Training for Conflict Related Injuries</code><span> online course</span></li><li><span>To create accounts for students and assist in online course enrollment</span></li><li><span>To supervise a new recruit for creating training videos</span></li><li><span>To build a warehouse computer system and </span><strong><span>Logistic Management Information System (LMIS)</span></strong><span> for selected warehouses on Thailand-Burma border</span></li></ul><h2 id='outcomes'><span>Outcomes</span></h2><ul><li><span>A </span><code>Logistic Management Information System</code><span> (LMIS) is being developed underway</span></li><li><code>First Aid Care Training for Conflict Related Injuries</code><span> online course was continued creating with a majority of video materials</span></li><li><span>Training material videos were continued editing</span></li><li><span>Animated video clips are created to use in </span><code>First Aid Care Training for Conflict Related Injuries</code><span> online course</span></li><li><strong><span>Six</span></strong><span> videos were created during September 2022:</span></li></ul><ol start='' ><li><span>Chapter03 Video06 </span><code>Circulation Assessment</code><span> (</span><a href='https://drive.google.com/file/d/1qV_TZil3dx2361n9ZII0mvMs3bD99KVU/view?usp=sharing'><span>View</span></a><span>)</span></li><li><span>Chapter03 Video07 </span><code>Pelvic Binder</code><span> (</span><a href='https://drive.google.com/file/d/1EFP6Jc6-NRWRAfu9ITCe_UY0ZLQqpwhY/view?usp=sharing'><span>View</span></a><span>)</span></li><li><span>Chapter03 Video08 </span><code>Hypothermia and Head Injury</code><span> (</span><a href='https://drive.google.com/file/d/1Shhxt8orSHvhLj-jO1ltyKyBBcyKv265/view?usp=sharing'><span>View</span></a><span>)</span></li><li><span>Chapter04 Video01 </span><code>Wound Care Algorithm</code><span> (</span><a href='https://drive.google.com/file/d/1EzDa-SwOkoeG6LLd8rJW-1gYF7oZ0gg6/view?usp=sharing'><span>View</span></a><span>)</span></li><li><span>Chapter05 Video01 </span><code>Fracture</code><span> (</span><a href='https://drive.google.com/file/d/14-2gct1WxSwiHddpmdTndqFMfdYDfhIG/view?usp=sharing'><span>View</span></a><span>)</span></li><li><span>Chapter05 Video02 </span><code>Splinting</code><span> (</span><a href='https://drive.google.com/file/d/1KiXqAVZtYZ17Asp_A23GlzdkZSVqGz0d/view?usp=sharing'><span>View</span></a><span>)</span></li></ol><h2 id='conclusions-and-recommendations'><span>Conclusions and Recommendations</span></h2><ul><li><p><strong><span>A Logistic Management Information System (LMIS)</span></strong><span> is being developed and estimated beta testing phase should be started on first week of October. The EHSSG warehouse is going to be the first to test the beta system.</span></p></li><li><p><span>EHSSG has started creating an online course on </span><code>First Aid Care Training for Conflict Related Injuries</code><span> and a </span><code>Basic Course on Using Computer</code><span>.</span></p><ul><li><code>First Aid Care Training for Conflict Related Injuries</code><span> online course is not accepting students yet. The course is still under development. The development process is now faster with a new recruit.</span></li><li><span>The classroom needs to publicize to attract students after it is launched.</span></li><li><span>The </span><code>Basic Course on Using Computer</code><span> has been created and a batch of students from EHSSG&#39;s clinical supervisor internship training have completed the course.</span></li></ul></li><li><p><span>Target audience is inside Burma where internet is often cut.</span></p><ul><li><span>Future online courses should include less video materials.</span></li><li><span>Existing video courses are pre-recorded and can be assessed at any time.</span></li><li><span>Videos should be made available to download.</span></li></ul></li><li><p><code>First Aid Care Training for Conflict Related Injuries</code><span> online course raw materials need placeholder videos.</span></p><ul><li><span>Though audio contents keep up the coverage of the scripts, there is not enough video contents to match the audio.</span></li><li><span>In future projects, the subject matter expert should provide a PowerPoint presentation to help the video editor create placeholder video during audio narration only clips.</span></li></ul></li><li><p><span>The script is the foundation of the entire project.</span></p><ul><li><span>Once developed, the script should be made avilable to every team member of the project.</span></li><li><span>If the script had changes after it is created, the changes should be notified to every team member of the project. Otherwise, a team member would be creating content based on unused portion of the script.</span></li><li><span>The video presenter should use the </span><strong><span>teleprompter</span></strong><span> which was already purchased by EHSSG to reduce unnecessary time taken during recording and post-processing.</span></li></ul></li><li><p><span>Putting efforts during audio and video recording saves a lot of time during post-processing.</span></p><ul><li><span>The entire post-processing time can be reduced with a script and following the script.</span></li><li><span>Rehersing the script helps get rid of mistakes during recording and reduces files clutter saving time taken for post-processing.</span></li></ul></li></ul><hr /><h1 id='consultant-background'><span>Consultant Background</span></h1><figure><table><thead><tr><th><span>Name</span></th><th><span>Dr. Ye Thi Ha Htwe</span></th></tr></thead><tbody><tr><td><span>Education</span></td><td><span>M.B.,B.S(YGN)</span></td></tr><tr><td><span>Past Experiences</span></td><td><span>- Pharmacy Inventory Mobile Application</span><br><span>- Online Classroom with Moodle LMS</span></td></tr></tbody></table></figure><hr /><h1 id='abstract'><span>Abstract</span></h1><h2 id='logistic-management-information-system-lmis'><span>Logistic Management Information System (LMIS)</span></h2><p><span>Warehouses on the Thailand-Burma border are working with minimal resources. The major goal of these warehouses is to store supplies and deliver on time to the necessary places in conflict regions of Burma. The Thai government authorities have not given official permission to cross the border from Thailand and bring medicine and related products into Burma. Funds allocated to the warehouses are mostly used for security and transportation rather than establishing a solid infrastructure and a properly managed system. And vice versa, inventory and logistic information of warehouses along the border has not been gathered with an organized system. EHSSG&#39;s focus has been shifted to establish an </span><strong><span>Inventory and Logistic Management System</span></strong><span> not with the papers but  through a network.</span></p><p><span>Instead of buying a commercial </span><code>Logistic Management Information System</code><span>(LMIS) with tons of extra features not in need at an expensive price, EHSSG chose to build a customized LMIS from scratch that matches the ground conditions of warehouses along the border. The entire </span><code>Logistic Management Information System (LMIS)</code><span> is going to be a cloud based installation which can be accessed through a web browser. Any devices with internet access will be able to login to the LMIS regardless of the screen sizes (Desktop, Laptop, Tablet or phone) and it is going to be platform independent. Devices with any Operating System (Windows, MacOS, ChromeOS, Linux, Android, iOS) will be able to access the cloud based system. Computer systems and internet access points will be installed in established warehouses, and those that do not yet have a fixed location will be assisted to use mobile devices.</span></p><h2 id='online-classroom'><span>Online Classroom</span></h2><p><span>EHSSG has already created an online classroom in </span><code>https://ehssg.org/school/</code><span>.</span>
+<span>The classroom uses the </span><code>Moodle</code><span> Learning Management System (LMS) installed in EHSSG&#39;s web hosting. The first course of the online classroom is </span><code>First Aid Care Training for Conflict Related Injuries</code><span> which is still under developement process. The major training materials of the course are videos which are 7 minutes to 10 minutes in average length.</span></p><p><span>Creating the videos basically needs </span><code>scripting</code><span>, </span><code>storyboarding</code><span>, </span><code>audio recording</code><span>, </span><code>video recording</code><span>, </span><code>audio editing</code><span>, </span><code>video editing</code><span>, </span><code>animation</code><span>, </span><code>joing audio-video-animation</code><span>, </span><code>captioning</code><span> and </span><code>final cut</code><span>. The FACT course has finished its </span><code>scripting</code><span>, </span><code>storyboarding</code><span>, </span><code>audio recording</code><span> and </span><code>video recording</code><span> stages. The most time consuming stage of the process is audio editing, video editing and animation stages. In first week of September 2022, final cut videos for Chapter 3 out of 8 are realeased. The course contains 8 chapters and each chapter usually consists of 5 to 6 videos.</span>
+<img src="https://drive.google.com/uc?export=view&id=1Mpy0p8mC4fmTQV4wEB6OeCqhaasnYMBV" alt="Image:Homepage of EHSSG online school" style="zoom: 25%;" />
+<em><span>Image:Homepage of EHSSG online school</span></em></p><p><span>Once final cut videos are exported, the videos are uploaded to YouTube with </span><code>Unlisted</code><span> privacy option. When videos are hosted on YouTube with </span><code>Unlisted</code><span> privacy, the viewers with the link to the video can only access it. Any other users who enter the EHSSG&#39;s YouTube channel will not see any </span><code>Unlisted</code><span> videos. Videos are hosted on YouTube as YouTube offers chapters to be divided in a video from timestamps. Once a subtitle in English is attached to the video, automatic subtitle translation to other languages can be obtained as well. Videos hosted on YouTube are embedded in the pages of the online course reducing tons of storage space and traffic bandwidth to the EHSSG web hosting service </span><sup class='md-footnote'><a href='#dfref-footnote-1' name='ref-footnote-1'>1</a></sup><span>.</span></p><p><span>Each module of the course has a viewer restriction option which limits the user from viewing a particular sequel of the study material before viewing the initial foundation material. For example, module-2 of the course is not accessible unless the student has completed module-1.</span>
+<img src="https://drive.google.com/uc?export=view&id=12l9maMzUkmgzCv9lVPfJDzkRGPr4Hpyo" style="zoom: 33%;" />
+<em><span>Image:Future modules are locked before completing first module</span></em></p><p><span>Each Chapter usually starts with a </span><strong><span>Pre-test</span></strong><span> quiz which either consists of True/False or Multiple Choice Questions and ends with the same </span><strong><span>Post-test</span></strong><span> quiz. Though the </span><strong><span>Pre-test</span></strong><span> doesn&#39;t provide grades, the </span><strong><span>Post-test</span></strong><span> does grading on the students&#39; performance.</span>
+<img src="https://drive.google.com/uc?export=view&id=1mRdUe3VYp4aQmdyWsxYEL8_u8WUoihoH" style="zoom:25%;" />
+<em><span>Image:A Quiz Page</span></em></p><hr /><h1 id='10-introduction'><span>1.0 Introduction</span></h1><h2 id='11-oracle-application-express-apex'><span>1.1 Oracle Application Express (APEX)</span></h2><p><img src="images/apex.png" style="zoom: 25%;" />
+<em><span>Image:An Oracle APEX application</span></em></p><p><span>According to </span><a href='apex.oracle.com'><span>apex.oracle.com</span></a><span>, </span><code>Oracle Application Express</code><span> (APEX) is a low-code development platform that enables building scalable, secure enterprise apps, that can be deployed anywhere. Using APEX, developers can quickly develop and deploy apps that solve real problems and provide immediate value.</span>
+<span>Oracle database is a </span><code>Relational Database Management System</code><span> (RDBMS) similar to </span><code>MySQL</code><span> which is also owned by Oracle. Oracle database can be utilized for applications with large scale data and relational operations. It offers cloud based application development for free. Since </span><code>Oracle APEX</code><span> is a low code development platform, an existing knowledge of </span><code>HTML</code><span>, </span><code>CSS</code><span>, </span><code>Javascript</code><span> and </span><code>MySQL</code><span> is required to build full fledged applications.</span></p><p><span>The </span><code>Logistic Management Information System</code><span>(LMIS) is being developed with </span><code>Oracle APEX</code><span>.</span></p><h2 id='12-inventory-management-system-a-prototype-of-lmis'><span>1.2 Inventory Management System: a prototype of LMIS</span></h2><p><span>Before developing a full fledged LMIS, an </span><strong><span>Inventory Management System</span></strong><span> is created based on previous </span><strong><span>Pharmacy Inventory Mobile Application</span></strong><span> developed by EHSSG.</span></p><p><img src="images/wireframe.png" style="zoom:50%;" />
+<em><span>Image:The Wireframe of Inventory Management System</span></em></p><h3 id='121-application-users'><span>1.2.1 Application Users</span></h3><p><span>Rather than opened to public registration, the </span><strong><span>Inventory Management Application</span></strong><span> could only be logged in with a provided </span><code>Username</code><span> and </span><code>Password</code><span>. The </span><code>Username</code><span> is going to be permanently registered with the warehouse name and not likely to be edited. Each user account will be provided with a set up </span><strong><span>Warehouse Profile</span></strong><span> which values can be edited later. The </span><strong><span>Warehouse Profile</span></strong><span> contains an </span><code>In Charge</code><span> field which can be updated anytime with the name of the person managing the warehouse.</span></p><p>&nbsp;</p><h3 id='122-landing-page-and-the-main-menu'><span>1.2.2 Landing Page and the Main Menu</span></h3><p><span>The landing page or the home page of the application is a welcome page to see first once the user has logged in. The landing page is populated with the </span><strong><span>Query Interface</span></strong><span> where existing inventory information is going to be displayed in charts, graphs and tables.</span></p><p><span>The Main Menu is populated with </span><strong><span>Submit Interface</span></strong><span> where inventory information is submitted though different pages.</span></p><h4 id='122-a-query-interface'><span>1.2.2 (a) Query Interface</span></h4><h5 id='my-inventory'><span>My Inventory</span></h5><blockquote><p><strong><span>My Inventory</span></strong><span> page is populated with query information on inventory data of the warehouse linked to the user. The page is displayed in </span><code>Cards</code><span> Layout showing </span><code>Item</code><span>, </span><code>Category</code><span> and </span><code>Amount</code><span> which can be filtered with </span><strong><span>Search</span></strong><span>, </span><strong><span>Category</span></strong><span> and </span><strong><span>Source</span></strong><span> (Donor). Filtered views for items with a defined </span><strong><span>minimal stock amount</span></strong><span> and items closing to a defined </span><strong><span>expiry date</span></strong><span> are likely to be created if required.</span></p></blockquote><h5 id='individual-balance'><strong><span>Individual Balance</span></strong></h5><blockquote><p><span>When a card populated with </span><code>Item</code><span>, </span><code>Category</code><span> and </span><code>Amount</code><span> is clicked, the application will redirect the user to the </span><em><span>detail</span></em><span> page of each </span><code>Item</code><span> where different inventory information on the same </span><code>Item</code><span> with different </span><code>Batch Number</code><span>, </span><code>Expiry Date</code><span> and </span><code>Source</code><span> are displayed. The incoming and outgoing stock records will also be displayed in list view.</span></p></blockquote><h5 id='child-inventory'><strong><span>Child Inventory</span></strong></h5><blockquote><p><span>This page works the same as </span><strong><span>My Inventory</span></strong><span> page but displays the inventory information of child warehouses. The database administrator of the </span><strong><span>Inventory Management Application</span></strong><span> will manually define the hierarchy.</span></p></blockquote><h5 id='all-stock-records'><strong><span>All Stock Records</span></strong></h5><blockquote><p><code>Stock In</code><span>, </span><code>Stock Out</code><span>, </span><code>Expired</code><span>, </span><code>Damaged</code><span> information for the current warehouse will be displayed in </span><strong><span>All Stock Records</span></strong><span> page sorting with </span><code>Date</code><span> of the record. Like other report pages, the result can be filtered with </span><strong><span>Category</span></strong><span>, </span><strong><span>Search</span></strong><span>, and </span><strong><span>Source</span></strong><span> (Donor).</span></p></blockquote><h5 id='requests-from-children'><span>Requests from Children</span></h5><blockquote><p><span>The page displays information listing </span><strong><span>Request Forms</span></strong><span> from child warehouses sorted with </span><strong><span>Requested Date</span></strong><span>. After clicking individual requests, it will be redirected to a detail page of the </span><strong><span>Request Form</span></strong><span> including </span><code>Requested Medicine</code><span> and </span><code>Average Monthly Consumption</code><span>.</span></p></blockquote><h5 id='expiry-alert'><span>Expiry Alert</span></h5><blockquote><p><span>The </span><strong><span>Main Menu</span></strong><span> of the application will show a notification icon and upon clicking, display a modal dialog page listing notifications. The </span><strong><span>Expiry Alert Page</span></strong><span> is going to be redirected after clicking the expiry alert notification. The notification date to the impending expiry can be defined manually.</span></p></blockquote><h5 id='maps-of-children'><span>Maps of Children</span></h5><blockquote><p><span>For statistical and management infromation, Geolocation of the service is necessary. Security concerns, however, prohibit disclosing the geolocation of the warehouses. The </span><strong><span>Map of Children</span></strong><span> page is going to show a map locating warehouses along the border as much information available.</span></p></blockquote><h4 id='122-b-submit-interface'><span>1.2.2 (b) Submit Interface</span></h4><h5 id='add-stock-records'><span>Add Stock Records</span></h5><blockquote><p><span>All types of stock records can be filled in this page. </span><code>Stock In</code><span>, </span><code>Stock Out</code><span>, </span><code>Expired</code><span>, </span><code>Damage</code><span> information can be selected from a Dropdown menu.</span>
+<span>From </span><strong><span>Manage Category</span></strong><span> page, the user can add or remove </span><strong><span>Category</span></strong><span> of the item.</span>
+<strong><span>Manage Item</span></strong><span> page allows the user to add or remove an </span><strong><span>Item</span></strong><span> to or from the list populating the Item Dropdown menu.</span>
+<strong><span>Manage Package Form</span></strong><span> lets the user to edit </span><strong><span>Package Form</span></strong><span> list where </span><strong><span>Package Form</span></strong><span> Dropdown menu loads its data.</span>
+<strong><span>Manage Donor</span></strong><span> page is where the user can edit the list of donors.</span>
+<span>At</span><strong><span>Manage Destination</span></strong><span> page, the user can edit the delivery destination of each item.</span></p></blockquote><h5 id='request-forms'><span>Request Forms</span></h5><blockquote><p><span>Only child warehouses can submit request forms. This information is not only for statistical purposes, the requested data is automatically delivered to the respective parent warehouse.</span></p></blockquote><h5 id='manage-warehouse-profile'><span>Manage Warehouse Profile</span></h5><blockquote><p><span>Any changes to the data collecting person such as </span><strong><span>Name</span></strong><span>, </span><strong><span>Location</span></strong><span>, </span><strong><span>Geolocation</span></strong><span> can be edited in this page.</span></p></blockquote><h4 id='123-data-ownership'><span>1.2.3 Data Ownership</span></h4><p><strong><span>EHSSG</span></strong><span> may have access to the Database during initial set up and technical support period. Once the data collecting persons and database administrators, after proper and thorough training, are able to operate independently, the ownership of the copy of the </span><strong><span>Inventory Management Application</span></strong><span> and the </span><strong><span>Database</span></strong><span> will be provided to individual organizations.</span>
+<span>The information from the Database can be backed up by downloading, printing and sending to Email.</span></p><h2 id='13-moodle-learning-management-system'><span>1.3 Moodle Learning Management System</span></h2><p><span>Introduction to Moodle LMS was described in the previous report. </span><strong><span>Moodle</span></strong><span> is an online Learning Management System (LMS) that can be installed in moodlecloud or private websites.</span></p><h2 id='12-instructor-led-vs-self-paced-learning-modalities'><span>1.2 Instructor-Led vs Self-Paced Learning Modalities</span></h2><p><strong><span>Comparison Table of Instructor-Led vs Self-Paced Learning</span></strong></p><figure><table><thead><tr><th>&nbsp;</th><th><span>Instructor-Led</span></th><th><span>Self-Paced</span></th></tr></thead><tbody><tr><td><span>Course start</span></td><td><span>Specified by Instructor</span></td><td><span>Started by the student</span></td></tr><tr><td><span>Duration</span></td><td><span>Specified by Instructor</span></td><td><span>Depends of the student&#39;s own pace of learning</span></td></tr><tr><td><span>Instructor Led</span></td><td><span>Yes</span></td><td><span>No</span></td></tr><tr><td><span>Discussion</span></td><td><span>Peer to peer and Peer to Instructor</span></td><td><span>Peer to Peer</span></td></tr><tr><td><span>Content Access</span></td><td><span>As provided by Instructor</span></td><td><span>Available upon completion</span></td></tr></tbody></table></figure><hr /><h1 id='20-project-approach'><span>2.0 Project Approach</span></h1><p><span>Since the online course mainly consists of videos, the process is as follows:</span></p><ul><li><code>Scripting</code></li><li><code>Storyboarding</code></li><li><code>Audio recording</code></li><li><code>Video recording</code></li><li><code>Audio Editing</code></li><li><code>Video Editing</code></li><li><code>Animation</code></li><li><code>Joining Audio-Video-Animation</code></li><li><code>Captioning</code></li><li><code>Final Cut</code>
+<span>Please refer the previous reports for detail breakdown of each step.</span></li></ul><hr /><h1 id='30-project-outcomes'><span>3.0 Project Outcomes</span></h1><ul><li><span>A </span><code>Logistic Management Information System</code><span> (LMIS) is being developed underway</span></li><li><code>First Aid Care Training for Conflict Related Injuries</code><span> online course was continued creating with a majority of video materials</span></li><li><span>Training material videos were continued editing</span></li><li><span>Animated video clips are created to use in </span><code>First Aid Care Training for Conflict Related Injuries</code><span> online course</span></li><li><strong><span>Six</span></strong><span> videos were created during September 2022:</span></li></ul><ol start='' ><li><span>Chapter03 Video06 </span><code>Circulation Assessment</code><span> (</span><a href='https://drive.google.com/file/d/1qV_TZil3dx2361n9ZII0mvMs3bD99KVU/view?usp=sharing'><span>View</span></a><span>)</span></li><li><span>Chapter03 Video07 </span><code>Pelvic Binder</code><span> (</span><a href='https://drive.google.com/file/d/1EFP6Jc6-NRWRAfu9ITCe_UY0ZLQqpwhY/view?usp=sharing'><span>View</span></a><span>)</span></li><li><span>Chapter03 Video08 </span><code>Hypothermia and Head Injury</code><span> (</span><a href='https://drive.google.com/file/d/1Shhxt8orSHvhLj-jO1ltyKyBBcyKv265/view?usp=sharing'><span>View</span></a><span>)</span></li><li><span>Chapter04 Video01 </span><code>Wound Care Algorithm</code><span> (</span><a href='https://drive.google.com/file/d/1EzDa-SwOkoeG6LLd8rJW-1gYF7oZ0gg6/view?usp=sharing'><span>View</span></a><span>)</span></li><li><span>Chapter05 Video01 </span><code>Fracture</code><span> (</span><a href='https://drive.google.com/file/d/14-2gct1WxSwiHddpmdTndqFMfdYDfhIG/view?usp=sharing'><span>View</span></a><span>)</span></li><li><span>Chapter05 Video02 </span><code>Splinting</code><span> (</span><a href='https://drive.google.com/file/d/1KiXqAVZtYZ17Asp_A23GlzdkZSVqGz0d/view?usp=sharing'><span>View</span></a><span>)</span></li></ol><hr /><h1 id='40-conclusions-and-recommendations'><span>4.0 Conclusions and Recommendations</span></h1><ul><li><p><strong><span>A Logistic Management Information System (LMIS)</span></strong><span> is being developed and estimated beta testing phase should be started on first week of October. The EHSSG warehouse is going to be the first to test the beta system.</span></p></li><li><p><span>EHSSG has started creating an online course on </span><code>First Aid Care Training for Conflict Related Injuries</code><span> and a </span><code>Basic Course on Using Computer</code><span>.</span></p><ul><li><code>First Aid Care Training for Conflict Related Injuries</code><span> online course is not accepting students yet. The course is still under development. The development process is now faster with a new recruit.</span></li><li><span>The classroom needs to publicize to attract students after it is launched.</span></li><li><span>The </span><code>Basic Course on Using Computer</code><span> has been created and a batch of students from EHSSG&#39;s clinical supervisor internship training have completed the course.</span></li></ul></li><li><p><span>Target audience is inside Burma where internet is often cut</span></p><ul><li><span>Future online courses should include less video materials.</span></li><li><span>Existing video courses are pre-recorded and can be assessed at any time.</span></li><li><span>Videos should be made available to download.</span></li></ul></li><li><p><code>First Aid Care Training for Conflict Related Injuries</code><span> online course raw materials need placeholder videos</span></p><ul><li><span>Though audio contents keep up the coverage of the scripts, there is not enough video contents to match the audio</span></li><li><span>In future projects, the subject matter expert should provide a PowerPoint presentation to help the video editor create placeholder video during audio narration only clips.</span></li></ul></li><li><p><span>The script is the foundation of the entire project</span></p><ul><li><span>Once developed, the script should be made avilable to every team member of the project.</span></li><li><span>If the script had changes after it is created, the changes should be notified to every team member of the project. Otherwise, a team member would be creating content based on unused portion of the script.</span></li><li><span>The video presenter should use a </span><strong><span>teleprompter</span></strong><span> which was already purchased by EHSSG to reduce unnecessary time taken during recording and post-processing</span></li></ul></li><li><p><span>Putting efforts during audio and video recording saves a lot of time during post-processing.</span></p><ul><li><span>The entire post-processing time can be reduced with a script and following the script</span></li><li><span>Rehersing the script helps get rid of mistakes during recording and reduces files clutter saving time taken for post-processing.</span>
+<img src="https://drive.google.com/uc?export=view&id=1-BfVIPRd3LnngT76UG-1acMSj5l-HBTF" style="zoom:25%;" />
+<em><span>Image:Teleprompter</span></em></li></ul></li></ul><hr /><h1 id='50-glossary'><span>5.0 Glossary</span></h1><figure><table><thead><tr><th><span>Keyword</span></th><th><span>Description</span></th></tr></thead><tbody><tr><td><span>CSS</span></td><td><span>Cascading Stylesheet</span></td></tr><tr><td><span>EHSSG</span></td><td><span>Ethnic Health System Strengthening Group</span></td></tr><tr><td><span>FACT</span></td><td><span>First Aid Care Training for Conflict Related Injuries</span></td></tr><tr><td><span>HTML</span></td><td><span>Hypertext Markup Language</span></td></tr><tr><td><span>HTML5</span></td><td><span>Hypertext Markup Language version-5</span></td></tr><tr><td><span>LMIS</span></td><td><span>Logistic Management Information System</span></td></tr><tr><td><span>MySQL</span></td><td><span>My Structured Query Language</span></td></tr><tr><td><span>Oracle APEX</span></td><td><span>Oracle Application Express</span></td></tr></tbody></table></figure><div class='footnotes-area'  ><hr/>
+<div class='footnote-line'><span class='md-fn-count'>1</span> <span>Videos usually take a large amount of storage space in a web hosting. Most web hosting services are subscribed to premium hosting plans but it is a good practice to host photos and videos in another third party services in case of primary hosting server failure or an unexpected subscription cancels.</span> <a name='dfref-footnote-1' href='#ref-footnote-1' title='back to document' class='reversefootnote' >↩</a></div></div></div></div>
+</body>
+</html>
