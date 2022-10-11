@@ -1,0 +1,935 @@
+<!doctype html>
+<html style='font-size:12px !important'>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
+.mac-os-11 { --title-bar-height: 28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857143; overflow-x: hidden; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; tab-size: 4; background-position: inherit; background-repeat: inherit; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; word-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) { 
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+thead, tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right-width: 0px; background-color: inherit; }
+.CodeMirror-linenumber { }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; position: relative !important; background-position: inherit; background-repeat: inherit; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+svg { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; background-position: 0px 0px; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print { 
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; padding-bottom: 0px !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background-color: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) { 
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.reversefootnote { font-family: ui-monospace, sans-serif; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background-color: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; }
+a.md-print-anchor { white-space: pre !important; border: none !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; text-shadow: initial !important; background-position: 0px 0px !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom-width: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background-color: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print { 
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit; background-repeat: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex: 2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) { 
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) { 
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.428571429rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left-width: 28px; border-left-style: solid; border-left-color: transparent; border-right-width: 28px; border-right-style: solid; border-right-color: transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right-width: 8px; border-right-style: solid; border-right-color: transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+:root {
+    --primary-color: #37352f;
+    --bg-color: #ffffff;
+    --bg-color-dark: #f7f6f3;
+    --dark-trait: #e9e9e7;
+    --light-trait-100: #ecedec;
+    --light-trait-200: #c70000;
+    --light-trait-300: #37352f;
+    --light-trait-400: #f7f6f3;
+    --text-color: #37352f;
+    --text-color-secondary: #73726e;
+    --text-highlight-color: #fff;
+    --text-highlight-bg: rgba(var(--primary-color-rgb), 0.3);
+    --select-text-bg-color: #c0e5f4;
+	--search-select-text-color:#448361;
+    --search-select-bg-color: #edf3ec;
+    --code-color: #9a6e3a;
+    --border-radius: 4px;
+    --font-size: 16px;
+    --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+    --monospace: 'SF Mono Medium', 'Fira Code', 'Cousine', 'Consolas', monospace;
+    --heading-char-color: var(--light-trait-400);
+    --color-popover-bg-color: var(--text-color);
+    --rawblock-edit-panel-bd: var(--bg-color-dark);
+    --control-text-color: #72706b;
+    --meta-content-color: var(--primary-color);
+    --primary-btn-border-color: var(--primary-color);
+    --side-bar-bg-color: var(--bg-color-dark);
+    --item-hover-bg-color: #e8e7e4;
+    --active-file-bg-color: #e8e7e4;
+    --active-file-border-color: var(--bg-color);
+    --window-border: 1px solid var(--bg-color);
+    --focus-ring-color: transparent;
+}
+
+html {
+    font-size: var(--font-size);
+}
+
+body {
+    font-family: var(--font-family);
+    -webkit-font-smoothing: antialiased;
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+code {
+    color: #ec5757;
+    background-color: #eeedeb;
+    padding: 0 2px 0 2px;
+}
+
+#write {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+    #write {
+        max-width: 1024px;
+    }
+}
+
+@media only screen and (min-width: 1800px) {
+    #write {
+        max-width: 1200px;
+    }
+}
+
+#write>ul:first-child, #write>ol:first-child {
+    margin-top: 30px;
+}
+
+a {
+    color: var(--primary-color);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    position: relative;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    line-height: 1.4;
+    cursor: text;
+}
+
+h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+    text-decoration: none;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+    font-size: inherit;
+}
+
+h1 {
+    padding-bottom: 0.3em;
+    font-size: 2.2em;
+    line-height: 1.3;
+}
+
+h2 {
+    padding-bottom: 0.3em;
+    font-size: 1.75em;
+    line-height: 1.225;
+}
+
+h3 {
+    font-size: 1.4em;
+    line-height: 1.43;
+}
+
+h4 {
+    font-size: 1.2em;
+}
+
+h5 {
+    font-size: 1em;
+}
+
+h6 {
+    font-size: 1em;
+    color: var(--light-trait-300);
+}
+
+p, blockquote, ul, ol, dl, table {
+    margin: 0.8em 0;
+}
+
+li>ol, li>ul {
+    margin: 0 0;
+}
+
+hr {
+    background-color: var(--light-trait-100);
+    height: 1.5px;
+    border: none
+}
+
+a,
+.md-def-url {
+    color: var(--text-color);
+    text-decoration: none;
+    border-bottom:0.05em solid;
+    border-color: #37352f;
+    opacity:0.6;
+    transition: all .1s ease-in; 
+}
+
+a:hover {
+    text-decoration: none;
+    opacity:1;
+}
+
+sup.md-footnote {
+    background-color: var(--light-trait-400);
+    color: #888884;
+}
+
+li p.first {
+    display: inline-block;
+}
+
+ul, ol {
+    padding-left: 30px;
+}
+
+ul:first-child, ol:first-child {
+    margin-top: 0.35%;
+}
+
+ul:last-child, ol:last-child {
+    margin-bottom: 0;
+}
+
+mark, .ty-file-search-match-text, .md-search-hit {
+    background: #fdebec;
+	color: #d44c47;
+}
+
+mark {
+    border-radius: 4px;
+    color: #402c1b;
+    font-weight: inherit;
+    background-color: #fdecc8;
+    padding-left: 4px;
+    padding-right: 4px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+.md-search-hit * {
+    color: var(--search-select-text-color);
+}
+
+/* Search highlight */
+.cm-search-hit.CodeMirror-selectedtext, .md-search-hit.md-search-select, .md-search-select {
+    outline: 0px solid var(--search-select-text-color);
+}
+
+.outline-item.select, .ty-search-item-line.select, .ty-search-item.select {
+    outline-width: 2px;
+}
+
+.outline-item.select {
+    outline-offset: 0px;
+}
+
+blockquote {
+    margin-left: 1.75px;
+    margin-right: 0px;
+    border-left: 4px solid var(--text-color);
+    padding: 10px 14px 7px 22px;
+}
+
+blockquote blockquote {
+    padding-right: 0;
+}
+
+table {
+    padding: 0;
+    word-break: initial;
+}
+
+table tr {
+    border-top: 1px solid var(--dark-trait);
+    margin: 0;
+    padding: 0;
+}
+
+table tr th {
+    font-weight: bold;
+    border: 1px solid var(--dark-trait);
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+
+table tr td {
+    border: 1px solid var(--dark-trait);
+    margin: 0;
+    padding: 6px 13px;
+}
+
+table tr th:first-child, table tr td:first-child {
+    margin-top: 0;
+}
+
+table tr th:last-child, table tr td:last-child {
+    margin-bottom: 0;
+}
+
+
+kbd {
+    font-size: 0.875rem;
+    background: var(--bg-color-dark);
+    border: 1px solid var(--dark-trait);
+    box-shadow: 0 2px 0 var(--dark-trait);
+    color: var(--text-color-secondary);
+}
+
+.md-fences, code, tt {
+    border: none;
+    background-color: #f7f6f3;
+    border-radius: var(--border-radius);
+    padding: 2px 4px 0px 4px;
+    font-size: 0.975em;
+    font-weight: medium;
+    font-family: var(--monospace)
+}
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+#write pre.md-meta-block {
+    padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: var(--bg-color-dark);
+    border: 0;
+    border-radius: var(--border-radius);
+    color: var(--text-color-secondary);
+    margin-top: 0 !important;
+}
+
+#write .mathjax-block .md-rawblock-tooltip {
+    border-top-left-radius: var(--border-radius);
+    border-top-right-radius: var(--border-radius);
+}
+
+#write .mathjax-block .md-math-container {
+    border-top-left-radius: var(--border-radius);
+    border-bottom-right-radius: var(--border-radius);
+    border-bottom-left-radius: var(--border-radius);
+}
+
+#write .md-mathblock-panel .md-rawblock-control:first-of-type {
+    border-top-left-radius: var(--border-radius);
+}
+
+.md-mathjax-midline {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+.md-inline-math script {
+    color: var(--code-color);
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: none;
+    border-radius: var(--border-radius);
+}
+
+#write .code-tooltip {
+    bottom: initial;
+    top: 100%;
+    left: initial;
+    right: -1px;
+    background: var(--bg-color-dark);
+    border: 1px solid var(--dark-trait);
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-top: 0;
+    font-family: var(--monospace);
+}
+
+#write .md-mathblock-panel .code-tooltip {
+    right: 0;
+    border: none;
+}
+
+/* TODO */
+#write .md-task-list-item>input {
+    -webkit-appearance: initial;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    position: absolute;
+    border: 1px solid var(--text-color);
+    /* border-radius: 100%; */
+    margin-left: -1.45rem;
+    height: 0.95rem;
+    width: 0.95rem;
+    transition: all 0.35s;
+}
+
+#write .md-task-list-item>input:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+#write .md-task-list-item>input[checked] {
+    background: #2eaadc;
+    border: 1px solid #2eaadc;
+    text-decoration: line-through;
+}
+
+#write .md-task-list-item>input[checked]::before {
+    display: inline-block;
+    vertical-align: middle;
+    content: '✓';
+    position: absolute;
+    margin-top: 0.05rem;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    text-align: absolute;
+    color: var(--bg-color);
+    font-size: 0.75em;
+    font-weight: 760;
+}
+
+#write .md-task-list-item>input[checked]::after {
+    text-decoration: line-through;
+}
+
+/* TODO */
+.md-image>.md-meta {
+    border-radius: var(--border-radius);
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-toc {
+    margin-top: 20px;
+    padding-bottom: 20px;
+}
+
+/* Source mode */
+.CodeMirror.cm-s-typora-default *, .cm-s-typora-default * {
+    background: inherit;
+    color: var(--text-color);
+    font-family: var(--monospace);
+    font-size: var(--font-size) !important;
+    font-style: normal;
+    font-weight: medium;
+}
+
+.CodeMirror.cm-s-typora-default div.CodeMirror-cursor {
+    border-left: 2px solid var(--text-color);
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+.outline-expander {
+    width: 1.5rem;
+    vertical-align: initial;
+}
+
+.outline-expander:before, .outline-expander:hover:before, .outline-item-open>.outline-item>.outline-expander:before, .outline-item-open>.outline-item>.outline-expander:hover:before {
+    content: "\f125";
+    transition: transform 125ms ease-in-out;
+}
+
+.outline-item-open>.outline-item>.outline-expander:hover:before, .outline-item-open>.outline-item>.outline-expander:before {
+    transform: rotate(90deg);
+}
+
+.outline-label:hover {
+    text-decoration: none;
+}
+
+#toc-dropmenu {
+    background: var(--bg-color-dark);
+}
+
+#toc-dropmenu .outline-title {
+    font-size: 1rem;
+    text-transform: uppercase;
+}
+
+.dropdown-menu .divider {
+    display: none;
+}
+
+.context-menu {
+    border: none!important;
+    backdrop-filter: saturate(180%) blur(20px) brightness(1.1);
+    background-color: var(--bg-color-dark);
+    box-shadow: 0 25.6px 57.6px 0 rgba(0, 0, 0, .22), 0 4.8px 14.4px 0 rgba(0, 0, 0, .18)!important;
+}
+
+.file-node-background {
+    height: 31px;
+}
+
+.file-node-content:hover .file-node-icon, .file-node-content:hover .file-node-open-state {
+    visibility: visible;
+}
+
+.file-node-icon {
+    margin-right: 8px;
+}
+
+.file-library-node:not(.file-node-root):focus>.file-node-content {
+    outline: none;
+}
+
+/* New file animation */
+.blink-area {
+    animation: none;
+}
+
+.file-list-item-summary {
+    font-size: var(--font-size);
+    font-family: var(--font-family);
+}
+
+#md-searchpanel input {
+    border-radius: var(--border-radius);
+    box-shadow: none;
+}
+
+#md-searchpanel input:focus {
+    box-shadow: none;
+    border-color: var(--meta-content-color);
+}
+
+#md-searchpanel .search-type-selection {
+    width: auto;
+}
+
+#md-searchpanel .btn:not(.close-btn):hover {
+    box-shadow: none;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: var(--side-bar-bg-color);
+}
+
+#md-notification .btn {
+    border: 0;
+}
+
+/* CODE HIGHLIGHT */
+pre.CodeMirror-line {
+    color: #999999!important
+}
+
+.cm-variable {
+    color: #37352f!important;
+}
+
+.cm-keyword {
+    color: #0277aa !important
+}
+
+.cm-tag {
+    color: #ff5a5a!important
+}
+
+.cm-variable-3 {
+    color: #48ff00!important;
+}
+
+.cm-bracket, .cm-error {
+    color: #ff5a5a!important
+}
+
+.cm-attribute {
+    color: #0277aa!important;
+}
+
+.cm-def {
+    color: #dc4a68!important;
+}
+
+.cm-comment {
+    color: #708090!important;
+}
+
+.cm-string {
+    color: #669900!important;
+    font-variant-ligatures: common-ligatures!important;
+}
+
+.cm-tag:not() {
+    font-weight: 700;
+}
+
+.cm-operator {
+    color: #9a6e3b!important;
+}
+
+.cm-number {
+    color: #990055!important;
+}
+
+.cm-meta {
+    color: var(--text-color) !important;
+    font-weight: 700!important;
+}
+
+.cm-atom { color: #845dc4; }
+
+.cm-builtin {
+    color: #669900 !important;
+}
+
+.cm-property {
+    color: var(--text-color) !important;
+}
+
+.cm-variable-2 {
+    color: var(--text-color) !important;
+}
+
+.cm-variable-3 {
+    color: #845dc4;
+}
+
+/* CODE HIGHLIGHT */
+.file-tree-node.active>.file-node-background {
+    background-color: var(--active-file-bg-color);
+    border-left: 0px solid #dad9d6!important;
+    border-color: #dad9d6!important;
+    background-color: #e8e7e4!important;
+}
+
+.CodeMirror-gutters {
+    border-right: 1px solid #f1f3f450;
+    background: inherit;
+    white-space: nowrap;
+}
+
+.ty-footer, .sidebar-footer, footer {
+    backdrop-filter: saturate(120%) blur(20px) brightness(0.85);
+    border: none!important;
+    background: none;
+    background-color: #f7f6f3;
+}
+
+.code-tooltip {
+    border-radius: 4px;
+    background-color: #313334;
+    box-shadow: 0 25.6px 57.6px 0 rgba(0, 0, 0, .52), 0 4.8px 14.4px 0 rgba(0, 0, 0, .28)!important;
+}
+
+#sidebar-files-menu {
+    border-radius: 4px;
+    border: none!important;
+    box-shadow: 0 25.6px 57.6px 0 #f7f6f3, 0 4.8px 14.4px 0 rgba(0, 0, 0, .28);
+}
+
+.code-tooltip.md-tooltip-hide.md-hover-tip {
+    box-shadow: 0 25.6px 57.6px 0 rgba(0, 0, 0, .52), 0 4.8px 14.4px 0 rgba(0, 0, 0, .28);
+}
+
+#typora-sidebar {
+    border: none !important;
+}
+
+#footer-word-count-info, #spell-check-panel {
+    border: none!important;
+    backdrop-filter: saturate(120%) blur(20px) brightness(0.85)!important;
+    box-shadow: 0 25.6px 57.6px 0 rgba(0, 0, 0, .32), 0 4.8px 14.4px 0 rgba(0, 0, 0, .28)!important;
+}
+
+/* Windows/Linux unibody mode */
+.megamenu-content,
+.megamenu-opened header {
+    color:  var(--primary-color);
+    background: var(--bg-color-dark);
+}
+
+#recent-file-panel-action-btn {
+    background: inherit;
+    border: 1px var(--light-trait-300) solid;
+}
+
+.megamenu-menu-panel table td:nth-child(1) {
+    color: var(--text-color);
+    background: var(--bg-color-dark);
+}
+
+.megamenu-menu-panel table td:nth-child(2) {
+    color: var(--text-color);
+    background: var(--bg-color-dark);
+}
+
+.megamenu-menu-panel tbody tr:hover td:nth-child(1) {
+    color: var(--text-color);
+    background: var( --active-file-bg-color);
+}
+
+.megamenu-menu-panel tbody tr:hover td:nth-child(2) {
+    color: var(--text-color);
+    background: var( --active-file-bg-color);
+}
+
+.megamenu-menu-panel input[type='text'] {
+    background: inherit;
+    border: 1px var(--control-text-color) solid;
+}
+
+#recent-file-panel-action-btn {
+    background: inherit;
+}
+
+.megamenu-menu, .megamenu-content {
+	background: var(--side-bar-bg-color);
+	color: var(--text-color);
+}
+
+#top-titlebar, #top-titlebar * {
+    background: inherit;
+	color: var(--text-color);
+}
+
+.megamenu-menu-header #megamenu-menu-header-title:before {
+	color:  var(--text-color);
+}
+
+megamenu-back-btn {
+	color: var(--text-color);
+	border-color: var(--text-color);
+}
+
+.megamenu-menu-header #megamenu-menu-header-title,
+.megamenu-menu-header:hover,
+.megamenu-menu-header:focus {
+	color: inherit;
+}
+
+.megamenu-menu-panel table tr:nth-child(2n + 1) {
+    background-color:  var(--side-bar-bg-color);
+}
+
+ @media print { @page {margin: 0 0 0 0;} body.typora-export {padding-left: 0; padding-right: 0;} #write {padding:0;}}
+</style><title>doc</title>
+</head>
+<body class='typora-export'><div class='typora-export-content'>
+<div id='write'  class=''><h1 id='esignature-နှင့်-digital-signature'><span>eSignature နှင့် Digital Signature</span></h1><p><span>Soft copy မှာလက်မှတ်ထည့်ဖို့ ရွေးခြယ်စရာ (၂) ခုရှိပါတယ်။</span></p><ol start='' ><li><span>Print ထုတ် --&gt; လက်မှတ်ထိုး --&gt; Scan ဖတ် --&gt; Email ပို့</span></li><li><span>eSignature (သို့) Digital Siganture လုပ် --&gt; Soft copy မှာပဲ လက်မှတ်ထိုး --&gt; Email ပို့</span>
+<span>နံပါတ်(၁) နည်းက လွယ်ပေမယ့် အလုပ်ရှုပ်တယ်။ စာရွက်လည်းပြုန်းတီးပါတယ်။ လက်မှတ်ထိုးမယ့်သူကိုသွားရှာပြီးလက်မှတ်တောင်းရတာ၊ ပြန်လာပြီး scan ပြန်ဖတ်ရတာတွေကြောင့် မလိုအပ်ဘဲ အချိန်ကုန်တတ်ပါသေးတယ်။</span>
+<span>နံပါတ် (၂) က အစပိုင်း နည်းနည်းအလုပ်ရှုပ်ပေမယ့် တစ်ခါလုပ်ထားလျှင် အဆင်သင့်သုံးရုံပါပဲ။</span></li></ol><h2 id='esignature-နှင့်-digital-signature-ကွာခြားချက်'><span>eSignature နှင့် Digital Signature ကွာခြားချက်</span></h2><p><span>eSignature ဆိုတာ Electronic Signature ဖြစ်ပြီး ကျွန်တော်တို့ပုံမှန်ထိုးနေကျလက်မှတ်ကို electronic ပုံစံပြောင်းထားတာပဲဖြစ်ပါတယ်။ အလွယ်ပြောရလျှင် ထိုးမြဲလက်မှတ်ကို soft copy ပြောင်းထားတာဖြစ်ပါတယ်။ Digital Signature ဆိုတာကျတော့ ထိုးမြဲလက်မှတ်အပြင် code နံပါတ်တွေပါဝင်တဲ့ စနစ်တစ်ခုဖြစ်ပါတယ်။ eSignature ထက် Digital Signature က ပိုလုံခြုံပြီး အတုလုပ်ရခက်ပါတယ်။</span></p><h3 id='esignature-ပြုလုပ်ခြင်း'><span>eSignature ပြုလုပ်ခြင်း</span></h3><ol start='' ><li><p><span>စာရွက်အလွတ်ပေါ်မှာ လက်မှတ်ထိုးပါ။ ဓါတ်ပုံရိုက်ပါ။</span>
+<img src="https://i.imgur.com/NMNXXUm.png" alt="photograph signature" style="zoom: 10%;" /></p><p><span>ဖုန်းထဲကဓါတ်ပုံကို ကွန်ပြူတာထဲကိုရွှေ့ပါ။</span><br><br></p></li><li><p><span>Microsoft Word ဖွင့်ပါ။ Insert &gt; Picture ကိုသွားပါ။</span>
+<img src="https://i.imgur.com/jfSDavo.png" style="zoom:50%;" /></p><p><span>လက်မှတ် image file ကိုရွေးပါ။</span><br><br></p></li><li><p><span>လက်မှတ်ဖိုင်ကို ထည့်ပြီးတဲ့အခါ အခုလိုတွေ့ရပါမယ်။</span>
+<img src="https://i.imgur.com/qH3vArW.png" style="zoom:25%;" /><br><br></p></li><li><p><span>Word ထဲမှာ ပုံကို select လုပ်ပြီး Format ကိုသွားပါ။</span>
+<img src="https://i.imgur.com/yIbUELw.png" style="zoom:50%;" /><br><br></p></li><li><p><span>Color ကိုဆက်သွားပါ။</span>
+<img src="https://i.imgur.com/kFjCnFk.png" style="zoom:50%;" /><br><br></p></li><li><p><span>Black and White 50% ကိုရွေးပါ။</span>
+<img src="https://i.imgur.com/kncY7Ev.png" style="zoom:25%;" /><br><br></p></li><li><p><span>ပုံရဲ့ ပိုနေတဲ့အပိုင်းတွေကို ဖြတ်တောက်ပစ်ဖို့လိုပါတယ်။ Format ထဲက Crop ကိုနှိပ်ပါ</span>
+<img src="https://i.imgur.com/zPQMlBb.png" style="zoom:50%;" /><br><br></p></li><li><p><span>ပုံမှာပြထားတဲ့အတိုင်း ပုံရဲ့မလိုတဲ့အပိုင်းတွေကို crop လုပ်ပါ</span>
+<img src="https://i.imgur.com/xcd25KR.png" style="zoom:25%;" /><br><br><span>ပြီးလျှင် Crop ကိုပဲ ပြန်နှိပ်ပါ။</span><br></p></li><li><p><span>လက်မှတ်ရဲ့ နောက်ခံဟာ အဖြူရောင်ဖြစ်နေပါသေးတယ်။ စာရွက်အဖြူပေါ်မှာဆို မသိသာပေမယ့် နောက်ခံအရောင်တစ်ခုခုပေါ်မှာ တင်ကြည့်မယ်ဆိုလျှင် အဖြူကွက်ကြီးပါနေနိုင်သေးတာကြောင့် လက်မှတ်ရဲ့နောက်ခံကို ဖျက်ထားတာပိုကောင်းပါတယ်။ Remove background ကိုနှိပ်ပါ။</span><br><img src="https://i.imgur.com/iwZVUz6.png" style="zoom:50%;" /><br><br></p></li><li><p><span>ပန်းရောင်နောက်ခံပုံစံပြောင်းသွားတာ တွေ့ရပါမယ်။ ပန်းရောင်ဖြစ်နေတဲ့အပိုင်းတွေဟာ ပျက်သွားမယ့်အပိုင်းပါ။ လက်မှတ်ရဲ့အချို့အပိုင်းတွေဟာ ပန်းရောင်ထဲဝင်ပြီး အရောင်မှိန်နေတာမျိုး တွေ့ရတတ်ပါတယ်။</span><br><img src="https://i.imgur.com/heEKUW3.png" style="zoom:25%;" /><br><br></p></li><li><p><span>Background removal ထဲက Mark areas to keep ကိုနှိပ်ပါ။ ပေါ်ချင်တဲ့အပိုင်းပေါ်မှာ click တစ်ချက်နှိပ်ပါ။</span><br><img src="https://i.imgur.com/x4r4oWS.png" style="zoom:25%;" /><br><br></p></li><li><p><span>လိုချင်တဲ့အပိုင်းအားလုံးပေါ်ပြီဆိုလျှင် Keep changes ကိုနှိပ်ပါ။</span><br><img src="https://i.imgur.com/25GnVPX.png" style="zoom:25%;" /><br><br></p></li><li><p><span>လက်မှတ်အောက်မှာ မိမိအမည်၊ တာဝန်၊ ရုံးဌာန စသည်ဖြင့် မိမိနှင့်သက်ဆိုင်တဲ့ အချက်အလက်များကို ရိုက်ထည့်ပါ။</span><br><img src="https://i.imgur.com/AEfb6lE.png" style="zoom:50%;" /><br><br></p></li><li><p><span>လက်မှတ်၊ အမည်၊ တာဝန်၊ ရုံးဌာန စသဖြင့် အဆင်ပြေပြီဆိုလျှင် အားလုံးကို selection လုပ်ပြီး Insert &gt; Quick Parts ကိုသွားပါ။</span><br><span>Save Selection to Quick Part Gallery ကိုနှိပ်ပါ</span><br><img src="https://i.imgur.com/DH1u65f.png" style="zoom:25%;" /><br><br></p></li><li><p><span>Name မှာ ကြိုက်တဲ့နာမည်ပေးပါ။ OK နှိပ်ပါ။</span><br><img src="https://i.imgur.com/8Xu6gia.png" style="zoom:50%;" /><br><br></p></li><li><p><span>ဒါဆိုရင် Quick Part ထဲကို တစ်ခါတည်းဝင်သွားပါပြီ။ နောက်ပိုင်း document အသစ်တွေ လက်မှတ်ထိုးဖို့ရှိလျှင် လက်မှတ်ထိုးချင်တဲ့နေရာမှာ cursor ချပြီး Quick Part ထဲမှာသွားနှိပ်လိုက်ရုံနှင့် လက်မှတ်ဝင်သွားမှာဖြစ်ပါတယ်။</span><br><img src="https://i.imgur.com/l2Klmoj.png" style="zoom:50%;" /><br><br>
+<span>eSignature ထည့်ထားတဲ့ file ကို လက်ခံရရှိသူမှာ လက်မှတ်ပုံကို အနေအထားမပျက်ရနိုင်တာကြောင့် မိမိထိုးမြဲလက်မှတ်ကို save လုပ်ပြီးပြန်သုံးနိုင်တဲ့ အန္တရာယ်ရှိပါတယ်။ ဒါကြောင့် eSignature ထည့်ပြီး soft copy file ပေးတဲ့အခါ PDF file ပြောင်းပေးတာက ပိုစိတ်ချရပါတယ်။</span></p></li></ol><h3 id='digital-signature'><span>Digital Signature</span></h3><p><span>Digital Signature မှာ eSignature ကိုပဲလုံခြုံရေးအဆင့်မြှင့်ထားတဲ့အမျိုးအစားအနေနှင့် သုံးတတ်ကြသလို eSignature လိုမျိုး ထိုးမြဲလက်မှတ်ပုံစံလုံးဝမပါဘဲ code နံပါတ်သာပါဝင်တဲ့ ပုံစံအနေနှင့်လည်းသုံးတတ်ကြပါတယ်။</span></p><h4 id='digital-signature-အလုပ်လုပ်ပုံ'><span>Digital Signature အလုပ်လုပ်ပုံ</span></h4><p><span>Digital Signature မှာ Algorithm (၃) မျိုးပါဝင်လေ့ရှိပါတယ်။</span><br><br>
+<strong><span>Key Generation Algorithm</span></strong>
+<span>Digital Signature တစ်ခုရယူလိုက်တာနှင့် Private Key နှင့် Public Key နှစ်မျိုးကို ထုတ်ပေးပါတယ်။ နာမည်အတိုင်းပါပဲ၊ Private Key ဆိုတာ လက်မှတ်ထိုးသူတစ်ဦးတည်းသိထားရမယ့် Key ဖြစ်ပြီး Public Key ဆိုတာကတော့ အခြားသူတွေပါသိလို့ရတဲ့ Key ဖြစ်ပါတယ်။ လက်မှတ်ထိုးသူကနေ လက်ခံရရှိသူကို Public Key အသိပေးထားလို့ရပါတယ်။ လက်ခံရရှိသူဟာ အဲဒီ Public Key ကိုသုံးပြီး သူရရှိတဲ့စာရွက်စာတမ်းဟာ လက်မှတ်ထိုးတဲ့လူဆီက အမှန်တကယ် Digital Signature သုံးထားတာဟုတ်မဟုတ် တိုက်ဆိုင်စစ်ဆေးလို့ရပါတယ်။</span><br><br>
+<strong><span>Signing Algorithm</span></strong>
+<span>Private Key ကိုအသုံးပြုပြီး Digital Signature တစ်ခုဖန်တီးလိုက်တာဖြစ်ပါတယ်။</span><br><br>
+<strong><span>Signature Verifying Algorithm</span></strong>
+<span>ဒါကတော့ ခုနကအတိုင်းပါပဲ။ လက်မှတ်ထိုးလိုက်တဲ့လူရဲ့ Public Key ကိုသိထားတဲ့လက်ခံရရှိသူဟာ စာရွက်စာတမ်းမှာပါလာတဲ့ Digital Signature ကို အစစ်အမှန်ဟုတ်မဟုတ် တိုက်ဆိုင်စစ်ဆေးတာပဲဖြစ်ပါတယ်။</span>
+<span>Digital Signature မှာပါတဲ့ Public Key နဲ့  လျှို့ဝှက်ထားတဲ့ Private Key ကို လူတစ်ယောက်တည်းကနေ ထွက်လာတာဟုတ်မဟုတ် software ကနေစစ်ကြည့်လို့ရသလို လူတစ်ယောက်ရဲ့ Private Key ကိုမသိဘဲ သူ့ရဲ့ Digital Signature ကိုသူများဖန်တီးယူလို့လည်းမရပါဘူး။</span><br><br><img src="https://i.imgur.com/zZGWoDY.png" style="zoom:50%;" /><br><br>
+<span>ပုံမှာ အဲလစ်ဟာ ဘော့ထံ စာတစ်စောင်ပို့လိုက်ပါတယ်။ အဲလစ်ဟာသူတစ်ဦးတည်းသိတဲ့ Private Key နှင့် လက်မှတ်ထိုးလိုက်ပါတယ်။ စာမှာ Public Key နှင့်ပူးတွဲထွက်သွားပြီး ဘော့ဆီရောက်တဲ့အခါ ဘော့ကအဲဒီ Public Key ဟာ အဲလစ်ကိုယ်တိုင်ထိုးထားတာဟုတ်/မဟုတ် စစ်ကြည့်နိုင်ပါတယ်။</span></p><h4 id='digital-signature-ပြုလုပ်ခြင်း'><span>Digital Signature ပြုလုပ်ခြင်း</span></h4><p><span>Digital Signature ဟာ eSignature လုပ်ရသလို အစအဆုံးကိုယ်တိုင်လုပ်ဖို့မလွယ်ပါဘူး။ ဒါကြောင့် Digital Signature လုပ်ပေးတဲ့ ဝန်ဆောင်မှုတစ်ခုခုကို ဝယ်ယူအသုံးပြုရပါတယ်။ Digital Signature ဝန်ဆောင်မှုပေးတဲ့ Website တွေအများကြီးရှိပြီး Google မှာ Digital Signature Service Provider လို့ရှာလိုက်လျှင်တွေ့နိုင်ပါတယ်။ အားလုံးလိုလို ဝယ်သုံးရတာဖြစ်ပြီး တစ်ယောက်တည်းသုံးလျှင်တစ်ဈေး၊ အများသုံးလျှင်တစ်ဈေး အစားစားရှိပါတယ်။</span>
+<span>Digital Signature Service ပေးတဲ့အထဲက DocuSign ရဲ့ဈေးနှုန်းကို အကြမ်းဖျဉ်းအားဖြင့် </span><a href='https://www.docusign.com/products-and-pricing' target='_blank' class='url'>https://www.docusign.com/products-and-pricing</a><span> မှာကြည့်နိုင်ပါတယ်။</span>
+<span>ကျွန်တော်တို့အများစုလက်လှမ်းမီတာကတော့ Microsoft Office နှင့် Adobe Acrobat တို့ပဲဖြစ်ပါတယ်။ ပုံသေအားဖြင့် ကျွန်တော်တို့ကွန်ပြူတာတွေမှာ Microsoft Word, Excel တို့လို၊ Adobe Acrobat တို့လို Application တွေ အမြဲပါလေ့ရှိပြီး ရုံးလုပ်ငန်းသမားတွေ အမြဲသုံးနေရတဲ့ application တွေဖြစ်တာကြောင့် တချို့က ဒီ application တွေကို လိုင်စင်နှင့်ဝယ်သုံးကြသလို crack လုပ်ပြီးတော့သုံးကြတာကြောင့် Microsoft Office နှင့် Adobe Acrobat တို့ကနေ Digital Signature ပြုလုပ်ဖို့ အားလုံးအဆင်ပြေနိုင်မယ်လို့ထင်ပါတယ်။ Microsoft Word ကနေ Digital Signature ပြုလုပ်တာက ပိုလွယ်ပါတယ်။ Microsoft Word နှင့်လုပ်တဲ့ Digital Signature ဟာ code နံပါတ်တွေမပါပေမယ့် သူ့အတိုင်းအတာအလျောက် စိတ်ချရတယ်လို့ယူဆနိုင်ပါတယ်။</span><br><br>
+<strong><span>Microsoft Word ဖြင့် Digital Signature ပြုလုပ်ခြင်း</span></strong></p><ol start='' ><li><span>လက်မှတ်ကို ဓါတ်ပုံရိုက်ပြီး word ထဲထည့်ပါ။ ဒီအဆင့်တွေကို မသိသေးလျှင် အပေါ်က eSignature အပိုင်းမှာ ပြန်ဖတ်လို့ရပါတယ်။</span><br><br><img src="https://i.imgur.com/qH3vArW.png" style="zoom:25%;" /><br><br></li><li><span>လက်မှတ်ကို Crop လုပ်ပြီး နောက်ခံဖျက်တဲ့အဆင့်ထိလုပ်ပြီးလျှင် ပုံကို Right Click &gt; Save as Picture ကိုနှိပ်ပါ။</span><br><br><img src="https://i.imgur.com/JpMqoQ3.png" style="zoom:25%;"/><br><br></li><li><span>လုံခြုံစိတ်ချရတဲ့ တစ်နေရာရာမှာ image ကိုသိမ်းပါ။ Word ထဲက လက်မှတ်ပုံကိုပြန်ဖျက်လိုက်ပြီး ဖိုင်ကိုလည်း Save မလုပ်ဘဲ ပိတ်လိုက်ပါ။</span></li><li><span>ဒါပြီးလျှင် Certificate လုပ်ဖို့လိုပါတယ်။ 64 bit Windows အတွက် C:\Program Files\Microsoft Office\root\Office16 ကိုသွားပါ။ 32 bit ဆိုလျှင် C:\Program Files (x86)\Microsoft Office\root\ ကိုသွားပါ။</span></li><li><span>SelfCert.exe ကိုဖွင့်ပါ။</span></li><li><span>Your certificate&#39;s name မှာ နှစ်သက်ရာအမည်ရိုက်ထည့်ပါ။</span><br><br><img src="https://i.imgur.com/hNfHQBg.png" style="zoom:50%;" /><br><br></li><li><span>SelfCert Success ဆိုတဲ့ Dialog ပေါ်လာလျှင် OK နှိပ်ပြီးပိတ်လို့ရပါပြီ။</span><br><br><img src="https://i.imgur.com/ahbQ8YK.png" style="zoom:50%;" /><br><br></li><li><span>Microsoft Word မှာ လက်မှတ်ထိုးချင်တဲ့ soft copy ကိုဖွင့်ပါ။ လက်မှတ်ထိုးမယ့်နေရာမှာ cursor ချပြီး Insert &gt; Signature Line &gt; Microsoft Office Signature Line ကိုနှိပ်ပါ</span><br><br><img src="https://i.imgur.com/1ndrBVV.png" style="zoom:50%;" /><br><br></li><li><span>Suggested Signer မှာ မိမိနာမည်ထည့်ပါ။ Title မှာ တာဝန်/ရာထူးထည့်ပါ။ email ထည့်ပါ။ လက်မှတ်မှာရက်စွဲထည့်ချင်လျှင် Show sign date in signature line ကိုအမှတ်ခြစ်ပြီး Ok နှိပ်ပါ။</span><br><br><img src="https://i.imgur.com/IzT82gN.png" style="zoom:50%;" /><br><br></li><li><span>signature ပေါ်လာလျှင် double click နှိပ်ပါ။</span><br><br><img src="https://i.imgur.com/aNs2icd.png" style="zoom:50%;" /><br><br></li><li><span>X ရဲ့ဘေးကအကွက်မှာ ကိုယ့်နာမည်ရိုက်ထည့်လျှင် နာမည်နှင့်လက်မှတ်ထိုးပေးပြီး ထိုးမြဲလက်မှတ်ပုံထည့်ချင်လျှင် Select image ကိုနှိပ်ပါ။</span><br><br><img src="https://i.imgur.com/87uw6W5.png" style="zoom:50%;" /><br><br></li><li><span>Browse ကိုထပ်နှိပ်ပါ။ လက်မှတ်ပုံကိုရွေးပြီးဖွင့်ပါ။</span><br><br><img src="https://i.imgur.com/vmR8t45.png" style="zoom:50%;" /><br><br></li><li><span>လက်မှတ်ပုံသေးသေးပဲမြင်ရတာဟာ ပုံမှန်ပါပဲ။ size ကြီးလို့မရတော့ပါဘူး။ ဒီလောက်အနေအထားကို ကြိုက်ပြီဆိုရင် Sign နှိပ်လိုက်လို့ရပါပြီ။ လက်မှတ်ကသေးလို့ မကြိုက်လျှင် ပုံမထည့်ဘဲ နာမည်ပဲရိုက်ထည့်လည်း အဆင်ပြေပါတယ်</span><br><br><img src="https://i.imgur.com/4IKU3Pp.png" style="zoom:50%;" /><br><br></li><li><span>Sign နှိပ်ပြီး Yes ထပ်နှိပ်ပါ။</span><br><br><img src="https://i.imgur.com/xjMudvd.png" style="zoom:50%;" /><br><br></li><li><span>Signature Confirmation ပေါ်လာလျှင် OK နှိပ်ပါ။ လက်မှတ်ထိုးလိုက်ပြီဆိုတာနှင့် Edit ပိတ်သွားပါပြီ။</span><br><br><img src="https://i.imgur.com/SyhUosb.png" style="zoom:50%;" /><br><br></li><li><span>ဒီ Microsoft Word file ကို နောက်ကွန်ပြူတာတစ်လုံးမှာဖွင့်လျှင် Signature ကို ပြင်လို့၊ ဖျက်လို့မရတော့ပါဘူး။</span><br><br><img src="https://i.imgur.com/1ztnr8Y.png" style="zoom:50%;" /><br><br></li><li><span>Edit Anyway နှိပ်ပြီးပြင်မယ်ဆိုလျှင် Signature အလိုအလျောက်ပျက်သွားမှာဖြစ်ပါတယ်။</span><br><br><img src="https://i.imgur.com/57pygv4.png" style="zoom:50%;" /><br><br></li><li><span>တခြားကွန်ပြူတာတစ်လုံးမှာ Signature ကို double click နှိပ်လျှင် Signature ထိုးထားတဲ့သူရဲ့ အချက်အလက်တွေ မြင်ရပါမယ်။ Edit လုပ်လို့တော့မရပါဘူး။</span></li><li><span>Click here to verify this user&#39;s identify ကိုနှိပ်လျှင် လက်ခံမည့်စက်မှာ verify ဖြစ်သွားမှာဖြစ်ပါတယ်။</span><br><br><img src="https://i.imgur.com/mY6X1qs.png" style="zoom:50%;" /><br><br><span>မိမိရဲ့ Digital Signature ကို သူများက save လုပ်လို့မရ၊ ပြန်သုံးလို့မရတာကြောင့် digital signature အမျိုးအစားအသုံးပြုတာဟာ eSignature ထက်ပိုလုံခြုံစိတ်ချရပါတယ်။</span></li></ol></div></div>
+</body>
+</html>
