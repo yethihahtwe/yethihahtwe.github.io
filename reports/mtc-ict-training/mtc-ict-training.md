@@ -29,6 +29,22 @@
 * What to do when one or more keys are not working
 * What to do when C: is full
 * How to install Myanmar font and keyboard in Windows 10,11
+* Boost PC performance
+* System Restore
+* Msconfig and Task Manager
+* Safe Mode
+* Device Manager
+* Windows Recovery Environment
+* Common Software problems and solutions
 * 
 
 ## Hardware
+
+* What to do when computer display has lines
+* Reboot and select proper boot device or insert boot media in selected device and press a key > Reconnect hard disk
+* when the computer power LED is blinking but not booting > Insufficient power
+* More storage
+* The relationship between performance and resources
+* Audio Issues
+* Keyboard and Mouse Problems
+* Common Printer problems and solutions
