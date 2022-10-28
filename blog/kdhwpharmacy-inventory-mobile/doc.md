@@ -1,5 +1,4 @@
-# KDHW Pharmacy Inventory Mobile Application V2.0
-# App Guide
+# KDHW Pharmacy Inventory Mobile Application V2.0<br />App Guide
 <table>
 	<tr>
 		<td><strong>Current Version</strong></td>
@@ -10,16 +9,8 @@
 	<td>Android<br />Web</td>
 	</tr>
 	<tr>
-		<td><strong>Download APK</strong></td>
-		<td><a href="https://www.mediafire.com/file/4lozfjapdq3lpdz/KDHWPharmacyV2.apk/file">https://www.mediafire.com/file/4lozfjapdq3lpdz/KDHWPharmacyV2.apk/file</a></td>
-	</tr>
-	<tr>
 		<td><strong>Web Application</strong></td>
 		<td><a href="https://kdhwpharmacy-v2.flutterflow.app">https://kdhwpharmacy-v2.flutterflow.app</a></td>
-	</tr>
-	<tr>
-		<td><strong>User Manual</strong></td>
-		<td><a href="">Download Here</a></td>
 	</tr>
 </table>
 ***
@@ -29,7 +20,6 @@ Current application version is v2.0. A lot of modifications have taken place sin
 
 # How to install the application
 ## If you have an Android phone/tablet
-Download the application at [https://www.mediafire.com/file/4lozfjapdq3lpdz/KDHWPharmacyV2.apk/file](https://www.mediafire.com/file/4lozfjapdq3lpdz/KDHWPharmacyV2.apk/file).
 If you are not connected to the internet, please contact your service provider or the trainer who is going to provide you an Android installer package (APK) file for the application.
 One you have downloaded or received the APK file, simply press the file to install. If your Android phone/tablet doesn't allow installing applications from APK, please check "Allow apps to be installed from unknown sources" option inside your device settings depending on your device model and manufacturer. Some devices may need to uninstall the existing old version of the app from your device before app upgrade/install.
 >If you have an old version of the app installed and you have data collected through this app, you need to open the old version of the app and get connected to the internet to make sure your data is completely synced to the server.
@@ -67,17 +57,17 @@ If you are new to the app, your service provider or the trainer will provide you
 |1|2|
 |--|--|
 |You will be redirected to the balance page after login. This is what you are going to see after login.|Press/click Profile to make an update to your warehouse/clinic profile.|
-|<img src="https://i.imgur.com/rul1uuW.png" style="zoom:25%;" />|<img src="https://i.imgur.com/yYhSN3Q.png" style="zoom:25%;"/>|
+|<img src="https://i.imgur.com/rul1uuW.png" style="zoom:15%;" />|<img src="https://i.imgur.com/yYhSN3Q.png" style="zoom:25%;"/>|
 
 |3|4|
 |--|--|
 |On the profile page, all the detail information of you warehouse/clinic is already there except "In-Charge Name". Press/Click "Edit Profile" button to edit your in-charge name.|Press/click the in-charge name text field and select all text. Type in your in-charge's name and hit Update.|
-|<img src="https://i.imgur.com/U40RnaE.png" style="zoom:25%;"/>|<img src="https://i.imgur.com/hkPwtbt.png" style="zoom:25%;" />|
+|<img src="https://i.imgur.com/U40RnaE.png" style="zoom:15%;"/>|<img src="https://i.imgur.com/hkPwtbt.png" style="zoom:15%;" />|
 
 |5|6|
 |--|--|
 |Now you should be able to see your name updated.<br />Then, go to Balance page by hitting Balance icon.|Now let's add some medicine. Press/click the "+" icon at the lower right corner of the screen.|
-|<img src="https://i.imgur.com/WC0RhdB.png" style="zoom:25%;" />|<img src="https://i.imgur.com/wsFUqRM.png" style="zoom:25%;" />|
+|<img src="https://i.imgur.com/WC0RhdB.png" style="zoom:15%;" />|<img src="https://i.imgur.com/wsFUqRM.png" style="zoom:15%;" />|
 
 |7|8|
 |--|--|
@@ -92,12 +82,12 @@ If you are new to the app, your service provider or the trainer will provide you
 |11|12|
 |--|--|
 |Hit Add button.|If you are connected to the internet, you will be redirected to Balance page. If you're not, you are going to see a loading indicator in Add button that keeps showing. That's still ok. You can press "Back" key of your phone/tablet or press anywhere above the bottom sheet after which you will be redirected to Balance page.|
-|<img src="https://i.imgur.com/64i8YIP.png" style="zoom:100%;" />|<img src="https://i.imgur.com/wq77e4r.png" style="zoom:50%;" />|
+|<img src="https://i.imgur.com/64i8YIP.png" style="zoom:100%;" />|<img src="https://i.imgur.com/wq77e4r.png" style="zoom:40%;" />|
 
-|13|14|
-|--|--|
-|Now you're going to see "Paracetamol 500 mg", "Oral" with the amount "0" in Balance.|Press/click "Paracetamol 500 mg" and you will reach Medicine Detail page.|
-|<img src="https://i.imgur.com/0HKSwsZ.png" style="zoom:50%;" />|<img src="https://i.imgur.com/luY4dP1.png" style="zoom:50%;" />|
+| 13                                                           | 14                                                           |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Now you're going to see "Paracetamol 500 mg", "Oral" with the amount "0" in Balance. | Press/click "Paracetamol 500 mg" and you will reach Medicine Detail page. |
+| <img src="https://i.imgur.com/0HKSwsZ.png" style="zoom:25%;" /> | <img src="https://i.imgur.com/luY4dP1.png" style="zoom:25%;" /> |
 
 |15|16|
 |--|--|
@@ -105,10 +95,10 @@ If you are new to the app, your service provider or the trainer will provide you
 Press "Record Type" to select Type of the record.|
 |<img src="https://i.imgur.com/MAg4CCl.png" style="zoom:25%;" />|<img src="https://i.imgur.com/jLLtbNd.png" style="zoom:25%;" />|
 
-|17|18|
-|--|--|
-|Since there is no record yet for "Paracetamol 500mg", select "In" for record type.|Click Choose Date for date of the record. A date picker will be shown and automatically select today's date. You can select previous dates as well.|
-|<img src="https://i.imgur.com/YYNuVKI.png" style="zoom:50%;" />|<img src="https://i.imgur.com/xhZb6CM.png" style="zoom:50%;" />|
+| 17                                                           | 18                                                           |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Since there is no record yet for "Paracetamol 500mg", select "In" for record type. | Click Choose Date for date of the record. A date picker will be shown and automatically select today's date. You can select previous dates as well. |
+| <img src="https://i.imgur.com/YYNuVKI.png" style="zoom:50%;" /> | <img src="https://i.imgur.com/xhZb6CM.png" style="zoom:25%;" /> |
 
 |19|20|
 |--|--|
@@ -120,10 +110,10 @@ Press "Record Type" to select Type of the record.|
 |Enter the batch number of the medicine in Batch Number field.|Press "Choose Expiry Date" to enter the expiry date of the medicine. You will not be able to select previous dates from today.|
 |<img src="https://i.imgur.com/7ElBEpN.png" style="zoom:25%;" />|<img src="https://i.imgur.com/i227BX0.png" style="zoom:25%;" />|
 
-|23|24|
-|--|--|
-|Since, you have chosen "Tablet" in package form, the "Amount" field will show "Tablet(s)" next to text field. Enter the amount of the medicine.|Enter some information in "From" text field if you have information on where the medicine has come from.|
-|<img src="https://i.imgur.com/sUXLm1T.png" stye="zoom:25%;" />|<img src="https://i.imgur.com/2CUENhh.png" style="zoom:25%;" />|
+| 23                                                           | 24                                                           |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Since, you have chosen "Tablet" in package form, the "Amount" field will show "Tablet(s)" next to text field. Enter the amount of the medicine. | Enter some information in "From" text field if you have information on where the medicine has come from. |
+| <img src="https://i.imgur.com/sUXLm1T.png" style="zoom:25%;" /> | <img src="https://i.imgur.com/2CUENhh.png" style="zoom:25%;" /> |
 
 |25|26|
 |--|--|
@@ -173,14 +163,12 @@ Press "Record Type" to select Type of the record.|
 
 |3|4|
 |--|--|
-|You have three options to add an outgoing record- Out, Expired, Damage. If you're delivering a certain amount of medicine to another warehouse/VTHC, you can select "Out".<br />If you're entering a record for a certain amount of expired medicine, you can select "Expired".<br />If you want to save a record for a certain amount of medicine damaged due to some particular reasons, you can select "Damage" option.
-For this example, select "Out".|
+|You have three options to add an outgoing record- Out, Expired, Damage. If you're delivering a certain amount of medicine to another warehouse/VTHC, you can select "Out".<br />If you're entering a record for a certain amount of expired medicine, you can select "Expired".<br />If you want to save a record for a certain amount of medicine damaged due to some particular reasons, you can select "Damage" option.|For this example, select "Out".|
 |<img src="https://i.imgur.com/nxCS6qB.png" style="zoom:25%;" />|<img src="https://i.imgur.com/l5rxGEO.png" style="zoom:25%;" />|
 
 |5|6|
 |--|--|
-|Select Date, Package Form, Batch No., Expiry Date, Outgoing Amount. Enter the destination of the medicine in "To" text field. Enter some information in "Remark" if you have any. Hit "Save" button.|You will be redirected to Medicine Detail page where your recently added Outgoing record will appear on top of the previous record. The list is sorted from latest date to earliest date.<br />
-You will notice the Stock Amount is updated according to the Incoming and Outgoing amounts. When you hit "Back", the Balance page will show an updated information on Amount of the medicine.|
+|Select Date, Package Form, Batch No., Expiry Date, Outgoing Amount. Enter the destination of the medicine in "To" text field. Enter some information in "Remark" if you have any. Hit "Save" button.|You will be redirected to Medicine Detail page where your recently added Outgoing record will appear on top of the previous record. The list is sorted from latest date to earliest date.<br />You will notice the Stock Amount is updated according to the Incoming and Outgoing amounts. When you hit "Back", the Balance page will show an updated information on Amount of the medicine.|
 |<img src="https://i.imgur.com/ziZJICM.png" style="zoom:25%;" />|<img src="https://i.imgur.com/wovcTl8.png" style="zoom:25%;" />|
 
 # How to view balance of another warehouse/VTHC
