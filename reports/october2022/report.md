@@ -10,11 +10,11 @@
 * To create accounts for students and assist in online course enrollment
 * To supervise a new recruit for creating training videos
 * To build a warehouse computer system and __Logistic Management Information System (LMIS)__ for selected warehouses on Thailand-Burma border
-* To fix bugs in Pharmacy Inventory Mobile Application and deploy the same application on a website
+* To upgrade Pharmacy Inventory Mobile Application according to needs of the partner organizations and deploy the same application as a progressive web app
 * To conduct ICT related training courses for both EHSSG and partner organizations
 
 ## Outcomes
-* A ```Logistic Management Information System``` (LMIS) is being developed in alpha version and has undergone a data entry phase
+* A ```Logistic Management Information System``` (LMIS) is being developed in alpha version and preparing to go into data entry phase
 * ```First Aid Care Training for Conflict Related Injuries``` online course was continued creating with a majority of video materials
 * Training material videos were continued editing
 * Animated video clips are created to use in ```First Aid Care Training for Conflict Related Injuries``` online course
