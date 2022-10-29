@@ -2,16 +2,30 @@
 # October 31, 2022.
 ***
 # Executive Summary
-## Objectives
-* To continue setting up the online classroom for EHSSG
-* To finish creating ```First Aid Care Training for Conflict Related Injuries``` online course
-* To finish editing training material videos from ```First Aid Care Training for Conflict Related Injuries``` online course
-* To create video animations relating to study materials for ```First Aid Care Training for Conflict Related Injuries``` online course
-* To create accounts for students and assist in online course enrollment
-* To supervise a new recruit for creating training videos
-* To build a warehouse computer system and __Logistic Management Information System (LMIS)__ for selected warehouses on Thailand-Burma border
-* To upgrade Pharmacy Inventory Mobile Application according to needs of the partner organizations and deploy the same application as a progressive web app
-* To conduct ICT related training courses for both EHSSG and partner organizations
+## Outcomes
+* EHSSG Logistic Management Information System (LMIS) is developed
+* All videos for First Aid Care Training for Conflict Related Injuries were created
+* Myanmar subtitle for all videos created
+* Introduction to Pharmacy Inventory Mobile application and Progressive Web Application at EHSSG Pharmacy Management Training
+* Pharmacy Inventory Mobile Application upgraded to v2.1
+* Pharmacy Inventory Progressive Web Application v2.1
+* Pharmacy Inventory Mobile Application follow up and web application introduction meeting
+* Pharmacy Inventory Mobile Application Data Management Workshop at KDHW HQ
+* Pharmacy Inventory Mobile Application Usage Guide
+* Meeting for training topics on Computer Maintenance and Troubleshooting Basics
+* Training topics were revised and sent to Mae Tao Clinic
+* EHSSG website maintenance meeting
+* Google Drive Storage Plan upgrade
+* EHSSG Human Resource Management Web Application was started developing
+* A guide on how to make eSignature or Digital Signature
+***
+# Consultant Background
+|Name|Dr. Ye Thi Ha Htwe|
+|--|--|
+|Education|M.B.,B.S(YGN)|
+|Past Experiences|- Pharmacy Inventory Mobile Application<br />- Online Classroom with Moodle LMS|
+***
+# EHSSG Logistic Management Information System (LMIS)
 
 ## Outcomes
 * A ```Logistic Management Information System``` (LMIS) is being developed in alpha version and preparing to go into data entry phase
