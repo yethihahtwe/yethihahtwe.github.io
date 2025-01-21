@@ -17,7 +17,7 @@
     </div>
     <ul class="nav navbar-nav">
       <li class="active"><a href="#">Home</a></li>
-      <li><a href="https://yethihahtwe.github.io/thoughts-bin">Blog</a></li>
+      <li><a href="/thoughts-bin">Blog</a></li>
       <li><a href="portfolio/index.html">Portfolio</a></li>
     </ul>
   </div>
@@ -36,23 +36,27 @@
      <div class="wrapper">
        <div class="static-txt">I am a</div>
        <ul class="dynamic-txts">
+         <li><span>Web Developer.</span></li>
+         <li><span>Flutter Developer.</span></li>
          <li><span>Doctor.</span></li>
          <li><span>Graphic Designer.</span></li>
-         <li><span>Flutter Developer.</span></li>
-         <li><span>Video Creator.</span></li>
-         <li><span>Web Developer.</span></li>
+         <li><span>Video Creator.</span></li>   
        </ul><!-- end of typing list -->
      </div><!-- end of wrapper -->
      <!-- This is the start of button row -->
      <div id="window-button-row">
-     <a href="https://yethihahtwe.github.io/thoughts-bin"><button class="button-3" role="button">Blog</button><a>
+     <a href="/thoughts-bin"><button class="button-3" role="button">Blog</button><a>
      <a class="button-5" role="button" href="portfolio/">Portfolio</a>
      </div>
      <!-- This is the end of button row -->
    </div><!-- end of window -->
 </div>
 <footer>
-  <p>Copyright©2024 | <a href="https://yethihahtwe.github.io">yethihahtwe.github.io</a></p>
- </footer>
+  <p>Copyright©<span id="year"></span> | <a href="https://yethihahtwe.co.uk">yethihahtwe.co.uk</a></p>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
 </body>
 </html>
