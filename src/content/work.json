@@ -1,10 +1,31 @@
 [
   {
+    "id": 7,
+    "duration": "2012 - 2015",
+    "company": "Health Updates Journal",
+    "title": "Editor-in-chief",
+    "description": "Content writing, translation of medical articles, social media page administration, hot line medical consultation, news reporting and interviewing medical persons."
+  },
+  {
+    "id": 6,
+    "duration": "2012 - 2021",
+    "company": "Private Practice",
+    "title": "General Practitioner/ Primary Care Physician",
+    "description": "Private clinic providing primary healthcare, minor surgeries, and laboratory services. Collaborated with Population Services International and Myanmar Medical Association for TB and Malaria treatment programs. Founded and led `Heartyfarm` social welfare group organizing charity clinic activities."
+  },
+  {
+    "id": 5,
+    "duration": "April 2022 - Dec 2022",
+    "company": "Ethnic Health System Strengthening Group",
+    "title": "ICT Consultant",
+    "description": "Comprehensive learning material creation and development of a Learning Management System (LMS)."
+  },
+  {
     "id": 4,
     "duration": "Dec 2022 - Sept 2024",
     "company": "Ethnic Health System Strengthening Group",
     "title": "ICT Manager",
-    "description": "Led data-driven application development and visualization dashboards. "
+    "description": "Led data-driven application development and visualization dashboards. Supervise and manage day-to-day organizational IT tasks and systems."
   },
   {
     "id": 3,
