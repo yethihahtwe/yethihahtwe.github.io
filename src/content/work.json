@@ -1,16 +1,30 @@
 [
   {
-    "id": 1,
-    "duration": "2024 - present",
+    "id": 4,
+    "duration": "Dec 2022 - Sept 2024",
     "company": "Ethnic Health System Strengthening Group",
-    "title": "IT Specialist",
-    "description": "A technical specialist role in developing information management systems."
+    "title": "ICT Manager",
+    "description": "Led data-driven application development and visualization dashboards. "
+  },
+  {
+    "id": 3,
+    "duration": "Nov 2024 - Jan 2025",
+    "company": "Civil Health and Development Network",
+    "title": "Mobile and Web application development contractor",
+    "description": "Development and implementation of a comprehensive malaria case reporting system. An offlie-first mobile app and a web based information management system."
   },
   {
     "id": 2,
-    "duration": "2024 - 2025",
+    "duration": "Nov 2024 - Feb 2025",
+    "company": "Suwannimit Foundation",
+    "title": "IT Policy & Cybersecurity Consultant",
+    "description": "A contractor role in providing cybersecurity training and developing IT policies related to data storage security and record management."
+  },
+  {
+    "id": 1,
+    "duration": "Nov 2024 - present",
     "company": "Ethnic Health System Strengthening Group",
     "title": "IT Specialist",
     "description": "A technical specialist role in developing information management systems."
-  },
+  }
 ]
