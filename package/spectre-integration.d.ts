@@ -22,6 +22,10 @@ interface OpenGraph {
    * Data for the projects page.
    */
   projects: OpenGraphInfo;
+  /**
+   * Data for the books page.
+   */
+  books: OpenGraphInfo;
 }
 
 interface GiscusOptions {

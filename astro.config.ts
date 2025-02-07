@@ -29,6 +29,9 @@ export default defineConfig({
           title: 'Blog',
           description: 'My thoughts bin.'
         },
+        books: {
+          title: 'Books'
+        },
         projects: {
           title: 'Projects'
         }

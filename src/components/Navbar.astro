@@ -12,10 +12,6 @@ const path = Astro.url.pathname;
     </li>
     <li class="nav-separator">/</li>
     <li>
-      <a href="/books" class:list={{ active: path === '/books'}}>Books</a>
-    </li>
-    <li class="nav-separator">/</li>
-    <li>
       <a href="/projects" class:list={{ active: path === '/projects' }}>Projects</a>
     </li>
     <li class="nav-separator">/</li>
@@ -115,7 +111,7 @@ const path = Astro.url.pathname;
       i++;
 
       const data = await result.data();
-      
+
       results.innerHTML += `
         <a href="${data.url}">
           <h3 class="no-mt">${data.meta.title}</h3>
@@ -296,7 +292,7 @@ const path = Astro.url.pathname;
       padding: 0;
       font-size: 1.125em;
     }
-  
+
     nav ul li a {
       display: block;
       padding: .75rem 0;
