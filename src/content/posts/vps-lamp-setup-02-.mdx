@@ -1,0 +1,99 @@
+---
+title: "Setting up LAMP stack and deployment on a VPS"
+description: "02-System Update and User Management"
+image: "assets/vps-setup/terminal.png"
+createdAt: 03-07-2025
+draft: false
+tags:
+    - vps-setup
+---
+import { Image } from 'astro:assets';
+import sshd_config from 'assets/vps-setup/sshd_config.png';
+import new_kernel from 'assets/vps-setup/new_kernel.png';
+
+## System Update
+SSH login ဝင်ပြီးပြီဆိုတာနဲ့ အရင်ဆုံး linux OS ကို update လုပ်ပါမယ်။ VPS provider က ပေးလိုက်တဲ့ linux image က update မဖြစ်တတ်လို့ပါ။
+
+```bash
+sudo apt update -y && sudo apt upgrade -y
+```
+
+တောက်လျှောက် `y` ဆိုတဲ့ option ကိုထည့်ပေးထားလို့ `Do you want to upgrade? [Y/n]` လိုမေးခွန်းတွေ အကုန်လုံးကို `y` အလိုလိုဖြေပြီး အလိုအလျောက် update တွေကို download လုပ်ပေးသွားပါလိမ့်မယ်။ internet connection ပေါ်မူတည်ပြီး ကြာနိုင်ပါတယ်။
+
+Update လုပ်ရင်း sshd_config ကို update လုပ်မလားမေးရင် **Keep the local version currently installed** ကိုရွေးပါ။<br /><br />
+<Image src={ sshd_config } alt="SSHD Config" height={sshd_config.height / 4 } />
+Update and upgrade လုပ်ရင်း Kernel အထိပါ upgrade ဖြစ်သွားရင်တော့ Reboot လုပ်ဖို့ပြောလာပါလိမ့်မယ်။ Ok ရွေးပြီး reboot လုပ်တာစောင့်ပါ။ SSH login ပြန်ဝင်ပါ။
+<Image src={ new_kernel } alt="Kernel" height={ new_kernel.height / 4 } />
+
+## Replacing Hostname
+ပြီးရင် Domain name နဲ့ current hostname ကို ပြောင်းကြရအောင်။ SSH login ဝင်တိုင်း ကိုယ်သုံးမယ့် domain name ကိုမြင်ရတာမို့ နောက်ပိုင်း manage လုပ်ရတာအဆင်ပြေအောင်လို့ပါ။
+
+```bash
+sudo nano /etc/hostname
+```
+အဲဒီထဲမှာ `server1` စတာတွေပါမယ်။ အားလုံး ဖျက်ပြီး မိမိ domain name ကိုထည့်ပါ။
+
+```
+yourdomain.com
+```
+>nano editor မှာ Ctrl + O နဲ့ save လုပ်ပြီး Ctrl + X နဲ့ပြန်ထွက်လို့ရပါတယ်။
+
+ပြီးရင် `/etc/hosts` ကိုလည်းပြောင်းပါမယ်။
+
+```bash
+sudo nano /etc/hosts
+```
+`[ip address]` လို့ရေးထားတဲ့နေရာမှာ VPS ip address ဖြစ်ပါမယ်။ သူနဲ့ `Tab` key တစ်ခုအကွာမှာ မိမိ domain name နဲ့အစားထိုးပေးပါ
+```bash
+127.0.0.1       localhost localhost.localdomain
+::1     localhost localhost.localdomain
+[ip address]    yourdomain.com
+```
+
+## User Management
+Root user ရဲ့ power ဟာ တစ်ခုခုအမှားအယွင်းလုပ်မိရင် အဖျက်စွမ်းအားကြီးမားတာကြောင့် root ထက်လုပ်ပိုင်ခွင့်နည်းတဲ့ user တစ်ဦးလုပ်ထားသင့်ပါတယ်။ သူ့ကို sudo နဲ့ဖြည့်ပေးထားပြီး အဲဒီကနေတဆင့် root လုပ်ပိုင်ခွင့်တောင်းတာမျိုးက ဆာဗာ security ပိုကောင်းစေပါတယ်။
+
+`username` မှာ မိမိနာမည်အစားထိုးပါ။
+
+```bash
+adduser username
+```
+Password နဲ့ confirm password ရိုက်ထည့်ပါ။ VPS password တွေမို့လို့ အလွယ်မပေးမိဖို့ ဂရုစိုက်ပါ။ ( Full name, Room number စတဲ့ optional အပိုင်းတွေကိုတော့ `Enter` နဲ့ skip လုပ်သွားလို့ရပါတယ်)။ ပြီးရင် sudo group ထဲထည့်ပါမယ်။
+
+```bash
+adduser username sudo
+```
+
+ပြီးရင် user အသစ်နဲ့ ဝင်ကြည့်ပါမယ်။
+
+```bash
+su username
+```
+user account ပြောင်းသွားတာကို သတိထားမိမှာပါ။ ဒီနေရာမှာ root user ဘက်ကိုပြန်သွားကြည့်ရအောင်
+```bash
+exit
+```
+ထွက်လိုက်ပြီဆိုရင် root user ဆီပြန်ရောက်သွားမှာပါ။ ဒီလို ကိုယ့် username ကနေ exit နဲ့ထွက်လိုက်တိုင်း root ဆီပြန်ရောက်သွားတာမျိုးမဖြစ်ရအောင် root login ပိတ်ထားဖို့လိုပါတယ်။ Root login ပိတ်ထားခြင်းအားဖြင့် security လည်းကောင်းစေပါတယ်။
+
+`/etc/ssh/sshd_config` ကိုဖွင့်ပြီး root login ကိုပိတ်လိုက်ပါမယ်။
+
+```bash
+sudo nano /etc/ssh/sshd_config
+```
+`PermitRootLogin yes` ကနေ `PermitRootLogin no` ဆိုပြီး root login ကိုပိတ်လိုက်ပါမယ်။ နဂိုက comment အနေနဲ့ `#PermitRootLogin` လိုပါနေတာမျိုးဆိုရင် `#` ကိုဖျက်ပြီး comment ဖြုတ်လိုက်ပြီး `PermitRootLogin no` ဆိုပြီးပြင်ပေးပါ။ File ကို Ctrl + O နဲ့သိမ်း၊ Ctrl + X နဲ့ထွက်ပြီး SSH service ကို restart ချပါမယ်။
+
+```bash
+sudo systemctl restart sshd
+```
+
+ဆာဗာကို restart ပါမယ်။
+
+```bash
+sudo reboot
+```
+Reboot ပြီးသွားရင် root account နဲ့ဝင်လို့မရအောင် ပိတ်ထားပြီးဖြစ်လို့ username နဲ့ဝင်ရပါမယ်။
+
+```bash
+ssh username@ipaddress
+```
+user အသစ်ဖန်တီးတုန်းက နှစ်ခါရိုက်ထည့်ပြီးပေးထားတဲ့ password ကိုထည့်ပေးပါ။ မိမိ username နဲ့ hostname ပြောင်းပြီး login ဝင်သွားတာကို မြင်ရပါမယ်။

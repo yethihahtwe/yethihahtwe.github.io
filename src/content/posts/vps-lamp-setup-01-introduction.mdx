@@ -1,0 +1,60 @@
+---
+title: "Setting up LAMP stack and deployment on a VPS"
+description: "01-Introduction"
+image: "assets/vps-setup/terminal.png"
+createdAt: 03-06-2025
+draft: false
+tags:
+    - vps-setup
+---
+
+import { Image } from 'astro:assets';
+import ssh from 'assets/vps-setup/ssh-access.png';
+
+## Introduction
+Web application တွေ deploy လုပ်ဖို့ဆိုရင် terminal access ရနိုင်တဲ့ Cloud hosting ၊ VPS ၊ Dedicated hosting စသည်ဖြင့်လိုအပ်ပါတယ်။ Shared hosting တွေက ဈေးသက်သာပေမယ့် Terminal သုံးလို့မရတာ၊ ရရင်လည်း SSH access ကို Putty လို client တွေကနေဝင်သုံးရတာတွေကြောင့် setup လုပ်ရတာလက်ဝင်ပါတယ်။ ကွန်ပြူတာထဲက ပရောဂျက်ကို Shared hosting ဆာဗာပေါ်တင်ရင်လည်း FTP client တွေကနေတင်ရလေ့ရှိတာမို့ တစ်ခုခု update လုပ်ဖို့ရှိရင် ဆာဗာပေါ်ကို upload လုပ်ဖို့အချိန်ကြာပါတယ်။
+
+Virtual Private Server (VPS) ဝယ်သုံးရင် Terminal access တွဲလျက်ပါလို့ git repo ကနေ project deploy လုပ်ရတာ၊ terminal command တွေနဲ့ cron job တွေ run နိုင်တာကြောင့် ခေတ်ပေါ် web development နည်းပညာတွေအတွက် ပိုသင့်တော်ပါတယ်။ VPS မှာ Webhost Manager (WHM) နဲ့ cPanel ထည့်ဝယ်လို့ရသလို ဘာမှမထည့်ဘဲ ဗလာကနေ စပြီး setup လုပ်လို့လည်းရပါတယ်။
+
+WHM နဲ့ cPanel တွေသုံးမယ်ဆိုရင် လိုင်စင်ကြေးပေးရပါတယ်။ ဝယ်သုံးလိုက်ရင်တော့ setup လုပ်ရတာသက်သာပါတယ်။ cPanel ဝယ်လိုက်ရင် Linux Apache MySQL PHP (LAMP) ပါပြီးသားမို့လို့ လက်တင်သုံးရုံပါပဲ။ ဗလာပဲဝယ်ရင်တော့ Shared hosting ဈေးနဲ့သိပ်မကွာတော့ဘဲ Terminal ကနေ SSH access နဲ့ အစအဆုံး setup လုပ်ရပါတယ်။
+
+ဒီစာအုပ်မှာတော့ ဈေးသက်သာတဲ့ Namecheap hosting ကနေ VPS ကို အခွံပဲဝယ်ပြီး LAMP stack setup လုပ်ပုံနဲ့ project deployement လုပ်ပုံကိုဖော်ပြထားပါတယ်။ ဒီလို terminal ကနေ အစအဆုံး setup လုပ်တတ်တဲ့အလေ့အကျင့်ရှိထားရင် DevOps အနေနဲ့အသက်မွေးတဲ့အခါမှာလည်း အထောက်အကူဖြစ်စေမှာပါ။ VPS setup လုပ်တဲ့အခြေခံ concept တွေဟာ AWS, Google Cloud, Azure တို့လို့ cloud platform တွေမှာပါ ဆက်သုံးလို့ရတာကြောင့် Linux command တွေကို ဦးနှောက် memory မှာသာမက လက်ချောင်းတွေကပါ အလိုလိုမှတ်မိနေတဲ့ muscle memory အဆင့်ရောက်အောင် လေ့ကျင့်ထားသင့်ပါတယ်။
+
+## VPS shell access
+
+VPS ဝယ်တဲ့အသေးစိတ်ကိုတော့ မရေးပြတော့ဘဲ Login ဝင်တာကနေပဲ စလိုက်ရအောင်ပါ။ ဒီစာအုပ်မှာ Namecheap ကိုပဲ ပြသွားတာဆိုပေမယ့် တခြား VPS hosting တွေမှာလည်း သဘောတရားချင်းအတူတူပဲဖြစ်ပါတယ်။ VPS ဝယ်လိုက်ပြီဆိုတာနဲ့ အောက်ပါ အချက်အလက်တွေရပါမယ်
+
+- IP address
+- VPS Panel address
+- VPS panel username and password (hosting ကုမ္ပဏီ website မှာဝင်ရတဲ့ account နဲ့ မတူပါဘူး)
+- SSH IP address
+- SSH port
+- SSH username
+- SSH temporary password
+
+>VPS setup ကို အနည်းဆုံးနှစ်နေရာကနေ ဝင်လုပ်လို့ရတယ်။
+>- VPS panel မှာပါတဲ့ browser VNC client ကနေဝင်တာ
+>- ကွန်ပြူတာရဲ့ Terminal ကနေ SSH access နဲ့ဝင်တာ
+
+VNC client က browser ကသွားရတာမို့လို့ နည်းနည်း lag ဖြစ်ပြီးသုံးရတာလက်ဝင်တာကြောင့် Terminal SSH login နဲ့ပဲသွားကြည့်ပါမယ်။ အကြောင်းအမျိုးမျိုးကြောင့် SSH access မရခဲ့ရင်လည်း VPS panel ရဲ့ VNC client ကနေလုပ်လို့ရပါတယ်။
+
+Linux, Mac တို့ရဲ့ Terminal သုံးလို့ရ၊ Windows 11 ရဲ့ Terminal လည်းရပါတယ်။
+
+## SSH login via Terminal
+ကွန်ပြူတာရဲ့ terminal မှာ SSH login ဝင်ကြည့်ပါမယ်။ username နဲ့ ipaddress မှာ SSH username, ipaddress နဲ့အစားထိုးပါ။ ဥပမာ `root@203.0.113.0`။
+```bash
+ssh username@ipaddress
+```
+"The authenticity of host ip address can't be established.
+RSA key fingerprint is SHA256:key.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])?"
+ပေါ်လာရင် `yes` ထည့်ပြီး Enter နှိပ်ပါ။
+
+ပြီးရင်နောက်တစ်ခေါက် SSH login ဝင်ကြည့်ပါ။
+
+Password တောင်းရင် password ထည့်ပေးပါ။ password ထည့်နေတာကို မြင်ရမှာမဟုတ်ပါဘူး။ ရိုက်ထည့်ပြီးရင် enter နှိပ်ပါ။
+
+Welcome to Ubuntu လို့မြင်ရရင် SSH access ရပါပြီ။
+
+<Image src={ ssh } alt="SSH" height={ssh.height / 3 } />
