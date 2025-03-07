@@ -1,0 +1,683 @@
+---
+title: "Setting up LAMP stack and deployment on a VPS"
+description: "03-LAMP stack Installation"
+image: "assets/vps-setup/terminal.png"
+createdAt: 03-07-2025
+draft: false
+tags:
+    - vps-setup
+---
+import { Image } from 'astro:assets';
+import apache2_default from 'assets/vps-setup/apache2_default.png';
+
+User ထည့်ပြီးရင် LAMP stack သွင်းလို့ရပါပြီ
+
+## LAMP Stack Setup
+LAMP = Linux + Apache + MySQL + PHP ဆိုတဲ့ stack ကို ထည့်ပါမယ်။ ဒီစာအုပ်မှာ Laravel project ကို နမူနာအနေနဲ့ deploy လုပ်ကြည့်ပါမယ်။ Linux Server က VPS မှာတခါတည်းပါလာပြီးသားဖြစ်တာကြောင့် သွင်းစရာမလိုတော့ပါဘူး။
+
+### Apache Installation
+Apache2 server, documentation နဲ့ utility program တွေသွင်းပါမယ်
+```bash
+sudo apt install apache2 apache2-doc apache2-utils -y
+```
+Install လုပ်တာပြီးတာနဲ့ apache2 service အလုပ် လုပ်/မလုပ် စစ်ကြည့်ပါမယ်
+
+```bash
+systemctl status apache2
+```
+Active (running) ဆိုရင် apache2 သွင်းတာအဆင်ပြေပါပြီ။
+
+Apache configuration ဆက်မလုပ်ခင် Ubuntu ရဲ့ Uncomplicated Firewall (UFW) ကို အရင် setup လုပ်ပါမယ်။ ufw Firewall အလုပ်လုပ်နေလား အရင်စစ်ကြည့်ရအောင်
+```bash
+sudo ufw status
+```
+```bash
+Status: inactive
+```
+စစချင်းမှာ inactive လို့ပြနေပါလိမ့်မယ်။ ဒါကြောင့် Firewall setup လုပ်ပေးရပါမယ်။ လက်ရှိရနိုင်တဲ့ Firewall option တွေ ဘာတွေရှိလဲအရင်ခေါ်ကြည့်ပါမယ်
+
+```bash
+sudo ufw app list
+```
+```bash
+- Apache
+- Apache Full
+- Apache Secure
+- OpenSSH
+```
+>- **Apache** က Port 80 (HTTP) ကို ဖွင့်ထားပေးတာ
+>- **Apache Full** က Port 80 (HTTP) နဲ့ port 443 (HTTPS) နှစ်ခုလုံးကို ဖွင့်ထားပေးတာ
+>- **Apache Secure** က Port 443 (HTTPS) ကိုပဲဖွင့်ထားပေးတာ
+>- **OpenSSH** က Port 22 (SSH) ကို ဖွင့်ထားပေးတာ
+
+လောလောဆယ်တော့ SSL certificate မသွင်းရသေးတာကြောင့် "Apache" (HTTP port 80 only) ကိုပဲဖွင့်ထားလိုက်ပါမယ်။ Terminal ကနေ SSH နဲ့ဝင်တာကိုလည်း ခွင့်ပြုပေးအောင် OpenSSH ကိုလည်းဖွင့်ထားပါမယ်။
+
+```bash
+sudo ufw allow in "Apache"
+sudo ufw allow in "OpenSSH"
+```
+ပြီးရင် Firewall ကို enable လုပ်ပါမယ်
+
+```bash
+sudo ufw enable
+```
+အလုပ် လုပ်/မလုပ် စစ်ကြည့်ပါမယ်
+
+```bash
+sudo ufw status
+```
+Apache နဲ့ OpenSSH run နေတာကိုတွေ့နိုင်ပါတယ်။ ဒီအဆင့်ထိပြီးသွားရင် server ip ကို browser ကနေ ဝင်ကြည့်လို့ရပါပြီ။ Browser မှာ `http://server_ip` ရိုက်ထည့်ပြီးဝင်ကြည့်ပါ။ Apache2 Ubuntu Default Page မြင်ရပါမယ်။
+> server_ip ကို VPS panel နဲ့ Welcome email မှာပြန်ရှာကြည့်လို့ရပါတယ်။ SSL certificate မသွင်းရသေးလို့ HTTPS နဲ့ ဝင်လို့မရသေးပါဘူး
+
+<Image src={ apache2_default } alt="Apache Default Page" height={apache2_default.height / 4 } />
+
+### MySQL Installation
+
+```bash
+sudo apt install mysql-server -y
+```
+
+MySQL server သွင်းပြီးရင် root user password သတ်မှတ်ပေးရပါမယ်။ ဒီမှာပေးရတဲ့ password ဟာ VPS password နဲ့မဆိုင်ဘဲ mysql root user အတွက်သီးသန့် password ဖြစ်ပါတယ်။
+> VPS password နဲ့ MySQL root password ကိုမတူအောင်ပေးသင့်ပါတယ်။
+
+```bash
+sudo mysql
+```
+
+ဝင်ပြီးရင် root user ကို password အသစ်ထည့်ပါမယ်။ password မှာ လုံခြုံမှုရှိတဲ့ password တစ်ခုနဲ့အစားထိုးပေးပါ
+
+```sql
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
+exit
+```
+
+ပြီးရင် mysql_secure_installation script ကို run ပါမယ်။
+
+```bash
+sudo mysql_secure_installation
+```
+mysql_secure_installation run လိုက်ရင် password တောင်းပါမယ်။ ဒီမှာထည့်ရတဲ့ password က VPS password ဖြစ်ပါတယ်။ mysql password မဟုတ်ပါဘူး။
+script သွင်းလိုက်ရင် VALIDATE PASSWORD PLUGIN ကိုသုံးမလားမေးပါလိမ့်မယ်။ 
+
+> - Level 0 = Low အနည်းဆုံး စာလုံး ၈ လုံး
+> - Level 1 = Medium အနည်းဆုံး စာလုံး ၈ လုံး၊ ဂဏန်းတွေပါ၊ စာလုံးအကြီးအသေးရော၊ special character ပါရမယ်
+> - Level 2 = Strong level 1 နဲ့တူတူပဲ၊ တခုပိုသွားတာက dictionary ထဲက word ဖြစ်လို့မရဘူး
+
+အခုတော့ `1` ရိုက်ထည့်ပါ
+
+လက်ရှိ password strength ကို 
+
+ကျန်တဲ့ ပရိုဂရမ်က password အရည်အသွေးကို 0-100 scale နဲ့ပြမယ်။ ဆက်သွားမလားမေးရင် Y နဲ့သွားပါ။ ကျန်တဲ့ prompt တွေမှာလည်း Y ပဲထည့်သွားပါ။ ဒါဆိုရင် MySQL server setup ပြီးပါပြီ။
+
+3. PHP ထည့်သွင်းခြင်း
+
+```bash
+sudo apt install php libapache2-mod-php php-mysql
+```
+
+အသုံးများတဲ့ PHP extension တွေထပ်ထည့်ထားချင်ရင်
+
+```bash
+sudo apt install php-curl php-json php-cgi php-gd php-mbstring php-xml php-xmlrpc php-zip
+```
+
+PHP ကူးလို့ရပြီလားစစ်ကြည့်ရအောင်
+
+```bash
+php -v
+```
+
+## Apache Virtual Host Setup
+Apache က default အနေနဲ့ `/var/www/html` directory ကို serve လုပ်ပေးပါတယ်။ Website တစ်ခုထဲအတွက်ဆိုရင် အဆင်ပြေပေမယ့် website အများအပြားအတွက်ဆိုရင် virtual hosting ဆိုတဲ့ Apache ရဲ့ feature ကိုသုံးရပါမယ်။
+
+ပထမဆုံး ကိုယ့် website folder ကိုလုပ်ပါမယ်။
+
+```bash
+sudo mkdir -p /var/www/yourdomain.com/public_html
+```
+
+Log နဲ့ backups folder တွေလည်းလုပ်ထားပါမယ်။
+
+```bash
+sudo mkdir -p /var/www/yourdomain.com/log
+sudo mkdir -p /var/www/yourdomain.com/backups
+```
+
+ရပြီးရင် folder ownership ကို ပြောင်ပါမယ်။
+
+```bash
+sudo chown -R $USER:$USER /var/www/yourdomain.com
+```
+
+ဒါဆိုရင် sudo မသုံးဘဲ ဒီ folder ထဲမှာ အပြည့်အဝအလုပ်လုပ်လို့ရပါမယ်။ ဆက်ပြီး Apache ရဲ့ sites-available မှာ yourdomain.com.conf ဆိုတဲ့ file ကိုလုပ်ပါမယ်။
+
+```bash
+sudo nano /etc/apache2/sites-available/yourdomain.com.conf
+```
+
+အောက်ပါအတိုင်းထည့်ပါ
+
+```
+<VirtualHost *:80>
+    ServerName yourdomain.com
+    ServerAlias www.yourdomain.com
+    ServerAdmin webmaster@localhost
+    DocumentRoot /var/www/yourdomain.com/public_html
+    ErrorLog /var/www/yourdomain.com/log/error.log
+    CustomLog /var/www/yourdomain.com/log/access.log combined
+</VirtualHost>
+```
+
+Virtual host ကို enable လုပ်ပါမယ်။
+
+```bash
+sudo a2ensite yourdomain.com.conf
+```
+
+မူလ default site ကိုပိတ်ပါမယ်။
+
+```bash
+sudo a2dissite 000-default.conf
+```
+
+Apache config errors ရှိမရှိ test လုပ်ပါမယ်။
+
+```bash
+sudo apache2ctl configtest
+```
+
+Error မရှိရင် apache ကို reload ပြန်လုပ်ပေးပါမယ်။
+
+```bash
+sudo systemctl reload apache2
+```
+
+Test လုပ်ကြည့်ရအောင် document root မှာ HTML ဖိုင်တစ်ခုထည့်လိုက်ပါမယ်။
+
+```bash
+echo '<h1>Hello World!</h1>' > /var/www/yourdomain.com/public_html/index.html
+```
+
+Browser ကနေ yourdomain.com (သို့မဟုတ် server IP address) ကိုဝင်ကြည့်ရင် Hello World! ဆိုတာကိုမြင်ရပါလိမ့်မယ်။
+
+## SSL Certificate Installation
+Web project တွေက အထူးသဖြင့် sensitive data တွေပါတဲ့ project ဆိုရင် website ကို HTTPS နဲ့ serve လုပ်ဖို့ဆိုတာ အရေးကြီးပါတယ်။ HTTPS နဲ့ဖြစ်အောင် SSL Certificate လိုပါတယ်။ ကျွန်တော်တို့ Let's Encrypt ဆိုတဲ့ အခမဲ့ certificate ကို certbot client သုံးပြီးလျှောက်ပါမယ်။
+
+```bash
+sudo apt install certbot python3-certbot-apache
+```
+
+ပြီးရင် certbot ကိုအသုံးပြုပြီး Apache website အတွက် SSL certificate တောင်းပါမယ်။
+
+```bash
+sudo certbot --apache -d yourdomain.com -d www.yourdomain.com
+```
+
+- Email address ကိုထည့်ပါ
+- Terms of Service ကိုသဘောတူမလားမေးရင် A ထည့်ပါ
+- EFF မှ email newsletter တွေလိုချင်လားမေးရင်ကိုယ်ကြိုက်တာရွေးပါ
+
+Install ပြီးသွားတာနဲ့ certbot က Apache config ကိုအလိုအလျှောက် ပြုပြင်ပြီး SSL နဲ့ဖြစ်အောင် setup လုပ်ပေးပါလိမ့်မယ်။ လောလောဆယ်တော့ domain နဲ့ DNS ကိုမသတ်မှတ်ရသေးရင် SSL install လုပ်လို့ရမှာမဟုတ်တာမို့ နောက်မှပြန်လာလုပ်လို့ရပါတယ်။ ဒါမှမဟုတ် ဒီအဆင့်ကိုချန်ခဲ့လို့ရပါတယ်။
+
+
+
+
+
+## Security Enhancements
+ဆာဗာကို security တိုးမြှင့်ဖို့အတွက် Fail2ban install လုပ်ထားတာ အကြံပြုပါတယ်။ အထူးသဖြင့် SSH brute force attacks ကအန္တရာယ်ရှိပါတယ်။ ဒီ tool က failed login attempt တွေလုပ်တဲ့ IP address တွေကို Block လုပ်ပေးပါတယ်။
+
+```bash
+sudo apt install fail2ban
+sudo systemctl enable fail2ban
+sudo systemctl start fail2ban
+```
+
+ဒါဆိုရင် fail2ban ကအလုပ်လုပ်နေပါပြီ။ နောက်ထပ်အဆင့်က SSH ဝင်တာကို password သုံးတာထက် SSH key pair သုံးတာက ပိုပြီးလုံခြုံပါတယ်။
+
+## SSH Key Authentication
+သင့်ကွန်ပြူတာ (Mac) ကနေ SSH keys ဖန်တီးပါမယ်။
+
+```bash
+ssh-keygen -t ed25519 -C "youremail@example.com"
+```
+
+Default directory ကိုလက်ခံပြီး passphrase ထည့်ရင်ထည့် မထည့်ရင် Enter ပဲနှိပ်ပါ။ ပြီးရင် ssh-copy-id သုံးပြီး ဆာဗာပေါ်တင်ပါမယ်။
+
+```bash
+ssh-copy-id username@ipaddress
+```
+
+ဒီ command က Linux/Mac မှာပဲအလုပ်လုပ်တာမို့ Windows သုံးရင် Public Key ကို manually ကူးထည့်ပေးရပါမယ်။ 
+
+Key ပြောင်းလဲလို့ရပြီလားစမ်းကြည့်ပါမယ်။
+
+```bash
+ssh username@ipaddress
+```
+
+အဆင်ပြေပြီဆိုရင် password login ကိုပိတ်လို့ရပါပြီ။ SSH configuration file ကိုဖွင့်ပါမယ်။
+
+```bash
+sudo nano /etc/ssh/sshd_config
+```
+
+ပြီးရင် အောက်ပါတို့ကို ရှာပြီးပြင်ပါ
+```
+PasswordAuthentication no
+ChallengeResponseAuthentication no
+UsePAM no
+```
+
+ဒါတွေဟာ password authentication ကိုပိတ်လိုက်တာဖြစ်ပါတယ်။ ပြီးရင် ssh service ကို restart ပါမယ်။
+
+```bash
+sudo systemctl restart sshd
+```
+
+ဒါဆိုရင် ဆာဗာကို SSH key နဲ့ပဲ ဝင်လို့ရတော့မယ်။ Password နဲ့ login ဝင်မရတော့ပါဘူး။ SSH key ကို သေချာသိမ်းဆည်းထားဖို့လိုပါတယ်။ SSH key ပျောက်ရင် VPS panel ကနေမှတဆင့် VNC terminal ကိုဝင်ပြီး password login ပြန်ဖွင့်ပေးရပါမယ်။
+
+## Laravel Project Deployment Setup
+အထက်ပါအဆင့်တွေ အကုန်လုပ်ပြီးရင် Laravel project တစ်ခုကို deploy လုပ်ဖို့ server ကအဆင်သင့်ဖြစ်နေပါပြီ။ ကျန်နေသေးတာအတော်များများကို ဆက်လုပ်ပါမယ်။
+
+### Laravel သုံးဖို့လိုအပ်တဲ့ PHP modules တွေ ထပ်ထည့်ပါမယ်
+
+```bash
+sudo apt install php-bcmath php-xml php-fpm php-zip php-intl php-mbstring php-curl php-mysql php-cli unzip
+```
+
+### Composer Install (PHP package manager)
+Laravel က Composer ကို အသုံးပြုထားတဲ့အတွက် Composer ကို install လုပ်ဖို့လိုအပ်ပါတယ်။
+
+```bash
+curl -sS https://getcomposer.org/installer | php
+sudo mv composer.phar /usr/local/bin/composer
+```
+
+ဒါဆိုရင် `composer` command သုံးလို့ရပါပြီ။
+
+### Git Installation
+Project repo ကို clone လုပ်ဖို့ Git လိုအပ်ပါတယ်။
+
+```bash
+sudo apt install git
+```
+
+### Apache မှာ rewrite module ကို enable လုပ်ပါမယ်
+
+```bash
+sudo a2enmod rewrite
+sudo systemctl restart apache2
+```
+
+### Project ကို Clone လုပ်ခြင်း
+အခု project ကို clone လုပ်ပါမယ်။ Document root ကိုသွားပါ။
+
+```bash
+cd /var/www/yourdomain.com
+git clone https://github.com/yourusername/your-repo.git public_html
+```
+
+ဒါဆိုရင် repo ကို document root အဖြစ် clone လုပ်ထားပြီးဖြစ်ပါတယ်။ Public folder အဖြစ် သီးသန့် setup နဲ့ထားမယ်ဆိုရင်လည်း အဲဒီအတိုင်းပြင်ဆင်နိုင်ပါတယ်။
+
+### Environment setup
+Laravel မှာ .env file နဲ့ configuration ထည့်ရပါတယ်။ Example .env file ကို .env အဖြစ်ကူးပါမယ်။
+
+```bash
+cd /var/www/yourdomain.com/public_html
+cp .env.example .env
+```
+
+ပြီးရင် .env file ကိုဖွင့်ပြီး database settings တွေပြင်ဆင်ပါမယ်။
+
+```bash
+nano .env
+```
+
+အဓိကပြောင်းရမှာတွေက
+
+```
+APP_NAME="Your App Name"
+APP_ENV=production
+APP_DEBUG=false
+APP_URL=https://yourdomain.com
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=yourdatabase
+DB_USERNAME=dbusername
+DB_PASSWORD=dbpassword
+```
+
+### Laravel ရဲ့ MySQL Database သတ်မှတ်ခြင်း
+MySQL login ဝင်ပါမယ်။
+
+```bash
+sudo mysql -u root -p
+```
+
+ပြီးရင် database နဲ့ user တွေလုပ်ပါမယ်။
+
+```sql
+CREATE DATABASE yourdatabase;
+CREATE USER 'dbusername'@'localhost' IDENTIFIED BY 'dbpassword';
+GRANT ALL PRIVILEGES ON yourdatabase.* TO 'dbusername'@'localhost';
+FLUSH PRIVILEGES;
+EXIT;
+```
+
+### Composer Dependencies Install လုပ်ခြင်း
+
+```bash
+cd /var/www/yourdomain.com/public_html
+composer install --no-dev --optimize-autoloader
+```
+
+### Laravel App Key ထုတ်ခြင်း
+
+```bash
+php artisan key:generate
+```
+
+### Laravel Storage ပြင်ဆင်ခြင်း
+
+```bash
+php artisan storage:link
+```
+
+### Database Migration နဲ့ Seeding
+
+```bash
+php artisan migrate
+php artisan db:seed
+```
+
+### Laravel Permissions
+Laravel က file system ကိုဖတ်ရေးသုံးစွဲတဲ့အခါ permission တော်တော်အရေးကြီးပါတယ်။ အောက်ပါအတိုင်း permission တွေပြင်ဆင်ပါမယ်။
+
+```bash
+sudo chown -R www-data:www-data /var/www/yourdomain.com/public_html/storage
+sudo chown -R www-data:www-data /var/www/yourdomain.com/public_html/bootstrap/cache
+sudo chmod -R 775 /var/www/yourdomain.com/public_html/storage
+sudo chmod -R 775 /var/www/yourdomain.com/public_html/bootstrap/cache
+```
+
+### Apache Configuration ပြင်ဆင်ခြင်း
+Laravel ကို serve လုပ်ဖို့ Apache configuration ပြင်ဆင်ပါမယ်။
+
+```bash
+sudo nano /etc/apache2/sites-available/yourdomain.com.conf
+```
+
+ပြီးရင် public ဖိုလ်ဒါကို point လုပ်အောင် ပြင်ဆင်ပါမယ်။
+
+```
+<VirtualHost *:80>
+    ServerName yourdomain.com
+    ServerAlias www.yourdomain.com
+    ServerAdmin webmaster@localhost
+    DocumentRoot /var/www/yourdomain.com/public_html/public
+    
+    <Directory /var/www/yourdomain.com/public_html/public>
+        Options Indexes FollowSymLinks
+        AllowOverride All
+        Require all granted
+    </Directory>
+    
+    ErrorLog /var/www/yourdomain.com/log/error.log
+    CustomLog /var/www/yourdomain.com/log/access.log combined
+</VirtualHost>
+```
+
+ပြီးရင် Apache ကို reload လုပ်ပါမယ်။
+
+```bash
+sudo systemctl reload apache2
+```
+
+### Laravel Caching
+Optimization အတွက် caching လုပ်ပါမယ်။
+
+```bash
+php artisan config:cache
+php artisan route:cache
+php artisan view:cache
+```
+
+## Optional: Redis Installation
+Heavy traffic ရှိတယ်ဆိုရင် caching အတွက် Redis က အသုံးဝင်ပါတယ်။ Laravel နဲ့တွဲသုံးလို့ကောင်းပါတယ်။
+
+```bash
+sudo apt install redis-server
+```
+
+Redis ကို systemd service အဖြစ် run အောင်လုပ်ပါမယ်။
+
+```bash
+sudo nano /etc/redis/redis.conf
+```
+
+ပြီးရင် "supervised no" ကနေ "supervised systemd" လို့ ပြောင်းပါ။ ပြီးရင် Redis service ကို restart ပါမယ်။
+
+```bash
+sudo systemctl restart redis.service
+```
+
+Redis status ကြည့်ကြည့်ရအောင်။
+
+```bash
+sudo systemctl status redis
+```
+
+Laravel မှာ Redis သုံးဖို့ Predis package ထည့်ပါမယ်။
+
+```bash
+cd /var/www/yourdomain.com/public_html
+composer require predis/predis
+```
+
+## Optional: Supervisor for Laravel Queue
+Laravel queue workers တွေကို manage လုပ်ဖို့ Supervisor ထည့်ပါမယ်။
+
+```bash
+sudo apt install supervisor
+```
+
+Queue worker configuration file ဖန်တီးပါမယ်။
+
+```bash
+sudo nano /etc/supervisor/conf.d/laravel-worker.conf
+```
+
+အောက်ပါအတိုင်းထည့်ပါ
+
+```
+[program:laravel-worker]
+process_name=%(program_name)s_%(process_num)02d
+command=php /var/www/yourdomain.com/public_html/artisan queue:work --sleep=3 --tries=3
+autostart=true
+autorestart=true
+user=www-data
+numprocs=8
+redirect_stderr=true
+stdout_logfile=/var/www/yourdomain.com/log/worker.log
+```
+
+ပြီးရင် Supervisor ကို reload ပြီး လုပ်ငန်းစလုပ်ရအောင်။
+
+```bash
+sudo supervisorctl reread
+sudo supervisorctl update
+sudo supervisorctl start laravel-worker:*
+```
+
+## Laravel Production အတွက် ပြင်ဆင်ခြင်း
+Laravel code ကို optimize ဖြစ်ဖို့ အောက်ပါအတိုင်းလုပ်ပေးပါ။
+
+```bash
+cd /var/www/yourdomain.com/public_html
+composer install --optimize-autoloader --no-dev
+php artisan config:cache
+php artisan route:cache
+php artisan view:cache
+```
+
+Web server ရဲ့ timezone ပြောင်းလဲချင်ရင်
+
+```bash
+sudo timedatectl set-timezone Asia/Yangon
+```
+
+## Cron Job Setup for Laravel Scheduler
+Laravel scheduler ကို run ဖို့ cron job လုပ်ပါမယ်။
+
+```bash
+crontab -e
+```
+
+ပြီးရင် အောက်ပါအတိုင်းထည့်ပါ
+
+```
+* * * * * cd /var/www/yourdomain.com/public_html && php artisan schedule:run >> /dev/null 2>&1
+```
+
+## Domain Setup နှင့် DNS Configuration
+VPS ရရှိပြီး LAMP stack တပ်ဆင်ပြီးသွားလို့ နောက်တစ်ဆင့်မှာ domain နှင့် DNS ကို setup လုပ်ပါမယ်။ ဒီအဆင့်တွေဟာ VPS မှာ website အတွက် domain name နဲ့ဝင်နိုင်ဖို့ အဓိကလိုအပ်ပါတယ်။
+
+### Domain Name ဝယ်ယူခြင်း
+အကယ်၍ Domain name မဝယ်ရသေးရင် Namecheap မှာအလွယ်တကူဝယ်ယူနိုင်ပါတယ်။
+
+1. Namecheap.com သို့သွားပါ
+2. Search box မှာ domain name ကိုရိုက်ထည့်ပါ (ဥပမာ။ yourdomain.com)
+3. ရရှိနိုင်သောအမည်များထဲမှ သင်နှစ်သက်ရာကိုရွေးချယ်ပါ
+4. ဝယ်ယူပြီး Namecheap account ဖွင့်ပါ
+
+### Domain Name နှင့် VPS ချိတ်ဆက်ခြင်း
+Domain name ဝယ်ယူပြီးနောက် VPS IP နဲ့ချိတ်ဆက်ဖို့ DNS settings ကိုပြင်ဆင်ရပါမယ်။
+
+1. Namecheap account မှာ login ဝင်ပါ
+2. "Domain List" ကိုသွားပါ
+3. သင့် domain နံဘေးက "MANAGE" ခလုတ်ကိုနှိပ်ပါ
+4. "Advanced DNS" ကိုရွေးချယ်ပါ
+
+ပြီးရင် အောက်ပါ records တွေကိုထည့်သွင်းပါ:
+
+#### A Records ထည့်သွင်းခြင်း
+A Record ဆိုတာ domain name ကနေ IP address ဆီကို direct လုပ်ပေးတဲ့ DNS record ဖြစ်ပါတယ်။
+
+1. "Add New Record" ခလုတ်ကိုနှိပ်ပါ
+2. Type: A Record
+3. Host: @ (ဒါက root domain အတွက်ပါ - yourdomain.com)
+4. Value: သင့် VPS ရဲ့ IP address ထည့်ပါ
+5. TTL: Automatic
+6. "Save All Changes" ကိုနှိပ်ပါ
+
+ဒါဆိုရင် domain ရဲ့ root (yourdomain.com) က VPS IP ကိုညွှန်သွားပါပြီ။
+
+#### www Subdomain အတွက် A Record ထည့်သွင်းခြင်း
+သင့် domain ကို `www` prefix နဲ့လည်းသုံးနိုင်ဖို့ နောက်ထပ် A record တစ်ခုထည့်ပါမယ်။
+
+1. "Add New Record" ခလုတ်ကိုနှိပ်ပါ
+2. Type: A Record
+3. Host: www
+4. Value: သင့် VPS ရဲ့ IP address 
+5. TTL: Automatic
+6. "Save All Changes" ကိုနှိပ်ပါ
+
+#### CNAME Records ထည့်သွင်းခြင်း (Optional)
+အကယ်၍ အခြား subdomains (ဥပမာ blog.yourdomain.com) ချိတ်ဆက်လိုရင် CNAME records သုံးနိုင်ပါတယ်။
+
+1. "Add New Record" ခလုတ်ကိုနှိပ်ပါ
+2. Type: CNAME Record
+3. Host: blog (သို့) သင်နှစ်သက်တဲ့ subdomain name
+4. Value: yourdomain.com
+5. TTL: Automatic
+6. "Save All Changes" ကိုနှိပ်ပါ
+
+#### MX Records ထည့်သွင်းခြင်း (Email အတွက်)
+Email service အတွက် MX records လိုအပ်ပါတယ်။ ဥပမာ Google Workspace (G Suite) သုံးရင်:
+
+1. "Add New Record" ခလုတ်ကိုနှိပ်ပါ
+2. Type: MX Record
+3. Priority: 1
+4. Host: @
+5. Value: aspmx.l.google.com
+6. TTL: Automatic
+7. "Save All Changes" ကိုနှိပ်ပါ
+
+Google Workspace အတွက် နောက်ထပ် MX records တွေလိုအပ်ပါတယ်:
+- Priority 5 နဲ့ alt1.aspmx.l.google.com
+- Priority 5 နဲ့ alt2.aspmx.l.google.com
+- Priority 10 နဲ့ alt3.aspmx.l.google.com
+- Priority 10 နဲ့ alt4.aspmx.l.google.com
+
+### Namecheap ရဲ့ Nameservers Setting
+အကယ်၍ Namecheap's DNS service ကို မသုံးဘဲ တခြား DNS provider (e.g. Cloudflare) သုံးချင်ရင် nameservers ကိုပြောင်းနိုင်ပါတယ်။
+
+1. "Domain" tab ကိုသွားပါ
+2. "Nameservers" section ကိုရှာပါ
+3. "Nameservers" dropdown မှာ "Custom DNS" ကိုရွေးပါ
+4. တခြား DNS provider က nameservers တွေထည့်ပါ (ဥပမာ Cloudflare အတွက်):
+   - ns1.cloudflare.com
+   - ns2.cloudflare.com
+5. "Save" ခလုတ်ကိုနှိပ်ပါ
+
+### DNS Changes တွေစောင့်ဆိုင်းခြင်း
+DNS changes တွေက propagate ဖြစ်ဖို့ အချိန်ယူနိုင်ပါတယ်။ 24-48 နာရီကြာနိုင်ပေမယ့် ပုံမှန်အားဖြင့် 30 မိနစ်ကနေ နာရီအနည်းငယ်အတွင်း အလုပ်လုပ်လာတာကို တွေ့ရပါမယ်။
+
+DNS propagation ကိုစစ်ဆေးဖို့:
+```bash
+dig yourdomain.com
+```
+
+အထက်ပါ command ရဲ့ output မှာ သင့် VPS IP ကိုပြခဲ့ရင် DNS settings တွေဟာ propagate ဖြစ်နေပြီဆိုတာကိုပြသပါတယ်။
+
+### Apache Virtual Host ပြန်လည်စိစစ်ခြင်း
+DNS setting လုပ်ပြီးရင် Apache Virtual Host config file ကိုပြန်စစ်ပြီး domain name မှန်မမှန်သေချာအောင်လုပ်ပါ:
+
+```bash
+sudo nano /etc/apache2/sites-available/yourdomain.com.conf
+```
+
+`ServerName` နဲ့ `ServerAlias` တွေကို ပြန်စစ်ပါ:
+```
+ServerName yourdomain.com
+ServerAlias www.yourdomain.com
+```
+
+### Let's Encrypt SSL Certificate ထည့်သွင်းခြင်း
+DNS setting တွေပြီးဆုံးပြီး domain က အလုပ်လုပ်နေပြီဆိုရင် Let's Encrypt Certificate ကိုအလွယ်တကူထည့်သွင်းနိုင်ပါတယ်:
+
+```bash
+sudo apt install certbot python3-certbot-apache
+sudo certbot --apache -d yourdomain.com -d www.yourdomain.com
+```
+
+Certbot က အောက်ပါမေးခွန်းများကိုမေးပါလိမ့်မယ်:
+
+1. Email address ထည့်ပေးပါ (သက်တမ်းကုန်ဆုံးရန် နီးလာတဲ့အခါ notice ပို့ရန်)
+2. Terms of Service ကိုလက်ခံမလားမေးရင် "A" နဲ့ "Agree" ဖြေပါ
+3. EFF's email list ထဲထည့်မလားမေးရင် ကိုယ်နှစ်သက်ရာဖြေပါ
+4. HTTPS redirect လုပ်မလားမေးရင် မိမိနှစ်သက်ရာဖြေပါ (redirect လုပ်ရင် HTTP request တိုင်းကို HTTPS ကိုပြောင်းပေးပါတယ်)
+
+Certbot က သင့် Apache config file ကို အလိုအလျောက်ပြင်ဆင်ပြီး SSL certificate တပ်ဆင်ပေးပါလိမ့်မယ်။ ပြီးရင် ကိုယ့် website ကို https://yourdomain.com နဲ့ဝင်ကြည့်ရင် secure connection နဲ့ဝင်နိုင်ပါပြီ။
+
+### SSL Auto-renewal စစ်ဆေးခြင်း
+Let's Encrypt certificate တွေက 90 ရက်ကြာရင် သက်တမ်းကုန်ပါတယ်။ Certbot က automatic renewal ကိုပြုလုပ်ပေးနိုင်ပါတယ် - ဒါကို verify လုပ်ကြည့်ရအောင်:
+
+```bash
+sudo systemctl status certbot.timer
+```
+
+Certbot auto-renewal ကို test မသေချာအောင် dry-run လုပ်ကြည့်လို့ရပါတယ်:
+
+```bash
+sudo certbot renew --dry-run
+```
+
+အမှားတွေမပေါ်ဘဲ လုပ်ငန်းပြီးမြောက်ခဲ့ရင် certificate တွေဟာ သက်တမ်းကုန်ခါနီးတိုင်း အလိုအလျောက် update ဖြစ်နေပါလိမ့်မယ်။
+
+## နိဂုံး
+ဒါဆိုရင် Namecheap VPS မှာ LAMP stack, Laravel အပြည့်အစုံ install လုပ်ပြီး project deployment အဆင်သင့်ဖြစ်နေပါပြီ။ အထက်က အဆင့်တွေဟာ VPS ဝယ်ပြီး setup လုပ်တဲ့အဆင့်တစ်ခုချင်းစီကို အသေးစိတ်ဖော်ပြထားတာဖြစ်ပါတယ်။ SSH key နဲ့ဝင်တာ၊ root login ကိုပိတ်တာ၊ Fail2ban နဲ့ကာကွယ်တာတွေဟာ VPS security ကိုပိုကောင်းအောင်လုပ်ထားတာဖြစ်ပါတယ်။
+
+DNS နဲ့ Domain setup ပိုင်းမှာ DNS propagation ကြာခြင်း၊ Namecheap panel ကနေ settings တွေပြောင်းလဲရခြင်းတို့ဟာ ဆာဗာထဲက setting မဟုတ်ဘဲ Namecheap ရဲ့ Domain Control Panel ထဲမှာလုပ်ရတာဖြစ်ပါတယ်။ Domain နှင့် DNS configuration ကို မှန်ကန်စွာလုပ်ဆောင်ပြီးမှ Let's Encrypt SSL ကို install လုပ်ပါ။ ဒီလိုလုပ်တာက domain ကို VPS ရဲ့ IP နဲ့ချိတ်ဆက်ပြီးမှ SSL ကို verify လုပ်လို့ရတာကြောင့်ဖြစ်ပါတယ်။
