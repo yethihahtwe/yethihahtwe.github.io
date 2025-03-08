@@ -103,38 +103,46 @@ script သွင်းလိုက်ရင် VALIDATE PASSWORD PLUGIN ကိ�
 > - Level 1 = Medium အနည်းဆုံး စာလုံး ၈ လုံး၊ ဂဏန်းတွေပါ၊ စာလုံးအကြီးအသေးရော၊ special character ပါရမယ်
 > - Level 2 = Strong level 1 နဲ့တူတူပဲ၊ တခုပိုသွားတာက dictionary ထဲက word ဖြစ်လို့မရဘူး
 
-အခုတော့ `1` ရိုက်ထည့်ပါ
+အခုတော့ `1` ရိုက်ထည့်ပါမယ်။
 
-လက်ရှိ password strength ကို 
+လက်ရှိ password strength ကို 0 ကနေ 100 scale နဲ့ပြပေးပါမယ်။ `Y` နှိပ်ပြီးဆက်သွားပါ။
 
-ကျန်တဲ့ ပရိုဂရမ်က password အရည်အသွေးကို 0-100 scale နဲ့ပြမယ်။ ဆက်သွားမလားမေးရင် Y နဲ့သွားပါ။ ကျန်တဲ့ prompt တွေမှာလည်း Y ပဲထည့်သွားပါ။ ဒါဆိုရင် MySQL server setup ပြီးပါပြီ။
+anonymous user remove လုပ်မလားမေးရင် `y` နှိပ်ပါ။
 
-3. PHP ထည့်သွင်းခြင်း
+disable root login remotely မှာ `y` နှိပ်ပါ။
+
+remove test database မှာ `y` နှိပ်ပါ။
+
+reload privilege table မှာ `y` နှိပ်ပါ။
+
+ဒါဆိုရင် MySQL server setup ပြီးပါပြီ။
+
+### PHP Installation
 
 ```bash
-sudo apt install php libapache2-mod-php php-mysql
+sudo apt install php libapache2-mod-php php-mysql -y
 ```
 
 အသုံးများတဲ့ PHP extension တွေထပ်ထည့်ထားချင်ရင်
 
 ```bash
-sudo apt install php-curl php-json php-cgi php-gd php-mbstring php-xml php-xmlrpc php-zip
+sudo apt install php-curl php-json php-cgi php-gd php-mbstring php-xml php-xmlrpc php-zip -y
 ```
-
-PHP ကူးလို့ရပြီလားစစ်ကြည့်ရအောင်
+php install လုပ်ပြီးပြီဆိုရင် အောက်ပါ command နဲ့ version စစ်ကြည့်လို့ရပါတယ်။
 
 ```bash
 php -v
 ```
 
-## Apache Virtual Host Setup
-Apache က default အနေနဲ့ `/var/www/html` directory ကို serve လုပ်ပေးပါတယ်။ Website တစ်ခုထဲအတွက်ဆိုရင် အဆင်ပြေပေမယ့် website အများအပြားအတွက်ဆိုရင် virtual hosting ဆိုတဲ့ Apache ရဲ့ feature ကိုသုံးရပါမယ်။
+### Apache Virtual Host Setup
+Apache က default အနေနဲ့ `/var/www/html` directory ကို serve လုပ်ပေးပါတယ်။ ဥပမာ `index.html` ကို `/var/www/html/index.html` ဆိုပြီးထားလိုက်ရင် website စာမျက်နှာအနေနဲ့မြင်ရပါပြီ။ Website တစ်ခုထဲအတွက်ဆိုရင် အဆင်ပြေပေမယ့် website အများအပြားအတွက်ဆိုရင် virtual hosting ဆိုတဲ့ Apache ရဲ့ feature ကိုသုံးရပါမယ်။
 
-ပထမဆုံး ကိုယ့် website folder ကိုလုပ်ပါမယ်။
+ပထမဆုံး ကိုယ့် website folder ကိုလုပ်ပါမယ်။ `yourdomain.com` နေရာမှာ ကိုယ့် website domain ထည့်နိုင်ပါတယ်။ လောလောဆယ် domain name မရှိသေးဘူး၊ ဒါမှမဟုတ် DNS record မထည့်ရသေးဘူးဆိုရင်တောင်မှ ရည်ရွယ်ထားတဲ့ domain name အတိုင်း folder ဆောက်လို့ရပါတယ်။
 
 ```bash
 sudo mkdir -p /var/www/yourdomain.com/public_html
 ```
+> တချို့က directory name မှာ period `.` ပါနေတာမကြိုက်ကြဘဲ `/var/www/domaincom` လို့ပေးတတ်ကြပါတယ်။ အလုပ်လုပ်ပုံချင်းအတူတူပဲမို့ ကိုယ့်အကြိုက်နဲ့ကိုယ် နာမည်ပေးလို့ရပါတယ်။
 
 Log နဲ့ backups folder တွေလည်းလုပ်ထားပါမယ်။
 
@@ -143,19 +151,19 @@ sudo mkdir -p /var/www/yourdomain.com/log
 sudo mkdir -p /var/www/yourdomain.com/backups
 ```
 
-ရပြီးရင် folder ownership ကို ပြောင်ပါမယ်။
+ပြီးရင် folder ownership ကို ပြောင်းပါမယ်။
 
 ```bash
 sudo chown -R $USER:$USER /var/www/yourdomain.com
 ```
 
-ဒါဆိုရင် sudo မသုံးဘဲ ဒီ folder ထဲမှာ အပြည့်အဝအလုပ်လုပ်လို့ရပါမယ်။ ဆက်ပြီး Apache ရဲ့ sites-available မှာ yourdomain.com.conf ဆိုတဲ့ file ကိုလုပ်ပါမယ်။
+ဒါဆိုရင် ဒီ folder ထဲမှာ run တဲ့ command တွေကို sudo အမြဲထည့်ဖို့မလိုတော့ပါဘူး။ ဆက်ပြီး Apache ရဲ့ sites-available မှာ yourdomain.com.conf ဆိုတဲ့ file ကိုလုပ်ပါမယ်။
 
 ```bash
 sudo nano /etc/apache2/sites-available/yourdomain.com.conf
 ```
 
-အောက်ပါအတိုင်းထည့်ပါ
+အောက်ပါအတိုင်းထည့်ပါ။ yourdomain.com တွေမှာ ကိုယ့် domain name အစားထိုးပေးပါ။ လောလောဆယ် domain name နဲ့မချိတ်ရသေးလည်း ထည့်ထားလို့ရပါတယ်။ ServerAdmin မှာ webmaster@localhost အတိုင်းပဲထားပါ။
 
 ```
 <VirtualHost *:80>
@@ -168,94 +176,85 @@ sudo nano /etc/apache2/sites-available/yourdomain.com.conf
 </VirtualHost>
 ```
 
-Virtual host ကို enable လုပ်ပါမယ်။
+အခုဖန်တီးလိုက်တဲ့ Virtual host ကို enable လုပ်ပါမယ်။
 
 ```bash
 sudo a2ensite yourdomain.com.conf
 ```
 
-မူလ default site ကိုပိတ်ပါမယ်။
+မူလ default site ကိုပိတ်ပါမယ်။ Apache သွင်းပြီးပြီးချင်း browser မှာ server ipaddress ရိုက်ထည့်လိုက်ရင် တွေ့ရတဲ့ default စာမျက်နှာကို ပိတ်ဖို့ဖြစ်ပါတယ်။
 
 ```bash
 sudo a2dissite 000-default.conf
 ```
 
-Apache config errors ရှိမရှိ test လုပ်ပါမယ်။
+ကျွန်တော်တို့ လက်ရှိလုပ်ပြီးသလောက် Apache config တွေမှာ error ရှိမရှိ test လုပ်ပါမယ်။
 
 ```bash
 sudo apache2ctl configtest
 ```
-
+```bash
+Syntax OK
+```
 Error မရှိရင် apache ကို reload ပြန်လုပ်ပေးပါမယ်။
 
 ```bash
 sudo systemctl reload apache2
 ```
-
-Test လုပ်ကြည့်ရအောင် document root မှာ HTML ဖိုင်တစ်ခုထည့်လိုက်ပါမယ်။
-
-```bash
-echo '<h1>Hello World!</h1>' > /var/www/yourdomain.com/public_html/index.html
-```
-
-Browser ကနေ yourdomain.com (သို့မဟုတ် server IP address) ကိုဝင်ကြည့်ရင် Hello World! ဆိုတာကိုမြင်ရပါလိမ့်မယ်။
-
-## SSL Certificate Installation
-Web project တွေက အထူးသဖြင့် sensitive data တွေပါတဲ့ project ဆိုရင် website ကို HTTPS နဲ့ serve လုပ်ဖို့ဆိုတာ အရေးကြီးပါတယ်။ HTTPS နဲ့ဖြစ်အောင် SSL Certificate လိုပါတယ်။ ကျွန်တော်တို့ Let's Encrypt ဆိုတဲ့ အခမဲ့ certificate ကို certbot client သုံးပြီးလျှောက်ပါမယ်။
+ဒီအဆင့်ရောက်ပြီဆို html ရေးပြီးစမ်းကြည့်လို့ရပါပြီ။ document root မှာ HTML ဖိုင်တစ်ခုထည့်လိုက်ပါမယ်။
 
 ```bash
-sudo apt install certbot python3-certbot-apache
+echo '<h1>Hello</h1>' > /var/www/yourdomain.com/public_html/index.html
 ```
 
-ပြီးရင် certbot ကိုအသုံးပြုပြီး Apache website အတွက် SSL certificate တောင်းပါမယ်။
-
-```bash
-sudo certbot --apache -d yourdomain.com -d www.yourdomain.com
-```
-
-- Email address ကိုထည့်ပါ
-- Terms of Service ကိုသဘောတူမလားမေးရင် A ထည့်ပါ
-- EFF မှ email newsletter တွေလိုချင်လားမေးရင်ကိုယ်ကြိုက်တာရွေးပါ
-
-Install ပြီးသွားတာနဲ့ certbot က Apache config ကိုအလိုအလျှောက် ပြုပြင်ပြီး SSL နဲ့ဖြစ်အောင် setup လုပ်ပေးပါလိမ့်မယ်။ လောလောဆယ်တော့ domain နဲ့ DNS ကိုမသတ်မှတ်ရသေးရင် SSL install လုပ်လို့ရမှာမဟုတ်တာမို့ နောက်မှပြန်လာလုပ်လို့ရပါတယ်။ ဒါမှမဟုတ် ဒီအဆင့်ကိုချန်ခဲ့လို့ရပါတယ်။
-
-
-
-
+Browser ကနေ server IP address ကိုဝင်ကြည့်ရင် Hello ဆိုတာကိုမြင်ရပါလိမ့်မယ်။ လောလောဆယ် SSL certificate မသွင်းရသေးလို့ HTTPS နဲ့ဖွင့်လို့ရမှာမဟုတ်သေးပါဘူး။
 
 ## Security Enhancements
-ဆာဗာကို security တိုးမြှင့်ဖို့အတွက် Fail2ban install လုပ်ထားတာ အကြံပြုပါတယ်။ အထူးသဖြင့် SSH brute force attacks ကအန္တရာယ်ရှိပါတယ်။ ဒီ tool က failed login attempt တွေလုပ်တဲ့ IP address တွေကို Block လုပ်ပေးပါတယ်။
+အွန်လိုင်းဆာဗာရယ်လို့ရှိလာပြီဆိုရင် SSH password brute force attack တွေကို တချိန်မဟုတ်တချိန် ခံရတတ်ပါတယ်။ password ကိုလုံခြုံအောင်ပေးထားမယ်ဆိုရင် dictionary attack တွေ၊ brute force attack တွေကိုသိပ်ကြောက်စရာမလိုပေမယ့် brute force login attempt တွေ အကန့်အသတ်မရှိလုပ်ခံရရင် server memory usage များလာပြီး website run နေစေဖို့ မရှိမဖြစ်လိုတဲ့ apache service လိုမျိုး service တွေရပ်သွားတတ်ပါတယ်။ server reboot လုပ်လိုက်မှ၊ apache service restart လုပ်လိုက်မှပဲ website ပြန်တက်လာတတ်ပါတယ်။
+
+ဒီလိုမဖြစ်ရအောင် Fail2ban လောက်အနည်းဆုံးသွင်းထားဖို့လိုပါတယ်။ မအောင်မြင်တဲ့ login attempt တွေခဏခဏလုပ်နေတဲ့ ip ကို ban ဖို့ဖြစ်ပါတယ်။
 
 ```bash
 sudo apt install fail2ban
 sudo systemctl enable fail2ban
 sudo systemctl start fail2ban
 ```
+> ပိုလုံခြုံမှုရှိအောင် Cloudflare နဲ့ ကာထားလို့ရပါတယ်။ free version မှာကိုပဲ SSL/TLS protocol ပေးသုံးထားလို့ SSL ဖိုးအကုန်မခံချင်ရင်၊ Let's Encrypt က SSL certificate လည်းမသုံးချင်ဘူးဆိုရင် Cloudflare SSL free tier မှာတင်ရနိုင်ပါတယ်။ Analytics လည်းပါလို့ site visitor monitor ပါလုပ်နိုင်မှာပါ။ ဒါပေမယ့် SSH access ကိုကျ tunnelling နဲ့ပဲရတော့တာမို့ tunnelling setup လုပ်ရင် ပိုက်ဆံပေးရပါတယ်။
 
-ဒါဆိုရင် fail2ban ကအလုပ်လုပ်နေပါပြီ။ နောက်ထပ်အဆင့်က SSH ဝင်တာကို password သုံးတာထက် SSH key pair သုံးတာက ပိုပြီးလုံခြုံပါတယ်။
+ဒါဆိုရင် fail2ban ကအလုပ်လုပ်နေပါပြီ။ SSH config မှာ root login မပိတ်ရသေးရင် ပိတ်ပေးပါ။
+
+```bash
+sudo nano /etc/ssh/sshd_config
+```
+`PermitRootLogin` ကို `no` ပေးပါ။
+
+`MaxAuthTries` ကို `3` လောက်ပဲထားပါ။
+
+နောက်တစ်ဆင့်မှာတော့ SSH ကို password သုံးတာထက် SSH key pair သုံးတာက ပိုပြီးလုံခြုံတာမို့လို့ SSH key authentication ဆက်လုပ်ပါမယ်။
 
 ## SSH Key Authentication
-သင့်ကွန်ပြူတာ (Mac) ကနေ SSH keys ဖန်တီးပါမယ်။
+Mac နဲ့ Linux မှာ SSH key authentication ပြုလုပ်ပုံကိုအဓိကဖော်ပြပါမယ်။ Windows မှာတော့ Putty Client သုံးပြီး setup လုပ်နိုင်ပါတယ်။ Putty သုံးပုံသုံးနည်းလည်း အလွယ်တကူရှာဖတ်လို့ရတာမို့ Windows မှာလုပ်ရတဲ့အဆင့်တွေကို အသေးစိတ်မပြောတော့ပါဘူး။
+
+Terminal မှာ SSH login ဝင်ထားတုန်းပဲဆိုရင် `exit` command နဲ့ပြန်ထွက်ပါ။ local terminal ကိုပြန်ရောက်ပြီဆိုရင် အောက်ပါ command ကို run ပါ။
 
 ```bash
 ssh-keygen -t ed25519 -C "youremail@example.com"
 ```
+"youremail@example.com" မှာ ကိုယ့်အီးမေးလ်ကိုထည့်ပါ။
 
-Default directory ကိုလက်ခံပြီး passphrase ထည့်ရင်ထည့် မထည့်ရင် Enter ပဲနှိပ်ပါ။ ပြီးရင် ssh-copy-id သုံးပြီး ဆာဗာပေါ်တင်ပါမယ်။
+Default directory မှာပဲသိမ်းပါ။ passphrase ခံမလားမေးရင် ဘာမှမထည့်တော့ဘဲ Enter နှိပ်ပါ။ ပြီးရင် ssh-copy-id သုံးပြီး ဆာဗာပေါ်တင်ပါမယ်။
 
 ```bash
 ssh-copy-id username@ipaddress
 ```
+username နဲ့ ipaddress ဟာ SSH login ဝင်ရင်သုံးရတဲ့အတိုင်းဖြစ်ပါတယ်။ ဒီ command က Linux/Mac မှာပဲအလုပ်လုပ်တာမို့ Windows သုံးရင် Public Key ကို manual ကူးထည့်ပေးရပါမယ်။ 
 
-ဒီ command က Linux/Mac မှာပဲအလုပ်လုပ်တာမို့ Windows သုံးရင် Public Key ကို manually ကူးထည့်ပေးရပါမယ်။ 
-
-Key ပြောင်းလဲလို့ရပြီလားစမ်းကြည့်ပါမယ်။
+ဆာဗာပေါ်ကူးတင်ပြီးရင် login စမ်းဝင်ကြည့်ပါမယ်။
 
 ```bash
 ssh username@ipaddress
 ```
-
-အဆင်ပြေပြီဆိုရင် password login ကိုပိတ်လို့ရပါပြီ။ SSH configuration file ကိုဖွင့်ပါမယ်။
+SSH key pair authentication အောင်မြင်တယ်ဆိုရင် password မတောင်းတော့ဘဲ login တန်းဝင်သွားပါလိမ့်မယ်။ အဆင်ပြေပြီဆိုရင် password login ကိုပိတ်လို့ရပါပြီ။ SSH configuration file ကိုဖွင့်ပါမယ်။
 
 ```bash
 sudo nano /etc/ssh/sshd_config
@@ -264,7 +263,6 @@ sudo nano /etc/ssh/sshd_config
 ပြီးရင် အောက်ပါတို့ကို ရှာပြီးပြင်ပါ
 ```
 PasswordAuthentication no
-ChallengeResponseAuthentication no
 UsePAM no
 ```
 
@@ -681,3 +679,23 @@ sudo certbot renew --dry-run
 ဒါဆိုရင် Namecheap VPS မှာ LAMP stack, Laravel အပြည့်အစုံ install လုပ်ပြီး project deployment အဆင်သင့်ဖြစ်နေပါပြီ။ အထက်က အဆင့်တွေဟာ VPS ဝယ်ပြီး setup လုပ်တဲ့အဆင့်တစ်ခုချင်းစီကို အသေးစိတ်ဖော်ပြထားတာဖြစ်ပါတယ်။ SSH key နဲ့ဝင်တာ၊ root login ကိုပိတ်တာ၊ Fail2ban နဲ့ကာကွယ်တာတွေဟာ VPS security ကိုပိုကောင်းအောင်လုပ်ထားတာဖြစ်ပါတယ်။
 
 DNS နဲ့ Domain setup ပိုင်းမှာ DNS propagation ကြာခြင်း၊ Namecheap panel ကနေ settings တွေပြောင်းလဲရခြင်းတို့ဟာ ဆာဗာထဲက setting မဟုတ်ဘဲ Namecheap ရဲ့ Domain Control Panel ထဲမှာလုပ်ရတာဖြစ်ပါတယ်။ Domain နှင့် DNS configuration ကို မှန်ကန်စွာလုပ်ဆောင်ပြီးမှ Let's Encrypt SSL ကို install လုပ်ပါ။ ဒီလိုလုပ်တာက domain ကို VPS ရဲ့ IP နဲ့ချိတ်ဆက်ပြီးမှ SSL ကို verify လုပ်လို့ရတာကြောင့်ဖြစ်ပါတယ်။
+
+
+### SSL Certificate Installation
+Web project တွေက အထူးသဖြင့် sensitive data တွေပါတဲ့ project ဆိုရင် website ကို HTTPS နဲ့ serve လုပ်ဖို့ဆိုတာ အရေးကြီးပါတယ်။ HTTPS နဲ့ဖြစ်အောင် SSL Certificate လိုပါတယ်။ ကျွန်တော်တို့ Let's Encrypt ဆိုတဲ့ အခမဲ့ certificate ကို certbot client သုံးပြီးလျှောက်ပါမယ်။
+
+```bash
+sudo apt install certbot python3-certbot-apache
+```
+
+ပြီးရင် certbot ကိုအသုံးပြုပြီး Apache website အတွက် SSL certificate တောင်းပါမယ်။
+
+```bash
+sudo certbot --apache -d yourdomain.com -d www.yourdomain.com
+```
+
+- Email address ကိုထည့်ပါ
+- Terms of Service ကိုသဘောတူမလားမေးရင် A ထည့်ပါ
+- EFF မှ email newsletter တွေလိုချင်လားမေးရင်ကိုယ်ကြိုက်တာရွေးပါ
+
+Install ပြီးသွားတာနဲ့ certbot က Apache config ကိုအလိုအလျှောက် ပြုပြင်ပြီး SSL နဲ့ဖြစ်အောင် setup လုပ်ပေးပါလိမ့်မယ်။ လောလောဆယ်တော့ domain နဲ့ DNS ကိုမသတ်မှတ်ရသေးရင် SSL install လုပ်လို့ရမှာမဟုတ်တာမို့ နောက်မှပြန်လာလုပ်လို့ရပါတယ်။ ဒါမှမဟုတ် ဒီအဆင့်ကိုချန်ခဲ့လို့ရပါတယ်။
