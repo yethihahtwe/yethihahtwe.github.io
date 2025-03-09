@@ -1,0 +1,75 @@
+---
+title: "Setting up LAMP stack and deployment on a VPS"
+description: "04-Security Enhancements"
+image: "assets/vps-setup/terminal.png"
+createdAt: 03-09-2025
+draft: false
+tags:
+    - vps-setup
+---
+
+## Security Enhancements
+အွန်လိုင်းဆာဗာရယ်လို့ရှိလာပြီဆိုရင် SSH password brute force attack တွေကို တချိန်မဟုတ်တချိန် ခံရတတ်ပါတယ်။ password ကိုလုံခြုံအောင်ပေးထားမယ်ဆိုရင် dictionary attack တွေ၊ brute force attack တွေကိုသိပ်ကြောက်စရာမလိုပေမယ့် brute force login attempt တွေ အကန့်အသတ်မရှိလုပ်ခံရရင် server memory usage များလာပြီး website run နေစေဖို့ မရှိမဖြစ်လိုတဲ့ apache service လိုမျိုး service တွေရပ်သွားတတ်ပါတယ်။ server reboot လုပ်လိုက်မှ၊ apache service restart လုပ်လိုက်မှပဲ website ပြန်တက်လာတတ်ပါတယ်။
+
+ဒီလိုမဖြစ်ရအောင် Fail2ban လောက်အနည်းဆုံးသွင်းထားဖို့လိုပါတယ်။ မအောင်မြင်တဲ့ login attempt တွေခဏခဏလုပ်နေတဲ့ ip ကို ban ဖို့ဖြစ်ပါတယ်။
+
+```bash
+sudo apt install fail2ban
+sudo systemctl enable fail2ban
+sudo systemctl start fail2ban
+```
+> ပိုလုံခြုံမှုရှိအောင် Cloudflare နဲ့ ကာထားလို့ရပါတယ်။ free version မှာကိုပဲ SSL/TLS protocol ပေးသုံးထားလို့ SSL ဖိုးအကုန်မခံချင်ရင်၊ Let's Encrypt က SSL certificate လည်းမသုံးချင်ဘူးဆိုရင် Cloudflare SSL free tier မှာတင်ရနိုင်ပါတယ်။ Analytics လည်းပါလို့ site visitor monitor ပါလုပ်နိုင်မှာပါ။ ဒါပေမယ့် SSH access ကိုကျ tunnelling နဲ့ပဲရတော့တာမို့ tunnelling setup လုပ်ရင် ပိုက်ဆံပေးရပါတယ်။
+
+ဒါဆိုရင် fail2ban ကအလုပ်လုပ်နေပါပြီ။ SSH config မှာ root login မပိတ်ရသေးရင် ပိတ်ပေးပါ။
+
+```bash
+sudo nano /etc/ssh/sshd_config
+```
+`PermitRootLogin` ကို `no` ပေးပါ။
+
+`MaxAuthTries` ကို `3` လောက်ပဲထားပါ။
+
+နောက်တစ်ဆင့်မှာတော့ SSH ကို password သုံးတာထက် SSH key pair သုံးတာက ပိုပြီးလုံခြုံတာမို့လို့ SSH key authentication ဆက်လုပ်ပါမယ်။
+
+## SSH Key Authentication
+Mac နဲ့ Linux မှာ SSH key authentication ပြုလုပ်ပုံကိုအဓိကဖော်ပြပါမယ်။ Windows မှာတော့ Putty Client သုံးပြီး setup လုပ်နိုင်ပါတယ်။ Putty သုံးပုံသုံးနည်းလည်း အလွယ်တကူရှာဖတ်လို့ရတာမို့ Windows မှာလုပ်ရတဲ့အဆင့်တွေကို အသေးစိတ်မပြောတော့ပါဘူး။
+
+Terminal မှာ SSH login ဝင်ထားတုန်းပဲဆိုရင် `exit` command နဲ့ပြန်ထွက်ပါ။ local terminal ကိုပြန်ရောက်ပြီဆိုရင် အောက်ပါ command ကို run ပါ။
+
+```bash
+ssh-keygen -t ed25519 -C "youremail@example.com"
+```
+"youremail@example.com" မှာ ကိုယ့်အီးမေးလ်ကိုထည့်ပါ။
+
+Default directory မှာပဲသိမ်းပါ။ passphrase ခံမလားမေးရင် ဘာမှမထည့်တော့ဘဲ Enter နှိပ်ပါ။ ပြီးရင် ssh-copy-id သုံးပြီး ဆာဗာပေါ်တင်ပါမယ်။
+
+```bash
+ssh-copy-id username@ipaddress
+```
+username နဲ့ ipaddress ဟာ SSH login ဝင်ရင်သုံးရတဲ့အတိုင်းဖြစ်ပါတယ်။ ဒီ command က Linux/Mac မှာပဲအလုပ်လုပ်တာမို့ Windows သုံးရင် Public Key ကို manual ကူးထည့်ပေးရပါမယ်။ 
+
+ဆာဗာပေါ်ကူးတင်ပြီးရင် login စမ်းဝင်ကြည့်ပါမယ်။
+
+```bash
+ssh username@ipaddress
+```
+SSH key pair authentication အောင်မြင်တယ်ဆိုရင် password မတောင်းတော့ဘဲ login တန်းဝင်သွားပါလိမ့်မယ်။ အဆင်ပြေပြီဆိုရင် password login ကိုပိတ်လို့ရပါပြီ။ SSH configuration file ကိုဖွင့်ပါမယ်။
+
+```bash
+sudo nano /etc/ssh/sshd_config
+```
+
+ပြီးရင် အောက်ပါတို့ကို ရှာပြီးပြင်ပါ
+```
+PasswordAuthentication no
+UsePAM no
+```
+password authentication ကိုပိတ်လိုက်တာဖြစ်ပါတယ်။ ပြီးရင် ssh service ကို restart ပါမယ်။
+
+```bash
+sudo systemctl restart sshd
+```
+
+ဒါဆိုရင် ဆာဗာကို SSH key နဲ့ပဲ ဝင်လို့ရတော့မယ်။ Password နဲ့ login ဝင်မရတော့ပါဘူး။ အပေါ်မှာတုန်းက generate လုပ်ခဲ့တဲ့ SSH key ဟာ default location မှာသိမ်းမယ်လို့ရွေးခဲ့တယ်ဆိုရင် public key ဟာ `~/.ssh/id_ed25519.pub` မှာရှိပါတယ်။ ကွန်ပြူတာထဲက public SSH key ကိုဖျက်လိုက်မိတယ်ဆိုရင် အသစ် generate ပြန်လုပ်လည်း VPS ဘက်ကနေ SSH login ပေးဝင်မှာမဟုတ်ပါဘူး။
+
+> ကွန်ပြူတာထဲက public SSH key ပျောက်ရင် VPS panel က VPC client ကိုဝင်ပြီး password login ပြန်ဖွင့်ပေးရပါမယ်

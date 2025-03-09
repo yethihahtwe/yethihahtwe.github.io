@@ -1,6 +1,6 @@
 VPS set up changes
 
-add -y for sudo apt install apache2 apache2-doc apache2-utils
+add -y for sudo apt install apache2 apache2-doc apache2-utils.
 
 sudo ufw status before anything about ufw. It is initially showing Status: inactive
 
@@ -47,11 +47,10 @@ add -y for fail2ban
 
 remove ChallengeResponseAuthentication no
 
-add -y for laravel php modules
+add -y for laravel php modules. But they are already installed
 
 sudo apt install git -y
 
 add links to next and previous posts under each post
 
 replace with post specific images
-

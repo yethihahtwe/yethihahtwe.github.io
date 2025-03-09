@@ -1,0 +1,188 @@
+---
+title: "Setting up LAMP stack and deployment on a VPS"
+description: "05-Laravel deployment setup"
+image: "assets/vps-setup/terminal.png"
+createdAt: 03-09-2025
+draft: false
+tags:
+    - vps-setup
+---
+
+## Laravel Deployment Setup
+ပြီးခဲ့တဲ့အဆင့်တွေအတိုင်းလုပ်ပြီးပြီဆိုရင် PHP, MySQL သုံးတဲ့ ပရောဂျက်တွေ deploy လုပ်လို့ရပါပြီ။ Laravel project တွေအတွက်ဆိုရင်တော့ configure ဆက်လုပ်ရမှာလေးတွေရှိပါတယ်။
+
+Laravel သုံးဖို့လိုအပ်တဲ့ PHP modules တွေ ထပ်ထည့်ပါမယ်။ အသုံးများတဲ့ PHP module တွေထည့်ထားပြီးသားဆိုရင် ထပ်ထည့်ဖို့မလိုတော့ပါဘူး။
+
+```bash
+sudo apt install php-bcmath php-xml php-fpm php-zip php-intl php-mbstring php-curl php-mysql php-cli unzip -y
+```
+
+PHP ရဲ့ package manager ဖြစ်တဲ့ Composer သွင်းပါမယ်။
+
+```bash
+curl -sS https://getcomposer.org/installer | php
+sudo mv composer.phar /usr/local/bin/composer
+```
+## Git Installation
+
+Project repo ကို clone လုပ်ဖို့ Git လိုအပ်ပါတယ်။
+
+```bash
+sudo apt install git -y
+```
+
+### Enable Apache rewrite module
+Apache server ရဲ့ rewrite module ကိုဖွင့်ပေးပါမယ်။ ပြီးရင် ဆားဗစ် restart လုပ်ပေးပါ
+
+```bash
+sudo a2enmod rewrite
+sudo systemctl restart apache2
+```
+
+### Cloning your Laravel project
+ဒီနမူနာမှာတော့ မိမိ Github က ရှိပြီးသား Laravel project တစ်ခုကို clone လုပ်တဲ့အပိုင်းကိုဖော်ပြသွားပါမယ်။
+
+Document root ကိုသွားပြီး clone လုပ်ပါ။ `yourusername` နဲ့ `your-repo.git` မှာ မိမိ git username နဲ့ repo address အစားထိုးပေးပါ။
+
+```bash
+cd /var/www/yourdomain.com
+git clone https://github.com/yourusername/your-repo.git public_html
+```
+> Git repo က public မဟုတ်ဘဲ private ဖြစ်နေမယ်ဆိုရင် HTTPS နဲ့ clone တဲ့အခါ email နဲ့ password တောင်းပါလိမ့်မယ်။ အဲဒီအခါ password မှာ github account ရဲ့ password မဟုတ်ဘဲ github account authentication token ကိုထည့်ပေးရမှာပါ
+
+> Git repo ကို SSH နဲ့ clone မယ်ဆိုရင်တော့ git operation တိုင်းမှာ login လုပ်ဖို့မလိုတော့ပါဘူး။ SSH နဲ့ clone လို့ရအောင် ကိုယ့်ကွန်ပြူတာမှာ SSH key pair generate လုပ်တုန်းကလိုပဲ VPS ပေါ်မှာ generate လုပ်လို့ရပါတယ်။ VPS ရဲ့ public key ကို github account settings ထဲက SSH and GPG keys မှာသွားထည့်လိုက်ရင် နောက်ပိုင်းအလုပ်မရှုပ်တော့ပါဘူး။
+
+### Environment setup
+Laravel ပရောဂျက်ရဲ့ `.gitignore` ထဲကအတိုင်းပဲ Git repo မှာတင်ထားလိုက်ပြီဆိုရင် `.env`၊ `node_modules` နဲ့ `vendor` folder တွေမပါလာတော့ပါဘူး။ clone လုပ်ယူလိုက်တဲ့နေရာအသစ်မှာ ပြန် install လုပ်ယူရပါမယ်။
+
+အရင်ဆုံး `.env.example` ကို `.env` အဖြစ် ကော်ပီယူပါမယ်။
+
+```bash
+cd /var/www/yourdomain.com/public_html
+cp .env.example .env
+```
+
+ပြီးရင် .env file ကိုဖွင့်ပြီး database settings တွေပြင်ဆင်ပါမယ်။
+
+```bash
+nano .env
+```
+
+အဓိကပြောင်းရမှာတွေက အောက်ပါအတိုင်းဖြစ်ပါတယ်။ ကိုယ့်ဆာဗာရဲ့တန်ဖိုးတွေနဲ့ပြန်အစားထိုးပေးပါ။ လောလောဆယ် MySQL မှာ Laravel project အတွက်သီးသန့် database နဲ့ user မလုပ်ပေးရသေးပေမယ့် database နာမည်အသစ်နဲ့ user, password အသစ်တစ်ခုစီအရင်ထည့်ပေးထားပါ။ ခဏနေရင် mysql cli မှာဆက်လုပ်ပါမယ်။
+
+```
+APP_NAME="Your App Name"
+APP_ENV=production
+APP_DEBUG=false
+APP_URL=https://yourdomain.com
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=yourdatabase
+DB_USERNAME=dbusername
+DB_PASSWORD=dbpassword
+```
+
+### Creating a database and user for Laravel project
+Laravel project သုံးဖို့ database တစ်ခုတည်ဆောက်ပေးပါမယ်။ အဲဒီ database အတွက်လည်း db user တစ်ယောက်ထပ်လုပ်ပေးပါမယ်။ mysql root db user ရှိပြီးသားဆိုပေမယ့် best practice တွေအရ နေရာတိုင်းမှာ root user မသုံးဘဲ database တစ်လုံးကို user တစ်ယောက်စီထားတာ ပိုကောင်းပါတယ်။
+
+အရင်ဆုံး MySQL login ဝင်ပါမယ်။
+
+```bash
+sudo mysql -u root -p
+```
+password တောင်းရင် myql root user password ထည့်ပေးပါ။ VPS root user password မဟုတ်ပါဘူး။
+
+ပြီးရင် database နဲ့ user တွေလုပ်ပါမယ်။ `yourdatabase`, `dbusername`, `dbpassword` တွေမှာ တန်ဖိုးအသစ်တွေထည့်ပေးပါ။
+
+```sql
+CREATE DATABASE yourdatabase;
+CREATE USER 'dbusername'@'localhost' IDENTIFIED BY 'dbpassword';
+GRANT ALL PRIVILEGES ON yourdatabase.* TO 'dbusername'@'localhost';
+FLUSH PRIVILEGES;
+EXIT;
+```
+
+### Installing composer dependencies
+
+```bash
+cd /var/www/yourdomain.com/public_html
+composer install --no-dev --optimize-autoloader
+```
+
+### Generate App key
+
+```bash
+php artisan key:generate
+```
+
+### Prapare Laravel storage
+
+```bash
+php artisan storage:link
+```
+
+### Database Migration
+
+```bash
+php artisan migrate
+```
+
+### Laravel Permissions
+Laravel project ရဲ့ asset file ၊ cache file တွေကို apache server ကခေါ်သုံးခွင့်ရှိအောင် permission ဖွင့်ပေးရပါမယ်။
+
+```bash
+sudo chown -R www-data:www-data /var/www/yourdomain.com/public_html/storage
+sudo chown -R www-data:www-data /var/www/yourdomain.com/public_html/bootstrap/cache
+sudo chmod -R 775 /var/www/yourdomain.com/public_html/storage
+sudo chmod -R 775 /var/www/yourdomain.com/public_html/bootstrap/cache
+```
+
+### Configure Apache to serve public folder
+လောလောဆယ်မှာ project folder တစ်ခုလုံးကို public_html နာမည်နဲ့ clone ထားတာဖြစ်ပါတယ်။ ဒါပေမယ့် browser မှာဖွင့်လိုက်မယ်ဆိုရင် public folder ထဲက ဖိုင်တွေကိုပဲ serve လုပ်ပေးချင်တာဖြစ်ပါတယ်။ ဒါကြောင့် apache configuration မှာ project ထဲက public folder ကို serve လုပ်ပေးဖို့ညွှန်ပြပေးရပါမယ်။
+
+```bash
+sudo nano /etc/apache2/sites-available/yourdomain.com.conf
+```
+
+ပြီးရင် public ဖိုလ်ဒါကို point လုပ်အောင် ပြင်ဆင်ပါမယ်။
+
+```
+<VirtualHost *:80>
+    ServerName yourdomain.com
+    ServerAlias www.yourdomain.com
+    DocumentRoot /var/www/yourdomain.com/public_html/public
+    
+    <Directory /var/www/yourdomain.com/public_html/public>
+        Options Indexes FollowSymLinks
+        AllowOverride All
+        Require all granted
+    </Directory>
+    
+    ErrorLog /var/www/yourdomain.com/log/error.log
+    CustomLog /var/www/yourdomain.com/log/access.log combined
+</VirtualHost>
+```
+
+ပြီးရင် Apache ကို reload လုပ်ပါမယ်။
+
+```bash
+sudo systemctl reload apache2
+```
+
+### Laravel Caching
+Optimization အတွက် caching လုပ်ပါမယ်။
+
+```bash
+php artisan config:cache
+php artisan route:cache
+php artisan view:cache
+```
+
+### Set server timezone
+နောက်ပိုင်းမှာ cron job တွေ run ဖို့ရှိတာ၊ time-sensitive ဖြစ်တဲ့စာမျက်နှာတွေထည့်ချင်တာမျိုးမှာ ဆာဗာနာရီကို မိမိ target user အများစုသုံးတဲ့ timezone အတိုင်းချိန်ညှိပေးဖို့လိုပါတယ်။
+
+```bash
+sudo timedatectl set-timezone Asia/Yangon
+```

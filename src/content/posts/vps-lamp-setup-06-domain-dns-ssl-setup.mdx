@@ -1,0 +1,81 @@
+---
+title: "Setting up LAMP stack and deployment on a VPS"
+description: "06-Domain DNS and SSL setup"
+image: "assets/vps-setup/terminal.png"
+createdAt: 03-09-2025
+draft: false
+tags:
+    - vps-setup
+---
+
+## Domain Setup and DNS Configuration
+Domain name အတွက် DNS record တွေထည့်သွင်းတဲ့အဆင့်တွေဟာ VPS terminal ထဲမှာလုပ်ဖို့မလိုတော့ပါဘူး။ ကိုယ့် domain name registrar ရဲ့ DNS configuration ထဲမှာဆက်လုပ်ပေးရမှာဖြစ်ပါတယ်။
+
+Domain name regstrar တိုင်းမှာ Advanced DNS management ပါလေ့ရှိပါတယ်။ တချို့ဝန်ဆောင်မှုတွေမှာတော့ DNS management ကို ကိုယ်တိုင်ဝင်လုပ်လို့မရဘဲ service agent ကိုဆက်သွယ်ပြီး လိုချင်တဲ့ DNS record ကို မက်ဆေ့ပို့ပေးရပါတယ်။
+
+#### A Records
+A Record ဆိုတာ domain name ကနေ IP address ဆီကို direct လုပ်ပေးတဲ့ DNS record ဖြစ်ပါတယ်။
+
+1. "Add New Record" ခလုတ်ကိုနှိပ်ပါ
+2. Type: A Record
+3. Host: @ (ဒါက root domain အတွက်ပါ - yourdomain.com)
+
+> ကိုယ့်ရဲ့ root domain name က website တစ်ခုအတွက်သုံးပြီးသားဖြစ်နေပြီး subdomain တစ်ခုကိုပဲ VPS နဲ့ချိတ်ချင်တာဆိုရင်တော့ Host ထဲမှာ subdomain အတိုင်းထည့်ပေးလိုက်ရင်ရပါတယ်။ ဥပမာ `blog.yourdomain.com` ဆိုရင် `blog` လို့ပဲ Host ထဲမှာထည့်ပေးလိုက်ရင်ရပါပြီ
+
+4. Value: VPS ရဲ့ IP address ထည့်ပါ
+5. TTL: Automatic
+
+
+
+#### Adding A record for www subdomain
+တချို့ user တွေက website လိပ်စာထည့်တဲ့အခါ www ပါရိုက်ထည့်တတ်ကြတဲ့အတွက် www ပါရင်လည်း ဒီ ip address ကိုပဲပြပေးအောင် နောက်ထပ် A record ထပ်ထည့်ပေးပါမယ်။
+
+1. "Add New Record" ခလုတ်ကိုနှိပ်ပါ
+2. Type: A Record
+3. Host: www
+4. Value: VPS ရဲ့ IP address 
+5. TTL: Automatic
+
+### Waiting for DNS changes propagation
+အခုလုပ်လိုက်တဲ့ DNS changes တွေက propagate ဖြစ်ဖို့ အချိန်ယူနိုင်ပါတယ်။ 24-48 နာရီလောက်ကြာမယ်လို့ပြောကြပေမယ့် နာရီဝက်၊ တစ်နာရီလောက်နဲ့လည်းအလုပ်လုပ်တာမျိုးရှိပါတယ်။
+
+DNS propagation ကိုစစ်ဆေးဖို့:
+```bash
+dig yourdomain.com
+``
+ဒီ command run ကြည့်လိုက်လို့ ကိုယ့် VPS IP ပြနေပြီဆိုရင် DNS setting တွေအလုပ်လုပ်နေပါပြီ။
+
+### Let's Encrypt SSL Certificate
+DNS setting တွေပြီးဆုံးပြီး domain က အလုပ်လုပ်နေပြီဆိုရင် HTTPS အလုပ်လုပ်အောင် Let's Encrypt SSL Certificate သွင်းပေးပါမယ်။
+
+```bash
+sudo apt install certbot python3-certbot-apache
+sudo certbot --apache -d yourdomain.com -d www.yourdomain.com
+```
+
+Certbot မှာ အောက်ပါတန်ဖိုးတွေဆက်ထည့်ပေးပါ။
+
+1. Email address ထည့်ပေးပါ (သက်တမ်းကုန်ရက် နီးလာတဲ့အခါ notice ပို့ရန်)
+2. Terms of Service ကိုလက်ခံမလားမေးရင် "A" နဲ့ "Agree" ဖြေပါ
+3. EFF's email list ထဲထည့်မလားမေးရင် ကိုယ်နှစ်သက်ရာဖြေပါ
+4. HTTPS redirect လုပ်မလားမေးရင် နှစ်သက်ရာဖြေပါ (redirect လုပ်ရင် HTTP request တိုင်းကို HTTPS ကိုပြောင်းပေးပါတယ်)
+
+ပြီးရင် https://yourdomain.com နဲ့ဝင်ကြည့်ရင် secure connection နဲ့ဝင်နိုင်ပါပြီ။
+
+### Checking SSL Auto-renewal
+Let's Encrypt certificate တွေက 90 ရက်ကြာရင် သက်တမ်းကုန်ပါတယ်။ Certbot က automatic renewal ပြုလုပ်ပေးနိုင်ပါတယ်။
+
+```bash
+sudo systemctl status certbot.timer
+```
+
+Certbot auto-renewal ကို dry-run လုပ်ကြည့်ပြီး စစ်လို့ရပါတယ်။
+
+```bash
+sudo certbot renew --dry-run
+```
+
+Error မပြဘဲ dry run ပြီးသွားပြီဆိုရင် SSL certificate တွေ အော်တိုသက်တမ်းတိုးပေးနေပါလိမ့်မယ်
+
+## Conclusion
+ဒါဆိုရင် VPS မှာ LAMP stack, Laravel install လုပ်ပြီး project deployment အဆင်သင့်ဖြစ်နေပါပြီ။ မိမိ website ကို ပိုပြီးလုံခြုံစေချင်ရင်တော့ Cloudflare နဲ့ချိတ်ဆက်ပြီး ဆက်လက်အသုံးပြုနိုင်ပါတယ်။
