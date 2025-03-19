@@ -2,7 +2,7 @@
 title: "Setting up LAMP stack and deployment on a VPS"
 description: "06-Domain DNS and SSL setup"
 image: "assets/vps-setup/terminal.png"
-createdAt: 03-09-2025
+createdAt: 03-11-2025
 draft: false
 tags:
     - vps-setup
@@ -39,10 +39,12 @@ A Record ဆိုတာ domain name ကနေ IP address ဆီကို direct
 ### Waiting for DNS changes propagation
 အခုလုပ်လိုက်တဲ့ DNS changes တွေက propagate ဖြစ်ဖို့ အချိန်ယူနိုင်ပါတယ်။ 24-48 နာရီလောက်ကြာမယ်လို့ပြောကြပေမယ့် နာရီဝက်၊ တစ်နာရီလောက်နဲ့လည်းအလုပ်လုပ်တာမျိုးရှိပါတယ်။
 
-DNS propagation ကိုစစ်ဆေးဖို့:
+DNS propagation ကိုစစ်ဆေးဖို့
+
 ```bash
 dig yourdomain.com
-``
+```
+
 ဒီ command run ကြည့်လိုက်လို့ ကိုယ့် VPS IP ပြနေပြီဆိုရင် DNS setting တွေအလုပ်လုပ်နေပါပြီ။
 
 ### Let's Encrypt SSL Certificate
@@ -76,6 +78,14 @@ sudo certbot renew --dry-run
 ```
 
 Error မပြဘဲ dry run ပြီးသွားပြီဆိုရင် SSL certificate တွေ အော်တိုသက်တမ်းတိုးပေးနေပါလိမ့်မယ်
+
+အခုကျွန်တော်တို့ website မှာ SSL ရသွားပါပြီ။ ဒါကြောင့် firewall မှာလည်း SSL ကို Allow လုပ်ပေးဖို့လိုပါတယ်။ ကျွန်တော့်တုန်းက SSL certficate သွင်းပြီးတာနဲ့ website ကဝင်မရတော့လို့ အဖြေလိုက်ရှာရင်း တော်တော်လေးကြာသွားပါတယ်။ တကယ်က UFW မှာ HTTP (Port 80) နဲ့ SSH (Port 22) ပဲဖွင့်ပေးထားတာမို့လို့ပါ။
+အစောပိုင်းတုန်းက ufw မှာ allow လုပ်တဲ့အဆင့်မှာ ရိုးရိုး HTTP connection နဲ့ terminal access အတွက် SSH ကိုပဲဖွင့်ပေးခဲ့တာမို့လို့ HTTPS အတွက် Port 443 ဖွင့်ပေးရပါမယ်။
+
+```bash
+sudo ufw allow in "Apache Full"
+```
+ဒါဆိုရင် HTTP, HTTPS နှစ်ခုလုံးကို လက်ခံပေးပါလိမ့်မယ်။
 
 ## Conclusion
 ဒါဆိုရင် VPS မှာ LAMP stack, Laravel install လုပ်ပြီး project deployment အဆင်သင့်ဖြစ်နေပါပြီ။ မိမိ website ကို ပိုပြီးလုံခြုံစေချင်ရင်တော့ Cloudflare နဲ့ချိတ်ဆက်ပြီး ဆက်လက်အသုံးပြုနိုင်ပါတယ်။
