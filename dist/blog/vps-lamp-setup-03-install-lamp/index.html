@@ -1,0 +1,220 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v5.3.0"><title>Setting up LAMP stack and deployment on a VPS</title><meta name="description" content="03-LAMP stack Installation"><meta name="theme-color" content="#8c5cf5"><link rel="canonical" href="https://yethihahtwe.co.uk/"><meta name="og:title" content="Setting up LAMP stack and deployment on a VPS"><meta name="og:description" content="03-LAMP stack Installation"><meta name="og:image" content="/_astro/terminal.DI2cTsLy.png"><meta name="og:url" content="https://yethihahtwe.co.uk/"><meta name="og:locale" content="en"><meta name="og:type" content="article">
+			<meta property="article:published_time" content="2025-03-07T17:00:00.000Z">
+			<meta name="author" content="YeThiHaHtwe"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Setting up LAMP stack and deployment on a VPS"><meta name="twitter:description" content="03-LAMP stack Installation"><meta name="twitter:image" content="/_astro/terminal.DI2cTsLy.png"><style>article h1,article h2,article h3,article h4{scroll-margin:4rem;margin-top:2rem}article{line-height:1.6;min-width:0}article hr{height:1px;border:none;background-color:#353535}p:has(img){display:flex;align-items:center;justify-content:center;margin-top:1rem;margin-bottom:1rem}p img{max-width:100%}.toc-card{min-width:0}.toc-card ol{padding:0;display:flex;flex-direction:column;gap:.5rem;margin-bottom:0;list-style-type:none;position:relative}.toc-card ol li a{color:#c7c7c7;font-size:.925rem;padding:.25rem .5rem;box-decoration-break:clone;-webkit-box-decoration-break:clone}.toc-card ol li a:hover{color:#fff;text-decoration:none}.toc-li[data-depth="3"]{margin-left:1rem}.toc-li[data-depth="4"]{margin-left:2rem}.no-mt{margin-top:0}ol li a.active{color:#fff;background:var(--primary)}.left{height:100%;position:relative}.toc-card{position:sticky;top:2rem}.article-header{position:relative;width:100%;height:fit-content;scroll-margin-top:2rem}.header{display:flex;flex-direction:column;gap:.5rem;position:absolute;bottom:1.5rem;left:1rem;max-width:calc(100% - 3rem);z-index:2}.article-h1{margin-bottom:0;font-size:2em;background:#fff;padding:.25rem .675rem;box-decoration-break:clone;-webkit-box-decoration-break:clone;position:relative;line-height:1.2;display:inline;color:#000}.article-info{display:flex;flex-direction:row;gap:.5rem;font-family:Ghost Mono,monospace;background:#fff;color:#000;box-decoration-break:clone;-webkit-box-decoration-break:clone;padding:0 .75rem;width:fit-content}@media screen and (max-width: 640px){.header{position:relative;bottom:0;left:0;width:fit-content;max-width:none;margin-top:1rem}.article-h1{display:inline;background-color:transparent;padding:0;color:#fff}.article-info{display:block;background-color:transparent;padding:0;color:#fff}}code:not(.astro-code code){background-color:#353535;padding:.125rem .25rem;font-size:.925rem}.article-image{width:100%;height:auto;z-index:1}.end-of-article{margin-top:1rem;margin-bottom:1.5rem;width:100%;height:1px;background-color:#353535;border:none}blockquote{border-left:2px solid var(--primary);padding:.75rem 1rem;margin-left:0;background-color:rgba(var(--primary-rgb),.25);width:100%}blockquote p{margin-top:0;margin-bottom:0}table{margin-top:1rem;text-align:left;border-spacing:0;border-collapse:collapse}table th{padding:.5rem 1.5rem .5rem 0;border-bottom:1px solid #353535}table tbody{margin-top:1rem}table tbody tr{border-bottom:1px solid #353535}table tbody tr td{padding:.5rem 1.5rem .5rem 0}
+.glow-image[data-astro-cid-lwpf7n2j]{position:relative}.glow-image[data-astro-cid-lwpf7n2j] img[data-astro-cid-lwpf7n2j]{position:relative;z-index:1}.glow[data-astro-cid-lwpf7n2j]{position:absolute!important;top:0;left:0;z-index:0!important;filter:blur(8px)}
+.card[data-astro-cid-dohjnao5]{width:100%;height:auto;background-color:#121212;border:1px solid #353535;padding:1.5rem;overflow:hidden}
+</style>
+<link rel="stylesheet" href="/_astro/blog.BfHlQc7r.css">
+<style>.toc-card ol{padding:0;display:flex;flex-direction:column;gap:.5rem;margin-bottom:0;list-style-type:none;position:relative}.toc-card ol li a{color:#c7c7c7;font-size:.925rem;padding:.25rem .5rem;box-decoration-break:clone;-webkit-box-decoration-break:clone}.toc-card ol li a:hover{color:#fff;text-decoration:none}.toc-card ol li a.active{color:#fff;background:var(--primary)}.left{height:100%;position:relative}.toc-card{position:sticky;top:2rem}article{display:flex;flex-direction:column;gap:2rem}.comments *{border-color:#353535!important}@media screen and (max-width: 640px){article{gap:1rem}}
+</style></head> <body> <main> <nav data-astro-cid-5blmo7yk> <a class="site-title" href="/" data-astro-cid-5blmo7yk>YeThiHaHtwe</a> <ul data-astro-cid-5blmo7yk> <li data-astro-cid-5blmo7yk> <a href="/blog" data-astro-cid-5blmo7yk>Blog</a> </li> <li class="nav-separator" data-astro-cid-5blmo7yk>/</li> <li data-astro-cid-5blmo7yk> <a href="/projects" data-astro-cid-5blmo7yk>Projects</a> </li> <li class="nav-separator" data-astro-cid-5blmo7yk>/</li> <li data-astro-cid-5blmo7yk> <input id="search" type="text" placeholder="Search (Ctrl+K)" data-astro-cid-5blmo7yk> <div id="search-results" data-astro-cid-5blmo7yk></div> </li> </ul> <button class="mobile-nav-toggle" data-astro-cid-5blmo7yk> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="menu-closed" data-astro-cid-5blmo7yk="true"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 12h16M4 6h16M4 18h16"/></svg> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="menu-open" data-astro-cid-5blmo7yk="true"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 6L6 18M6 6l12 12"/></svg> </button> </nav> <script>
+  const searchElement = document.querySelector('#search');
+  const results = document.querySelector('#search-results');
+  const navToggle = document.querySelector('.mobile-nav-toggle');
+
+  let focusIndex = -1;
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'k' && e.ctrlKey) {
+      searchElement.focus();
+    }
+
+    if (e.key === 'Escape') {
+      searchElement.blur();
+      results.classList.remove('active');
+      focusIndex = -1;
+    }
+
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+
+      focusIndex++;
+      const results = document.querySelectorAll('#search-results a');
+
+      if (focusIndex >= results.length) {
+        focusIndex = 0;
+      }
+
+      results[focusIndex]?.focus();
+    }
+
+    if (e.key === 'ArrowUp') {
+      e.preventDefault();
+
+      focusIndex--;
+      const results = document.querySelectorAll('#search-results a');
+
+      if (focusIndex < 0) {
+        focusIndex = results.length - 1;
+      }
+
+      results[focusIndex]?.focus();
+    }
+  });
+
+  searchElement?.addEventListener('focus', () => {
+    searchElement.placeholder = '';
+    results.classList.add('active');
+  });
+
+  searchElement?.addEventListener('blur', () => {
+    searchElement.placeholder = 'Search (Ctrl+K)';
+  });
+
+  searchElement?.addEventListener('blur', () => {
+    setTimeout(() => {
+      if (!document.activeElement?.closest('#search-results')) {
+        results.classList.remove('active');
+        focusIndex = -1;
+      }
+    }, 1);
+  });
+
+  results?.addEventListener('focusout', (e) => {
+    if (!e.relatedTarget?.closest('#search-results')) {
+      results.classList.remove('active');
+      focusIndex = -1;
+    }
+  });
+
+  searchElement?.addEventListener('input', async (e) => {
+    if (e.target.dataset.loaded !== 'true') {
+      e.target.dataset.loaded = 'true';
+
+      window.pagefind = await import("/pagefind/pagefind.js");
+    }
+
+    results.innerHTML = '';
+
+    const search = await window.pagefind.search(e.target.value);
+
+    let i = 0;
+    for (const result of search.results) {
+      i++;
+
+      const data = await result.data();
+
+      results.innerHTML += `
+        <a href="${data.url}">
+          <h3 class="no-mt">${data.meta.title}</h3>
+          <p>${data.excerpt}</p>
+        </a>
+        ${i < search.results.length ? '<hr class="separator">' : ''}
+      `;
+    }
+
+    if (search.results.length === 0 && e.target.value.length > 0) {
+      results.innerHTML = '<p style="margin-top: 0;">No results found</p>';
+    }
+
+    results.classList.add('active');
+  });
+
+  navToggle?.addEventListener('click', () => {
+    navToggle.classList.toggle('active');
+    document.querySelector('nav').classList.toggle('active');
+  });
+
+  const handleTabletChange = () => {
+    if (window.matchMedia('(max-width: 640px)').matches) {
+      searchElement.placeholder = 'Search';
+    } else {
+      searchElement.placeholder = 'Search (Ctrl+K)';
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', handleTabletChange);
+  document.addEventListener('resize', handleTabletChange);
+</script>   <div class="layout-grid" data-astro-cid-cgyg4spe> <div class="left"> <div class="card toc-card" data-astro-cid-dohjnao5>  <h2 class="no-mt">Table of contents</h2> <ol> <li class="toc-li"> <a href="#_top" class="active">Setting up LAMP stack and deployment on a VPS</a> </li> <li class="toc-li" data-depth="2"> <a href="#lamp-stack-setup">LAMP Stack Setup</a> </li><li class="toc-li" data-depth="3"> <a href="#apache-installation">Apache Installation</a> </li><li class="toc-li" data-depth="3"> <a href="#mysql-installation">MySQL Installation</a> </li><li class="toc-li" data-depth="3"> <a href="#php-installation">PHP Installation</a> </li><li class="toc-li" data-depth="3"> <a href="#apache-virtual-host-setup">Apache Virtual Host Setup</a> </li> </ol>  </div>  </div> <article data-pagefind-body> <div class="card" data-astro-cid-dohjnao5>  <div class="article-header" id="_top" data-pagefind-ignore> <div class="glow-image" data-astro-cid-lwpf7n2j> <img src="/_astro/terminal.DI2cTsLy_Z2ilGHl.webp" data-image-component="true" alt="Setting up LAMP stack and deployment on a VPS" data-astro-cid-lwpf7n2j="true" width="1649" height="1414" loading="lazy" decoding="async" class="article-image"> <img src="/_astro/terminal.DI2cTsLy_nXjmv.webp" data-image-component="true" alt="Setting up LAMP stack and deployment on a VPS" data-astro-cid-lwpf7n2j="true" width="1649" height="1414" loading="lazy" decoding="async" class="article-image glow article-image"> </div>  <div class="header"> <div> <h1 class="no-mt article-h1">Setting up LAMP stack and deployment on a VPS</h1> </div> <div class="article-info"> <span>3/8/2025</span> <span>/</span> <span>21 minutes to read</span> <span>/</span> <span>Tags: vps-setup</span> </div> </div> </div> <p>User ထည့်ပြီးရင် LAMP stack သွင်းလို့ရပါပြီ</p>
+<h2 id="lamp-stack-setup">LAMP Stack Setup</h2>
+<p>LAMP = Linux + Apache + MySQL + PHP ဆိုတဲ့ stack ကို ထည့်ပါမယ်။ ဒီစာအုပ်မှာ Laravel project ကို နမူနာအနေနဲ့ deploy လုပ်ကြည့်ပါမယ်။ Linux Server က VPS မှာတခါတည်းပါလာပြီးသားဖြစ်တာကြောင့် သွင်းစရာမလိုတော့ပါဘူး။</p>
+<h3 id="apache-installation">Apache Installation</h3>
+<p>Apache2 server, documentation နဲ့ utility program တွေသွင်းပါမယ်</p>
+<div class="expressive-code"><link rel="stylesheet" href="/_astro/ec.23l6f.css"/><script type="module" src="/_astro/ec.8zarh.js"></script><figure class="frame is-terminal"><figcaption class="header"><span class="title"></span><span class="sr-only">Terminal window</span></figcaption><pre data-language="bash"><code><div class="ec-line"><div class="code"><span style="--0:#B392F0">sudo</span><span style="--0:#E1E4E8"> </span><span style="--0:#9ECBFF">apt</span><span style="--0:#E1E4E8"> </span><span style="--0:#9ECBFF">install</span><span style="--0:#E1E4E8"> </span><span style="--0:#9ECBFF">apache2</span><span style="--0:#E1E4E8"> </span><span style="--0:#9ECBFF">apache2-doc</span><span style="--0:#E1E4E8"> </span><span style="--0:#9ECBFF">apache2-utils</span><span style="--0:#E1E4E8"> </span><span style="--0:#79B8FF">-y</span></div></div></code></pre><div class="copy"><button title="Copy to clipboard" data-copied="Copied!" data-code="sudo apt install apache2 apache2-doc apache2-utils -y"><div></div></button></div></figure></div>
+<p>Install လုပ်တာပြီးတာနဲ့ apache2 service အလုပ် လုပ်/မလုပ် စစ်ကြည့်ပါမယ်</p>
+<div class="expressive-code"><figure class="frame is-terminal"><figcaption class="header"><span class="title"></span><span class="sr-only">Terminal window</span></figcaption><pre data-language="bash"><code><div class="ec-line"><div class="code"><span style="--0:#B392F0">systemctl</span><span style="--0:#E1E4E8"> </span><span style="--0:#9ECBFF">status</span><span style="--0:#E1E4E8"> </span><span style="--0:#9ECBFF">apache2</span></div></div></code></pre><div class="copy"><button title="Copy to clipboard" data-copied="Copied!" data-code="systemctl status apache2"><div></div></button></div></figure></div>
+<p>Active (running) ဆိုရင် apache2 သွင်းတာအဆင်ပြေပါပြီ။</p>
+<p>Apache configuration ဆက်မလုပ်ခင် Ubuntu ရဲ့ Uncomplicated Firewall (UFW) ကို အရင် setup လုပ်ပါမယ်။ ufw Firewall အလုပ်လုပ်နေလား အရင်စစ်ကြည့်ရအောင်</p>
+<div class="expressive-code"><figure class="frame is-terminal"><figcaption class="header"><span class="title"></span><span class="sr-only">Terminal window</span></figcaption><pre data-language="bash"><code><div class="ec-line"><div class="code"><span style="--0:#B392F0">sudo</span><span style="--0:#E1E4E8"> </span><span style="--0:#9ECBFF">ufw</span><span style="--0:#E1E4E8"> </span><span style="--0:#9ECBFF">status</span></div></div></code></pre><div class="copy"><button title="Copy to clipboard" data-copied="Copied!" data-code="sudo ufw status"><div></div></button></div></figure></div>
+<div class="expressive-code"><figure class="frame is-terminal"><figcaption class="header"><span class="title"></span><span class="sr-only">Terminal window</span></figcaption><pre data-language="bash"><code><div class="ec-line"><div class="code"><span style="--0:#B392F0">Status:</span><span style="--0:#E1E4E8"> </span><span style="--0:#9ECBFF">inactive</span></div></div></code></pre><div class="copy"><button title="Copy to clipboard" data-copied="Copied!" data-code="Status: inactive"><div></div></button></div></figure></div>
+<p>စစချင်းမှာ inactive လို့ပြနေပါလိမ့်မယ်။ ဒါကြောင့် Firewall setup လုပ်ပေးရပါမယ်။ လက်ရှိရနိုင်တဲ့ Firewall option တွေ ဘာတွေရှိလဲအရင်ခေါ်ကြည့်ပါမယ်</p>
+<div class="expressive-code"><figure class="frame is-terminal"><figcaption class="header"><span class="title"></span><span class="sr-only">Terminal window</span></figcaption><pre data-language="bash"><code><div class="ec-line"><div class="code"><span style="--0:#B392F0">sudo</span><span style="--0:#E1E4E8"> </span><span style="--0:#9ECBFF">ufw</span><span style="--0:#E1E4E8"> </span><span style="--0:#9ECBFF">app</span><span style="--0:#E1E4E8"> </span><span style="--0:#9ECBFF">list</span></div></div></code></pre><div class="copy"><button title="Copy to clipboard" data-copied="Copied!" data-code="sudo ufw app list"><div></div></button></div></figure></div>
+<div class="expressive-code"><figure class="frame is-terminal"><figcaption class="header"><span class="title"></span><span class="sr-only">Terminal window</span></figcaption><pre data-language="bash"><code><div class="ec-line"><div class="code"><span style="--0:#B392F0">-</span><span style="--0:#E1E4E8"> </span><span style="--0:#9ECBFF">Apache</span></div></div><div class="ec-line"><div class="code"><span style="--0:#B392F0">-</span><span style="--0:#E1E4E8"> </span><span style="--0:#9ECBFF">Apache</span><span style="--0:#E1E4E8"> </span><span style="--0:#9ECBFF">Full</span></div></div><div class="ec-line"><div class="code"><span style="--0:#B392F0">-</span><span style="--0:#E1E4E8"> </span><span style="--0:#9ECBFF">Apache</span><span style="--0:#E1E4E8"> </span><span style="--0:#9ECBFF">Secure</span></div></div><div class="ec-line"><div class="code"><span style="--0:#B392F0">-</span><span style="--0:#E1E4E8"> </span><span style="--0:#9ECBFF">OpenSSH</span></div></div></code></pre><div class="copy"><button title="Copy to clipboard" data-copied="Copied!" data-code="- Apache- Apache Full- Apache Secure- OpenSSH"><div></div></button></div></figure></div>
+<blockquote>
+<ul>
+<li><strong>Apache</strong> က Port 80 (HTTP) ကို ဖွင့်ထားပေးတာ</li>
+<li><strong>Apache Full</strong> က Port 80 (HTTP) နဲ့ port 443 (HTTPS) နှစ်ခုလုံးကို ဖွင့်ထားပေးတာ</li>
+<li><strong>Apache Secure</strong> က Port 443 (HTTPS) ကိုပဲဖွင့်ထားပေးတာ</li>
+<li><strong>OpenSSH</strong> က Port 22 (SSH) ကို ဖွင့်ထားပေးတာ</li>
+</ul>
+</blockquote>
+<p>လောလောဆယ်တော့ SSL certificate မသွင်းရသေးတာကြောင့် “Apache” (HTTP port 80 only) ကိုပဲဖွင့်ထားလိုက်ပါမယ်။ Terminal ကနေ SSH နဲ့ဝင်တာကိုလည်း ခွင့်ပြုပေးအောင် OpenSSH ကိုလည်းဖွင့်ထားပါမယ်။</p>
+<div class="expressive-code"><figure class="frame is-terminal"><figcaption class="header"><span class="title"></span><span class="sr-only">Terminal window</span></figcaption><pre data-language="bash"><code><div class="ec-line"><div class="code"><span style="--0:#B392F0">sudo</span><span style="--0:#E1E4E8"> </span><span style="--0:#9ECBFF">ufw</span><span style="--0:#E1E4E8"> </span><span style="--0:#9ECBFF">allow</span><span style="--0:#E1E4E8"> </span><span style="--0:#9ECBFF">in</span><span style="--0:#E1E4E8"> </span><span style="--0:#9ECBFF">&quot;Apache&quot;</span></div></div><div class="ec-line"><div class="code"><span style="--0:#B392F0">sudo</span><span style="--0:#E1E4E8"> </span><span style="--0:#9ECBFF">ufw</span><span style="--0:#E1E4E8"> </span><span style="--0:#9ECBFF">allow</span><span style="--0:#E1E4E8"> </span><span style="--0:#9ECBFF">in</span><span style="--0:#E1E4E8"> </span><span style="--0:#9ECBFF">&quot;OpenSSH&quot;</span></div></div></code></pre><div class="copy"><button title="Copy to clipboard" data-copied="Copied!" data-code="sudo ufw allow in &#34;Apache&#34;sudo ufw allow in &#34;OpenSSH&#34;"><div></div></button></div></figure></div>
+<p>ပြီးရင် Firewall ကို enable လုပ်ပါမယ်</p>
+<div class="expressive-code"><figure class="frame is-terminal"><figcaption class="header"><span class="title"></span><span class="sr-only">Terminal window</span></figcaption><pre data-language="bash"><code><div class="ec-line"><div class="code"><span style="--0:#B392F0">sudo</span><span style="--0:#E1E4E8"> </span><span style="--0:#9ECBFF">ufw</span><span style="--0:#E1E4E8"> </span><span style="--0:#9ECBFF">enable</span></div></div></code></pre><div class="copy"><button title="Copy to clipboard" data-copied="Copied!" data-code="sudo ufw enable"><div></div></button></div></figure></div>
+<p>အလုပ် လုပ်/မလုပ် စစ်ကြည့်ပါမယ်</p>
+<div class="expressive-code"><figure class="frame is-terminal"><figcaption class="header"><span class="title"></span><span class="sr-only">Terminal window</span></figcaption><pre data-language="bash"><code><div class="ec-line"><div class="code"><span style="--0:#B392F0">sudo</span><span style="--0:#E1E4E8"> </span><span style="--0:#9ECBFF">ufw</span><span style="--0:#E1E4E8"> </span><span style="--0:#9ECBFF">status</span></div></div></code></pre><div class="copy"><button title="Copy to clipboard" data-copied="Copied!" data-code="sudo ufw status"><div></div></button></div></figure></div>
+<p>Apache နဲ့ OpenSSH run နေတာကိုတွေ့နိုင်ပါတယ်။ ဒီအဆင့်ထိပြီးသွားရင် server ip ကို browser ကနေ ဝင်ကြည့်လို့ရပါပြီ။ Browser မှာ <code>http://server_ip</code> ရိုက်ထည့်ပြီးဝင်ကြည့်ပါ။ Apache2 Ubuntu Default Page မြင်ရပါမယ်။</p>
+<blockquote>
+<p>server_ip ကို VPS panel နဲ့ Welcome email မှာပြန်ရှာကြည့်လို့ရပါတယ်။ SSL certificate မသွင်းရသေးလို့ HTTPS နဲ့ ဝင်လို့မရသေးပါဘူး</p>
+</blockquote>
+<img src="/_astro/apache2_default.CWcvwTc3_n2yev.webp" data-image-component="true" alt="Apache Default Page" width="203" height="136" loading="lazy" decoding="async">
+<h3 id="mysql-installation">MySQL Installation</h3>
+<div class="expressive-code"><figure class="frame is-terminal"><figcaption class="header"><span class="title"></span><span class="sr-only">Terminal window</span></figcaption><pre data-language="bash"><code><div class="ec-line"><div class="code"><span style="--0:#B392F0">sudo</span><span style="--0:#E1E4E8"> </span><span style="--0:#9ECBFF">apt</span><span style="--0:#E1E4E8"> </span><span style="--0:#9ECBFF">install</span><span style="--0:#E1E4E8"> </span><span style="--0:#9ECBFF">mysql-server</span><span style="--0:#E1E4E8"> </span><span style="--0:#79B8FF">-y</span></div></div></code></pre><div class="copy"><button title="Copy to clipboard" data-copied="Copied!" data-code="sudo apt install mysql-server -y"><div></div></button></div></figure></div>
+<p>MySQL server သွင်းပြီးရင် root user password သတ်မှတ်ပေးရပါမယ်။ ဒီမှာပေးရတဲ့ password ဟာ VPS password နဲ့မဆိုင်ဘဲ mysql root user အတွက်သီးသန့် password ဖြစ်ပါတယ်။</p>
+<blockquote>
+<p>VPS password နဲ့ MySQL root password ကိုမတူအောင်ပေးသင့်ပါတယ်။</p>
+</blockquote>
+<div class="expressive-code"><figure class="frame is-terminal"><figcaption class="header"><span class="title"></span><span class="sr-only">Terminal window</span></figcaption><pre data-language="bash"><code><div class="ec-line"><div class="code"><span style="--0:#B392F0">sudo</span><span style="--0:#E1E4E8"> </span><span style="--0:#9ECBFF">mysql</span></div></div></code></pre><div class="copy"><button title="Copy to clipboard" data-copied="Copied!" data-code="sudo mysql"><div></div></button></div></figure></div>
+<p>ဝင်ပြီးရင် root user ကို password အသစ်ထည့်ပါမယ်။ password မှာ လုံခြုံမှုရှိတဲ့ password တစ်ခုနဲ့အစားထိုးပေးပါ</p>
+<div class="expressive-code"><figure class="frame"><figcaption class="header"></figcaption><pre data-language="sql"><code><div class="ec-line"><div class="code"><span style="--0:#F97583">ALTER</span><span style="--0:#E1E4E8"> </span><span style="--0:#F97583">USER</span><span style="--0:#E1E4E8"> </span><span style="--0:#9ECBFF">&#39;root&#39;</span><span style="--0:#E1E4E8">@</span><span style="--0:#9ECBFF">&#39;localhost&#39;</span><span style="--0:#E1E4E8"> IDENTIFIED </span><span style="--0:#F97583">WITH</span><span style="--0:#E1E4E8"> mysql_native_password </span><span style="--0:#F97583">BY</span><span style="--0:#E1E4E8"> </span><span style="--0:#9ECBFF">&#39;password&#39;</span><span style="--0:#E1E4E8">;</span></div></div><div class="ec-line"><div class="code"><span style="--0:#E1E4E8">exit</span></div></div></code></pre><div class="copy"><button title="Copy to clipboard" data-copied="Copied!" data-code="ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';exit"><div></div></button></div></figure></div>
+<p>ပြီးရင် mysql_secure_installation script ကို run ပါမယ်။</p>
+<div class="expressive-code"><figure class="frame is-terminal"><figcaption class="header"><span class="title"></span><span class="sr-only">Terminal window</span></figcaption><pre data-language="bash"><code><div class="ec-line"><div class="code"><span style="--0:#B392F0">sudo</span><span style="--0:#E1E4E8"> </span><span style="--0:#9ECBFF">mysql_secure_installation</span></div></div></code></pre><div class="copy"><button title="Copy to clipboard" data-copied="Copied!" data-code="sudo mysql_secure_installation"><div></div></button></div></figure></div>
+<p>mysql_secure_installation run လိုက်ရင် password တောင်းပါမယ်။ ဒီမှာထည့်ရတဲ့ password က VPS password ဖြစ်ပါတယ်။ mysql password မဟုတ်ပါဘူး။
+script သွင်းလိုက်ရင် VALIDATE PASSWORD PLUGIN ကိုသုံးမလားမေးပါလိမ့်မယ်။</p>
+<blockquote>
+<ul>
+<li>Level 0 = Low အနည်းဆုံး စာလုံး ၈ လုံး</li>
+<li>Level 1 = Medium အနည်းဆုံး စာလုံး ၈ လုံး၊ ဂဏန်းတွေပါ၊ စာလုံးအကြီးအသေးရော၊ special character ပါရမယ်</li>
+<li>Level 2 = Strong level 1 နဲ့တူတူပဲ၊ တခုပိုသွားတာက dictionary ထဲက word ဖြစ်လို့မရဘူး</li>
+</ul>
+</blockquote>
+<p>အခုတော့ <code>1</code> ရိုက်ထည့်ပါမယ်။</p>
+<p>လက်ရှိ password strength ကို 0 ကနေ 100 scale နဲ့ပြပေးပါမယ်။ <code>Y</code> နှိပ်ပြီးဆက်သွားပါ။</p>
+<p>anonymous user remove လုပ်မလားမေးရင် <code>y</code> နှိပ်ပါ။</p>
+<p>disable root login remotely မှာ <code>y</code> နှိပ်ပါ။</p>
+<p>remove test database မှာ <code>y</code> နှိပ်ပါ။</p>
+<p>reload privilege table မှာ <code>y</code> နှိပ်ပါ။</p>
+<p>ဒါဆိုရင် MySQL server setup ပြီးပါပြီ။</p>
+<h3 id="php-installation">PHP Installation</h3>
+<div class="expressive-code"><figure class="frame is-terminal"><figcaption class="header"><span class="title"></span><span class="sr-only">Terminal window</span></figcaption><pre data-language="bash"><code><div class="ec-line"><div class="code"><span style="--0:#B392F0">sudo</span><span style="--0:#E1E4E8"> </span><span style="--0:#9ECBFF">apt</span><span style="--0:#E1E4E8"> </span><span style="--0:#9ECBFF">install</span><span style="--0:#E1E4E8"> </span><span style="--0:#9ECBFF">php</span><span style="--0:#E1E4E8"> </span><span style="--0:#9ECBFF">libapache2-mod-php</span><span style="--0:#E1E4E8"> </span><span style="--0:#9ECBFF">php-mysql</span><span style="--0:#E1E4E8"> </span><span style="--0:#79B8FF">-y</span></div></div></code></pre><div class="copy"><button title="Copy to clipboard" data-copied="Copied!" data-code="sudo apt install php libapache2-mod-php php-mysql -y"><div></div></button></div></figure></div>
+<p>အသုံးများတဲ့ PHP extension တွေထပ်ထည့်ထားချင်ရင်</p>
+<div class="expressive-code"><figure class="frame is-terminal"><figcaption class="header"><span class="title"></span><span class="sr-only">Terminal window</span></figcaption><pre data-language="bash"><code><div class="ec-line"><div class="code"><span style="--0:#B392F0">sudo</span><span style="--0:#E1E4E8"> </span><span style="--0:#9ECBFF">apt</span><span style="--0:#E1E4E8"> </span><span style="--0:#9ECBFF">install</span><span style="--0:#E1E4E8"> </span><span style="--0:#9ECBFF">php-curl</span><span style="--0:#E1E4E8"> </span><span style="--0:#9ECBFF">php-json</span><span style="--0:#E1E4E8"> </span><span style="--0:#9ECBFF">php-cgi</span><span style="--0:#E1E4E8"> </span><span style="--0:#9ECBFF">php-gd</span><span style="--0:#E1E4E8"> </span><span style="--0:#9ECBFF">php-mbstring</span><span style="--0:#E1E4E8"> </span><span style="--0:#9ECBFF">php-xml</span><span style="--0:#E1E4E8"> </span><span style="--0:#9ECBFF">php-xmlrpc</span><span style="--0:#E1E4E8"> </span><span style="--0:#9ECBFF">php-zip</span><span style="--0:#E1E4E8"> </span><span style="--0:#79B8FF">-y</span></div></div></code></pre><div class="copy"><button title="Copy to clipboard" data-copied="Copied!" data-code="sudo apt install php-curl php-json php-cgi php-gd php-mbstring php-xml php-xmlrpc php-zip -y"><div></div></button></div></figure></div>
+<p>php install လုပ်ပြီးပြီဆိုရင် အောက်ပါ command နဲ့ version စစ်ကြည့်လို့ရပါတယ်။</p>
+<div class="expressive-code"><figure class="frame is-terminal"><figcaption class="header"><span class="title"></span><span class="sr-only">Terminal window</span></figcaption><pre data-language="bash"><code><div class="ec-line"><div class="code"><span style="--0:#B392F0">php</span><span style="--0:#E1E4E8"> </span><span style="--0:#79B8FF">-v</span></div></div></code></pre><div class="copy"><button title="Copy to clipboard" data-copied="Copied!" data-code="php -v"><div></div></button></div></figure></div>
+<h3 id="apache-virtual-host-setup">Apache Virtual Host Setup</h3>
+<p>Apache က default အနေနဲ့ <code>/var/www/html</code> directory ကို serve လုပ်ပေးပါတယ်။ ဥပမာ <code>index.html</code> ကို <code>/var/www/html/index.html</code> ဆိုပြီးထားလိုက်ရင် website စာမျက်နှာအနေနဲ့မြင်ရပါပြီ။ Website တစ်ခုထဲအတွက်ဆိုရင် အဆင်ပြေပေမယ့် website အများအပြားအတွက်ဆိုရင် virtual hosting ဆိုတဲ့ Apache ရဲ့ feature ကိုသုံးရပါမယ်။</p>
+<p>ပထမဆုံး ကိုယ့် website folder ကိုလုပ်ပါမယ်။ <code>yourdomain.com</code> နေရာမှာ ကိုယ့် website domain ထည့်နိုင်ပါတယ်။ လောလောဆယ် domain name မရှိသေးဘူး၊ ဒါမှမဟုတ် DNS record မထည့်ရသေးဘူးဆိုရင်တောင်မှ ရည်ရွယ်ထားတဲ့ domain name အတိုင်း folder ဆောက်လို့ရပါတယ်။</p>
+<div class="expressive-code"><figure class="frame is-terminal"><figcaption class="header"><span class="title"></span><span class="sr-only">Terminal window</span></figcaption><pre data-language="bash"><code><div class="ec-line"><div class="code"><span style="--0:#B392F0">sudo</span><span style="--0:#E1E4E8"> </span><span style="--0:#9ECBFF">mkdir</span><span style="--0:#E1E4E8"> </span><span style="--0:#79B8FF">-p</span><span style="--0:#E1E4E8"> </span><span style="--0:#9ECBFF">/var/www/yourdomain.com/public_html</span></div></div></code></pre><div class="copy"><button title="Copy to clipboard" data-copied="Copied!" data-code="sudo mkdir -p /var/www/yourdomain.com/public_html"><div></div></button></div></figure></div>
+<blockquote>
+<p>တချို့က directory name မှာ period <code>.</code> ပါနေတာမကြိုက်ကြဘဲ <code>/var/www/domaincom</code> လို့ပေးတတ်ကြပါတယ်။ အလုပ်လုပ်ပုံချင်းအတူတူပဲမို့ ကိုယ့်အကြိုက်နဲ့ကိုယ် နာမည်ပေးလို့ရပါတယ်။</p>
+</blockquote>
+<p>Log နဲ့ backups folder တွေလည်းလုပ်ထားပါမယ်။</p>
+<div class="expressive-code"><figure class="frame is-terminal"><figcaption class="header"><span class="title"></span><span class="sr-only">Terminal window</span></figcaption><pre data-language="bash"><code><div class="ec-line"><div class="code"><span style="--0:#B392F0">sudo</span><span style="--0:#E1E4E8"> </span><span style="--0:#9ECBFF">mkdir</span><span style="--0:#E1E4E8"> </span><span style="--0:#79B8FF">-p</span><span style="--0:#E1E4E8"> </span><span style="--0:#9ECBFF">/var/www/yourdomain.com/log</span></div></div><div class="ec-line"><div class="code"><span style="--0:#B392F0">sudo</span><span style="--0:#E1E4E8"> </span><span style="--0:#9ECBFF">mkdir</span><span style="--0:#E1E4E8"> </span><span style="--0:#79B8FF">-p</span><span style="--0:#E1E4E8"> </span><span style="--0:#9ECBFF">/var/www/yourdomain.com/backups</span></div></div></code></pre><div class="copy"><button title="Copy to clipboard" data-copied="Copied!" data-code="sudo mkdir -p /var/www/yourdomain.com/logsudo mkdir -p /var/www/yourdomain.com/backups"><div></div></button></div></figure></div>
+<p>ပြီးရင် folder ownership ကို ပြောင်းပါမယ်။</p>
+<div class="expressive-code"><figure class="frame is-terminal"><figcaption class="header"><span class="title"></span><span class="sr-only">Terminal window</span></figcaption><pre data-language="bash"><code><div class="ec-line"><div class="code"><span style="--0:#B392F0">sudo</span><span style="--0:#E1E4E8"> </span><span style="--0:#9ECBFF">chown</span><span style="--0:#E1E4E8"> </span><span style="--0:#79B8FF">-R</span><span style="--0:#E1E4E8"> $USER</span><span style="--0:#9ECBFF">:</span><span style="--0:#E1E4E8">$USER </span><span style="--0:#9ECBFF">/var/www/yourdomain.com</span></div></div></code></pre><div class="copy"><button title="Copy to clipboard" data-copied="Copied!" data-code="sudo chown -R $USER:$USER /var/www/yourdomain.com"><div></div></button></div></figure></div>
+<p>ဒါဆိုရင် ဒီ folder ထဲမှာ run တဲ့ command တွေကို sudo အမြဲထည့်ဖို့မလိုတော့ပါဘူး။ ဆက်ပြီး Apache ရဲ့ sites-available မှာ yourdomain.com.conf ဆိုတဲ့ file ကိုလုပ်ပါမယ်။</p>
+<div class="expressive-code"><figure class="frame is-terminal"><figcaption class="header"><span class="title"></span><span class="sr-only">Terminal window</span></figcaption><pre data-language="bash"><code><div class="ec-line"><div class="code"><span style="--0:#B392F0">sudo</span><span style="--0:#E1E4E8"> </span><span style="--0:#9ECBFF">nano</span><span style="--0:#E1E4E8"> </span><span style="--0:#9ECBFF">/etc/apache2/sites-available/yourdomain.com.conf</span></div></div></code></pre><div class="copy"><button title="Copy to clipboard" data-copied="Copied!" data-code="sudo nano /etc/apache2/sites-available/yourdomain.com.conf"><div></div></button></div></figure></div>
+<p>အောက်ပါအတိုင်းထည့်ပါ။ yourdomain.com တွေမှာ ကိုယ့် domain name အစားထိုးပေးပါ။ လောလောဆယ် domain name နဲ့မချိတ်ရသေးလည်း ထည့်ထားလို့ရပါတယ်။</p>
+<div class="expressive-code"><figure class="frame"><figcaption class="header"></figcaption><pre data-language="plaintext"><code><div class="ec-line"><div class="code"><span style="--0:#e1e4e8">&lt;VirtualHost *:80&gt;</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#e1e4e8">    </span></span><span style="--0:#e1e4e8">ServerName yourdomain.com</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#e1e4e8">    </span></span><span style="--0:#e1e4e8">ServerAlias www.yourdomain.com</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#e1e4e8">    </span></span><span style="--0:#e1e4e8">DocumentRoot /var/www/yourdomain.com/public_html</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#e1e4e8">    </span></span><span style="--0:#e1e4e8">ErrorLog /var/www/yourdomain.com/log/error.log</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#e1e4e8">    </span></span><span style="--0:#e1e4e8">CustomLog /var/www/yourdomain.com/log/access.log combined</span></div></div><div class="ec-line"><div class="code"><span style="--0:#e1e4e8">&lt;/VirtualHost&gt;</span></div></div></code></pre><div class="copy"><button title="Copy to clipboard" data-copied="Copied!" data-code="<VirtualHost *:80>    ServerName yourdomain.com    ServerAlias www.yourdomain.com    DocumentRoot /var/www/yourdomain.com/public_html    ErrorLog /var/www/yourdomain.com/log/error.log    CustomLog /var/www/yourdomain.com/log/access.log combined</VirtualHost>"><div></div></button></div></figure></div>
+<p>အခုဖန်တီးလိုက်တဲ့ Virtual host ကို enable လုပ်ပါမယ်။</p>
+<div class="expressive-code"><figure class="frame is-terminal"><figcaption class="header"><span class="title"></span><span class="sr-only">Terminal window</span></figcaption><pre data-language="bash"><code><div class="ec-line"><div class="code"><span style="--0:#B392F0">sudo</span><span style="--0:#E1E4E8"> </span><span style="--0:#9ECBFF">a2ensite</span><span style="--0:#E1E4E8"> </span><span style="--0:#9ECBFF">yourdomain.com.conf</span></div></div></code></pre><div class="copy"><button title="Copy to clipboard" data-copied="Copied!" data-code="sudo a2ensite yourdomain.com.conf"><div></div></button></div></figure></div>
+<p>မူလ default site ကိုပိတ်ပါမယ်။ Apache သွင်းပြီးပြီးချင်း browser မှာ server ipaddress ရိုက်ထည့်လိုက်ရင် တွေ့ရတဲ့ default စာမျက်နှာကို ပိတ်ဖို့ဖြစ်ပါတယ်။</p>
+<div class="expressive-code"><figure class="frame is-terminal"><figcaption class="header"><span class="title"></span><span class="sr-only">Terminal window</span></figcaption><pre data-language="bash"><code><div class="ec-line"><div class="code"><span style="--0:#B392F0">sudo</span><span style="--0:#E1E4E8"> </span><span style="--0:#9ECBFF">a2dissite</span><span style="--0:#E1E4E8"> </span><span style="--0:#9ECBFF">000-default.conf</span></div></div></code></pre><div class="copy"><button title="Copy to clipboard" data-copied="Copied!" data-code="sudo a2dissite 000-default.conf"><div></div></button></div></figure></div>
+<p>ကျွန်တော်တို့ လက်ရှိလုပ်ပြီးသလောက် Apache config တွေမှာ error ရှိမရှိ test လုပ်ပါမယ်။</p>
+<div class="expressive-code"><figure class="frame is-terminal"><figcaption class="header"><span class="title"></span><span class="sr-only">Terminal window</span></figcaption><pre data-language="bash"><code><div class="ec-line"><div class="code"><span style="--0:#B392F0">sudo</span><span style="--0:#E1E4E8"> </span><span style="--0:#9ECBFF">apache2ctl</span><span style="--0:#E1E4E8"> </span><span style="--0:#9ECBFF">configtest</span></div></div></code></pre><div class="copy"><button title="Copy to clipboard" data-copied="Copied!" data-code="sudo apache2ctl configtest"><div></div></button></div></figure></div>
+<div class="expressive-code"><figure class="frame is-terminal"><figcaption class="header"><span class="title"></span><span class="sr-only">Terminal window</span></figcaption><pre data-language="bash"><code><div class="ec-line"><div class="code"><span style="--0:#B392F0">Syntax</span><span style="--0:#E1E4E8"> </span><span style="--0:#9ECBFF">OK</span></div></div></code></pre><div class="copy"><button title="Copy to clipboard" data-copied="Copied!" data-code="Syntax OK"><div></div></button></div></figure></div>
+<p>Error မရှိရင် apache ကို reload ပြန်လုပ်ပေးပါမယ်။</p>
+<div class="expressive-code"><figure class="frame is-terminal"><figcaption class="header"><span class="title"></span><span class="sr-only">Terminal window</span></figcaption><pre data-language="bash"><code><div class="ec-line"><div class="code"><span style="--0:#B392F0">sudo</span><span style="--0:#E1E4E8"> </span><span style="--0:#9ECBFF">systemctl</span><span style="--0:#E1E4E8"> </span><span style="--0:#9ECBFF">reload</span><span style="--0:#E1E4E8"> </span><span style="--0:#9ECBFF">apache2</span></div></div></code></pre><div class="copy"><button title="Copy to clipboard" data-copied="Copied!" data-code="sudo systemctl reload apache2"><div></div></button></div></figure></div>
+<p>ဒီအဆင့်ရောက်ပြီဆို html ရေးပြီးစမ်းကြည့်လို့ရပါပြီ။ document root မှာ HTML ဖိုင်တစ်ခုထည့်လိုက်ပါမယ်။</p>
+<div class="expressive-code"><figure class="frame is-terminal"><figcaption class="header"><span class="title"></span><span class="sr-only">Terminal window</span></figcaption><pre data-language="bash"><code><div class="ec-line"><div class="code"><span style="--0:#79B8FF">echo</span><span style="--0:#E1E4E8"> </span><span style="--0:#9ECBFF">&#39;&lt;h1&gt;Hello&lt;/h1&gt;&#39;</span><span style="--0:#E1E4E8"> </span><span style="--0:#F97583">&gt;</span><span style="--0:#E1E4E8"> </span><span style="--0:#9ECBFF">/var/www/yourdomain.com/public_html/index.html</span></div></div></code></pre><div class="copy"><button title="Copy to clipboard" data-copied="Copied!" data-code="echo '<h1>Hello</h1>' > /var/www/yourdomain.com/public_html/index.html"><div></div></button></div></figure></div>
+<p>Browser ကနေ server IP address ကိုဝင်ကြည့်ရင် Hello ဆိုတာကိုမြင်ရပါလိမ့်မယ်။ လောလောဆယ် SSL certificate မသွင်းရသေးလို့ HTTPS နဲ့ဖွင့်လို့ရမှာမဟုတ်သေးပါဘူး။</p> <hr class="end-of-article"> <a href="/blog" class="block-link" data-pagefind-ignore>← Back to blog</a>  </div>  <div class="card" data-astro-cid-dohjnao5>  <div class="comments" data-pagefind-ignore> <script src="https://giscus.app/client.js" data-repo="yethihahtwe/yethihahtwe.github.io" data-repo-id="R_kgDOHlOQTQ" data-category="General" data-category-id="DIC_kwDOHlOQTc4CmiC7" data-mapping="pathname" data-strict="1" data-reactions-enabled="1" data-emit-metadata="0" data-theme="https://spectre.louisescher.dev/styles/giscus" data-lang="en" data-loading="lazy" crossorigin="anonymous" async></script> </div>  </div>  </article> </div>   </main> <canvas id="bg-canvas"></canvas> <canvas id="overlay-canvas"></canvas> <script type="module" src="/_astro/Background.astro_astro_type_script_index_0_lang.Cl_PlrnR.js"></script> </body></html> <script type="module">const s=document.querySelectorAll(".toc-li a"),c=document.querySelectorAll("#_top, article h1, article h2, article h3, article h4"),n=new Map;for(const t of s){const e=t.href.split("#")[1],o=document.getElementById(e);o&&n.set(o,t)}function l(t){const e=t.getBoundingClientRect(),o=Math.max(document.documentElement.clientHeight,window.innerHeight);return!(e.bottom<0||e.top-o>=0)}const r=new IntersectionObserver(()=>{let t=null;for(const e of c){const o=l(e),i=n.get(e);if(o){i&&i.classList.add("active"),t||(t=e);break}}if(t){for(const e of n.keys())if(e!==t){const o=n.get(e);o&&o.classList.remove("active")}}},{threshold:0,root:null,rootMargin:"0px"});for(const t of c)r.observe(t);</script> 
