@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Options Comparison - Web Hosting vs Professional Services</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #f0f9ff 0%, #faf5ff 100%);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 24px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+        
+        .header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 8px;
+        }
+        
+        .header p {
+            font-size: 1.125rem;
+            color: #6b7280;
+        }
+        
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            padding: 24px;
+            border-left: 4px solid;
+        }
+        
+        .card.web-hosting {
+            border-left-color: #f97316;
+        }
+        
+        .card.professional {
+            border-left-color: #3b82f6;
+        }
+        
+        .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+        
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 16px;
+        }
+        
+        .card-icon.orange {
+            background-color: #fed7aa;
+        }
+        
+        .card-icon.blue {
+            background-color: #dbeafe;
+        }
+        
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #1f2937;
+        }
+        
+        .card-subtitle {
+            color: #6b7280;
+        }
+        
+        .card-features {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .feature {
+            display: flex;
+            align-items: center;
+        }
+        
+        .feature svg {
+            width: 20px;
+            height: 20px;
+            margin-right: 8px;
+        }
+        
+        .feature.positive {
+            color: #16a34a;
+            font-weight: 600;
+        }
+        
+        .feature.neutral {
+            color: #1f2937;
+        }
+        
+        .feature.negative {
+            color: #dc2626;
+            font-weight: 600;
+        }
+        
+        .comparison-table {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            margin-bottom: 32px;
+        }
+        
+        .table-header {
+            background: linear-gradient(90deg, #2563eb 0%, #7c3aed 100%);
+            color: white;
+            padding: 16px;
+        }
+        
+        .table-header h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+        
+        .table-container {
+            overflow-x: auto;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        th {
+            background-color: #f9fafb;
+            padding: 12px 24px;
+            text-align: left;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        td {
+            padding: 16px 24px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        tr:hover {
+            background-color: #f9fafb;
+        }
+        
+        .category-cell {
+            display: flex;
+            align-items: center;
+        }
+        
+        .category-cell svg {
+            width: 20px;
+            height: 20px;
+            margin-right: 8px;
+        }
+        
+        .stars {
+            display: flex;
+            gap: 2px;
+        }
+        
+        .star {
+            width: 16px;
+            height: 16px;
+        }
+        
+        .star.filled {
+            color: #fbbf24;
+            fill: currentColor;
+        }
+        
+        .star.empty {
+            color: #d1d5db;
+        }
+        
+        .pros-cons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+        
+        .pros-cons-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            padding: 24px;
+        }
+        
+        .pros-cons-title {
+            display: flex;
+            align-items: center;
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 16px;
+        }
+        
+        .pros-cons-title svg {
+            width: 20px;
+            height: 20px;
+            margin-right: 8px;
+        }
+        
+        .pros-cons-title.orange svg {
+            color: #f97316;
+        }
+        
+        .pros-cons-title.blue svg {
+            color: #3b82f6;
+        }
+        
+        .section {
+            margin-bottom: 16px;
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .section-title svg {
+            width: 16px;
+            height: 16px;
+            margin-right: 4px;
+        }
+        
+        .section-title.positive {
+            color: #16a34a;
+        }
+        
+        .section-title.negative {
+            color: #dc2626;
+        }
+        
+        .list {
+            list-style: none;
+        }
+        
+        .list-item {
+            display: flex;
+            align-items: flex-start;
+            font-size: 0.875rem;
+            color: #1f2937;
+            margin-bottom: 4px;
+        }
+        
+        .bullet {
+            margin-right: 8px;
+            font-weight: bold;
+        }
+        
+        .bullet.positive {
+            color: #16a34a;
+        }
+        
+        .bullet.negative {
+            color: #dc2626;
+        }
+        
+        .recommendation {
+            background: linear-gradient(90deg, #dcfce7 0%, #dbeafe 100%);
+            border-radius: 12px;
+            padding: 24px;
+            margin-top: 32px;
+        }
+        
+        .recommendation h3 {
+            display: flex;
+            align-items: center;
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 12px;
+        }
+        
+        .recommendation h3 svg {
+            width: 20px;
+            height: 20px;
+            color: #eab308;
+            margin-right: 8px;
+        }
+        
+        .recommendation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 16px;
+        }
+        
+        .recommendation-card {
+            background: white;
+            border-radius: 8px;
+            padding: 16px;
+        }
+        
+        .recommendation-card h4 {
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .recommendation-card.orange h4 {
+            color: #ea580c;
+        }
+        
+        .recommendation-card.blue h4 {
+            color: #2563eb;
+        }
+        
+        .recommendation-card p {
+            font-size: 0.875rem;
+            color: #1f2937;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 16px;
+            }
+            
+            .header h1 {
+                font-size: 1.5rem;
+            }
+            
+            .header p {
+                font-size: 1rem;
+            }
+            
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .card-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .card-icon {
+                margin-right: 0;
+                margin-bottom: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Email Options Comparison</h1>
+            <p>Web Hosting Email vs Professional Email Services</p>
+        </div>
+
+        <!-- Main Comparison Cards -->
+        <div class="cards-grid">
+            <div class="card web-hosting">
+                <div class="card-header">
+                    <div class="card-icon orange">
+                        <i data-feather="mail"></i>
+                    </div>
+                    <div>
+                        <div class="card-title">Web Hosting Email</div>
+                        <div class="card-subtitle">အခြေခံ email service</div>
+                    </div>
+                </div>
+                <div class="card-features">
+                    <div class="feature positive">
+                        <i data-feather="dollar-sign"></i>
+                        <span>web hosting နှင့်အတူပါသောကြောင့် အခမဲ့သုံးနိုင်</span>
+                    </div>
+                    <div class="feature neutral">
+                        <i data-feather="alert-triangle"></i>
+                        <span>အခြေခံ features များသာအသုံးပြုနိုင်ပါသည်</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card professional">
+                <div class="card-header">
+                    <div class="card-icon blue">
+                        <i data-feather="shield"></i>
+                    </div>
+                    <div>
+                        <div class="card-title">Professional Email Services</div>
+                        <div class="card-subtitle">Google Workspace, Microsoft 365, Zoho Mail စသည်</div>
+                    </div>
+                </div>
+                <div class="card-features">
+                    <div class="feature negative">
+                        <i data-feather="dollar-sign"></i>
+                        <span>$7-24/user/month</span>
+                    </div>
+                    <div class="feature positive">
+                        <i data-feather="check-circle"></i>
+                        <span>Advanced features & security</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Detailed Comparison Table -->
+        <div class="comparison-table">
+            <div class="table-header">
+                <h3>အသေးစိတ်နှိုင်းယှဉ်ချက်</h3>
+            </div>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>အမျိုးအစား</th>
+                            <th>Web Hosting Email</th>
+                            <th>Rating</th>
+                            <th>Professional Services</th>
+                            <th>Rating</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="category-cell">
+                                    <i data-feather="dollar-sign"></i>
+                                    <span>ကုန်ကျစရိတ်</span>
+                                </div>
+                            </td>
+                            <td>အခမဲ့ သို့မဟုတ် hosting နှင့်ပါဝင်</td>
+                            <td>
+                                <div class="stars">
+                                    <i data-feather="star" class="star filled"></i>
+                                    <i data-feather="star" class="star filled"></i>
+                                    <i data-feather="star" class="star filled"></i>
+                                    <i data-feather="star" class="star filled"></i>
+                                    <i data-feather="star" class="star filled"></i>
+                                </div>
+                            </td>
+                            <td>$7-24/user/month</td>
+                            <td>
+                                <div class="stars">
+                                    <i data-feather="star" class="star filled"></i>
+                                    <i data-feather="star" class="star filled"></i>
+                                    <i data-feather="star" class="star empty"></i>
+                                    <i data-feather="star" class="star empty"></i>
+                                    <i data-feather="star" class="star empty"></i>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="category-cell">
+                                    <i data-feather="shield"></i>
+                                    <span>လုံခြုံရေး</span>
+                                </div>
+                            </td>
+                            <td>အခြေခံ security သာ</td>
+                            <td>
+                                <div class="stars">
+                                    <i data-feather="star" class="star filled"></i>
+                                    <i data-feather="star" class="star filled"></i>
+                                    <i data-feather="star" class="star empty"></i>
+                                    <i data-feather="star" class="star empty"></i>
+                                    <i data-feather="star" class="star empty"></i>
+                                </div>
+                            </td>
+                            <td>Advanced security & encryption</td>
+                            <td>
+                                <div class="stars">
+                                    <i data-feather="star" class="star filled"></i>
+                                    <i data-feather="star" class="star filled"></i>
+                                    <i data-feather="star" class="star filled"></i>
+                                    <i data-feather="star" class="star filled"></i>
+                                    <i data-feather="star" class="star filled"></i>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="category-cell">
+                                    <i data-feather="clock"></i>
+                                    <span>Uptime/Online အမြဲရှိနိုင်ချေ</span>
+                                </div>
+                            </td>
+                            <td>Hosting server အပေါ်မှီခို</td>
+                            <td>
+                                <div class="stars">
+                                    <i data-feather="star" class="star filled"></i>
+                                    <i data-feather="star" class="star filled"></i>
+                                    <i data-feather="star" class="star empty"></i>
+                                    <i data-feather="star" class="star empty"></i>
+                                    <i data-feather="star" class="star empty"></i>
+                                </div>
+                            </td>
+                            <td>99.9% uptime guarantee</td>
+                            <td>
+                                <div class="stars">
+                                    <i data-feather="star" class="star filled"></i>
+                                    <i data-feather="star" class="star filled"></i>
+                                    <i data-feather="star" class="star filled"></i>
+                                    <i data-feather="star" class="star filled"></i>
+                                    <i data-feather="star" class="star filled"></i>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="category-cell">
+                                    <i data-feather="star"></i>
+                                    <span>Features</span>
+                                </div>
+                            </td>
+                            <td>အခြေခံ email features သာ</td>
+                            <td>
+                                <div class="stars">
+                                    <i data-feather="star" class="star filled"></i>
+                                    <i data-feather="star" class="star filled"></i>
+                                    <i data-feather="star" class="star empty"></i>
+                                    <i data-feather="star" class="star empty"></i>
+                                    <i data-feather="star" class="star empty"></i>
+                                </div>
+                            </td>
+                            <td>Calendar, Drive, Apps integration</td>
+                            <td>
+                                <div class="stars">
+                                    <i data-feather="star" class="star filled"></i>
+                                    <i data-feather="star" class="star filled"></i>
+                                    <i data-feather="star" class="star filled"></i>
+                                    <i data-feather="star" class="star filled"></i>
+                                    <i data-feather="star" class="star filled"></i>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="category-cell">
+                                    <i data-feather="mail"></i>
+                                    <span>Email Deliverability</span>
+                                </div>
+                            </td>
+                            <td>လက်ခံသူ၏ Spam folder သို့ရောက်တတ်</td>
+                            <td>
+                                <div class="stars">
+                                    <i data-feather="star" class="star filled"></i>
+                                    <i data-feather="star" class="star filled"></i>
+                                    <i data-feather="star" class="star empty"></i>
+                                    <i data-feather="star" class="star empty"></i>
+                                    <i data-feather="star" class="star empty"></i>
+                                </div>
+                            </td>
+                            <td>delivery rate ကောင်းမွန်</td>
+                            <td>
+                                <div class="stars">
+                                    <i data-feather="star" class="star filled"></i>
+                                    <i data-feather="star" class="star filled"></i>
+                                    <i data-feather="star" class="star filled"></i>
+                                    <i data-feather="star" class="star filled"></i>
+                                    <i data-feather="star" class="star filled"></i>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="category-cell">
+                                    <i data-feather="users"></i>
+                                    <span>Customer Support</span>
+                                </div>
+                            </td>
+                            <td>Hosting provider support မှတဆင့်ရယူနိုင်</td>
+                            <td>
+                                <div class="stars">
+                                    <i data-feather="star" class="star filled"></i>
+                                    <i data-feather="star" class="star filled"></i>
+                                    <i data-feather="star" class="star empty"></i>
+                                    <i data-feather="star" class="star empty"></i>
+                                    <i data-feather="star" class="star empty"></i>
+                                </div>
+                            </td>
+                            <td>24/7 dedicated email support</td>
+                            <td>
+                                <div class="stars">
+                                    <i data-feather="star" class="star filled"></i>
+                                    <i data-feather="star" class="star filled"></i>
+                                    <i data-feather="star" class="star filled"></i>
+                                    <i data-feather="star" class="star filled"></i>
+                                    <i data-feather="star" class="star empty"></i>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Pros and Cons Section -->
+        <div class="pros-cons-grid">
+            <!-- Web Hosting Pros/Cons -->
+            <div class="pros-cons-card">
+                <h3 class="pros-cons-title orange">
+                    <i data-feather="mail"></i>
+                    Web Hosting Email
+                </h3>
+                
+                <div class="section">
+                    <h4 class="section-title positive">
+                        <i data-feather="check-circle"></i>
+                        အားသာချက်များ
+                    </h4>
+                    <ul class="list">
+                        <li class="list-item">
+                            <span class="bullet positive">•</span>
+                            အခမဲ့ သို့မဟုတ် hosting နှင့်အတူပါဝင်
+                        </li>
+                        <li class="list-item">
+                            <span class="bullet positive">•</span>
+                            ကိုယ်ပိုင်ဒိုမိန်းနှင့် professional လိပ်စာရရှိ
+                        </li>
+                        <li class="list-item">
+                            <span class="bullet positive">•</span>
+                            Unlimited email accounts ဖန်တီးနိုင်
+                        </li>
+                        <li class="list-item">
+                            <span class="bullet positive">•</span>
+                            စတင်ရန် လွယ်ကူ
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="section">
+                    <h4 class="section-title negative">
+                        <i data-feather="alert-triangle"></i>
+                        အားနည်းချက်များ
+                    </h4>
+                    <ul class="list">
+                        <li class="list-item">
+                            <span class="bullet negative">•</span>
+                            Hosting server down ဖြစ်လျှင် email လည်း မရ
+                        </li>
+                        <li class="list-item">
+                            <span class="bullet negative">•</span>
+                            Security အားနည်း
+                        </li>
+                        <li class="list-item">
+                            <span class="bullet negative">•</span>
+                            Spam filtering စနစ် မကောင်း
+                        </li>
+                        <li class="list-item">
+                            <span class="bullet negative">•</span>
+                            Email deliverability အားနည်းနိုင်
+                        </li>
+                        <li class="list-item">
+                            <span class="bullet negative">•</span>
+                            Advanced features များအားနည်း (e.g. AI email compose)
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Professional Services Pros/Cons -->
+            <div class="pros-cons-card">
+                <h3 class="pros-cons-title blue">
+                    <i data-feather="shield"></i>
+                    Professional Email Services
+                </h3>
+                
+                <div class="section">
+                    <h4 class="section-title positive">
+                        <i data-feather="check-circle"></i>
+                        အားသာချက်များ
+                    </h4>
+                    <ul class="list">
+                        <li class="list-item">
+                            <span class="bullet positive">•</span>
+                            security နှင့် spam protection ကောင်းမွန်
+                        </li>
+                        <li class="list-item">
+                            <span class="bullet positive">•</span>
+                            99.9% uptime guarantee
+                        </li>
+                        <li class="list-item">
+                            <span class="bullet positive">•</span>
+                            Calendar, Drive, Office apps integration
+                        </li>
+                        <li class="list-item">
+                            <span class="bullet positive">•</span>
+                            Mobile apps များတွင် အသုံးပြုရ လွယ်ကူ
+                        </li>
+                        <li class="list-item">
+                            <span class="bullet positive">•</span>
+                            မြန်မာစာ interface support
+                        </li>
+                        <li class="list-item">
+                            <span class="bullet positive">•</span>
+                            24/7 customer support
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="section">
+                    <h4 class="section-title negative">
+                        <i data-feather="alert-triangle"></i>
+                        အားနည်းချက်များ
+                    </h4>
+                    <ul class="list">
+                        <li class="list-item">
+                            <span class="bullet negative">•</span>
+                            လစဉ် subscription fee ရှိ
+                        </li>
+                        <li class="list-item">
+                            <span class="bullet negative">•</span>
+                            Domain name expiry ဖြစ်လျှင်၊ Domain name registrar ပြောင်းလျှင် ရက်အနည်းငယ်မျှ ရပ်ဆိုင်းနိုင်
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recommendation Section -->
+        <div class="recommendation">
+            <h3>
+                <i data-feather="star"></i>
+                အကြံပြုချက်
+            </h3>
+            <div class="recommendation-grid">
+                <div class="recommendation-card orange">
+                    <h4>စတင်သူများအတွက်</h4>
+                    <p>Web hosting email နှင့် စတင်ပြီး နောက်ပိုင်းတွင် professional service သို့ upgrade လုပ်နိုင်ပါသည်။</p>
+                </div>
+                <div class="recommendation-card blue">
+                    <h4>လုပ်ငန်းများအတွက်</h4>
+                    <p>Professional email services (Google Workspace သို့မဟုတ် Microsoft 365) ကို အကြံပြုပါသည်။</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Feather icons when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof feather !== 'undefined') {
+                feather.replace();
+            }
+        });
+    </script>
+</body>
+</html>
