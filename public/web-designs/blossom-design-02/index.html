@@ -1,0 +1,1476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blossom Private School - Excellence in Education</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #3b1ff0;
+            --secondary: #961a05;
+            --accent: #f7fa3e;
+            --dark: #1a1a1a;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+
+        /* Floating Navigation */
+        .floating-nav {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 50px;
+            padding: 15px 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .floating-nav.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .nav-content {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo {
+            width: 35px;
+            height: 35px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .cta-btn {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s ease;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(59, 31, 240, 0.3);
+        }
+
+        /* Hero Section with Split Layout */
+        .hero {
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            padding: 80px 60px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100vh;
+            position: relative;
+        }
+
+        .hero-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 200px;
+            height: 200px;
+            background: var(--accent);
+            border-radius: 50%;
+            opacity: 0.1;
+            transform: translate(50%, -50%);
+        }
+
+        .hero-badge {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 8px 16px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 20px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 25px;
+            background: linear-gradient(135deg, white, var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            opacity: 0.95;
+            line-height: 1.6;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: var(--dark);
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(247, 250, 62, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            padding: 15px 30px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--accent);
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--accent);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .hero-image {
+            position: relative;
+            background: var(--light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .hero-image img {
+            width: 80%;
+            height: 80%;
+            object-fit: cover;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+            transition: transform 0.7s ease;
+        }
+
+        .hero-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .floating-card {
+            position: absolute;
+            background: white;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .floating-card.card-1 {
+            top: 15%;
+            right: 10%;
+            transform: rotate(-5deg);
+        }
+
+        .floating-card.card-2 {
+            bottom: 20%;
+            left: 10%;
+            transform: rotate(5deg);
+        }
+
+        .floating-card h4 {
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        /* Modern About Section */
+        .about {
+            padding: 120px 60px;
+            background: white;
+            position: relative;
+        }
+
+        .about::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--accent), var(--secondary));
+        }
+
+        .about-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .about-text {
+            padding-right: 40px;
+        }
+
+        .section-badge {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 25px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .section-title {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 25px;
+            color: var(--dark);
+            line-height: 1.2;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--gray);
+            margin-bottom: 35px;
+            line-height: 1.6;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin-bottom: 35px;
+        }
+
+        .feature-list li {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .feature-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .image-overlay {
+            position: absolute;
+            bottom: 30px;
+            left: 30px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .overlay-title {
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .overlay-text {
+            color: var(--gray);
+            font-size: 14px;
+        }
+
+        /* Programs Grid */
+        .programs {
+            padding: 120px 60px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+
+        .programs-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .programs-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .program-card {
+            background: white;
+            border-radius: 25px;
+            padding: 40px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .program-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+        }
+
+        .program-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .program-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+        }
+
+        .program-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+
+        .program-subtitle {
+            color: var(--gray);
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .program-description {
+            color: var(--gray);
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .program-features {
+            list-style: none;
+        }
+
+        .program-features li {
+            color: var(--gray);
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .program-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        /* News Section with Carousel Feel */
+        .news {
+            padding: 120px 60px;
+            background: white;
+        }
+
+        .news-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .news-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 30px;
+            height: 500px;
+        }
+
+        .news-card {
+            background: white;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .news-card.featured {
+            grid-row: span 1;
+        }
+
+        .news-image {
+            width: 100%;
+            height: 60%;
+            object-fit: cover;
+        }
+
+        .news-card:not(.featured) .news-image {
+            height: 50%;
+        }
+
+        .news-content {
+            padding: 25px;
+            height: 40%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .news-card:not(.featured) .news-content {
+            height: 50%;
+            padding: 20px;
+        }
+
+        .news-date {
+            color: var(--primary);
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .news-title {
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+
+        .featured .news-title {
+            font-size: 1.3rem;
+        }
+
+        .news-card:not(.featured) .news-title {
+            font-size: 1rem;
+        }
+
+        .news-excerpt {
+            color: var(--gray);
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 120px 60px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            position: relative;
+        }
+
+        .contact::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 300px;
+            height: 300px;
+            background: var(--accent);
+            border-radius: 50%;
+            opacity: 0.1;
+            transform: translate(50%, -50%);
+        }
+
+        .contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .contact-info h2 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 25px;
+            line-height: 1.2;
+        }
+
+        .contact-info p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        .contact-details {
+            list-style: none;
+            margin-bottom: 40px;
+        }
+
+        .contact-details li {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .contact-icon {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
+        }
+
+        .contact-form {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 25px;
+            padding: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px 20px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .form-group select {
+            color: white;
+        }
+
+        .form-group select option {
+            background: var(--primary);
+            color: white;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: var(--accent);
+            color: var(--dark);
+            padding: 18px;
+            border: none;
+            border-radius: 15px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(247, 250, 62, 0.3);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark);
+            color: white;
+            padding: 60px 60px 30px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand {
+            padding-right: 40px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .footer-logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .footer-brand h3 {
+            font-size: 1.5rem;
+            font-weight: 800;
+        }
+
+        .footer-brand p {
+            color: #adb5bd;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .footer-section h4 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #adb5bd;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #343a40;
+            padding-top: 30px;
+            text-align: center;
+            color: #adb5bd;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .floating-nav {
+                position: relative;
+                top: 0;
+                left: 0;
+                transform: none;
+                border-radius: 0;
+                padding: 15px 20px;
+                margin-bottom: 0;
+            }
+
+            .nav-content {
+                justify-content: space-between;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                min-height: auto;
+            }
+
+            .hero-content {
+                padding: 60px 30px;
+                height: auto;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .hero-stats {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .hero-image {
+                height: 400px;
+                padding: 20px;
+            }
+
+            .about,
+            .programs,
+            .news,
+            .contact {
+                padding: 80px 30px;
+            }
+
+            .about-container,
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .about-text {
+                padding-right: 0;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .programs-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .news-grid {
+                grid-template-columns: 1fr;
+                height: auto;
+                gap: 20px;
+            }
+
+            .news-card {
+                height: 400px;
+            }
+
+            .footer {
+                padding: 40px 30px 20px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .footer-brand {
+                padding-right: 0;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .floating-card {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-card.card-2 {
+            animation-delay: 3s;
+        }
+
+        /* Scroll animations */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .animate-on-scroll.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Navigation -->
+    <nav class="floating-nav" id="navbar">
+        <div class="nav-content">
+            <div class="logo-section">
+                <div class="logo">B</div>
+                <span style="font-weight: 700; color: var(--primary);">Blossom</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#programs">Programs</a></li>
+                <li><a href="#news">News</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <a href="#contact" class="cta-btn">Apply Now</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">🌟 Established 1995 - 28 Years of Excellence</div>
+            <h1 class="hero-title">Shaping Future Leaders in Myanmar</h1>
+            <p class="hero-subtitle">
+                At Blossom Private School, we blend world-class education with Myanmar's rich cultural heritage, 
+                creating confident, compassionate, and capable leaders for tomorrow's world.
+            </p>
+            <div class="hero-buttons">
+                <a href="#contact" class="btn-primary">
+                    <i class="fas fa-calendar-alt"></i>
+                    Schedule Campus Tour
+                </a>
+                <a href="#programs" class="btn-secondary">Explore Programs</a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number">1,200+</span>
+                    <span class="stat-label">Happy Students</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">95%</span>
+                    <span class="stat-label">University Rate</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">50+</span>
+                    <span class="stat-label">Expert Teachers</span>
+                </div>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="./images/student-hero.jpg" alt="Blossom Private School Students" />
+            <div class="floating-card card-1">
+                <h4>🏆 Academic Excellence</h4>
+                <p>Top performance nationwide</p>
+            </div>
+            <div class="floating-card card-2">
+                <h4>🌏 Global Ready</h4>
+                <p>International curriculum</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="about-container">
+            <div class="about-text animate-on-scroll">
+                <span class="section-badge">About Our Mission</span>
+                <h2 class="section-title">Nurturing Excellence Through Values</h2>
+                <p class="section-subtitle">
+                    For nearly three decades, Blossom Private School has stood as Myanmar's beacon of educational 
+                    excellence, where traditional values meet modern learning methodologies.
+                </p>
+                <ul class="feature-list">
+                    <li>
+                        <div class="feature-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <div>
+                            <strong>Values-Centered Learning</strong><br>
+                            <span style="color: var(--gray);">Buddhist principles and Myanmar cultural heritage</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="feature-icon">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <div>
+                            <strong>Global Perspective</strong><br>
+                            <span style="color: var(--gray);">International standards with local wisdom</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="feature-icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <div>
+                            <strong>Academic Excellence</strong><br>
+                            <span style="color: var(--gray);">Consistently outstanding examination results</span>
+                        </div>
+                    </li>
+                </ul>
+                <a href="#programs" class="btn-primary">
+                    <i class="fas fa-arrow-right"></i>
+                    Discover Our Programs
+                </a>
+            </div>
+            <div class="about-image animate-on-scroll">
+                <img src="./images/building-character.jpg" alt="Character Building at Blossom" />
+                <div class="image-overlay">
+                    <div class="overlay-title">Character First</div>
+                    <div class="overlay-text">Building tomorrow's ethical leaders</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Section -->
+    <section class="programs" id="programs">
+        <div class="programs-container">
+            <div class="programs-header animate-on-scroll">
+                <span class="section-badge">Academic Excellence</span>
+                <h2 class="section-title">Comprehensive Education Journey</h2>
+                <p class="section-subtitle">
+                    From foundational learning to university preparation, our programs are designed to unlock 
+                    every student's potential while honoring Myanmar's educational values.
+                </p>
+            </div>
+            <div class="programs-grid">
+                <div class="program-card animate-on-scroll">
+                    <div class="program-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h3 class="program-title">Primary Foundation</h3>
+                    <p class="program-subtitle">Grades 1-5 • Ages 6-11</p>
+                    <p class="program-description">
+                        Building strong foundations in Myanmar and English languages, mathematics, and cultural 
+                        awareness in a nurturing, child-centered environment.
+                    </p>
+                    <ul class="program-features">
+                        <li>Bilingual immersion program</li>
+                        <li>Character development focus</li>
+                        <li>Creative arts and sports</li>
+                        <li>Small class sizes (max 20)</li>
+                    </ul>
+                </div>
+                <div class="program-card animate-on-scroll">
+                    <div class="program-icon">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <h3 class="program-title">Secondary Excellence</h3>
+                    <p class="program-subtitle">Grades 6-10 • Ages 12-16</p>
+                    <p class="program-description">
+                        Comprehensive middle school education with STEM emphasis, leadership development, 
+                        and preparation for advanced academic challenges.
+                    </p>
+                    <ul class="program-features">
+                        <li>Advanced STEM curriculum</li>
+                        <li>Leadership training programs</li>
+                        <li>Community service initiatives</li>
+                        <li>Technology integration</li>
+                    </ul>
+                </div>
+                <div class="program-card animate-on-scroll">
+                    <div class="program-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3 class="program-title">University Preparation</h3>
+                    <p class="program-subtitle">Grades 11-12 • Ages 17-18</p>
+                    <p class="program-description">
+                        Advanced placement courses and comprehensive university counseling to prepare students 
+                        for admission to top universities worldwide.
+                    </p>
+                    <ul class="program-features">
+                        <li>International curriculum options</li>
+                        <li>University application support</li>
+                        <li>Scholarship guidance</li>
+                        <li>Career counseling</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <section class="news" id="news">
+        <div class="news-container">
+            <div class="news-header animate-on-scroll">
+                <span class="section-badge">Latest Updates</span>
+                <h2 class="section-title">School News & Achievements</h2>
+                <p class="section-subtitle">
+                    Stay updated with our latest accomplishments, events, and educational innovations 
+                    that showcase our commitment to excellence.
+                </p>
+            </div>
+            <div class="news-grid">
+                <article class="news-card featured animate-on-scroll">
+                    <img src="./images/science-fair.jpg" alt="Science Fair Winners" class="news-image" />
+                    <div class="news-content">
+                        <div class="news-date">December 15, 2024</div>
+                        <h3 class="news-title">National Science Fair Champions</h3>
+                        <p class="news-excerpt">
+                            Our Grade 10 students achieved first place in the Myanmar National Science Fair 
+                            with their groundbreaking water purification project, demonstrating innovation 
+                            and environmental consciousness.
+                        </p>
+                    </div>
+                </article>
+                <article class="news-card animate-on-scroll">
+                    <img src="./images/digital-library.jpg" alt="Digital Library Opening" class="news-image" />
+                    <div class="news-content">
+                        <div class="news-date">December 10, 2024</div>
+                        <h3 class="news-title">Modern Digital Library Launch</h3>
+                        <p class="news-excerpt">
+                            State-of-the-art digital library with 10,000+ resources now open for enhanced learning.
+                        </p>
+                    </div>
+                </article>
+                <article class="news-card animate-on-scroll">
+                    <img src="./images/cultural-festival.png" alt="Cultural Festival" class="news-image" />
+                    <div class="news-content">
+                        <div class="news-date">December 5, 2024</div>
+                        <h3 class="news-title">Cultural Heritage Celebration</h3>
+                        <p class="news-excerpt">
+                            Annual festival showcasing Myanmar's rich traditions through student performances.
+                        </p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="contact-container">
+            <div class="contact-info animate-on-scroll">
+                <h2>Join Our Educational Community</h2>
+                <p>
+                    Experience our vibrant learning environment firsthand. Schedule a campus visit 
+                    or connect with our admissions team to begin your journey with Blossom Private School.
+                </p>
+                <ul class="contact-details">
+                    <li>
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <span>Thatipahtan Street, Myingyan, Myanmar</span>
+                    </li>
+                    <li>
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <span>+95 9 45126 2018</span>
+                    </li>
+                    <li>
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <span>info@blossom.edu.mm</span>
+                    </li>
+                    <li>
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <span>Mon - Fri: 8:00 AM - 5:00 PM</span>
+                    </li>
+                </ul>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="#" aria-label="YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+            <form class="contact-form animate-on-scroll">
+                <h3 style="margin-bottom: 30px; font-size: 1.5rem; font-weight: 700;">Request Information</h3>
+                <div class="form-row">
+                    <div class="form-group">
+                        <input type="text" placeholder="First Name" required />
+                    </div>
+                    <div class="form-group">
+                        <input type="text" placeholder="Last Name" required />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="email" placeholder="Email Address" required />
+                </div>
+                <div class="form-group">
+                    <input type="tel" placeholder="Phone Number" required />
+                </div>
+                <div class="form-group">
+                    <select required>
+                        <option value="">Select Grade Level of Interest</option>
+                        <option value="primary">Primary Education (Grades 1-5)</option>
+                        <option value="secondary">Secondary Education (Grades 6-10)</option>
+                        <option value="university-prep">University Preparation (Grades 11-12)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <textarea placeholder="Additional Message (Optional)" rows="4"></textarea>
+                </div>
+                <button type="submit" class="submit-btn">
+                    Send Information Request
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <div class="footer-logo-icon">B</div>
+                        <h3>Blossom Private School</h3>
+                    </div>
+                    <p>
+                        Nurturing excellence in education while preserving Myanmar's rich cultural heritage. 
+                        Building tomorrow's leaders with wisdom, compassion, and integrity.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#programs">Academic Programs</a></li>
+                        <li><a href="#news">School News</a></li>
+                        <li><a href="#contact">Admissions</a></li>
+                        <li><a href="#contact">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Student Resources</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Student Portal</a></li>
+                        <li><a href="#">Digital Library</a></li>
+                        <li><a href="#">Academic Calendar</a></li>
+                        <li><a href="#">Scholarship Info</a></li>
+                        <li><a href="#">Alumni Network</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Parent Resources</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Parent Portal</a></li>
+                        <li><a href="#">School Policies</a></li>
+                        <li><a href="#">Fee Structure</a></li>
+                        <li><a href="#">Transportation</a></li>
+                        <li><a href="#">Support Services</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Blossom Private School. All rights reserved. | Proudly serving Myanmar since 1995</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Form submission
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Simple form validation and feedback
+            const formData = new FormData(this);
+            const submitBtn = this.querySelector('.submit-btn');
+            
+            // Simulate form submission
+            submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
+            
+            setTimeout(() => {
+                submitBtn.textContent = 'Message Sent Successfully!';
+                submitBtn.style.background = '#28a745';
+                
+                setTimeout(() => {
+                    submitBtn.textContent = 'Send Information Request';
+                    submitBtn.style.background = 'var(--accent)';
+                    submitBtn.disabled = false;
+                    this.reset();
+                }, 3000);
+            }, 2000);
+        });
+
+        // Add some interactive hover effects
+        document.querySelectorAll('.program-card, .news-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Mobile menu toggle (for responsive design)
+        function createMobileMenu() {
+            const nav = document.querySelector('.floating-nav');
+            const navContent = nav.querySelector('.nav-content');
+            
+            if (window.innerWidth <= 768) {
+                const mobileMenuBtn = document.createElement('button');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                mobileMenuBtn.style.cssText = `
+                    background: none;
+                    border: none;
+                    color: var(--primary);
+                    font-size: 1.2rem;
+                    cursor: pointer;
+                    padding: 5px;
+                `;
+                
+                if (!nav.querySelector('.mobile-menu-btn')) {
+                    navContent.appendChild(mobileMenuBtn);
+                    mobileMenuBtn.classList.add('mobile-menu-btn');
+                    
+                    mobileMenuBtn.addEventListener('click', function() {
+                        const navLinks = nav.querySelector('.nav-links');
+                        navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+                    });
+                }
+            }
+        }
+
+        // Initialize mobile menu on load and resize
+        window.addEventListener('load', createMobileMenu);
+        window.addEventListener('resize', createMobileMenu);
+    </script>
+</body>
+</html>
