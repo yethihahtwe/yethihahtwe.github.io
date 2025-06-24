@@ -1,0 +1,236 @@
+---
+title: "Claude Code Todo Tool Workflow"
+description: ""
+image: "assets/claude-code/claude-code.png"
+createdAt: 06-24-2025
+draft: false
+tags: ["claude"]
+---
+
+According to this [reddit post](https://www.reddit.com/r/ClaudeAI/comments/1kt5yo5/claude_code_adding_use_a_todo_list_and_solve/), I have tried the same prompt suggested by user BlastNastier.
+
+And this is the output. As you can see in this system prompt, you can directly call TodoWrite and TodoRead tools in Claude Code.
+
+```plaintext
+Claude Code's Todo Management System: Complete Guide
+
+  Overview
+
+  The Todo Management System in Claude Code is a built-in task tracking feature that helps maintain organization, demonstrate
+  progress transparency, and ensure thorough completion of complex development tasks.
+
+  Core Components
+
+  1. TodoWrite Tool
+
+  - Purpose: Create, update, and manage todo items
+  - Parameters: Array of todo objects with required fields:
+    - content: Task description (string, min 1 character)
+    - status: Current state ("pending", "in_progress", "completed")
+    - priority: Importance level ("high", "medium", "low")
+    - id: Unique identifier (string)
+
+  2. TodoRead Tool
+
+  - Purpose: View current todo list status
+  - Parameters: None (leave completely blank)
+  - Usage: Proactive checking throughout conversations
+
+  When to Use Todo Management
+
+  ✅ Required Scenarios
+
+  1. Complex multi-step tasks (3+ distinct steps)
+  2. Non-trivial and complex tasks requiring careful planning
+  3. User explicitly requests todo list usage
+  4. Multiple tasks provided by user (numbered/comma-separated lists)
+  5. After receiving new instructions - immediately capture requirements
+  6. Before starting work - mark tasks as in_progress
+  7. After completing tasks - mark as completed and add follow-ups
+
+  ❌ Skip Todo Management When
+
+  1. Single, straightforward task
+  2. Trivial tasks requiring <3 steps
+  3. Purely conversational/informational requests
+  4. Tasks completable in one action
+
+  Workflow Best Practices
+
+  Task Creation Process
+
+  1. Analyze user request
+  2. Break down into specific, actionable items
+  3. Use TodoWrite to create pending tasks
+  4. Start with first high-priority item
+
+  Active Task Management
+
+  1. Mark ONE task as in_progress before starting
+  2. Complete current task fully before moving to next
+  3. Mark completed IMMEDIATELY after finishing
+  4. Update status in real-time as you work
+  5. Add new tasks if discovered during implementation
+
+  Task Completion Requirements
+
+  ONLY mark completed when:
+  - Task is FULLY accomplished
+  - No errors or blockers remain
+  - Tests are passing (if applicable)
+  - Implementation is complete
+
+  Keep as in_progress if:
+  - Tests are failing
+  - Implementation is partial
+  - Unresolved errors exist
+  - Dependencies are missing
+
+  Task States Management
+
+  State Definitions
+
+  - pending: Not yet started
+  - in_progress: Currently working (LIMIT: ONE at a time)
+  - completed: Successfully finished
+
+  State Transition Rules
+
+  1. pending → in_progress: When starting work
+  2. in_progress → completed: When fully finished
+  3. in_progress → pending: If need to pause/reprioritize
+  4. Remove entirely: If task becomes irrelevant
+
+  Proactive Usage Patterns
+
+  Frequent Check Points
+
+  - Beginning of conversations
+  - Before starting new tasks
+  - When uncertain about next steps
+  - After completing tasks
+  - Every few messages to ensure on track
+
+  TodoRead Usage
+
+  // Correct - leave completely blank
+  TodoRead()
+
+  // Incorrect - don't add dummy parameters
+  TodoRead({"input": ""})  // ❌
+  TodoRead({})             // ❌
+
+  Task Writing Best Practices
+
+  Content Guidelines
+
+  - Specific and actionable: "Create login component" not "Work on authentication"
+  - Clear scope: Define what "done" means
+  - Technology specific: Include relevant framework/language details
+  - User-focused: Reference user requirements directly
+
+  Priority Assignment
+
+  - High: Critical path items, user-blocking issues
+  - Medium: Important but not blocking
+  - Low: Nice-to-have, optimization tasks
+
+  ID Management
+
+  - Use simple incrementing numbers: "1", "2", "3"
+  - Keep consistent throughout conversation
+  - Don't reuse IDs from deleted tasks
+
+  Integration with Development Workflow
+
+  Planning Phase
+
+  1. Receive user requirements
+  2. Use TodoWrite to capture all tasks
+  3. Prioritize based on dependencies
+  4. Start with foundational tasks first
+
+  Implementation Phase
+
+  1. Mark current task in_progress
+  2. Implement solution
+  3. Test/verify functionality
+  4. Mark completed immediately
+  5. Move to next priority task
+
+  Error Handling
+
+  1. Keep task in_progress if errors occur
+  2. Create new task for error resolution
+  3. Don't mark original as completed until fixed
+  4. Update task content if scope changes
+
+  Communication Benefits
+
+  For Users
+
+  - Transparency: Clear view of progress
+  - Confidence: Systematic approach visible
+  - Planning: Understanding of remaining work
+  - Tracking: Historical record of completed work
+
+  For Claude
+
+  - Organization: Structured approach to complex tasks
+  - Memory: Track progress across conversation
+  - Completeness: Ensure nothing is forgotten
+  - Quality: Systematic verification of work
+
+  Common Anti-Patterns to Avoid
+
+  ❌ Don't Do This
+
+  - Batch multiple completions together
+  - Mark tasks completed prematurely
+  - Use vague task descriptions
+  - Have multiple in_progress tasks
+  - Forget to update status during work
+  - Create todos for trivial single-step tasks
+
+  ✅ Do This Instead
+
+  - Complete tasks one at a time
+  - Mark completed only when fully done
+  - Write specific, actionable descriptions
+  - Maintain single in_progress task
+  - Update status in real-time
+  - Reserve todos for complex, multi-step work
+
+  Example Workflows
+
+  Web Development Project
+
+  User: "Add dark mode to my React app"
+
+  Assistant creates todos:
+  1. [pending] Analyze current theme structure
+  2. [pending] Create theme context and provider
+  3. [pending] Implement dark mode CSS variables
+  4. [pending] Add theme toggle component
+  5. [pending] Update existing components for theme support
+  6. [pending] Test functionality and fix issues
+
+  Then proceeds systematically through each task.
+
+  Bug Fix Scenario
+
+  User: "The login form isn't working"
+
+  Assistant creates todos:
+  1. [pending] Investigate login form issue
+  2. [pending] Identify root cause
+  3. [pending] Fix authentication logic
+  4. [pending] Test login functionality
+  5. [pending] Verify edge cases
+
+  Updates status as work progresses.
+
+  This system ensures thorough, organized, and transparent development work while maintaining clear communication with users
+  about progress and next steps.
+
+```
