@@ -16,5 +16,8 @@
   },
   {
     "id": "claude"
-  }
+  },
+	{
+		"id": "book-review"
+	}
 ]
