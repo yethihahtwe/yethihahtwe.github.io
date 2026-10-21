@@ -1,37 +1,70 @@
 {
-  "$ref": "#/definitions/workExperience",
-  "definitions": {
-    "workExperience": {
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "anyOf": [
+    {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "title": {
+            "type": "string"
+          },
+          "company": {
+            "type": "string"
+          },
+          "duration": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "title",
+          "company",
+          "duration",
+          "description"
+        ]
+      }
+    },
+    {
       "type": "object",
       "properties": {
-        "id": {
-          "type": "number"
-        },
-        "title": {
-          "type": "string"
-        },
-        "company": {
-          "type": "string"
-        },
-        "duration": {
-          "type": "string"
-        },
-        "description": {
-          "type": "string"
-        },
         "$schema": {
           "type": "string"
         }
       },
-      "required": [
-        "id",
-        "title",
-        "company",
-        "duration",
-        "description"
-      ],
-      "additionalProperties": false
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "title": {
+            "type": "string"
+          },
+          "company": {
+            "type": "string"
+          },
+          "duration": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "title",
+          "company",
+          "duration",
+          "description"
+        ]
+      }
     }
-  },
-  "$schema": "http://json-schema.org/draft-07/schema#"
+  ]
 }

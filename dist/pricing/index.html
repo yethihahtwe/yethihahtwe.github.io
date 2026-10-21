@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web Development Pricing Plans</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --blue-primary: #3B82F6;
+      --blue-light: #EFF6FF;
+      --purple-primary: #8B5CF6;
+      --purple-light: #F5F3FF;
+      --green-primary: #10B981;
+      --green-light: #ECFDF5;
+      --yellow: #FBBF24;
+      --gray-50: #F9FAFB;
+      --gray-100: #F3F4F6;
+      --gray-200: #E5E7EB;
+      --gray-300: #D1D5DB;
+      --gray-600: #4B5563;
+      --gray-700: #374151;
+      --gray-800: #1F2937;
+      --gray-900: #111827;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    body {
+      background-color: #f9fafb;
+      color: var(--gray-800);
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 16px;
+      color: var(--gray-900);
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    h2 {
+      font-size: 1.875rem;
+      margin-bottom: 16px;
+      color: var(--gray-800);
+      font-weight: 600;
+    }
+
+    h3 {
+      font-size: 1.5rem;
+      margin-bottom: 12px;
+      color: var(--gray-800);
+      font-weight: 600;
+    }
+
+    h4 {
+      font-size: 1.25rem;
+      margin-bottom: 10px;
+      color: var(--gray-800);
+      font-weight: 500;
+      letter-spacing: 0.2px;
+    }
+
+    .header-subtitle {
+      font-size: 1.25rem;
+      color: var(--gray-600);
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      margin-bottom: 60px;
+    }
+
+    .plan-card {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      background-color: white;
+    }
+
+    .plan-card:hover {
+      transform: translateY(-8px);
+    }
+
+    .card-header {
+      padding: 24px;
+    }
+
+    .blue-theme .card-header {
+      background-color: var(--blue-light);
+      border-top: 5px solid var(--blue-primary);
+    }
+
+    .purple-theme .card-header {
+      background-color: var(--purple-light);
+      border-top: 5px solid var(--purple-primary);
+    }
+
+    .green-theme .card-header {
+      background-color: var(--green-light);
+      border-top: 5px solid var(--green-primary);
+    }
+
+    .recommended-badge {
+      background-color: var(--yellow);
+      color: var(--gray-900);
+      font-weight: bold;
+      padding: 6px 0;
+      text-align: center;
+      text-transform: uppercase;
+      font-size: 0.875rem;
+    }
+
+    .card-title-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .plan-title {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .plan-icon {
+      font-size: 32px;
+    }
+
+    .blue-theme .plan-icon {
+      color: var(--blue-primary);
+    }
+
+    .purple-theme .plan-icon {
+      color: var(--purple-primary);
+    }
+
+    .green-theme .plan-icon {
+      color: var(--green-primary);
+    }
+
+    .plan-description {
+      margin-bottom: 16px;
+      color: var(--gray-700);
+    }
+
+    .plan-price {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--gray-900);
+    }
+
+    .card-body {
+      padding: 24px;
+      flex-grow: 1;
+    }
+
+    .feature-section {
+      margin-bottom: 24px;
+    }
+
+    .feature-title {
+      display: flex;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .feature-title i {
+      margin-right: 10px;
+      color: var(--gray-600);
+    }
+
+    .feature-list {
+      list-style-type: none;
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 8px;
+    }
+
+    .feature-item i {
+      margin-right: 10px;
+      margin-top: 4px;
+    }
+
+    .check-icon {
+      color: #10B981;
+    }
+
+    .x-icon {
+      color: #EF4444;
+    }
+
+    .zap-icon {
+      color: #F59E0B;
+    }
+
+    .info-icon {
+      color: #3B82F6;
+    }
+
+    .card-footer {
+      padding: 24px;
+      background-color: var(--gray-50);
+    }
+
+    .additional-info {
+      background-color: var(--gray-50);
+      border-radius: 12px;
+      padding: 24px;
+      border: 1px solid var(--gray-200);
+      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 32px;
+    }
+
+    .two-column {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+
+    @media (max-width: 1024px) {
+      .pricing-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .pricing-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .container {
+        padding: 20px 15px;
+      }
+      
+      h1 {
+        font-size: 2rem;
+      }
+      
+      .header-subtitle {
+        font-size: 1.1rem;
+      }
+      
+      .plan-card {
+        max-width: 100%;
+      }
+      
+      .two-column {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 1.75rem;
+      }
+      
+      .plan-price {
+        font-size: 1.25rem;
+      }
+      
+      .card-header, .card-body, .card-footer {
+        padding: 15px;
+      }
+      
+      .feature-section {
+        margin-bottom: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Web Development Pricing Plans</h1>
+      <p class="header-subtitle">Choose the perfect website solution for your business needs</p>
+    </header>
+
+    <div class="pricing-grid">
+      <!-- Static Websites Plan -->
+      <div class="plan-card blue-theme">
+        <div class="card-header">
+          <div class="card-title-wrapper">
+            <h3 class="plan-title">Static websites</h3>
+            <i class="fas fa-code plan-icon"></i>
+          </div>
+          <p class="plan-description">Build once, use always. Updating existing content for free. Adding new content after deployment will have fees based on the content</p>
+          <div class="plan-price">฿2,000 – ฿3,000 + domain name</div>
+        </div>
+        <div class="card-body">
+          <div class="feature-section">
+            <div class="feature-title">
+              <i class="fas fa-shield-alt"></i>
+              <h4>Security Warranty</h4>
+            </div>
+            <p>90 days security monitoring, fixing security issues free of charge</p>
+          </div>
+          
+          <div class="feature-section">
+            <div class="feature-title">
+              <i class="fas fa-clock"></i>
+              <h4>After-deployment Support</h4>
+            </div>
+            <p>Basic support, bug fixes, minimal updates</p>
+            <p><strong>Duration:</strong> 1 year</p>
+          </div>
+
+          <div class="feature-section">
+            <h4>Technologies</h4>
+            <ul class="feature-list">
+              <li class="feature-item"><i class="fas fa-bolt zap-icon"></i>Static site generators</li>
+              <li class="feature-item"><i class="fas fa-bolt zap-icon"></i>HTML/CSS/JavaScript</li>
+              <li class="feature-item"><i class="fas fa-bolt zap-icon"></i>GitHub Pages / Netlify hosting</li>
+            </ul>
+          </div>
+
+          <div class="two-column">
+            <div class="feature-section">
+              <h4>Pros</h4>
+              <ul class="feature-list">
+                <li class="feature-item"><i class="fas fa-check check-icon"></i>Fastest and cheapest of all options</li>
+                <li class="feature-item"><i class="fas fa-check check-icon"></i>Excellent performance</li>
+                <li class="feature-item"><i class="fas fa-check check-icon"></i>Low hosting costs</li>
+                <li class="feature-item"><i class="fas fa-check check-icon"></i>High security by default</li>
+                <li class="feature-item"><i class="fas fa-check check-icon"></i>Mobile friendly/responsive design</li>
+              </ul>
+            </div>
+            
+            <div class="feature-section">
+              <h4>Cons</h4>
+              <ul class="feature-list">
+                <li class="feature-item"><i class="fas fa-times x-icon"></i>Since the website is static, updating content is not straight forward</li>
+                <li class="feature-item"><i class="fas fa-times x-icon"></i>Limited functionality for user interactions</li>
+                <li class="feature-item"><i class="fas fa-times x-icon"></i>Not suitable for complex features</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="feature-section">
+            <h4>Requirements</h4>
+            <ul class="feature-list">
+              <li class="feature-item"><i class="fas fa-check info-icon"></i>Domain name only</li>
+              <li class="feature-item"><i class="fas fa-check info-icon"></i>Content provided by client</li>
+            </ul>
+          </div>
+        </div>
+        <!-- Footer without button -->
+        <div class="card-footer"></div>
+      </div>
+
+      <!-- Dynamic Websites Plan -->
+      <div class="plan-card purple-theme">
+        <div class="recommended-badge">RECOMMENDED</div>
+        <div class="card-header">
+          <div class="card-title-wrapper">
+            <h3 class="plan-title">Dynamic websites</h3>
+            <i class="fas fa-database plan-icon"></i>
+          </div>
+          <p class="plan-description">Content management system (CMS) based websites which can be updated easily by the owner without writing codes.</p>
+          <div class="plan-price">฿3,000 – ฿5,000 + domain name + hosting</div>
+        </div>
+        <div class="card-body">
+          <div class="feature-section">
+            <div class="feature-title">
+              <i class="fas fa-shield-alt"></i>
+              <h4>Security Warranty</h4>
+            </div>
+            <p>6 months security monitoring, vulnerability fixes included</p>
+          </div>
+          
+          <div class="feature-section">
+            <div class="feature-title">
+              <i class="fas fa-clock"></i>
+              <h4>After-deployment Support</h4>
+            </div>
+            <p>More comprehensive support, regular CMS updates, content assistance</p>
+            <p><strong>Duration:</strong> 2 years</p>
+          </div>
+
+          <div class="feature-section">
+            <h4>Technologies</h4>
+            <ul class="feature-list">
+              <li class="feature-item"><i class="fas fa-bolt zap-icon"></i>WordPress</li>
+              <li class="feature-item"><i class="fas fa-bolt zap-icon"></i>PHP/MySQL</li>
+              <li class="feature-item"><i class="fas fa-bolt zap-icon"></i>Custom themes and plugins</li>
+              <li class="feature-item"><i class="fas fa-bolt zap-icon"></i>Shared or VPS hosting</li>
+            </ul>
+          </div>
+
+          <div class="two-column">
+            <div class="feature-section">
+              <h4>Pros</h4>
+              <ul class="feature-list">
+                <li class="feature-item"><i class="fas fa-check check-icon"></i>Easy content management</li>
+                <li class="feature-item"><i class="fas fa-check check-icon"></i>Wide range of plugins available</li>
+                <li class="feature-item"><i class="fas fa-check check-icon"></i>Scalable based on needs</li>
+                <li class="feature-item"><i class="fas fa-check check-icon"></i>Good balance of cost and functionality</li>
+                <li class="feature-item"><i class="fas fa-check check-icon"></i>Mobile friendly/responsive design</li>
+              </ul>
+            </div>
+            
+            <div class="feature-section">
+              <h4>Cons</h4>
+              <ul class="feature-list">
+                <li class="feature-item"><i class="fas fa-times x-icon"></i>Higher hosting costs</li>
+                <li class="feature-item"><i class="fas fa-times x-icon"></i>Requires more maintenance</li>
+                <li class="feature-item"><i class="fas fa-times x-icon"></i>Security concerns if not properly maintained</li>
+                <li class="feature-item"><i class="fas fa-times x-icon"></i>Can be slower than static websites</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="feature-section">
+            <h4>Requirements</h4>
+            <ul class="feature-list">
+              <li class="feature-item"><i class="fas fa-check info-icon"></i>Domain name</li>
+              <li class="feature-item"><i class="fas fa-check info-icon"></i>Hosting plan</li>
+              <li class="feature-item"><i class="fas fa-check info-icon"></i>Regular backups</li>
+            </ul>
+          </div>
+        </div>
+        <!-- Footer without button -->
+        <div class="card-footer"></div>
+      </div>
+
+      <!-- Web Applications Plan -->
+      <div class="plan-card green-theme">
+        <div class="card-header">
+          <div class="card-title-wrapper">
+            <h3 class="plan-title">Web applications</h3>
+            <i class="fas fa-server plan-icon"></i>
+          </div>
+          <p class="plan-description">Complex interactive websites with user accounts, payment processing, and custom functionality</p>
+          <div class="plan-price">฿30,000 – ฿40,000 + domain + hosting + SSL + other APIs</div>
+        </div>
+        <div class="card-body">
+          <div class="feature-section">
+            <div class="feature-title">
+              <i class="fas fa-shield-alt"></i>
+              <h4>Security Warranty</h4>
+            </div>
+            <p>12 months security warranty, regular security audits included</p>
+          </div>
+          
+          <div class="feature-section">
+            <div class="feature-title">
+              <i class="fas fa-clock"></i>
+              <h4>After-deployment Support</h4>
+            </div>
+            <p>Full technical support, regular feature refinements, performance optimization</p>
+            <p><strong>Duration:</strong> 3 years</p>
+          </div>
+
+          <div class="feature-section">
+            <h4>Technologies</h4>
+            <ul class="feature-list">
+              <li class="feature-item"><i class="fas fa-bolt zap-icon"></i>Laravel/PHP</li>
+              <li class="feature-item"><i class="fas fa-bolt zap-icon"></i>MySQL</li>
+              <li class="feature-item"><i class="fas fa-bolt zap-icon"></i>Custom themes</li>
+              <li class="feature-item"><i class="fas fa-bolt zap-icon"></i>VPS or Cloud hosting</li>
+            </ul>
+          </div>
+
+          <div class="two-column">
+            <div class="feature-section">
+              <h4>Pros</h4>
+              <ul class="feature-list">
+                <li class="feature-item"><i class="fas fa-check check-icon"></i>Fully customized user experience</li>
+                <li class="feature-item"><i class="fas fa-check check-icon"></i>Advanced functionality</li>
+                <li class="feature-item"><i class="fas fa-check check-icon"></i>Can scale to enterprise level</li>
+                <li class="feature-item"><i class="fas fa-check check-icon"></i>Mobile-friendly/responsive design</li>
+              </ul>
+            </div>
+            
+            <div class="feature-section">
+              <h4>Cons</h4>
+              <ul class="feature-list">
+                <li class="feature-item"><i class="fas fa-times x-icon"></i>Most expensive option</li>
+                <li class="feature-item"><i class="fas fa-times x-icon"></i>Requires ongoing maintenance</li>
+                <li class="feature-item"><i class="fas fa-times x-icon"></i>More complex hosting requirements</li>
+                <li class="feature-item"><i class="fas fa-times x-icon"></i>Longer development time</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="feature-section">
+            <h4>Requirements</h4>
+            <ul class="feature-list">
+              <li class="feature-item"><i class="fas fa-check info-icon"></i>Domain name</li>
+              <li class="feature-item"><i class="fas fa-check info-icon"></i>Cloud/VPS hosting plan</li>
+              <li class="feature-item"><i class="fas fa-check info-icon"></i>SSL certificate</li>
+              <li class="feature-item"><i class="fas fa-check info-icon"></i>Payment gateway (if applicable)</li>
+            </ul>
+          </div>
+        </div>
+        <!-- Footer without button -->
+        <div class="card-footer"></div>
+      </div>
+    </div>
+
+    <!-- Additional Information Section -->
+    <div class="additional-info">
+      <h2>Additional Information</h2>
+      
+      <div class="info-grid">
+        <div>
+          <h3>All packages include:</h3>
+          <ul class="feature-list">
+            <li class="feature-item"><i class="fas fa-check check-icon"></i>Mobile responsive design</li>
+            <li class="feature-item"><i class="fas fa-check check-icon"></i>Basic SEO optimization</li>
+            <li class="feature-item"><i class="fas fa-check check-icon"></i>Browser compatibility testing</li>
+            <li class="feature-item"><i class="fas fa-check check-icon"></i>Design mockups before development</li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3>Payment structure:</h3>
+          <ul class="feature-list">
+            <li class="feature-item"><i class="fas fa-check check-icon"></i>40% upfront payment</li>
+            <li class="feature-item"><i class="fas fa-check check-icon"></i>30% at midpoint review</li>
+            <li class="feature-item"><i class="fas fa-check check-icon"></i>30% before final delivery</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Add hover effect to cards (only on non-touch devices)
+    if (window.matchMedia("(hover: hover)").matches) {
+      document.querySelectorAll('.plan-card').forEach(card => {
+        card.addEventListener('mouseenter', () => {
+          card.style.transform = 'translateY(-10px)';
+          card.style.boxShadow = '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)';
+        });
+        card.addEventListener('mouseleave', () => {
+          card.style.transform = 'translateY(0)';
+          card.style.boxShadow = '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)';
+        });
+      });
+    }
+    
+    // Function to handle responsive adjustments if needed
+    function adjustForScreenSize() {
+      const width = window.innerWidth;
+      const cards = document.querySelectorAll('.plan-card');
+      
+      if (width <= 480) {
+        // Mobile-specific adjustments
+        cards.forEach(card => {
+          card.querySelectorAll('.feature-section').forEach(section => {
+            if (section.querySelector('h4') && section.querySelector('h4').textContent === 'Technologies') {
+              const list = section.querySelector('.feature-list');
+              // Limit visible technologies on mobile for better spacing
+              const items = list.querySelectorAll('.feature-item');
+              if (items.length > 3) {
+                let hasMoreItem = false;
+                for (let i = 0; i < items.length; i++) {
+                  if (items[i].textContent.includes('and more...')) {
+                    hasMoreItem = true;
+                    break;
+                  }
+                }
+                
+                if (!hasMoreItem) {
+                  for (let i = 3; i < items.length; i++) {
+                    items[i].style.display = 'none';
+                  }
+                  // Add a "more" indicator if items were hidden
+                  const moreItem = document.createElement('li');
+                  moreItem.className = 'feature-item';
+                  moreItem.innerHTML = '<i class="fas fa-ellipsis-h" style="margin-right: 10px; color: #9CA3AF;"></i><span>and more...</span>';
+                  list.appendChild(moreItem);
+                }
+              }
+            }
+          });
+        });
+      } else {
+        // Reset for larger screens
+        cards.forEach(card => {
+          card.querySelectorAll('.feature-item').forEach(item => {
+            item.style.display = 'flex';
+          });
+          
+          // Remove "and more..." items
+          card.querySelectorAll('.feature-item').forEach(item => {
+            if (item.textContent.includes('and more...')) {
+              item.remove();
+            }
+          });
+        });
+      }
+    }
+    
+    // Run on page load
+    document.addEventListener('DOMContentLoaded', adjustForScreenSize);
+    // Run on resize
+    window.addEventListener('resize', adjustForScreenSize);
+  </script>
+</body>
+</html>

@@ -1,29 +1,13 @@
 ---
-import '../styles/index.css';
-
 import ProfilePicture from '../assets/pfp.png';
 
-import Card from '../components/Card.astro';
 import Layout from '../layouts/Layout.astro';
 import ImageGlow from '../components/ImageGlow.astro';
 import Icon from '../components/Icon.astro';
 import { getCollection } from 'astro:content';
-import { getEntry } from 'astro:content';
-import { render } from 'astro:content';
 import { name, openGraph } from 'spectre:globals';
 
-const [posts, projects, books, about, workExperience, quickInfo, socials] = await Promise.all([
-	getCollection('posts', (post) => post.data.draft !== true),
-	getCollection('projects'),
-	getCollection('books'),
-	getEntry('other', 'about'),
-	getCollection('workExperience'),
-	getCollection('quickInfo'),
-	getCollection('socials')
-]);
-
-// biome-ignore lint/style/noNonNullAssertion: Should always be defined.
-const { Content: About } = await render(about!);
+const socials = await getCollection('socials');
 ---
 
 <Layout
@@ -31,92 +15,56 @@ const { Content: About } = await render(about!);
 	description={openGraph.home.description}
 	pagefindIgnore
 >
-	<div class="layout-grid-left" slot="left">
-		<Card class="flex-col-card">
-			<ImageGlow quality={100} width={80} height={80} src={ProfilePicture} alt="Profile image of Ye Thi Ha Htwe" loading='eager' />
-			<h2>{name}</h2>
-			<ul class="overview-list">
-				{quickInfo.map((info) => (
-					<li>
-						<Icon type={info.data.icon.type} name={info.data.icon.name as any} width={24} height={24} class='glow-icon' />
-						<span>{info.data.text}</span>
-					</li>
-				))}
-			</ul>
-		</Card>
-		<Card>
-			<h3 class="no-mt">Socials</h3>
-			<ul class="overview-list">
-				{socials.map((item) => (
-					<li>
-						<a href={item.data.link} class="socials-link">
-							<Icon type={item.data.icon.type} name={item.data.icon.name as any} width={24} height={24} class='glow-icon' />
-							<span>{item.data.text}</span>
-						</a>
-					</li>
-				))}
-			</ul>
-		</Card>
-	</div>
-	<div class="layout-grid-right" slot="right">
-		<Card>
-			<div class="header-container">
-				<Icon type='lucide' name="user" width={24} height={24} class='glow-icon' />
-				<h2>About me</h2>
-			</div>
-			<div class="prose">
-				<About />
-			</div>
-		</Card>
-		<Card>
-			<div class="header-container">
-				<Icon type='lucide' name="rss" width={24} height={24} class='glow-icon' />
-				<h2>Latest Posts</h2>
-			</div>
-			<div class="content-container">
-				{posts.sort((a, b) => b.data.createdAt.getTime() - a.data.createdAt.getTime()).slice(0, 2).map((post) => (
-					<a href={`/blog/${post.id}`} class="post-container">
-						<div class="post-header">
-							<h3>{post.data.title}</h3>
-							<span class="post-date">{post.data.createdAt.toLocaleDateString()}</span>
-						</div>
-						<span>{post.data.description}</span>
+	<div class="home" slot="404">
+		<ImageGlow quality={100} width={96} height={96} src={ProfilePicture} alt="Profile image of Ye Thi Ha Htwe" loading='eager' />
+		<h1 class="text-glow">{name}</h1>
+		<!-- ponytail: reuses the navbar's Pagefind search instead of a second search box -->
+		<button class="search-button" onclick="document.getElementById('search').focus()">Search (Ctrl+K)</button>
+		<ul class="links">
+			<li><a href="/blog">Blog</a></li>
+			<li><a href="/projects">Projects</a></li>
+			<li><a href="/books">Books</a></li>
+			{socials.map((item) => (
+				<li>
+					<a href={item.data.link} aria-label={item.data.text}>
+						<Icon type={item.data.icon.type} name={item.data.icon.name as any} width={24} height={24} class='glow-icon' />
 					</a>
-				))}
-			</div>
-		</Card>
-		<Card>
-			<div class="header-container">
-				<Icon type='lucide' name="folder-git" width={24} height={24} class='glow-icon' />
-				<h2>Latest Projects</h2>
-			</div>
-			<div class="content-container">
-				{projects.sort((a, b) => b.data.date.getTime() - a.data.date.getTime()).slice(0, 2).map((project) => (
-					<a href={`/projects/${project.id}`} class="post-container">
-						<div class="post-header">
-							<h3>{project.data.title}</h3>
-							<span class="post-date">{project.data.date.toLocaleDateString()}</span>
-						</div>
-						<span>{project.data.description}</span>
-					</a>
-				))}
-			</div>
-		</Card>
-		<Card>
-			<div class="header-container">
-				<Icon type='lucide' name="briefcase-business" width={24} height={24} class='glow-icon' />
-				<h2>Work Experience</h2>
-			</div>
-			<div class="work-experience-container">
-				{workExperience.reverse().map((entry) => (
-					<div class="work-experience-entry">
-						<span class="work-experience-duration">{entry.data.duration}</span>
-						<h3 class="work-experience-company">{entry.data.company}</h3>
-						<span class="work-experience-role">{entry.data.title}</span>
-						<p class="work-experience-desc">{entry.data.description}</p>
-					</div>
-				))}
-			</div>
-		</Card>
+				</li>
+			))}
+		</ul>
 	</div>
 </Layout>
+
+<style>
+	.home {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 1.5rem;
+		min-height: 70vh;
+		text-align: center;
+	}
+
+	.search-button {
+		width: min(36rem, 100%);
+		padding: .75rem 1.25rem;
+		border: 1px solid var(--primary);
+		border-radius: 999px;
+		background: none;
+		color: inherit;
+		font: inherit;
+		text-align: left;
+		cursor: text;
+	}
+
+	.links {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: 1rem;
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+</style>
